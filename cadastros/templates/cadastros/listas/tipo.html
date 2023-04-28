@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+Cadastro Tipos
+{% endblock %}
+
+{% block content %}
+<header class="mt-5 pt-3">
+  <div>
+      <div class="bg-warning rounded text-dark border border-dark container h-10 d-flex align-items-center justify-content-center">
+        <h1><strong>CADASTRO DE TIPOS</strong></h1>
+      </div>
+  </div>
+</header>
+<div class="container mt-3">
+  <div class="d-flex justify-content-center row">
+      <div class="border border-dark rounded mb-3 me-1">
+          <table class="mt-1 table table-sm table-striped">
+            <thead>
+              <tr>
+                <th>TIPOS</th>
+                <th class="d-flex justify-content-end"><a href="{% url 'cadastrar-acabamento' %}" style="width: 120px;" class="btn btn-primary bg-primary btn-sm">Novo</a></th>
+              </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                {% if object %}
+                    {% for item in object_list|dictsort:"tipo" %}
+                    <tr>
+                        <td>{{ item }}</td>
+                        <td class="d-flex justify-content-end">
+                            <a href="{% url 'editar-tipo' item.pk %}" class="me-1 btn btn-warning btn-sm" title="Editar">E</a>
+                            <a href="{% url 'excluir-tipo' item.pk %}" class="btn btn-danger btn-sm" title="Excluir">X</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="3">Nenhum tipo cadastrado</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+          </table>
+      </div>
+  </div>
+</div>
+{% endblock %}

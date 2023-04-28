@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+Cadastro Modelo de Perfis Puxadores
+{% endblock %}
+
+{% block content %}
+<header class="mt-5 pt-3">
+  <div>
+  <div class="row">
+      <div class="col-1">
+      </div>
+      <div class="col-10 bg-warning text-dark border border-dark container h-10 d-flex align-items-center justify-content-center">
+        <h1><strong>CADASTRO MODELO DE PERFIS PUXADORES</strong></h1>
+      </div>
+      <div class="col-1">
+      </div>
+      <div class="col-1">
+      </div>
+      <div class="col-10 mt-3 container h-10 d-flex align-items-center justify-content-end">
+          <input type="email" class="form-control me-3" style="width: 500px;" id="exampleFormControlInput1" placeholder="digite aqui">
+          <a href="{% url 'cadastrar-modelo-perfilpuxador' %}" style="width: 120px;" class="justify-content-end btn btn-primary bg-primary">Novo</a>
+      </div>
+      <div class="col-1">
+      </div>
+  </div>
+</header>
+<div class="mt-3">
+  <div class="row">
+      <div class="col-1">
+      </div>
+      <div class="border col-10 container d-flex justify-content-start">
+          <table class="ms-5 me-5 table table-striped">
+            <thead>
+              <tr>
+                <th scope="">Modelos</th>
+              </tr>
+            </thead>
+            <tbody class="table-group-divider ">
+
+                {% for item in object_list %}
+                <tr>
+                    <td>{{ item.modelo }}</td>
+                    <td>
+                        <a href="{% url 'editar-modelo-perfilpuxador' item.pk %}" class="btn btn-warning btn-sm" title="Editar">E</a>
+                        <a href="{% url 'excluir-modelo-perfilpuxador' item.pk %}" class="btn btn-danger btn-sm" title="Excluir">X</a>
+                    </td>
+                </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="9">Nenhum modelo cadastrado</td>
+                    </tr>
+                {% endfor %}
+
+            </tbody>
+          </table>
+      </div>
+    <div class="col-1">
+    </div>
+  </div>
+</div>
+{% endblock %}

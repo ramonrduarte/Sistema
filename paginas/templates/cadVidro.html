@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+Cadastro de Clientes
+{% endblock %}
+
+{% block content %}
+<header class="mt-5 pt-3">
+  <div>
+  <div class="row">
+      <div class="col-1">
+      </div>
+      <div class="col-10 bg-warning text-dark border border-dark container h-10 d-flex align-items-center justify-content-center">
+        <h1><strong>VIDRO</strong></h1>
+      </div>
+      <div class="col-1">
+      </div>
+      <div class="col-1">
+      </div>
+      <div class="col-10 mt-3 container h-10 d-flex align-items-center justify-content-end">
+          <input type="text" class="form-control me-3" style="width: 500px;" id="exampleFormControlInput1" placeholder="digite aqui">
+          <button type="button"  style="width: 120px;" class="justify-content-end btn btn-primary bg-primary">Novo</button>
+      </div>
+      <div class="col-1">
+      </div>
+</header>
+<div class="mt-3">
+  <div class="row">
+      <div class="col-1">
+      </div>
+      <div class="border col-10 container d-flex justify-content-start">
+          <table class="ms-5 me-5 table table-striped">
+            <thead class="">
+              <tr class="">
+                <th scope="row">Id</th>
+                <th scope="col ">Código</th>
+                <th scope="col ">Descrição</th>
+                <th scope="col ">Preço</th>
+                <th scope="col ">Espessura</th>
+                <th scope="col ">Tipo</th>
+              </tr>
+            </thead>
+            <tbody class="table-group-divider ">
+              <tr class="">
+                <th scope="row">1</th>
+                <td>010561</td>
+                <td>3020 Anodizado (3020)</td>
+                <td>R$ 19,09</td>
+                <td>Anodizado</td>
+                <td>PERFIS</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>010561</td>
+                <td>3020 Anodizado (3020)</td>
+                <td>R$ 19,09</td>
+                <td>Anodizado</td>
+                <td>PERFIS</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>010561</td>
+                <td>3020 Anodizado (3020)</td>
+                <td>R$ 19,09</td>
+                <td>Anodizado</td>
+                <td>PERFIS</td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    <div class="col-1">
+    </div>
+  </div>
+</div>
+{% endblock %}

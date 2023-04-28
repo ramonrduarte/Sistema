@@ -1,0 +1,372 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+Adrofecha - Orçamento
+{% endblock %}
+
+{% block content %}
+<div class="container border bg-secondary-subtle" style="height: 850px; margin-top: 65px">
+    <header class="border mt-2 p-1 d-flex inline-block" id=listabotoes style="height: 120px";>
+            <div class="input-group ms-2" role="group" id="btnradios" aria-label="Basic radio toggle button group">
+                  <input type="radio" class="btn-check" name="btnradio" id="btnPortaGiro" checked="checked" value="PortaGiro" autocomplete="off">
+                  <label class="btn btn-outline-primary border me-3 rounded" for="btnPortaGiro" style="height: 110px; width:140px">
+                      <div class="d-flex justify-content-center" style="width:120px">
+                          <img src="./static/images/PortaGiro.png"  class="border bg-white rounded" style="height: 100px; width:180px">
+                      </div>
+                  </label>
+                  <input type="radio" class="btn-check" name="btnradio" id="btnPortaCorrer" value="PortaCorrer" autocomplete="off">
+                  <label class="btn btn-outline-primary border me-3 rounded" for="btnPortaCorrer">
+                      <div class="d-flex justify-content-center" style="width:120px">
+                          <img src="./static/images/PortaCorrer.png"  class="border bg-white rounded" style="height: 100px; width:180px">
+                      </div>
+                  </label>
+                  <input type="radio" class="btn-check" name="btnradio" value="DivisoriaAmbiente" id="btnDivisoria"">
+                  <label class="btn btn-outline-primary border me-3 rounded" for="btnDivisoria">
+                      <div class="d-flex justify-content-center" style="width:120px">
+                          <img src="./static/images/PortaDivisoria.png"  class="border bg-white rounded" style="height: 100px; width:180px">
+                      </div>
+                  </label>
+                  <input type="radio" class="btn-check" name="btnradio" value="Vidros" id="btnVidro"">
+                  <label class="btn btn-outline-primary border me-3 rounded" for="btnVidro">
+                      <div class="d-flex justify-content-center" style="width:120px">
+                          <img src="./static/images/Vidro.png"  class="border bg-white rounded" style="height: 100px; width:180px">
+                      </div>
+                  </label>
+            </div>
+    </header>
+    <div class="border mt-2 d-flex justify-content-center" style="height: 700px";>
+         <div class="container row">
+            <div class="col mt-1 me-1 border" style="height: 500px";>
+                <div class="border mt-1" style="height: 100px";>
+                    <div class="row">
+                        <div>
+<!--                            entrada de dados-->
+                            <div class="w-auto input-group mt-2 me-1 ">
+                                <label class="me-2 ms-3">Quantidade:</label>
+                                <input type="text" class="form-control d-flex me-5" style="height: 30px; max-width:50px";>
+                                <label class="me-2 ms-5">Largura:</label>
+                                <input type="text ms-1" placeholder="mm" class="form-control me-5" style="height: 30px;max-width:80px";>
+                                <label class="me-2 ms-5">Altura:</label>
+                                <input type="text" placeholder="mm" class="form-control" style="height: 30px;max-width:80px";>
+                            </div>
+                            <form class="ms-1 row">
+                                <div class="col" id="divacabamento">
+                                    <label class="me-2 ms-5" for="inputacabamentos" id="labelacabamento">Acabamento:</label>
+                                    <div class="ms-5">
+                                        <select class="form-select" id=inputacabamentos style="height: 35px; width:200px";>
+                                            <option value="1"></option>
+                                            <option value="2">Anodizado</option>
+                                            <option value="3">Inox Escovado</option>
+                                            <option value="4">Branco</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col" id="divabertura">
+                                    <label class="me-2 ms-5" for="inputabertura" id="labelabertura">Abertura:</label>
+                                    <div class="ms-5">
+                                        <select class="form-select" id="inputabertura" style="height: 35px; width:200px; ";>
+                                            <option value="1"> Opção 1 </option>
+                                            <option value="2"> Opção 2 </option>
+                                            <option value="3"> Opção 3 </option>
+                                            <option value="4"> Opção 4 </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="hidden col" id="divlinha">
+                                    <label class="me-2 ms-5" for="inputlinha" id="labelinha" >Linha:</label>
+                                    <div class="ms-5">
+                                        <select class="form-select" id="inputlinha" style="height: 35px; width:200px; ";>
+                                            <option value="1"> Opção 1 </option>
+                                            <option value="2"> Opção 2 </option>
+                                            <option value="3"> Opção 3 </option>
+                                            <option value="4"> Opção 4 </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div>
+
+                    </div>
+                </div>
+<!--    setor de calculo-->
+<!--                    Menu para giro e correr-->
+<!--                Linha Perfil-->
+                <div id="divportas" class="border" style="height: 335px";>
+                    <div class="input-group row">
+                      <label class="form-label mt-1 ms-3 mb-0" for="form1">Perfil:</label>
+                      <div class="d-flex inline-block ms-3">
+                        <input type="search" id="form1" class="form-control " style="width: 100px; height: 37px";>
+                        <div class="ms-1" >
+                            <select class="form-select" style="height: 35px; width:350px; ";>
+                                <option value="1"> Opção 1 </option>
+                            </select>
+                        </div>
+                      </div>
+                    </div>
+<!--                    Linha Perfil Puxador-->
+                    <div class="input-group row">
+                      <label class="form-label mt-1 ms-3 mb-0" for="form1">Perfil Puxador:</label>
+                      <div class="d-flex inline-block ms-3">
+                        <input type="search" id="form1" class="form-control " style="width: 100px; height: 37px";>
+                        <div class="ms-1" >
+                            <select class="form-select" style="height: 35px; width:350px; ";>
+                                <option value="1"> Opção 1 </option>
+                            </select>
+                        </div>
+                        <div class="ms-1" >
+                            <select class="form-select" style="height: 35px; width:30px; ";>
+                                <option value="1"> Opção 1 </option>
+                            </select>
+                        </div>
+                        <div class="ms-1" >
+                            <select class="form-select" style="height: 35px; width:80px; ";>
+                                <option value="1"> Opção 1 </option>
+                            </select>
+                        </div>
+                      </div>
+                    </div>
+<!--                    Linha Puxador Sobreposto-->
+                    <div class="input-group row">
+                      <label class="form-label mt-1 ms-3 mb-0" for="form1">Puxador Sobreposto:</label>
+                      <div class="d-flex inline-block ms-3">
+                        <input type="search" id="form1" class="form-control " style="width: 100px; height: 37px";>
+                        <div class="ms-1" >
+                            <select class="form-select" style="height: 35px; width:350px; ";>
+                                <option value="1"> Opção 1 </option>
+                            </select>
+                        </div>
+                        <div class="ms-1" >
+                            <select class="form-select" style="height: 35px; width:30px; ";>
+                                <option value="1"> Opção 1 </option>
+                            </select>
+                        </div>
+                        <div class="ms-1" >
+                            <select class="form-select"  style="height: 35px; width:80px; ";>
+                                <option value="1"> Opção 1 </option>
+                            </select>
+                        </div>
+                        <input type="search" id="form1" placeholder="mm" class="form-control ms-1 " style="width: 70px; height: 37px";>
+                      </div>
+                    </div>
+<!--                    Linha Divisor-->
+                    <div class="input-group row">
+                      <label class="form-label mt-1 ms-3 mb-0" for="form1">Divisor:</label>
+                      <div class="d-flex inline-block ms-3">
+                        <input type="search" id="form1" class="form-control " style="width: 100px; height: 37px";>
+                        <div class="ms-1" >
+                            <select class="form-select" style="height: 35px; width:350px; ";>
+                                <option value="1"> Opção 1 </option>
+                            </select>
+                        </div>
+                        <div class="ms-1" >
+                            <select class="form-select" style="height: 35px; width:30px; ";>
+                                <option value="1"> Opção 1 </option>
+                            </select>
+                        </div>
+                      </div>
+                    </div>
+<!--                    Linha Vidro-->
+                    <div class="input-group row">
+                      <label class="form-label mt-1 ms-3 mb-0" for="form1">Vidro:</label>
+                      <div class="d-flex inline-block ms-3">
+                        <input type="search" id="form1" class="form-control " style="width: 100px; height: 37px";>
+                        <div class="ms-1" >
+                            <select class="form-select" style="height: 35px; width:350px; ";>
+                                <option value="1"> Opção 1 </option>
+                            </select>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+<!--                menu para divisoria ambiente-->
+<!--                Linha Superior-->
+                <div id="divambiente" class="border hidden" style="height: 335px";>
+                    <div class="input-group row">
+                      <label class="form-label mt-1 ms-3 mb-0" for="form1">Superior:</label>
+                      <div class="d-flex inline-block ms-3">
+                        <input type="search" id="form1" class="form-control " style="width: 100px; height: 37px";>
+                        <div class="ms-1" >
+                            <select class="form-select" style="height: 35px; width:350px; ";>
+                                <option value="1"> Opção 1 </option>
+                            </select>
+                        </div>
+                      </div>
+                    </div>
+<!--                    Linha Inferior-->
+                    <div class="input-group row">
+                      <label class="form-label mt-1 ms-3 mb-0" for="form1">Inferior:</label>
+                      <div class="d-flex inline-block ms-3">
+                        <input type="search" id="form1" class="form-control " style="width: 100px; height: 37px";>
+                        <div class="ms-1" >
+                            <select class="form-select" style="height: 35px; width:350px; ";>
+                                <option value="1"> Opção 1 </option>
+                            </select>
+                        </div>
+                      </div>
+                    </div>
+<!--                    Linha Lateral-->
+                    <div class="input-group row">
+                      <label class="form-label mt-1 ms-3 mb-0" for="form1">Lateral:</label>
+                      <div class="d-flex inline-block ms-3">
+                        <input type="search" id="form1" class="form-control " style="width: 100px; height: 37px";>
+                        <div class="ms-1" >
+                            <select class="form-select" style="height: 35px; width:350px; ";>
+                                <option value="1"> Opção 1 </option>
+                            </select>
+                        </div>
+                      </div>
+                    </div>
+<!--                    Linha Divisor Ambiente-->
+                    <div class="input-group row">
+                      <label class="form-label mt-1 ms-3 mb-0" for="form1">Divisor:</label>
+                      <div class="d-flex inline-block ms-3">
+                        <input type="search" id="form1" class="form-control " style="width: 100px; height: 37px";>
+                        <div class="ms-1" >
+                            <select class="form-select" style="height: 35px; width:350px; ";>
+                                <option value="1"> Opção 1 </option>
+                            </select>
+                        </div>
+                        <div class="ms-1" >
+                            <select class="form-select" style="height: 35px; width:30px; ";>
+                                <option value="1"> Opção 1 </option>
+                            </select>
+                        </div>
+                      </div>
+                    </div>
+<!--                    Linha Vidro Ambiente-->
+                    <div class="input-group row">
+                      <label class="form-label mt-1 ms-3 mb-0" for="form1">Vidro:</label>
+                      <div class="d-flex inline-block ms-3">
+                        <input type="search" id="form1" class="form-control " style="width: 100px; height: 37px";>
+                        <div class="ms-1" >
+                            <select class="form-select" style="height: 35px; width:350px; ";>
+                                <option value="1"> Opção 1 </option>
+                            </select>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+<!--                    menu para vidro-->
+                <div id="divvidros" class="border hidden" style="height: 335px";>
+                    <div class="input-group row">
+                      <label class="form-label mt-1 ms-3 mb-0" for="form1">Vidro:</label>
+                      <div class="d-flex inline-block ms-3">
+                        <input type="search" id="form1" class="form-control " style="width: 100px; height: 37px";>
+                        <div class="ms-1" >
+                            <select class="form-select" style="height: 35px; width:350px; ";>
+                                <option value="1"> Opção 1 </option>
+                            </select>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+<!--                botoes fnalizar-->
+                <div class="mt-1 text-end" style="height: 45px";>
+                    <a class="btn btn-primary me-2 mt-1" style="width: 90px"; href="#" role="button">Cancelar</a>
+                    <a class="btn btn-primary me-2 mt-1" style="width: 90px"; href="#" role="button">Adicionar</a>
+                </div>
+            </div>
+            <div class="col bg-danger-subtle mt-1 ms-1 border" style="height: 500px";>
+                Desenho Porta
+            </div>
+            <div class="container border mb-2" style="height: 180px";>
+                <div class="row">
+                    <div class="col border mx-1 my-1 table-responsive" style="height: 172px";>
+                        <header>
+                            <h2 class="bg-warning text-dark text-center fs-6 fw-bold ">Insumos</h2>
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                      <th scope="col">Id</th>
+                                      <th scope="col">Código</th>
+                                      <th scope="col">Descrição</th>
+                                      <th scope="col">Quant(m)</th>
+                                      <th scope="col">Valor</th>
+                                      <th scope="col">Subtotal</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="table-group-divider">
+                                    <tr>
+                                      <th scope="row">1</th>
+                                      <td>010098</td>
+                                      <td>3579 Anodizado (3579)</td>
+                                      <td>4</td>
+                                      <td>R$42,50</td>
+                                      <td>R$170,52</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">1</th>
+                                      <td>013799</td>
+                                      <td>4007 Anodizado (4007)</td>
+                                      <td>2</td>
+                                      <td>R$58,07</td>
+                                      <td>R$116,13</td>
+                                    </tr>
+                                    <tr>
+                                      <th scope="row">1</th>
+                                      <td>008787</td>
+                                      <td>Acidato Prata 4MM</td>
+                                      <td>2</td>
+                                      <td>R$245,50</td>
+                                      <td>R$491,00</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </header>
+                    </div>
+                    <div class="col border mx-1 my-1 table-responsive" style="height: 172px";>
+                        <header>
+                            <h2 class="bg-warning text-dark text-center fs-6 fw-bold ">Itens do Orçamento</h2>
+                                <table class="table table-sm ">
+                                    <thead>
+                                        <tr>
+                                          <th scope="col">Id</th>
+                                          <th scope="col">Qt</th>
+                                          <th scope="col">Descrição</th>
+                                          <th scope="col">Valor</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="table-group-divider">
+                                        <tr>
+                                          <th scope="row">1</th>
+                                          <td>1</td>
+                                          <td>Porta 3579/204 Anodizado 4mm</td>
+                                          <td>R$100,00</td>
+                                        </tr>
+                                        <tr>
+                                          <th scope="row">2</th>
+                                          <td>2</td>
+                                          <td>Porta 3579 Anodizado 4mm</td>
+                                          <td>R$256,00</td>
+                                        </tr>
+                                        <tr>
+                                          <th scope="row">3</th>
+                                          <td>4</td>
+                                          <td>Porta 3443/105 Escovado 4mm</td>
+                                          <td>R$256,00</td>
+                                        </tr>
+                                        <tr>
+                                          <th scope="row">4</th>
+                                          <td>5</td>
+                                          <td>Porta 3443/105 Escovado 4mm</td>
+                                          <td>R$229,00</td>
+                                        </tr>
+                                        <tr>
+                                          <th scope="row">5</th>
+                                          <td>6</td>
+                                          <td>Porta 3443/105 Escovado 4mm</td>
+                                          <td>R$310,00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                        </header>
+                    </div>
+                </div>
+            </div>
+         </div>
+    </div>
+</div>
+
+{% endblock %}

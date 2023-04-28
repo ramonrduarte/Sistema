@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block titulo %}{{ titulo }}{% endblock %}
+
+{% block content %}
+<div class="container mt-5 pt-5">
+{% if object %}
+    <h3 class="fs-2 fw-semibold">Editar Cadastro</h3>
+{% else %}
+    <h3 class="fs-2 fw-semibold">Novo Cadastro</h3>
+{% endif %}
+<hr>
+<div class="">
+    <form class="card p-3 mt-5" autocomplete="off" action="" method="POST">
+        {% csrf_token %}
+        <!--{{ form|crispy }}  -->
+        <div class="row">
+            <div class="col-2">{{ form.acabamento|as_crispy_field }}</div>
+        </div>
+        {% if object %}
+            <button type="submit" class="mt-3 btn btn-outline-primary" style="width: 100px;">Salvar</button>
+        {% else %}
+            <button type="submit" class="mt-3 btn btn-outline-primary" style="width: 100px;">Cadastrar</button>
+        {% endif %}
+    </form>
+</div>
+{% endblock %}

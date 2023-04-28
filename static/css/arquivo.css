@@ -1,0 +1,18 @@
+body{
+    background:
+    linear-gradient(rgba(0,0,0,0.90), rgba(0,0,0,0.80)),
+    url("../images/Fundo.jpg");
+    background-size: cover;
+    display: Flex;
+    align-items: center;
+    justify-content: center ;
+    height: 100vh;
+}
+#formLogin{
+    box-shadow: -3px -3px 9px #ffca2c,
+              3px 3px 7px rgba(255,202,44, 0.671);
+
+}
+#botaoEntrar:hover{
+    color: black;
+}
