@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Acabamento, ModeloPerfil, ModeloPerfilPuxador, ModeloPuxador,ModeloDivisor, ModeloDivisoriaAmbiente, ModeloVidro, Tipo, Perfil, PerfilPuxador, Puxador
+from .models import Acabamento, ModeloPerfil, ModeloPerfilPuxador, ModeloPuxador,ModeloDivisor, ModeloDivisoriaAmbiente,\
+    ModeloVidro, Tipo, Perfil, PerfilPuxador, Puxador, Divisor, DivisoriaAmbiente, Vidro
 
 @admin.register(Acabamento)
 class AcabamentoAdmin(admin.ModelAdmin):
@@ -44,3 +45,15 @@ class PerfilPuxadorAdmin(admin.ModelAdmin):
 @admin.register(Puxador)
 class PuxadorAdmin(admin.ModelAdmin):
     list_display = ('codigo','descricao','preco','acabamento','tipo','modelo')
+
+@admin.register(Divisor)
+class DivisorAdmin(admin.ModelAdmin):
+    list_display = ('codigo','descricao','preco','acabamento','tipo','modelo')
+
+@admin.register(DivisoriaAmbiente)
+class DivisoriaAmbienteAdmin(admin.ModelAdmin):
+    list_display = ('codigo','descricao','preco','acabamento','tipo','modelo','linha','posicao')
+
+@admin.register(Vidro)
+class VidroAdmin(admin.ModelAdmin):
+    list_display = ('codigo','descricao','preco','tipo','modelo')

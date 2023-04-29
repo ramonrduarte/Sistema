@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+Cadastro de Divisoria de Ambiente
+{% endblock %}
+
+{% block content %}
+<header class="mt-5 pt-3">
+  <div>
+      <div class="bg-warning rounded text-dark border border-dark container h-10 d-flex align-items-center justify-content-center">
+        <h1><strong>CADASTRO DE DIVISORIA DE AMBIENTE</strong></h1>
+      </div>
+      <div class="mt-3 container h-10 d-flex align-items-center justify-content-end">
+          <input type="email" class="form-control me-3" style="width: 500px;" id="exampleFormControlInput1" placeholder="digite aqui">
+          <a href="{% url 'cadastrar-divisoriaambiente' %}" style="width: 120px;" class="btn btn-primary bg-primary">Novo</a>
+      </div>
+  </div>
+</header>
+<div class="mt-3">
+  <div class="row">
+      <div class="col-1">
+      </div>
+      <div class="border border-dark rounded container">
+          <table class="mt-1 table table-sm table-striped">
+            <thead>
+              <tr>
+                <th scope="col ">Código</th>
+                <th scope="col ">Descrição</th>
+                <th scope="col ">Preço</th>
+                <th scope="col ">Acabamento</th>
+                <th scope="col ">Tipo</th>
+                <th scope="col ">Modelo</th>
+                <th scope="col ">Linha</th>
+                <th scope="col ">Posição</th>
+              </tr>
+            </thead>
+            <tbody class="table-group-divider ">
+                {% for divisoriaambiente in object_list %}
+                <tr>
+                    <td>{{ divisoriaambiente.codigo }}</td>
+                    <td>{{ divisoriaambiente.descricao }}</td>
+                    <td>{{ divisoriaambiente.preco }}</td>
+                    <td>{{ divisoriaambiente.acabamento }}</td>
+                    <td>{{ divisoriaambiente.tipo }}</td>
+                    <td>{{ divisoriaambiente.modelo }}</td>
+                    <td>{{ divisoriaambiente.linha }}</td>
+                    <td>{{ divisoriaambiente.posicao }}</td>
+                    <td>
+                        <a href="{% url 'editar-divisoriaambiente' divisoriaambiente.pk %}" class="btn btn-warning btn-sm" title="Editar">E</a>
+                        <a href="{% url 'excluir-divisoriaambiente' divisoriaambiente.pk %}" class="btn btn-danger btn-sm" title="Excluir">X</a>
+                    </td>
+                </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="9">Nenhuma Divisoria de Ambiente cadastrada</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+      </div>
+    <div class="col-1">
+    </div>
+  </div>
+</div>
+{% endblock %}

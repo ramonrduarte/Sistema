@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+Cadastro de Vidros
+{% endblock %}
+
+{% block content %}
+<header class="mt-5 pt-3">
+  <div>
+      <div class="bg-warning rounded text-dark border border-dark container h-10 d-flex align-items-center justify-content-center">
+        <h1><strong>CADASTRO DE VIDROS</strong></h1>
+      </div>
+      <div class="mt-3 container h-10 d-flex align-items-center justify-content-end">
+          <input type="email" class="form-control me-3" style="width: 500px;" id="exampleFormControlInput1" placeholder="digite aqui">
+          <a href="{% url 'cadastrar-vidro' %}" style="width: 120px;" class="btn btn-primary bg-primary">Novo</a>
+      </div>
+  </div>
+</header>
+<div class="mt-3">
+  <div class="row">
+      <div class="col-1">
+      </div>
+      <div class="border border-dark rounded container">
+          <table class="mt-1 table table-sm table-striped">
+            <thead>
+              <tr>
+                <th scope="col ">Código</th>
+                <th scope="col ">Descrição</th>
+                <th scope="col ">Preço</th>
+                <th scope="col ">Tipo</th>
+                <th scope="col ">Modelo</th>
+              </tr>
+            </thead>
+            <tbody class="table-group-divider ">
+                {% for vidro in object_list %}
+                <tr>
+                    <td>{{ vidro.codigo }}</td>
+                    <td>{{ vidro.descricao }}</td>
+                    <td>{{ vidro.preco }}</td>
+                    <td>{{ vidro.tipo }}</td>
+                    <td>{{ vidro.modelo }}</td>
+                    <td>
+                        <a href="{% url 'editar-vidro' vidro.pk %}" class="btn btn-warning btn-sm" title="Editar">E</a>
+                        <a href="{% url 'excluir-vidro' vidro.pk %}" class="btn btn-danger btn-sm" title="Excluir">X</a>
+                    </td>
+                </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="9">Nenhum Vidro cadastrado</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+      </div>
+    <div class="col-1">
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -16,6 +16,15 @@ TESTEMODELO = (('nao possui', 'Não possui'),
 ENCAIXE = (('Sim','Sim'),
     ('Nao','Não'))
 
+LINHA = (('Doppio','Doppio'),
+        ('mil','1000'))
+
+POSICAODIVISORIA = (('Travessa/Inferior','Travessa/Inferior'),
+                    ('Superior','Superior'),
+                    ('Lateral','Lateral'),
+                    ('Superior/Inferior','Superior/Inferior'),
+                    ('Inferior','Inferior'),
+                    ('Travessa','Travessa'))
 
 class Acabamento(models.Model):
     acabamento = models.CharField(max_length=50, unique=True)
@@ -156,6 +165,55 @@ class Puxador(models.Model):
     class Meta:
         verbose_name = 'Puxador'
         verbose_name_plural = 'Puxadores'
+        ordering = ["descricao"]
+
+    def __str__(self):
+        return self.descricao
+
+class Divisor(models.Model):
+    codigo = models.CharField(max_length=6, verbose_name="Código")
+    descricao = models.CharField(max_length=150, verbose_name="Descrição")
+    preco = models.DecimalField(decimal_places=2, max_digits=5, verbose_name="Preço")
+    acabamento = models.ForeignKey(Acabamento, on_delete=models.PROTECT)
+    tipo = models.ForeignKey(Tipo, on_delete=models.PROTECT)
+    modelo = models.ForeignKey(ModeloDivisor, on_delete=models.PROTECT)
+
+    class Meta:
+        verbose_name = 'Divisor'
+        verbose_name_plural = 'Divisores'
+        ordering = ["descricao"]
+
+    def __str__(self):
+        return self.descricao
+
+class DivisoriaAmbiente(models.Model):
+    codigo = models.CharField(max_length=6, verbose_name="Código")
+    descricao = models.CharField(max_length=150, verbose_name="Descrição")
+    preco = models.DecimalField(decimal_places=2, max_digits=5, verbose_name="Preço")
+    acabamento = models.ForeignKey(Acabamento, on_delete=models.PROTECT)
+    tipo = models.ForeignKey(Tipo, on_delete=models.PROTECT)
+    modelo = models.ForeignKey(ModeloDivisoriaAmbiente, on_delete=models.PROTECT)
+    linha = models.CharField(choices=LINHA, max_length=50)
+    posicao = models.CharField(choices=POSICAODIVISORIA, max_length=50)
+
+    class Meta:
+        verbose_name = 'Divisor'
+        verbose_name_plural = 'Divisores'
+        ordering = ["descricao"]
+
+    def __str__(self):
+        return self.descricao
+
+class Vidro(models.Model):
+    codigo = models.CharField(max_length=6, verbose_name="Código")
+    descricao = models.CharField(max_length=150, verbose_name="Descrição")
+    preco = models.DecimalField(decimal_places=2, max_digits=5, verbose_name="Preço")
+    tipo = models.ForeignKey(Tipo, on_delete=models.PROTECT)
+    modelo = models.ForeignKey(ModeloVidro, on_delete=models.PROTECT)
+
+    class Meta:
+        verbose_name = 'Vidro'
+        verbose_name_plural = 'Vidros'
         ordering = ["descricao"]
 
     def __str__(self):

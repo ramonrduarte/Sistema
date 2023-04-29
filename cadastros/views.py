@@ -1,5 +1,5 @@
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Acabamento, ModeloPerfil, ModeloPerfilPuxador, ModeloPuxador, ModeloPerfilPuxador, ModeloDivisor, ModeloDivisoriaAmbiente, ModeloVidro, Tipo, Perfil, PerfilPuxador, Puxador
+from .models import Acabamento, ModeloPerfil, ModeloPerfilPuxador, ModeloPuxador, ModeloPerfilPuxador, ModeloDivisor, ModeloDivisoriaAmbiente, ModeloVidro, Tipo, Perfil, PerfilPuxador, Puxador, Divisor, DivisoriaAmbiente, Vidro
 from django.views.generic.list import ListView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
@@ -75,6 +75,24 @@ class PuxadorCreate(CreateView):
     template_name = 'cadastros/CadPuxador.html'
     success_url = reverse_lazy('listar-puxador')
 
+class DivisorCreate(CreateView):
+    model = Divisor
+    fields = ['codigo', 'descricao', 'preco', 'acabamento', 'tipo', 'modelo']
+    template_name = 'cadastros/CadDivisor.html'
+    success_url = reverse_lazy('listar-divisor')
+
+class DivisoriaAmbienteCreate(CreateView):
+    model = DivisoriaAmbiente
+    fields = ['codigo', 'descricao', 'preco', 'acabamento', 'tipo', 'modelo','linha','posicao']
+    template_name = 'cadastros/CadDivisoriaAmbiente.html'
+    success_url = reverse_lazy('listar-divisoriaambiente')
+
+class VidroCreate(CreateView):
+    model = Vidro
+    fields = ['codigo', 'descricao', 'preco', 'tipo', 'modelo']
+    template_name = 'cadastros/CadVidro.html'
+    success_url = reverse_lazy('listar-vidro')
+
 ##################### UPDATE #####################
 
 class AcabamentoUpdate(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
@@ -144,6 +162,24 @@ class PuxadorUpdate(UpdateView):
     template_name = 'cadastros/CadPuxador.html'
     success_url = reverse_lazy('listar-puxador')
 
+class DivisorUpdate(UpdateView):
+    model = Divisor
+    fields = ['codigo', 'descricao', 'preco', 'acabamento', 'tipo', 'modelo']
+    template_name = 'cadastros/CadDivisor.html'
+    success_url = reverse_lazy('listar-divisor')
+
+class DivisoriaAmbienteUpdate(UpdateView):
+    model = DivisoriaAmbiente
+    fields = ['codigo', 'descricao', 'preco', 'acabamento', 'tipo', 'modelo','linha','posicao']
+    template_name = 'cadastros/CadDivisoriaAmbiente.html'
+    success_url = reverse_lazy('listar-divisoriaambiente')
+
+class VidroUpdate(UpdateView):
+    model = Vidro
+    fields = ['codigo', 'descricao', 'preco', 'tipo', 'modelo']
+    template_name = 'cadastros/CadVidro.html'
+    success_url = reverse_lazy('listar-vidro')
+
 ##################### DELETE #####################
 
 class AcabamentoDelete(LoginRequiredMixin, PermissionRequiredMixin,DeleteView):
@@ -202,6 +238,21 @@ class PuxadorDelete(DeleteView):
     template_name = 'cadastros/form-excluir.html'
     success_url = reverse_lazy('listar-puxador')
 
+class DivisorDelete(DeleteView):
+    model = Divisor
+    template_name = 'cadastros/form-excluir.html'
+    success_url = reverse_lazy('listar-divisor')
+
+class DivisoriaAmbienteDelete(DeleteView):
+    model = DivisoriaAmbiente
+    template_name = 'cadastros/form-excluir.html'
+    success_url = reverse_lazy('listar-divisoriaambiente')
+
+class VidroDelete(DeleteView):
+    model = Vidro
+    template_name = 'cadastros/form-excluir.html'
+    success_url = reverse_lazy('listar-vidro')
+
 ##################### LISTVIEW #####################
 
 class AcabamentoList(LoginRequiredMixin,PermissionRequiredMixin, ListView):
@@ -232,6 +283,18 @@ class PerfilPuxadorList(ListView):
 class PuxadorList(ListView):
     model = Puxador
     template_name = 'cadastros/listas/Puxador.html'
+
+class DivisorList(ListView):
+    model = Divisor
+    template_name = 'cadastros/listas/Divisor.html'
+
+class DivisoriaAmbienteList(ListView):
+    model = DivisoriaAmbiente
+    template_name = 'cadastros/listas/DivisoriaAmbiente.html'
+
+class VidroList(ListView):
+    model = Vidro
+    template_name = 'cadastros/listas/Vidro.html'
 
 def Modelos (request):
     modeloperfil = ModeloPerfil.objects.all()
