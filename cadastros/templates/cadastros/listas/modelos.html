@@ -24,21 +24,19 @@ Cadastro Modelos
               </tr>
             </thead>
             <tbody class="table-group-divider">
-                {% if object %}
-                    {% for perfil in modeloperfil|dictsort:"modelo" %}
-                    <tr>
-                        <td>{{ perfil }}</td>
-                        <td class="d-flex justify-content-end">
-                            <a href="{% url 'editar-modelo-perfil' perfil.pk %}" class="me-1 btn btn-warning btn-sm" title="Editar">E</a>
-                            <a href="{% url 'excluir-modelo-perfil' perfil.pk %}" class="btn btn-danger btn-sm" title="Excluir">X</a>
-                        </td>
-                    </tr>
-                {% endfor %}
-                {% else %}
+                {% for perfil in modeloperfil|dictsort:"modelo" %}
+                <tr>
+                    <td>{{ perfil }}</td>
+                    <td class="d-flex justify-content-end">
+                        <a href="{% url 'editar-modelo-perfil' perfil.pk %}" class="me-1 btn btn-warning btn-sm" title="Editar">E</a>
+                        <a href="{% url 'excluir-modelo-perfil' perfil.pk %}" class="btn btn-danger btn-sm" title="Excluir">X</a>
+                    </td>
+                </tr>
+                {% empty %}
                     <tr>
                         <td colspan="3">Nenhum modelo de perfil cadastrado</td>
                     </tr>
-                {% endif %}
+                {% endfor %}
             </tbody>
           </table>
       </div>
@@ -52,22 +50,19 @@ Cadastro Modelos
               </tr>
             </thead>
             <tbody class="table-group-divider ">
-                {% if object %}
-                    {% for perfilpuxador in modeloperfilpuxador|dictsort:"modelo" %}
-                    <tr>
-                        <td>{{ perfilpuxador }}</td>
-                        <td class="d-flex justify-content-end">
-                            <a href="{% url 'editar-modelo-perfilpuxador' perfilpuxador.pk %}" class="me-1 btn btn-warning btn-sm" title="Editar">E</a>
-                            <a href="{% url 'excluir-modelo-perfilpuxador' perfilpuxador.pk %}" class="btn btn-danger btn-sm" title="Excluir">X</a>
-                        </td>
-                    </tr>
-                {% endfor %}
-                {% else %}
+                {% for perfilpuxador in modeloperfilpuxador|dictsort:"modelo" %}
+                <tr>
+                    <td>{{ perfilpuxador }}</td>
+                    <td class="d-flex justify-content-end">
+                        <a href="{% url 'editar-modelo-perfilpuxador' perfilpuxador.pk %}" class="me-1 btn btn-warning btn-sm" title="Editar">E</a>
+                        <a href="{% url 'excluir-modelo-perfilpuxador' perfilpuxador.pk %}" class="btn btn-danger btn-sm" title="Excluir">X</a>
+                    </td>
+                </tr>
+                {% empty %}
                     <tr>
                         <td colspan="3">Nenhum modelo de perfil puxador cadastrado</td>
                     </tr>
-                {% endif %}
-
+                {% endfor %}
             </tbody>
           </table>
     </div>
@@ -81,21 +76,19 @@ Cadastro Modelos
               </tr>
             </thead>
             <tbody class="table-group-divider ">
-                {% if object %}
-                    {% for puxador in modelopuxador|dictsort:"modelo" %}
-                    <tr>
-                        <td>{{ puxador }}</td>
-                        <td class="d-flex justify-content-end">
-                            <a href="{% url 'editar-modelo-puxador' puxador.pk %}" class="me-1 btn btn-warning btn-sm" title="Editar">E</a>
-                            <a href="{% url 'excluir-modelo-puxador' puxador.pk %}" class="btn btn-danger btn-sm" title="Excluir">X</a>
-                        </td>
-                    </tr>
-                {% endfor %}
-                {% else %}
+                {% for puxador in modelopuxador|dictsort:"modelo" %}
+                <tr>
+                    <td>{{ puxador }}</td>
+                    <td class="d-flex justify-content-end">
+                        <a href="{% url 'editar-modelo-puxador' puxador.pk %}" class="me-1 btn btn-warning btn-sm" title="Editar">E</a>
+                        <a href="{% url 'excluir-modelo-puxador' puxador.pk %}" class="btn btn-danger btn-sm" title="Excluir">X</a>
+                    </td>
+                </tr>
+                {% empty %}
                     <tr>
                         <td colspan="3">Nenhum modelo de puxador cadastrado</td>
                     </tr>
-                {% endif %}
+                {% endfor %}
             </tbody>
           </table>
     </div>
@@ -109,21 +102,19 @@ Cadastro Modelos
               </tr>
             </thead>
             <tbody class="table-group-divider ">
-                {% if object %}
-                    {% for divisor in modelodivisor|dictsort:"modelo" %}
-                    <tr>
-                        <td>{{ divisor }}</td>
-                        <td class="d-flex justify-content-end">
-                            <a href="{% url 'editar-modelo-divisor' divisor.pk %}" class="me-1 btn btn-warning btn-sm" title="Editar">E</a>
-                            <a href="{% url 'excluir-modelo-divisor' divisor.pk %}" class="btn btn-danger btn-sm" title="Excluir">X</a>
-                        </td>
-                    </tr>
-                {% endfor %}
-                {% else %}
+                {% for divisor in modelodivisor|dictsort:"modelo" %}
+                <tr>
+                    <td>{{ divisor }}</td>
+                    <td class="d-flex justify-content-end">
+                        <a href="{% url 'editar-modelo-divisor' divisor.pk %}" class="me-1 btn btn-warning btn-sm" title="Editar">E</a>
+                        <a href="{% url 'excluir-modelo-divisor' divisor.pk %}" class="btn btn-danger btn-sm" title="Excluir">X</a>
+                    </td>
+                </tr>
+                {% empty %}
                     <tr>
                         <td colspan="3">Nenhum modelo de divisor cadastrado</td>
                     </tr>
-                {% endif %}
+                {% endfor %}
             </tbody>
           </table>
     </div>
@@ -137,21 +128,19 @@ Cadastro Modelos
               </tr>
             </thead>
             <tbody class="table-group-divider ">
-                {% if object %}
-                    {% for divisoriaambiente in modelodivisoriaambiente|dictsort:"modelo" %}
-                    <tr>
-                        <td>{{ divisoriaambiente }}</td>
-                        <td class="d-flex justify-content-end">
-                            <a href="{% url 'editar-modelo-divisoriaambiente' divisoriaambiente.pk %}" class="me-1 btn btn-warning btn-sm" title="Editar">E</a>
-                            <a href="{% url 'excluir-modelo-divisoriaambiente' divisoriaambiente.pk %}" class="btn btn-danger btn-sm" title="Excluir">X</a>
-                        </td>
-                    </tr>
-                {% endfor %}
-                {% else %}
+                {% for divisoriaambiente in modelodivisoriaambiente|dictsort:"modelo" %}
+                <tr>
+                    <td>{{ divisoriaambiente }}</td>
+                    <td class="d-flex justify-content-end">
+                        <a href="{% url 'editar-modelo-divisoriaambiente' divisoriaambiente.pk %}" class="me-1 btn btn-warning btn-sm" title="Editar">E</a>
+                        <a href="{% url 'excluir-modelo-divisoriaambiente' divisoriaambiente.pk %}" class="btn btn-danger btn-sm" title="Excluir">X</a>
+                    </td>
+                </tr>
+                {% empty %}
                     <tr>
                         <td colspan="3">Nenhum modelo de divisoria de ambiente cadastrado</td>
                     </tr>
-                {% endif %}
+                {% endfor %}
             </tbody>
           </table>
     </div>
@@ -165,21 +154,19 @@ Cadastro Modelos
               </tr>
             </thead>
             <tbody class="table-group-divider ">
-                {% if object %}
-                    {% for vidro in modelovidro|dictsort:"modelo" %}
-                    <tr>
-                        <td>{{ vidro }}</td>
-                        <td class="d-flex justify-content-end">
-                            <a href="{% url 'editar-modelo-vidro' vidro.pk %}" class="me-1 btn btn-warning btn-sm" title="Editar">E</a>
-                            <a href="{% url 'excluir-modelo-vidro' vidro.pk %}" class="btn btn-danger btn-sm" title="Excluir">X</a>
-                        </td>
-                    </tr>
-                {% endfor%}
-                {% else %}
+                {% for vidro in modelovidro|dictsort:"modelo" %}
+                <tr>
+                    <td>{{ vidro }}</td>
+                    <td class="d-flex justify-content-end">
+                        <a href="{% url 'editar-modelo-vidro' vidro.pk %}" class="me-1 btn btn-warning btn-sm" title="Editar">E</a>
+                        <a href="{% url 'excluir-modelo-vidro' vidro.pk %}" class="btn btn-danger btn-sm" title="Excluir">X</a>
+                    </td>
+                </tr>
+                {% empty %}
                     <tr>
                         <td colspan="3">Nenhum modelo de vidro cadastrado</td>
                     </tr>
-                {% endif %}
+                {% endfor %}
             </tbody>
           </table>
     </div>

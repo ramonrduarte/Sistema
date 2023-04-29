@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Acabamento, ModeloPerfil, ModeloPerfilPuxador, ModeloPuxador,ModeloDivisor, ModeloDivisoriaAmbiente, ModeloVidro, Tipo, Perfil, PerfilPuxador
+from .models import Acabamento, ModeloPerfil, ModeloPerfilPuxador, ModeloPuxador,ModeloDivisor, ModeloDivisoriaAmbiente, ModeloVidro, Tipo, Perfil, PerfilPuxador, Puxador
 
 @admin.register(Acabamento)
 class AcabamentoAdmin(admin.ModelAdmin):
@@ -40,3 +40,7 @@ class PerfilAdmin(admin.ModelAdmin):
 @admin.register(PerfilPuxador)
 class PerfilPuxadorAdmin(admin.ModelAdmin):
     list_display = ('codigo','descricao','preco','acabamento','tipo','modelo','perfilencaixe')
+
+@admin.register(Puxador)
+class PuxadorAdmin(admin.ModelAdmin):
+    list_display = ('codigo','descricao','preco','acabamento','tipo','modelo')

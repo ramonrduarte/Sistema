@@ -1,5 +1,5 @@
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Acabamento, ModeloPerfil, ModeloPerfilPuxador, ModeloPuxador, ModeloPerfilPuxador, ModeloDivisor, ModeloDivisoriaAmbiente, ModeloVidro, Tipo, Perfil, PerfilPuxador
+from .models import Acabamento, ModeloPerfil, ModeloPerfilPuxador, ModeloPuxador, ModeloPerfilPuxador, ModeloDivisor, ModeloDivisoriaAmbiente, ModeloVidro, Tipo, Perfil, PerfilPuxador, Puxador
 from django.views.generic.list import ListView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
@@ -69,6 +69,12 @@ class PerfilPuxadorCreate(CreateView):
     template_name = 'cadastros/CadPerfilPuxador.html'
     success_url = reverse_lazy('listar-perfilpuxador')
 
+class PuxadorCreate(CreateView):
+    model = Puxador
+    fields = ['codigo', 'descricao', 'preco', 'acabamento', 'tipo', 'modelo']
+    template_name = 'cadastros/CadPuxador.html'
+    success_url = reverse_lazy('listar-puxador')
+
 ##################### UPDATE #####################
 
 class AcabamentoUpdate(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
@@ -132,6 +138,12 @@ class PerfilPuxadorUpdate(UpdateView):
     template_name = 'cadastros/CadPerfilPuxador.html'
     success_url = reverse_lazy('listar-perfilpuxador')
 
+class PuxadorUpdate(UpdateView):
+    model = Puxador
+    fields = ['codigo', 'descricao', 'preco', 'acabamento', 'tipo', 'modelo']
+    template_name = 'cadastros/CadPuxador.html'
+    success_url = reverse_lazy('listar-puxador')
+
 ##################### DELETE #####################
 
 class AcabamentoDelete(LoginRequiredMixin, PermissionRequiredMixin,DeleteView):
@@ -185,6 +197,11 @@ class PerfilPuxadorDelete(DeleteView):
     template_name = 'cadastros/form-excluir.html'
     success_url = reverse_lazy('listar-perfilpuxador')
 
+class PuxadorDelete(DeleteView):
+    model = Puxador
+    template_name = 'cadastros/form-excluir.html'
+    success_url = reverse_lazy('listar-puxador')
+
 ##################### LISTVIEW #####################
 
 class AcabamentoList(LoginRequiredMixin,PermissionRequiredMixin, ListView):
@@ -211,6 +228,10 @@ class PerfilList(ListView):
 class PerfilPuxadorList(ListView):
     model = PerfilPuxador
     template_name = 'cadastros/listas/PerfilPuxador.html'
+
+class PuxadorList(ListView):
+    model = Puxador
+    template_name = 'cadastros/listas/Puxador.html'
 
 def Modelos (request):
     modeloperfil = ModeloPerfil.objects.all()

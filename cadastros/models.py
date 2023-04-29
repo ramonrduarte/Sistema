@@ -58,6 +58,7 @@ class ModeloPuxador(models.Model):
     class Meta:
         verbose_name = 'Modelo Puxador'
         verbose_name_plural = 'Modelo Puxadores'
+        ordering = ["modelo"]
 
     def __str__(self):
         return self.modelo
@@ -69,6 +70,7 @@ class ModeloDivisor(models.Model):
     class Meta:
         verbose_name = 'Modelo Divisor'
         verbose_name_plural = 'Modelo Divisores'
+        ordering = ["modelo"]
 
     def __str__(self):
         return self.modelo
@@ -80,6 +82,7 @@ class ModeloDivisoriaAmbiente(models.Model):
     class Meta:
         verbose_name = 'Modelo Divisoria Ambiente'
         verbose_name_plural = 'Modelos Divisorias Ambiente'
+        ordering = ["modelo"]
 
     def __str__(self):
         return self.modelo
@@ -91,12 +94,17 @@ class ModeloVidro(models.Model):
     class Meta:
         verbose_name = 'Modelo Vidro'
         verbose_name_plural = 'Modelos Vidros'
+        ordering = ["modelo"]
 
     def __str__(self):
         return self.modelo
 
 class Tipo(models.Model):
     tipo = models.CharField(max_length=30, unique=True)
+
+    class Meta:
+        ordering = ["tipo"]
+
     def __str__(self):
         return self.tipo
 
@@ -126,7 +134,7 @@ class PerfilPuxador(models.Model):
     acabamento = models.ForeignKey(Acabamento, on_delete=models.PROTECT)
     tipo = models.ForeignKey(Tipo, on_delete=models.PROTECT)
     modelo = models.ForeignKey(ModeloPerfilPuxador, on_delete=models.PROTECT)
-    perfilencaixe = models.ForeignKey(ModeloPerfil, on_delete=models.PROTECT)
+    perfilencaixe = models.ForeignKey(ModeloPerfil, on_delete=models.PROTECT, verbose_name="Perfil Encaixe")
 
     class Meta:
         verbose_name = 'Perfil Puxador'
@@ -136,4 +144,20 @@ class PerfilPuxador(models.Model):
     def __str__(self):
         return self.descricao
 
+
+class Puxador(models.Model):
+    codigo = models.CharField(max_length=6, verbose_name="Código")
+    descricao = models.CharField(max_length=150, verbose_name="Descrição")
+    preco = models.DecimalField(decimal_places=2, max_digits=5, verbose_name="Preço")
+    acabamento = models.ForeignKey(Acabamento, on_delete=models.PROTECT)
+    tipo = models.ForeignKey(Tipo, on_delete=models.PROTECT)
+    modelo = models.ForeignKey(ModeloPuxador, on_delete=models.PROTECT)
+
+    class Meta:
+        verbose_name = 'Puxador'
+        verbose_name_plural = 'Puxadores'
+        ordering = ["descricao"]
+
+    def __str__(self):
+        return self.descricao
 

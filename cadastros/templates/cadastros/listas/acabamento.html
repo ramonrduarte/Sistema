@@ -23,21 +23,19 @@ Cadastro Acabamentos
               </tr>
             </thead>
             <tbody class="table-group-divider">
-                {% if object %}
-                    {% for item in object_list|dictsort:"acabamento" %}
-                    <tr>
-                        <td>{{ item }}</td>
-                        <td class="d-flex justify-content-end">
-                            <a href="{% url 'editar-acabamento' item.pk %}" class="me-1 btn btn-warning btn-sm" title="Editar">E</a>
-                            <a href="{% url 'excluir-acabamento' item.pk %}" class="btn btn-danger btn-sm" title="Excluir">X</a>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                {% else %}
-                    <tr>
-                        <td colspan="3">Nenhum acabamento cadastrado</td>
-                    </tr>
-                {% endif %}
+                {% for item in object_list|dictsort:"acabamento" %}
+                <tr>
+                    <td>{{ item }}</td>
+                    <td class="d-flex justify-content-end">
+                        <a href="{% url 'editar-acabamento' item.pk %}" class="me-1 btn btn-warning btn-sm" title="Editar">E</a>
+                        <a href="{% url 'excluir-acabamento' item.pk %}" class="btn btn-danger btn-sm" title="Excluir">X</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="3">Nenhum acabamento cadastrado</td>
+                </tr>
+                {% endfor %}
             </tbody>
           </table>
       </div>

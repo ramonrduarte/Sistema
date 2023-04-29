@@ -1,18 +1,18 @@
 {% extends 'base.html' %}
 
 {% block titulo %}
-Cadastro de Perfis
+Cadastro de Puxadores
 {% endblock %}
 
 {% block content %}
 <header class="mt-5 pt-3">
   <div>
       <div class="bg-warning rounded text-dark border border-dark container h-10 d-flex align-items-center justify-content-center">
-        <h1><strong>CADASTRO DE PERFIS</strong></h1>
+        <h1><strong>CADASTRO DE PUXADORES</strong></h1>
       </div>
       <div class="mt-3 container h-10 d-flex align-items-center justify-content-end">
           <input type="email" class="form-control me-3" style="width: 500px;" id="exampleFormControlInput1" placeholder="digite aqui">
-          <a href="{% url 'cadastrar-perfil' %}" style="width: 120px;" class="btn btn-primary bg-primary">Novo</a>
+          <a href="{% url 'cadastrar-puxador' %}" style="width: 120px;" class="btn btn-primary bg-primary">Novo</a>
       </div>
   </div>
 </header>
@@ -30,31 +30,25 @@ Cadastro de Perfis
                 <th scope="col ">Acabamento</th>
                 <th scope="col ">Tipo</th>
                 <th scope="col ">Modelo</th>
-                <th scope="col ">Encaixe</th>
-                <th scope="col ">Puxador Sobreposto</th>
-                <th scope="col ">Opções</th>
               </tr>
             </thead>
             <tbody class="table-group-divider ">
-                {% for perfil in object_list %}
+                {% for puxador in object_list %}
                 <tr>
-                    <td>{{ perfil.codigo }}</td>
-                    <td>{{ perfil.descricao }}</td>
-                    <td>{{ perfil.preco }}</td>
-                    <td>{{ perfil.acabamento }}</td>
-                    <td>{{ perfil.tipo }}</td>
-                    <td>{{ perfil.modelo }}</td>
-                    <td>{{ perfil.encaixe }}</td>
-                    <td>{{ perfil.puxadorsobreposto }}</td>
-                    <td>{{ perfil.testando }}</td>
+                    <td>{{ puxador.codigo }}</td>
+                    <td>{{ puxador.descricao }}</td>
+                    <td>{{ puxador.preco }}</td>
+                    <td>{{ puxador.acabamento }}</td>
+                    <td>{{ puxador.tipo }}</td>
+                    <td>{{ puxador.modelo }}</td>
                     <td>
-                        <a href="{% url 'editar-perfil' perfil.pk %}" class="btn btn-warning btn-sm" title="Editar">E</a>
-                        <a href="{% url 'excluir-perfil' perfil.pk %}" class="btn btn-danger btn-sm" title="Excluir">X</a>
+                        <a href="{% url 'editar-puxador' puxador.pk %}" class="btn btn-warning btn-sm" title="Editar">E</a>
+                        <a href="{% url 'excluir-puxador' puxador.pk %}" class="btn btn-danger btn-sm" title="Excluir">X</a>
                     </td>
                 </tr>
                 {% empty %}
                     <tr>
-                        <td colspan="9">Nenhum Perfil cadastrado</td>
+                        <td colspan="9">Nenhum Puxador cadastrado</td>
                     </tr>
                 {% endfor %}
             </tbody>
