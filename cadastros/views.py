@@ -15,79 +15,79 @@ class AcabamentoCreate(LoginRequiredMixin,PermissionRequiredMixin, CreateView):
     success_url = reverse_lazy('listar-acabamento')
     permission_required = 'cadastros.add.acabamento'
 
-class ModeloPerfilCreate(CreateView):
+class ModeloPerfilCreate(LoginRequiredMixin,PermissionRequiredMixin, CreateView):
     model = ModeloPerfil
     fields = ['modelo']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-modelos')
 
-class ModeloPerfilPuxadorCreate(CreateView):
+class ModeloPerfilPuxadorCreate(LoginRequiredMixin,PermissionRequiredMixin, CreateView):
     model = ModeloPerfilPuxador
     fields = ['modelo']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-modelos')
 
-class ModeloPuxadorCreate(CreateView):
+class ModeloPuxadorCreate(LoginRequiredMixin,PermissionRequiredMixin, CreateView):
     model = ModeloPuxador
     fields = ['modelo']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-modelos')
 
-class ModeloDivisorCreate(CreateView):
+class ModeloDivisorCreate(LoginRequiredMixin,PermissionRequiredMixin, CreateView):
     model = ModeloDivisor
     fields = ['modelo']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-modelos')
 
-class ModeloDivisoriaAmbienteCreate(CreateView):
+class ModeloDivisoriaAmbienteCreate(LoginRequiredMixin,PermissionRequiredMixin, CreateView):
     model = ModeloDivisoriaAmbiente
     fields = ['modelo']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-modelos')
 
-class ModeloVidroCreate(CreateView):
+class ModeloVidroCreate(LoginRequiredMixin,PermissionRequiredMixin, CreateView):
     model = ModeloVidro
     fields = ['modelo']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-modelos')
 
-class TipoCreate(CreateView):
+class TipoCreate(LoginRequiredMixin,PermissionRequiredMixin, CreateView):
     model = Tipo
     fields = ['tipo']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-tipo')
 
-class PerfilCreate(CreateView):
+class PerfilCreate(LoginRequiredMixin,PermissionRequiredMixin, CreateView):
     model = Perfil
     fields = ['codigo', 'descricao', 'preco', 'acabamento', 'tipo', 'modelo', 'encaixe', 'puxadorsobreposto','testando']
     template_name = 'cadastros/CadPerfil.html'
     success_url = reverse_lazy('listar-perfil')
 
-class PerfilPuxadorCreate(CreateView):
+class PerfilPuxadorCreate(LoginRequiredMixin,PermissionRequiredMixin, CreateView):
     model = PerfilPuxador
     fields = ['codigo', 'descricao', 'preco', 'acabamento', 'tipo', 'modelo', 'perfilencaixe']
     template_name = 'cadastros/CadPerfilPuxador.html'
     success_url = reverse_lazy('listar-perfilpuxador')
 
-class PuxadorCreate(CreateView):
+class PuxadorCreate(LoginRequiredMixin,PermissionRequiredMixin, CreateView):
     model = Puxador
     fields = ['codigo', 'descricao', 'preco', 'acabamento', 'tipo', 'modelo']
     template_name = 'cadastros/CadPuxador.html'
     success_url = reverse_lazy('listar-puxador')
 
-class DivisorCreate(CreateView):
+class DivisorCreate(LoginRequiredMixin,PermissionRequiredMixin, CreateView):
     model = Divisor
     fields = ['codigo', 'descricao', 'preco', 'acabamento', 'tipo', 'modelo']
     template_name = 'cadastros/CadDivisor.html'
     success_url = reverse_lazy('listar-divisor')
 
-class DivisoriaAmbienteCreate(CreateView):
+class DivisoriaAmbienteCreate(LoginRequiredMixin,PermissionRequiredMixin, CreateView):
     model = DivisoriaAmbiente
     fields = ['codigo', 'descricao', 'preco', 'acabamento', 'tipo', 'modelo','linha','posicao']
     template_name = 'cadastros/CadDivisoriaAmbiente.html'
     success_url = reverse_lazy('listar-divisoriaambiente')
 
-class VidroCreate(CreateView):
+class VidroCreate(LoginRequiredMixin,PermissionRequiredMixin, CreateView):
     model = Vidro
     fields = ['codigo', 'descricao', 'preco', 'tipo', 'modelo']
     template_name = 'cadastros/CadVidro.html'
@@ -102,79 +102,79 @@ class AcabamentoUpdate(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     success_url = reverse_lazy('listar-acabamento')
     permission_required = 'cadastros.change.acabamento'
 
-class ModeloPerfilUpdate(UpdateView):
+class ModeloPerfilUpdate(LoginRequiredMixin,PermissionRequiredMixin, UpdateView):
     model = ModeloPerfil
     fields = ['modelo']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-modelos')
 
-class ModeloPerfilPuxadorUpdate(UpdateView):
+class ModeloPerfilPuxadorUpdate(LoginRequiredMixin,PermissionRequiredMixin, UpdateView):
     model = ModeloPerfilPuxador
     fields = ['modelo']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-modelos')
 
-class ModeloPuxadorUpdate(UpdateView):
+class ModeloPuxadorUpdate(LoginRequiredMixin,PermissionRequiredMixin, UpdateView):
     model = ModeloPuxador
     fields = ['modelo']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-modelos')
 
-class ModeloDivisorUpdate(UpdateView):
+class ModeloDivisorUpdate(LoginRequiredMixin,PermissionRequiredMixin, UpdateView):
     model = ModeloDivisor
     fields = ['modelo']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-modelos')
 
-class ModeloDivisoriaAmbienteUpdate(UpdateView):
+class ModeloDivisoriaAmbienteUpdate(LoginRequiredMixin,PermissionRequiredMixin, UpdateView):
     model = ModeloDivisoriaAmbiente
     fields = ['modelo']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-modelos')
 
-class ModeloVidroUpdate(UpdateView):
+class ModeloVidroUpdate(LoginRequiredMixin,PermissionRequiredMixin, UpdateView):
     model = ModeloVidro
     fields = ['modelo']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-modelos')
 
-class TipoUpdate(UpdateView):
+class TipoUpdate(LoginRequiredMixin,PermissionRequiredMixin, UpdateView):
     model = Tipo
     fields = ['tipo']
     template_name = 'cadastros/form.html'
     success_url = reverse_lazy('listar-tipo')
 
-class PerfilUpdate(UpdateView):
+class PerfilUpdate(LoginRequiredMixin,PermissionRequiredMixin, UpdateView):
     model = Perfil
     fields = ['codigo', 'descricao', 'preco', 'acabamento', 'tipo', 'modelo', 'encaixe', 'puxadorsobreposto','testando']
     template_name = 'cadastros/CadPerfil.html'
     success_url = reverse_lazy('listar-perfil')
 
-class PerfilPuxadorUpdate(UpdateView):
+class PerfilPuxadorUpdate(LoginRequiredMixin,PermissionRequiredMixin, UpdateView):
     model = PerfilPuxador
     fields = ['codigo', 'descricao', 'preco', 'acabamento', 'tipo', 'modelo', 'perfilencaixe']
     template_name = 'cadastros/CadPerfilPuxador.html'
     success_url = reverse_lazy('listar-perfilpuxador')
 
-class PuxadorUpdate(UpdateView):
+class PuxadorUpdate(LoginRequiredMixin,PermissionRequiredMixin, UpdateView):
     model = Puxador
     fields = ['codigo', 'descricao', 'preco', 'acabamento', 'tipo', 'modelo']
     template_name = 'cadastros/CadPuxador.html'
     success_url = reverse_lazy('listar-puxador')
 
-class DivisorUpdate(UpdateView):
+class DivisorUpdate(LoginRequiredMixin,PermissionRequiredMixin, UpdateView):
     model = Divisor
     fields = ['codigo', 'descricao', 'preco', 'acabamento', 'tipo', 'modelo']
     template_name = 'cadastros/CadDivisor.html'
     success_url = reverse_lazy('listar-divisor')
 
-class DivisoriaAmbienteUpdate(UpdateView):
+class DivisoriaAmbienteUpdate(LoginRequiredMixin,PermissionRequiredMixin, UpdateView):
     model = DivisoriaAmbiente
     fields = ['codigo', 'descricao', 'preco', 'acabamento', 'tipo', 'modelo','linha','posicao']
     template_name = 'cadastros/CadDivisoriaAmbiente.html'
     success_url = reverse_lazy('listar-divisoriaambiente')
 
-class VidroUpdate(UpdateView):
+class VidroUpdate(LoginRequiredMixin,PermissionRequiredMixin, UpdateView):
     model = Vidro
     fields = ['codigo', 'descricao', 'preco', 'tipo', 'modelo']
     template_name = 'cadastros/CadVidro.html'
@@ -188,67 +188,67 @@ class AcabamentoDelete(LoginRequiredMixin, PermissionRequiredMixin,DeleteView):
     success_url = reverse_lazy('listar-acabamento')
     permission_required = 'cadastros.delete.acabamento'
 
-class ModeloPerfilDelete(DeleteView):
+class ModeloPerfilDelete(LoginRequiredMixin,PermissionRequiredMixin, DeleteView):
     model = ModeloPerfil
     template_name = 'cadastros/form-excluir.html'
     success_url = reverse_lazy('listar-modelos')
 
-class ModeloPerfilPuxadorDelete(DeleteView):
+class ModeloPerfilPuxadorDelete(LoginRequiredMixin,PermissionRequiredMixin, DeleteView):
     model = ModeloPerfilPuxador
     template_name = 'cadastros/form-excluir.html'
     success_url = reverse_lazy('listar-modelos')
 
-class ModeloPuxadorDelete(DeleteView):
+class ModeloPuxadorDelete(LoginRequiredMixin,PermissionRequiredMixin, DeleteView):
     model = ModeloPuxador
     template_name = 'cadastros/form-excluir.html'
     success_url = reverse_lazy('listar-modelos')
 
-class ModeloDivisorDelete(DeleteView):
+class ModeloDivisorDelete(LoginRequiredMixin,PermissionRequiredMixin, DeleteView):
     model = ModeloDivisor
     template_name = 'cadastros/form-excluir.html'
     success_url = reverse_lazy('listar-modelos')
 
-class ModeloDivisoriaAmbienteDelete(DeleteView):
+class ModeloDivisoriaAmbienteDelete(LoginRequiredMixin,PermissionRequiredMixin, DeleteView):
     model = ModeloDivisoriaAmbiente
     template_name = 'cadastros/form-excluir.html'
     success_url = reverse_lazy('listar-modelos')
 
-class ModeloVidroDelete(DeleteView):
+class ModeloVidroDelete(LoginRequiredMixin,PermissionRequiredMixin, DeleteView):
     model = ModeloVidro
     template_name = 'cadastros/form-excluir.html'
     success_url = reverse_lazy('listar-modelos')
 
-class TipoDelete(DeleteView):
+class TipoDelete(LoginRequiredMixin,PermissionRequiredMixin, DeleteView):
     model = Tipo
     template_name = 'cadastros/form-excluir.html'
     success_url = reverse_lazy('listar-tipo')
 
-class PerfilDelete(DeleteView):
+class PerfilDelete(LoginRequiredMixin,PermissionRequiredMixin, DeleteView):
     model = Perfil
     template_name = 'cadastros/form-excluir.html'
     success_url = reverse_lazy('listar-perfil')
 
-class PerfilPuxadorDelete(DeleteView):
+class PerfilPuxadorDelete(LoginRequiredMixin,PermissionRequiredMixin, DeleteView):
     model = PerfilPuxador
     template_name = 'cadastros/form-excluir.html'
     success_url = reverse_lazy('listar-perfilpuxador')
 
-class PuxadorDelete(DeleteView):
+class PuxadorDelete(LoginRequiredMixin,PermissionRequiredMixin, DeleteView):
     model = Puxador
     template_name = 'cadastros/form-excluir.html'
     success_url = reverse_lazy('listar-puxador')
 
-class DivisorDelete(DeleteView):
+class DivisorDelete(LoginRequiredMixin,PermissionRequiredMixin, DeleteView):
     model = Divisor
     template_name = 'cadastros/form-excluir.html'
     success_url = reverse_lazy('listar-divisor')
 
-class DivisoriaAmbienteDelete(DeleteView):
+class DivisoriaAmbienteDelete(LoginRequiredMixin,PermissionRequiredMixin, DeleteView):
     model = DivisoriaAmbiente
     template_name = 'cadastros/form-excluir.html'
     success_url = reverse_lazy('listar-divisoriaambiente')
 
-class VidroDelete(DeleteView):
+class VidroDelete(LoginRequiredMixin,PermissionRequiredMixin, DeleteView):
     model = Vidro
     template_name = 'cadastros/form-excluir.html'
     success_url = reverse_lazy('listar-vidro')
@@ -268,31 +268,31 @@ class AcabamentoList(LoginRequiredMixin,PermissionRequiredMixin, ListView):
 #     model = ModeloPerfilPuxador
 #     template_name = 'cadastros/listas/modeloperfilpuxador.html'
 
-class TipoList(ListView):
+class TipoList(LoginRequiredMixin,PermissionRequiredMixin, ListView):
     model = Tipo
     template_name = 'cadastros/listas/tipo.html'
 
-class PerfilList(ListView):
+class PerfilList(LoginRequiredMixin,PermissionRequiredMixin, ListView):
     model = Perfil
     template_name = 'cadastros/listas/perfil.html'
 
-class PerfilPuxadorList(ListView):
+class PerfilPuxadorList(LoginRequiredMixin,PermissionRequiredMixin, ListView):
     model = PerfilPuxador
     template_name = 'cadastros/listas/PerfilPuxador.html'
 
-class PuxadorList(ListView):
+class PuxadorList(LoginRequiredMixin,PermissionRequiredMixin, ListView):
     model = Puxador
     template_name = 'cadastros/listas/Puxador.html'
 
-class DivisorList(ListView):
+class DivisorList(LoginRequiredMixin,PermissionRequiredMixin, ListView):
     model = Divisor
     template_name = 'cadastros/listas/Divisor.html'
 
-class DivisoriaAmbienteList(ListView):
+class DivisoriaAmbienteList(LoginRequiredMixin,PermissionRequiredMixin, ListView):
     model = DivisoriaAmbiente
     template_name = 'cadastros/listas/DivisoriaAmbiente.html'
 
-class VidroList(ListView):
+class VidroList(LoginRequiredMixin,PermissionRequiredMixin, ListView):
     model = Vidro
     template_name = 'cadastros/listas/Vidro.html'
 

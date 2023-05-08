@@ -179,8 +179,8 @@ class Divisor(models.Model):
     modelo = models.ForeignKey(ModeloDivisor, on_delete=models.PROTECT)
 
     class Meta:
-        verbose_name = 'Divisor'
-        verbose_name_plural = 'Divisores'
+        verbose_name = 'Perfil Divisor'
+        verbose_name_plural = 'Perfis Divisores'
         ordering = ["descricao"]
 
     def __str__(self):
@@ -197,8 +197,8 @@ class DivisoriaAmbiente(models.Model):
     posicao = models.CharField(choices=POSICAODIVISORIA, max_length=50)
 
     class Meta:
-        verbose_name = 'Divisor'
-        verbose_name_plural = 'Divisores'
+        verbose_name = 'Perfil Divisoria Ambiente'
+        verbose_name_plural = 'Perfis Divisorias Ambiente'
         ordering = ["descricao"]
 
     def __str__(self):
