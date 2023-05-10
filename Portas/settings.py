@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'multiselectfield',
     "crispy_forms",
     "crispy_bootstrap5",
+    'Clientes.apps.ClientesConfig',
 ]
 
 # Crispy Forms
