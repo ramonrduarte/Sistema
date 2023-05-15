@@ -32,3 +32,4 @@ class ClientesList(LoginRequiredMixin, PermissionRequiredMixin, ListView):
     model = Cliente
     template_name = 'clientes/Clientes.html'
     permission_required = 'Clientes.view_cliente'
+

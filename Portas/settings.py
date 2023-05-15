@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "crispy_forms",
     "crispy_bootstrap5",
     'Clientes.apps.ClientesConfig',
+    'Pedidos.apps.PedidosConfig',
 ]
 
 # Crispy Forms

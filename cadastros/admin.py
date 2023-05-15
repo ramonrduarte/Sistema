@@ -36,11 +36,11 @@ class TipoAdmin(admin.ModelAdmin):
 
 @admin.register(Perfil)
 class PerfilAdmin(admin.ModelAdmin):
-    list_display = ('codigo','descricao','preco','acabamento','tipo','modelo','encaixe','puxadorsobreposto','testando')
+    list_display = ('codigo','descricao','preco','acabamento','tipo','modelo','encaixe', 'perfil_puxador', 'encaixepuxador')
 
 @admin.register(PerfilPuxador)
 class PerfilPuxadorAdmin(admin.ModelAdmin):
-    list_display = ('codigo','descricao','preco','acabamento','tipo','modelo','perfilencaixe')
+    list_display = ('codigo','descricao','preco','acabamento','tipo','modelo')
 
 @admin.register(Puxador)
 class PuxadorAdmin(admin.ModelAdmin):

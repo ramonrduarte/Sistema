@@ -13,8 +13,8 @@ TESTEMODELO = (('nao possui', 'Não possui'),
               ('Sessenta', '6060'),
               ('Setenta', '7070'))
 
-ENCAIXE = (('Sim','Sim'),
-    ('Nao','Não'))
+ENCAIXE = (('True','Sim'),
+    ('False','Não'))
 
 LINHA = (('Doppio','Doppio'),
         ('mil','1000'))
@@ -117,24 +117,6 @@ class Tipo(models.Model):
     def __str__(self):
         return self.tipo
 
-class Perfil(models.Model):
-    codigo = models.CharField(max_length=6, verbose_name="Código")
-    descricao = models.CharField(max_length=150, verbose_name="Descrição")
-    preco = models.DecimalField(decimal_places=2, max_digits=5, verbose_name="Preço")
-    acabamento = models.ForeignKey(Acabamento, on_delete=models.PROTECT)
-    tipo = models.ForeignKey(Tipo, on_delete=models.PROTECT)
-    modelo = models.ForeignKey(ModeloPerfil, on_delete=models.PROTECT)
-    encaixe = models.CharField(max_length=3, choices=ENCAIXE, verbose_name="Permite encaixe de Perfil Puxador?", blank=False, null=False)
-    puxadorsobreposto = models.CharField(max_length=3,choices=ENCAIXE, verbose_name="Permite encaixe de Puxador Sobreposto?", blank=False, null=False)
-    testando = MultiSelectField(choices=TESTEMODELO, max_choices=9, max_length=50)
-
-    class Meta:
-        verbose_name = 'Perfil'
-        verbose_name_plural = 'Perfis'
-        ordering = ["descricao"]
-
-    def __str__(self):
-        return self.descricao
 
 class PerfilPuxador(models.Model):
     codigo = models.CharField(max_length=6, verbose_name="Código")
@@ -143,7 +125,6 @@ class PerfilPuxador(models.Model):
     acabamento = models.ForeignKey(Acabamento, on_delete=models.PROTECT)
     tipo = models.ForeignKey(Tipo, on_delete=models.PROTECT)
     modelo = models.ForeignKey(ModeloPerfilPuxador, on_delete=models.PROTECT)
-    perfilencaixe = models.ForeignKey(ModeloPerfil, on_delete=models.PROTECT, verbose_name="Perfil Encaixe")
 
     class Meta:
         verbose_name = 'Perfil Puxador'
@@ -214,6 +195,27 @@ class Vidro(models.Model):
     class Meta:
         verbose_name = 'Vidro'
         verbose_name_plural = 'Vidros'
+        ordering = ["descricao"]
+
+    def __str__(self):
+        return self.descricao
+
+
+class Perfil(models.Model):
+    codigo = models.CharField(max_length=6, verbose_name="Código")
+    descricao = models.CharField(max_length=150, verbose_name="Descrição")
+    preco = models.DecimalField(decimal_places=2, max_digits=5, verbose_name="Preço")
+    acabamento = models.ForeignKey(Acabamento, on_delete=models.PROTECT)
+    tipo = models.ForeignKey(Tipo, on_delete=models.PROTECT)
+    modelo = models.ForeignKey(ModeloPerfil, on_delete=models.PROTECT)
+    encaixe = models.CharField(max_length=10, choices=ENCAIXE, default="Não", blank=False, null=False)
+    perfil_puxador = models.ForeignKey(PerfilPuxador, on_delete=models.PROTECT, verbose_name="Perfil Puxador")
+    encaixepuxador = models.CharField(max_length=10, choices=ENCAIXE, default="Não", blank=False, null=False)
+    puxadorsobreposto = models.ManyToManyField(Puxador)
+
+    class Meta:
+        verbose_name = 'Perfil'
+        verbose_name_plural = 'Perfis'
         ordering = ["descricao"]
 
     def __str__(self):

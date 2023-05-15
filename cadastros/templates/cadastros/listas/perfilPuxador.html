@@ -30,7 +30,6 @@ Cadastro de Perfis Puxadores
                 <th scope="col ">Acabamento</th>
                 <th scope="col ">Tipo</th>
                 <th scope="col ">Modelo</th>
-                <th scope="col ">Perfil Encaixe</th>
               </tr>
             </thead>
             <tbody class="table-group-divider ">
@@ -42,7 +41,6 @@ Cadastro de Perfis Puxadores
                     <td>{{ perfilpuxador.acabamento }}</td>
                     <td>{{ perfilpuxador.tipo }}</td>
                     <td>{{ perfilpuxador.modelo }}</td>
-                    <td>{{ perfilpuxador.perfilencaixe }}</td>
                     <td>
                         <a href="{% url 'editar-perfilpuxador' perfilpuxador.pk %}" class="btn btn-warning btn-sm" title="Editar">E</a>
                         <a href="{% url 'excluir-perfilpuxador' perfilpuxador.pk %}" class="btn btn-danger btn-sm" title="Excluir">X</a>

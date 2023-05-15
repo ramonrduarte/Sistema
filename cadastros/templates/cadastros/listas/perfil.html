@@ -31,8 +31,9 @@ Cadastro de Perfis
                 <th scope="col ">Tipo</th>
                 <th scope="col ">Modelo</th>
                 <th scope="col ">Encaixe</th>
+                <th scope="col ">Encaixe Perfil Puxador</th>
+                <th scope="col ">Encaixe Puxador</th>
                 <th scope="col ">Puxador Sobreposto</th>
-                <th scope="col ">Opções</th>
               </tr>
             </thead>
             <tbody class="table-group-divider ">
@@ -44,9 +45,26 @@ Cadastro de Perfis
                     <td>{{ perfil.acabamento }}</td>
                     <td>{{ perfil.tipo }}</td>
                     <td>{{ perfil.modelo }}</td>
-                    <td>{{ perfil.encaixe }}</td>
-                    <td>{{ perfil.puxadorsobreposto }}</td>
-                    <td>{{ perfil.testando }}</td>
+                    <td>
+                        {% if perfil.encaixe == "True" %}
+                            <p>Sim</p>
+                        {% else %}
+                            <p>Não</p>
+                        {% endif %}
+                    </td>
+                    <td>{{ perfil.perfil_puxador }}</td>
+                    <td>
+                        {% if perfil.encaixepuxador == "True" %}
+                            <p>Sim</p>
+                        {% else %}
+                            <p>Não</p>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% for puxador in perfil.puxadorsobreposto.all %}
+                            {{ puxador.codigo }};
+                        {% endfor %}
+                    </td>
                     <td>
                         <a href="{% url 'editar-perfil' perfil.pk %}" class="btn btn-warning btn-sm" title="Editar">E</a>
                         <a href="{% url 'excluir-perfil' perfil.pk %}" class="btn btn-danger btn-sm" title="Excluir">X</a>

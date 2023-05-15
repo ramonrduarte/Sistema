@@ -1,9 +1,12 @@
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Acabamento, ModeloPerfil, ModeloPerfilPuxador, ModeloPuxador, ModeloPerfilPuxador, ModeloDivisor, ModeloDivisoriaAmbiente, ModeloVidro, Tipo, Perfil, PerfilPuxador, Puxador, Divisor, DivisoriaAmbiente, Vidro
 from django.views.generic.list import ListView
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.shortcuts import render
+from .forms import PerfilForm
+from django.http import JsonResponse
+from django.views.decorators.http import require_GET
 
 
 # Create your views here.
@@ -67,14 +70,16 @@ class TipoCreate(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
 
 class PerfilCreate(LoginRequiredMixin,PermissionRequiredMixin, CreateView):
     model = Perfil
-    fields = ['codigo', 'descricao', 'preco', 'acabamento', 'tipo', 'modelo', 'encaixe', 'puxadorsobreposto','testando']
+    form_class = PerfilForm
+    # fields = ['codigo', 'descricao', 'preco', 'acabamento', 'tipo', 'modelo', 'encaixe', 'encaixeperfilpuxador', 'puxadorsobreposto','testando']
     template_name = 'cadastros/CadPerfil.html'
     success_url = reverse_lazy('listar-perfil')
     permission_required = 'cadastros.add.perfil'
 
+
 class PerfilPuxadorCreate(LoginRequiredMixin,PermissionRequiredMixin, CreateView):
     model = PerfilPuxador
-    fields = ['codigo', 'descricao', 'preco', 'acabamento', 'tipo', 'modelo', 'perfilencaixe']
+    fields = ['codigo', 'descricao', 'preco', 'acabamento', 'tipo', 'modelo']
     template_name = 'cadastros/CadPerfilPuxador.html'
     success_url = reverse_lazy('listar-perfilpuxador')
     permission_required = 'cadastros.add.perfilpuxador'
@@ -167,7 +172,8 @@ class TipoUpdate(LoginRequiredMixin,PermissionRequiredMixin, UpdateView):
 
 class PerfilUpdate(LoginRequiredMixin,PermissionRequiredMixin, UpdateView):
     model = Perfil
-    fields = ['codigo', 'descricao', 'preco', 'acabamento', 'tipo', 'modelo', 'encaixe', 'puxadorsobreposto','testando']
+    form_class = PerfilForm
+    # fields = ['codigo', 'descricao', 'preco', 'acabamento', 'tipo', 'modelo', 'encaixe', 'puxadorsobreposto','testando']
     template_name = 'cadastros/CadPerfil.html'
     success_url = reverse_lazy('listar-perfil')
     permission_required = 'cadastros.change.perfil'
