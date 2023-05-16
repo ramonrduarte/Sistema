@@ -36,7 +36,7 @@ class TipoAdmin(admin.ModelAdmin):
 
 @admin.register(Perfil)
 class PerfilAdmin(admin.ModelAdmin):
-    list_display = ('codigo','descricao','preco','acabamento','tipo','modelo','encaixe', 'perfil_puxador', 'encaixepuxador')
+    list_display = ('codigo','descricao','preco','acabamento','tipo','modelo')
 
 @admin.register(PerfilPuxador)
 class PerfilPuxadorAdmin(admin.ModelAdmin):

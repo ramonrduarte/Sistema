@@ -3,6 +3,7 @@ from multiselectfield import MultiSelectField
 from django.core.validators import MaxValueValidator
 
 
+
 # Create your models here.
 
 TESTEMODELO = (('nao possui', 'Não possui'),
@@ -13,8 +14,8 @@ TESTEMODELO = (('nao possui', 'Não possui'),
               ('Sessenta', '6060'),
               ('Setenta', '7070'))
 
-ENCAIXE = (('True','Sim'),
-    ('False','Não'))
+ENCAIXE = (('1','Sim'),
+    ('2','Não'))
 
 LINHA = (('Doppio','Doppio'),
         ('mil','1000'))
@@ -202,16 +203,16 @@ class Vidro(models.Model):
 
 
 class Perfil(models.Model):
-    codigo = models.CharField(max_length=6, verbose_name="Código")
+    codigo = models.CharField(max_length=6, verbose_name="Código", unique=True)
     descricao = models.CharField(max_length=150, verbose_name="Descrição")
     preco = models.DecimalField(decimal_places=2, max_digits=5, verbose_name="Preço")
     acabamento = models.ForeignKey(Acabamento, on_delete=models.PROTECT)
     tipo = models.ForeignKey(Tipo, on_delete=models.PROTECT)
     modelo = models.ForeignKey(ModeloPerfil, on_delete=models.PROTECT)
-    encaixe = models.CharField(max_length=10, choices=ENCAIXE, default="Não", blank=False, null=False)
-    perfil_puxador = models.ForeignKey(PerfilPuxador, on_delete=models.PROTECT, verbose_name="Perfil Puxador")
-    encaixepuxador = models.CharField(max_length=10, choices=ENCAIXE, default="Não", blank=False, null=False)
-    puxadorsobreposto = models.ManyToManyField(Puxador)
+    encaixe = models.CharField(max_length=3, choices=ENCAIXE, blank=True, null=True)
+    perfil_puxador = models.ForeignKey(PerfilPuxador, on_delete=models.PROTECT, verbose_name="Perfil Puxador",blank=True, null=True)
+    encaixepuxador = models.CharField(max_length=3, choices=ENCAIXE, blank=True, null=True)
+    puxadorsobreposto = models.ManyToManyField(Puxador, related_name="puxadores", through="PuxadorIntermediario")
 
     class Meta:
         verbose_name = 'Perfil'
@@ -221,3 +222,10 @@ class Perfil(models.Model):
     def __str__(self):
         return self.descricao
 
+
+class PuxadorIntermediario(models.Model):
+    perfil = models.ForeignKey(Perfil, related_name="puxadores_perfil", on_delete=models.PROTECT, blank=True, null=True)
+    puxador = models.ForeignKey(Puxador, related_name="puxadores_perfil", on_delete=models.PROTECT, blank=True, null=True)
+
+    def __str__(self):
+        return "{} - {} " .format(self.puxador.descricao, self.perfil.descricao)

@@ -41,4 +41,3 @@ radioButtons.forEach(radio => {
     }
   });
 });
-

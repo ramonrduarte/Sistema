@@ -4,16 +4,17 @@ from .models import Perfil, PerfilPuxador, Puxador, ENCAIXE
 class PerfilForm(forms.ModelForm):
 
     encaixe = forms.ChoiceField(
-        label='Permite encaixe de Perfil Puxador?',
+        label='Permite Perfil Puxador?',
         choices=ENCAIXE,
         widget=forms.RadioSelect
         )
     encaixepuxador = forms.ChoiceField(
-        label='Permite encaixe de Puxador?',
+        label='Permite Puxador?',
         choices=ENCAIXE,
         widget=forms.RadioSelect
     )
     puxadorsobreposto = forms.ModelMultipleChoiceField(
+        label='Puxadores',
         queryset=Puxador.objects.all(),
         widget=forms.CheckboxSelectMultiple
     )
