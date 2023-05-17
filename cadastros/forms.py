@@ -16,9 +16,11 @@ class PerfilForm(forms.ModelForm):
     puxadorsobreposto = forms.ModelMultipleChoiceField(
         label='Puxadores',
         queryset=Puxador.objects.all(),
-        widget=forms.CheckboxSelectMultiple
+        widget=forms.CheckboxSelectMultiple,
+        required = False
     )
 
     class Meta:
         model = Perfil
         fields = '__all__'
+

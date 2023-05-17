@@ -71,7 +71,6 @@ class TipoCreate(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
 class PerfilCreate(LoginRequiredMixin,PermissionRequiredMixin, CreateView):
     model = Perfil
     form_class = PerfilForm
-    # fields = ['codigo', 'descricao', 'preco', 'acabamento', 'tipo', 'modelo', 'encaixe', 'encaixeperfilpuxador', 'puxadorsobreposto','testando']
     template_name = 'cadastros/CadPerfil.html'
     success_url = reverse_lazy('listar-perfil')
     permission_required = 'cadastros.add.perfil'

@@ -61,7 +61,7 @@ Cadastro de Perfis
                         {% endif %}
                     </td>
                     <td>
-                        {% for puxador in puxadores.puxadores_perfil.all %}
+                        {% for puxador in perfil.puxadorsobreposto.all %}
                             {{ puxador.codigo }};
                         {% endfor %}
                     </td>
