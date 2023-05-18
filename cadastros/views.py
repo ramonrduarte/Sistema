@@ -179,7 +179,7 @@ class PerfilUpdate(LoginRequiredMixin,PermissionRequiredMixin, UpdateView):
 
 class PerfilPuxadorUpdate(LoginRequiredMixin,PermissionRequiredMixin, UpdateView):
     model = PerfilPuxador
-    fields = ['codigo', 'descricao', 'preco', 'acabamento', 'tipo', 'modelo', 'perfilencaixe']
+    fields = '__all__'
     template_name = 'cadastros/CadPerfilPuxador.html'
     success_url = reverse_lazy('listar-perfilpuxador')
     permission_required = 'cadastros.change.perfilpuxador'

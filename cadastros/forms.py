@@ -1,5 +1,6 @@
 from django import forms
 from .models import Perfil, PerfilPuxador, Puxador, ENCAIXE
+from django.views.generic.edit import CreateView
 
 class PerfilForm(forms.ModelForm):
 
@@ -17,10 +18,11 @@ class PerfilForm(forms.ModelForm):
         label='Puxadores',
         queryset=Puxador.objects.all(),
         widget=forms.CheckboxSelectMultiple,
-        required = False
+        required = False,
     )
 
     class Meta:
         model = Perfil
         fields = '__all__'
+
 
