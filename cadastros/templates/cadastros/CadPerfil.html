@@ -38,50 +38,6 @@
     </form>
 </div>
 <script>
-<!--$(document).ready(function() {-->
-<!--  var campoEncaixePuxador = $('input[name="encaixepuxador"]');-->
-<!--  var puxadorDiv = $('#idpuxador');-->
-
-<!--  var campoEncaixe = $('input[name="encaixe"]-->
-<!--  var perfilpuxadorDiv = $('#idperfilpuxador');-->
-
-<!--  campoEncaixePuxador.on('change', function() {-->
-<!--    var valorPuxadorSelecionado = campoEncaixePuxador.filter(':checked').val();-->
-<!--    if (valorPuxadorSelecionado === '1') {-->
-<!--      puxadorDiv.show();-->
-<!--    } else {-->
-<!--      puxadorDiv.find('input[type="checkbox"]').prop('checked', false);-->
-<!--      puxadorDiv.hide();-->
-<!--    }-->
-<!--    console.log('Valor selecionado: ' + valorPuxadorSelecionado);-->
-
-<!--  });-->
-
-<!--  campoEncaixe.on('change', function() {-->
-<!--    var valorperfilPuxadorSelecionado = campoEncaixe.filter(':checked').val();-->
-<!--    if (valorperfilPuxadorSelecionado === '1') {-->
-<!--      perfilpuxadorDiv.show();-->
-<!--    } else {-->
-<!--      perfilpuxadorDiv.hide();-->
-<!--    }-->
-<!--    console.log('Valor selecionado: ' + valorperfilPuxadorSelecionado);-->
-
-<!--});-->
-
-<!--$(document).ready(function() {-->
-<!--  $('input[name="encaixe"], input[name="encaixepuxador"]').on('change', function() {-->
-<!--    var valorSelecionado1 = $('input[name="encaixe"]:checked').val();-->
-<!--    var valorSelecionado2 = $('input[name="encaixepuxador"]:checked').val();-->
-
-<!--    // Exemplo de uso dos valores selecionados:-->
-<!--    console.log('Valor selecionado 1: ' + valorSelecionado1);-->
-<!--    console.log('Valor selecionado 2: ' + valorSelecionado2);-->
-
-<!--    // Restante do código para controlar as divs-->
-<!--    // ...-->
-<!--  });-->
-<!--});-->
-
 $(document).ready(function() {
   $('input[name="encaixe"], input[name="encaixepuxador"]').on('change', function() {
     var valorSelecionado1 = $('input[name="encaixe"]:checked').val();
@@ -91,7 +47,7 @@ $(document).ready(function() {
     if (valorSelecionado1 === '1') {
       $('#idperfilpuxador').show();
     } else {
-      $('#idperfilpuxador').selectedIndex = -1;
+      $('#idperfilpuxador').clear
       $('#idperfilpuxador').hide();
     }
 
@@ -107,4 +63,3 @@ $(document).ready(function() {
 
 </script>
 {% endblock %}
-
