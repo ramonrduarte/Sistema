@@ -7,7 +7,8 @@ class PerfilForm(forms.ModelForm):
     encaixe = forms.ChoiceField(
         label='Permite Perfil Puxador?',
         choices=ENCAIXE,
-        widget=forms.RadioSelect
+        widget=forms.RadioSelect,
+
         )
     encaixepuxador = forms.ChoiceField(
         label='Permite Puxador?',
@@ -20,6 +21,13 @@ class PerfilForm(forms.ModelForm):
         widget=forms.CheckboxSelectMultiple,
         required = False,
     )
+    perfil_puxador = forms.ModelMultipleChoiceField(
+        label='Perfil Puxador',
+        queryset=PerfilPuxador.objects.all(),
+        widget=forms.CheckboxSelectMultiple,
+        required=False,
+    )
+
 
     class Meta:
         model = Perfil

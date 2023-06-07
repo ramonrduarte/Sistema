@@ -4,6 +4,7 @@ from django.core.validators import MaxValueValidator
 
 
 
+
 # Create your models here.
 
 TESTEMODELO = (('nao possui', 'Não possui'),

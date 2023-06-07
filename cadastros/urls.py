@@ -4,6 +4,7 @@ from .views import AcabamentoUpdate, ModeloPerfilUpdate,ModeloPerfilPuxadorUpdat
 from .views import AcabamentoDelete, ModeloPerfilDelete,ModeloPerfilPuxadorDelete, ModeloPuxadorDelete, ModeloDivisorDelete, ModeloDivisoriaAmbienteDelete, ModeloVidroDelete, TipoDelete, PerfilDelete, PerfilPuxadorDelete, PuxadorDelete, DivisorDelete, DivisoriaAmbienteDelete, VidroDelete
 from .views import AcabamentoList, TipoList, PerfilList, PerfilPuxadorList, PuxadorList, DivisorList, DivisoriaAmbienteList, VidroList
 from .views import Modelos
+from . import views
 
 urlpatterns = [
     path('cadastrar/acabamento', AcabamentoCreate.as_view(), name='cadastrar-acabamento'),
@@ -61,6 +62,14 @@ urlpatterns = [
     path('listar/vidro/', VidroList.as_view(), name='listar-vidro'),
 
     path('listar/modelos/', Modelos, name='listar-modelos'),
+    path('filtrar-acabamento/', views.filtrar_acabamento, name='filtrar_acabamento'),
 
 
 ]
+
+htmx_urlpatterns = [
+
+
+]
+
+urlpatterns += htmx_urlpatterns

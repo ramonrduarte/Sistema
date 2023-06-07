@@ -5,7 +5,7 @@ from django.urls import reverse_lazy, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.shortcuts import render
 from .forms import PerfilForm
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.views.decorators.http import require_GET
 
 
@@ -83,12 +83,14 @@ class PerfilPuxadorCreate(LoginRequiredMixin,PermissionRequiredMixin, CreateView
     success_url = reverse_lazy('listar-perfilpuxador')
     permission_required = 'cadastros.add.perfilpuxador'
 
+
 class PuxadorCreate(LoginRequiredMixin,PermissionRequiredMixin, CreateView):
     model = Puxador
     fields = ['codigo', 'descricao', 'preco', 'acabamento', 'tipo', 'modelo']
     template_name = 'cadastros/CadPuxador.html'
     success_url = reverse_lazy('listar-puxador')
     permission_required = 'cadastros.add.puxador'
+
 
 class DivisorCreate(LoginRequiredMixin,PermissionRequiredMixin, CreateView):
     model = Divisor
@@ -362,3 +364,24 @@ def Modelos (request):
                                                              'modelodivisor': modelodivisor,
                                                              'modelodivisoriaambiente': modelodivisoriaambiente,
                                                              'modelovidro': modelovidro})
+
+
+def filtrar_acabamento(request):
+    acabamento = request.GET.get('acabamento')
+
+    queryset = PerfilPuxador.objects.all()
+
+    if acabamento:
+        queryset = queryset.filter(acabamento_id=acabamento)
+        # 'perfil_puxador' é o nome do campo ForeignKey no ModeloPrincipal
+        # 'acabamento' é o nome do campo dentro do modelo referenciado
+
+    # Crie uma lista de dicionários com os resultados filtrados
+    resultados = []
+    for objeto in queryset:
+        resultados.append({
+            'valor': objeto.codigo,  # Substitua 'valor' pelo valor desejado do option
+            'texto': objeto.descricao   # Substitua 'texto' pelo texto desejado do option
+        })
+
+    return JsonResponse(resultados, safe=False)
