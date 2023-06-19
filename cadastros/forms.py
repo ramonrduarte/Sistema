@@ -1,21 +1,32 @@
 from django import forms
-from .models import Perfil, PerfilPuxador, Puxador, ENCAIXE, Acabamento
+from .models import Perfil, PerfilPuxador, Puxador, ENCAIXE, Acabamento, Divisor
 from django.views.generic.edit import CreateView
+from django.urls import reverse
 
 class PerfilForm(forms.ModelForm):
 
     encaixe = forms.ChoiceField(
-        label='Permite Perfil Puxador?',
+        label='Perfil Puxador?',
         choices=ENCAIXE,
         widget=forms.RadioSelect,
-
-        )
+    )
     encaixepuxador = forms.ChoiceField(
         label='Permite Puxador?',
         choices=ENCAIXE,
         widget=forms.RadioSelect
     )
-    puxadorsobreposto = forms.ModelMultipleChoiceField(
+    encaixedivisor = forms.ChoiceField(
+        label='Permite Divisor?',
+        choices=ENCAIXE,
+        widget=forms.RadioSelect,
+    )
+    divisor = forms.ModelChoiceField(
+        label='Divisor',
+        queryset=Divisor.objects.all(),
+        widget=forms.CheckboxSelectMultiple,
+        required=False,
+    )
+    puxadorsobreposto = forms.ModelChoiceField(
         label='Puxadores',
         queryset=Puxador.objects.all(),
         widget=forms.CheckboxSelectMultiple,
@@ -27,7 +38,6 @@ class PerfilForm(forms.ModelForm):
         widget=forms.CheckboxSelectMultiple,
         required=False,
     )
-
 
     class Meta:
         model = Perfil

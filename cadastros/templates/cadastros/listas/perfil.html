@@ -52,7 +52,15 @@ Cadastro de Perfis
                             <p>Não</p>
                         {% endif %}
                     </td>
-                    <td>{{ perfil.perfil_puxador }}</td>
+                    <td>
+                        {% if perfil.perfil_puxador.all %}
+                            {% for perfil_puxador in perfil.perfil_puxador.all %}
+                                {{ perfil_puxador.codigo }};
+                            {% endfor %}
+                        {% else %}
+                            ---------
+                        {% endif %}
+                    </td>
                     <td>
                         {% if perfil.encaixepuxador == "1" %}
                             <p>Sim</p>

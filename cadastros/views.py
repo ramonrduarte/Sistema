@@ -75,6 +75,12 @@ class PerfilCreate(LoginRequiredMixin,PermissionRequiredMixin, CreateView):
     success_url = reverse_lazy('listar-perfil')
     permission_required = 'cadastros.add.perfil'
 
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        # Defina o valor inicial do campo 'encaixe' como "2" (não)
+        kwargs['initial'] = {'encaixe': '2', 'encaixedivisor': '2', 'encaixepuxador': '2'}
+        return kwargs
+
 
 class PerfilPuxadorCreate(LoginRequiredMixin,PermissionRequiredMixin, CreateView):
     model = PerfilPuxador
@@ -83,6 +89,16 @@ class PerfilPuxadorCreate(LoginRequiredMixin,PermissionRequiredMixin, CreateView
     success_url = reverse_lazy('listar-perfilpuxador')
     permission_required = 'cadastros.add.perfilpuxador'
 
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+
+        perfil_puxador_ids = self.request.POST.getlist('perfil_puxador')
+        perfil_puxador_objs = PerfilPuxador.objects.filter(id__in=perfil_puxador_ids)
+
+        self.object.perfil_puxador.set(perfil_puxador_objs)
+        self.object.save()
+
+        return HttpResponseRedirect(self.get_success_url())
 
 class PuxadorCreate(LoginRequiredMixin,PermissionRequiredMixin, CreateView):
     model = Puxador
@@ -174,10 +190,21 @@ class TipoUpdate(LoginRequiredMixin,PermissionRequiredMixin, UpdateView):
 class PerfilUpdate(LoginRequiredMixin,PermissionRequiredMixin, UpdateView):
     model = Perfil
     form_class = PerfilForm
-    # fields = ['codigo', 'descricao', 'preco', 'acabamento', 'tipo', 'modelo', 'encaixe', 'puxadorsobreposto','testando']
     template_name = 'cadastros/CadPerfil.html'
     success_url = reverse_lazy('listar-perfil')
     permission_required = 'cadastros.change.perfil'
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        instance = self.get_object()
+        kwargs['initial'] = {'encaixe': instance.encaixe}
+        return kwargs
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        perfil = self.get_object()
+        context['perfil_puxador_ids'] = perfil.perfil_puxador.values_list('id',flat=True)
+        return context
 
 class PerfilPuxadorUpdate(LoginRequiredMixin,PermissionRequiredMixin, UpdateView):
     model = PerfilPuxador
@@ -373,15 +400,44 @@ def filtrar_acabamento(request):
 
     if acabamento:
         queryset = queryset.filter(acabamento_id=acabamento)
-        # 'perfil_puxador' é o nome do campo ForeignKey no ModeloPrincipal
-        # 'acabamento' é o nome do campo dentro do modelo referenciado
 
     # Crie uma lista de dicionários com os resultados filtrados
     resultados = []
     for objeto in queryset:
         resultados.append({
-            'valor': objeto.codigo,  # Substitua 'valor' pelo valor desejado do option
-            'texto': objeto.descricao   # Substitua 'texto' pelo texto desejado do option
-        })
+            'id': objeto.id,
+            'descricao': (f"({objeto.codigo}) {objeto.descricao}")})
+
+    return JsonResponse(resultados, safe=False)
+
+def filtrar_divisor(request):
+    acabamento = request.GET.get('acabamento')
+    queryset = Divisor.objects.all()
+
+    if acabamento:
+        queryset = queryset.filter(acabamento_id=acabamento)
+
+    # Crie uma lista de dicionários com os resultados filtrados
+    resultados = []
+    for objeto in queryset:
+        resultados.append({
+            'id': objeto.id,
+            'descricao': (f"({objeto.codigo}) {objeto.descricao}")})
+
+    return JsonResponse(resultados, safe=False)
+
+def filtrar_puxador(request):
+    acabamento = request.GET.get('acabamento')
+    queryset = Puxador.objects.all()
+
+    if acabamento:
+        queryset = queryset.filter(acabamento_id=acabamento)
+
+    # Crie uma lista de dicionários com os resultados filtrados
+    resultados = []
+    for objeto in queryset:
+        resultados.append({
+            'id': objeto.id,
+            'descricao': (f"({objeto.codigo}) {objeto.descricao}")})
 
     return JsonResponse(resultados, safe=False)

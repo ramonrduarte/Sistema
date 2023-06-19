@@ -63,7 +63,8 @@ urlpatterns = [
 
     path('listar/modelos/', Modelos, name='listar-modelos'),
     path('filtrar-acabamento/', views.filtrar_acabamento, name='filtrar_acabamento'),
-
+    path('filtrar-divisor/', views.filtrar_divisor, name='filtrar_divisor'),
+    path('filtrar-puxador/', views.filtrar_puxador, name='filtrar_puxador'),
 
 ]
 
