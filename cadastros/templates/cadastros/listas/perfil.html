@@ -31,7 +31,9 @@ Cadastro de Perfis
                 <th scope="col ">Tipo</th>
                 <th scope="col ">Modelo</th>
                 <th scope="col ">Encaixe</th>
-                <th scope="col ">Encaixe Perfil Puxador</th>
+                <th scope="col ">Perfil Puxador</th>
+                <th scope="col ">Encaixe Divisor</th>
+                <th scope="col ">Divisor</th>
                 <th scope="col ">Encaixe Puxador</th>
                 <th scope="col ">Puxador Sobreposto</th>
               </tr>
@@ -62,6 +64,22 @@ Cadastro de Perfis
                         {% endif %}
                     </td>
                     <td>
+                        {% if perfil.divisor == "1" %}
+                            <p>Sim</p>
+                        {% else %}
+                            <p>Não</p>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if perfil.divisor.all %}
+                            {% for divisor in perfil.divisor.all %}
+                                {{ divisor.codigo }};
+                            {% endfor %}
+                        {% else %}
+                            ---------
+                        {% endif %}
+                    </td>
+                    <td>
                         {% if perfil.encaixepuxador == "1" %}
                             <p>Sim</p>
                         {% else %}
@@ -69,7 +87,7 @@ Cadastro de Perfis
                         {% endif %}
                     </td>
                     <td>
-                        {% for puxador in perfil.puxadorsobreposto.all %}
+                        {% for puxador in perfil.puxador.all %}
                             {{ puxador.codigo }};
                         {% endfor %}
                     </td>

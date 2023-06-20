@@ -1,5 +1,5 @@
 from django import forms
-from .models import Perfil, PerfilPuxador, Puxador, ENCAIXE, Acabamento, Divisor
+from .models import Perfil, PerfilPuxador, Puxador, ENCAIXE, Acabamento, Divisor, Vidro
 from django.views.generic.edit import CreateView
 from django.urls import reverse
 
@@ -20,13 +20,13 @@ class PerfilForm(forms.ModelForm):
         choices=ENCAIXE,
         widget=forms.RadioSelect,
     )
-    divisor = forms.ModelChoiceField(
+    divisor = forms.ModelMultipleChoiceField(
         label='Divisor',
         queryset=Divisor.objects.all(),
         widget=forms.CheckboxSelectMultiple,
         required=False,
     )
-    puxadorsobreposto = forms.ModelChoiceField(
+    puxadorsobreposto = forms.ModelMultipleChoiceField(
         label='Puxadores',
         queryset=Puxador.objects.all(),
         widget=forms.CheckboxSelectMultiple,
@@ -39,9 +39,7 @@ class PerfilForm(forms.ModelForm):
         required=False,
     )
 
+
     class Meta:
         model = Perfil
         fields = '__all__'
-
-
-

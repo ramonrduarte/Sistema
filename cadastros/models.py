@@ -121,7 +121,7 @@ class Tipo(models.Model):
 
 
 class PerfilPuxador(models.Model):
-    codigo = models.CharField(max_length=6, verbose_name="Código")
+    codigo = models.CharField(max_length=6, verbose_name="Código", unique=True)
     descricao = models.CharField(max_length=150, verbose_name="Descrição")
     preco = models.DecimalField(decimal_places=2, max_digits=5, verbose_name="Preço")
     acabamento = models.ForeignKey(Acabamento, on_delete=models.PROTECT)
@@ -138,7 +138,7 @@ class PerfilPuxador(models.Model):
 
 
 class Puxador(models.Model):
-    codigo = models.CharField(max_length=6, verbose_name="Código")
+    codigo = models.CharField(max_length=6, verbose_name="Código", unique=True)
     descricao = models.CharField(max_length=150, verbose_name="Descrição")
     preco = models.DecimalField(decimal_places=2, max_digits=5, verbose_name="Preço")
     acabamento = models.ForeignKey(Acabamento, on_delete=models.PROTECT)
@@ -154,7 +154,7 @@ class Puxador(models.Model):
         return self.descricao
 
 class Divisor(models.Model):
-    codigo = models.CharField(max_length=6, verbose_name="Código")
+    codigo = models.CharField(max_length=6, verbose_name="Código", unique=True)
     descricao = models.CharField(max_length=150, verbose_name="Descrição")
     preco = models.DecimalField(decimal_places=2, max_digits=5, verbose_name="Preço")
     acabamento = models.ForeignKey(Acabamento, on_delete=models.PROTECT)
@@ -170,7 +170,7 @@ class Divisor(models.Model):
         return self.descricao
 
 class DivisoriaAmbiente(models.Model):
-    codigo = models.CharField(max_length=6, verbose_name="Código")
+    codigo = models.CharField(max_length=6, verbose_name="Código", unique=True)
     descricao = models.CharField(max_length=150, verbose_name="Descrição")
     preco = models.DecimalField(decimal_places=2, max_digits=5, verbose_name="Preço")
     acabamento = models.ForeignKey(Acabamento, on_delete=models.PROTECT)
@@ -188,7 +188,7 @@ class DivisoriaAmbiente(models.Model):
         return self.descricao
 
 class Vidro(models.Model):
-    codigo = models.CharField(max_length=6, verbose_name="Código")
+    codigo = models.CharField(max_length=6, verbose_name="Código", unique=True)
     descricao = models.CharField(max_length=150, verbose_name="Descrição")
     preco = models.DecimalField(decimal_places=2, max_digits=5, verbose_name="Preço")
     tipo = models.ForeignKey(Tipo, on_delete=models.PROTECT)
@@ -211,12 +211,10 @@ class Perfil(models.Model):
     tipo = models.ForeignKey(Tipo, on_delete=models.PROTECT)
     modelo = models.ForeignKey(ModeloPerfil, on_delete=models.PROTECT)
     encaixe = models.CharField(max_length=3, choices=ENCAIXE, blank=True, null=True)
-    # perfil_puxador = models.ForeignKey(PerfilPuxador, on_delete=models.PROTECT, verbose_name="Perfil Puxador",blank=True, null=True)
     perfil_puxador = models.ManyToManyField(PerfilPuxador, verbose_name="Perfil Puxador", blank=True)
     encaixedivisor = models.CharField(max_length=3, choices=ENCAIXE, blank=True, null=True)
     divisor = models.ManyToManyField(Divisor, verbose_name="Divisor", blank=True)
     encaixepuxador = models.CharField(max_length=3, choices=ENCAIXE, blank=True, null=True)
-    # puxadorsobreposto = models.ManyToManyField(Puxador, related_name="puxadores", through="PuxadorIntermediario")
     puxador = models.ManyToManyField(Puxador, verbose_name="Puxador", blank=True)
 
     class Meta:

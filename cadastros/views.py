@@ -89,17 +89,6 @@ class PerfilPuxadorCreate(LoginRequiredMixin,PermissionRequiredMixin, CreateView
     success_url = reverse_lazy('listar-perfilpuxador')
     permission_required = 'cadastros.add.perfilpuxador'
 
-    def form_valid(self, form):
-        self.object = form.save(commit=False)
-
-        perfil_puxador_ids = self.request.POST.getlist('perfil_puxador')
-        perfil_puxador_objs = PerfilPuxador.objects.filter(id__in=perfil_puxador_ids)
-
-        self.object.perfil_puxador.set(perfil_puxador_objs)
-        self.object.save()
-
-        return HttpResponseRedirect(self.get_success_url())
-
 class PuxadorCreate(LoginRequiredMixin,PermissionRequiredMixin, CreateView):
     model = Puxador
     fields = ['codigo', 'descricao', 'preco', 'acabamento', 'tipo', 'modelo']
@@ -197,13 +186,15 @@ class PerfilUpdate(LoginRequiredMixin,PermissionRequiredMixin, UpdateView):
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
         instance = self.get_object()
-        kwargs['initial'] = {'encaixe': instance.encaixe}
+        kwargs['initial'] = {'encaixe': instance.encaixe, 'encaixedivisor': instance.encaixedivisor, 'encaixepuxador': instance.encaixepuxador}
         return kwargs
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         perfil = self.get_object()
         context['perfil_puxador_ids'] = perfil.perfil_puxador.values_list('id',flat=True)
+        context['divisor_ids'] = perfil.divisor.values_list('id', flat=True)
+        context['puxador_ids'] = perfil.puxador.values_list('id', flat=True)
         return context
 
 class PerfilPuxadorUpdate(LoginRequiredMixin,PermissionRequiredMixin, UpdateView):
