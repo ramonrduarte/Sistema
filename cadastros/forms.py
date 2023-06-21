@@ -26,7 +26,7 @@ class PerfilForm(forms.ModelForm):
         widget=forms.CheckboxSelectMultiple,
         required=False,
     )
-    puxadorsobreposto = forms.ModelMultipleChoiceField(
+    puxador = forms.ModelMultipleChoiceField(
         label='Puxadores',
         queryset=Puxador.objects.all(),
         widget=forms.CheckboxSelectMultiple,
@@ -38,6 +38,7 @@ class PerfilForm(forms.ModelForm):
         widget=forms.CheckboxSelectMultiple,
         required=False,
     )
+
 
 
     class Meta:

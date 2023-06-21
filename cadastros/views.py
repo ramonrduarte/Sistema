@@ -195,8 +195,10 @@ class PerfilUpdate(LoginRequiredMixin,PermissionRequiredMixin, UpdateView):
         context['perfil_puxador_ids'] = perfil.perfil_puxador.values_list('id',flat=True)
         context['divisor_ids'] = perfil.divisor.values_list('id', flat=True)
         context['puxador_ids'] = perfil.puxador.values_list('id', flat=True)
+        context['perfil_puxador'] = PerfilPuxador.objects.filter(acabamento=perfil.acabamento)
+        context['divisor'] = Divisor.objects.filter(acabamento=perfil.acabamento)
+        context['puxador'] = Puxador.objects.filter(acabamento=perfil.acabamento)
         return context
-
 class PerfilPuxadorUpdate(LoginRequiredMixin,PermissionRequiredMixin, UpdateView):
     model = PerfilPuxador
     fields = '__all__'
