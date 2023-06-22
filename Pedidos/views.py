@@ -1,7 +1,10 @@
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.http import HttpResponse
+from django.shortcuts import render
+from django.views.generic.edit import CreateView
+from .models import Pedido
+
 
 class PedidoCreate(CreateView):
     model = Pedido
-    form_class = PedidoForm
-    template_name = 'paginas/orcamento.html'
+    fields = "__all__"
+    template_name = 'Pedidos/novopedido.html'

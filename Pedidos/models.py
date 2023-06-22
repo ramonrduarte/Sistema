@@ -8,7 +8,7 @@ from datetime import datetime
 class Pedido(models.Model):
     numero = models.CharField(max_length=8)
     cliente = models.ForeignKey(Cliente, on_delete=models.SET_NULL, null=True)
-    data_pedido = models.DateTimeField(default=datetime.now(), blank=True)
+    data_pedido = models.DateTimeField(default=datetime.now())
     status = models.CharField(max_length=10, default="Aberto", choices=StatusPedido.choices)
     quantidade = models.CharField(max_length=2)
     largura = models.CharField(max_length=4)
@@ -22,6 +22,12 @@ class Pedido(models.Model):
     divisor = models.ForeignKey(Divisor, on_delete=models.PROTECT, verbose_name="Divisor")
     divisoriaambiente = models.ForeignKey(DivisoriaAmbiente, on_delete=models.PROTECT, verbose_name="Divisoria de Ambiente")
     vidro = models.ForeignKey(Vidro, on_delete=models.PROTECT, verbose_name="Vidro")
+
+
+    class Meta:
+        verbose_name = 'Pedido'
+        verbose_name_plural = 'Pedidos'
+        ordering = ["numero"]
 
     def __str__(self):
         return self.numero
