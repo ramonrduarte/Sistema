@@ -41,6 +41,7 @@ Adrofecha - Orçamento
     <div class="border mt-2 d-flex justify-content-center" style="height: 700px";>
          <div class="container row">
             <div class="col mt-1 me-1 border" style="height: 500px";>
+<<<<<<< HEAD
                 <div class="border mt-1" style="height: 90px";>
                     <div class="row">
                         <div>
@@ -90,6 +91,49 @@ Adrofecha - Orçamento
 <!--                                    </label>-->
 <!--                                    {{ form.linha|attr:"class:form-control custom-input-size-select" }}-->
 <!--                                </div>-->
+=======
+                <div class="border mt-1" style="height: 100px";>
+                    <div class="row">
+                        <div>
+<!--                            entrada de dados-->
+                            <div class="w-auto input-group mt-2 me-1 ">
+                                <label class="me-2 ms-3">Quantidade:</label>
+                                <input type="text" class="form-control d-flex me-5" style="height: 30px; max-width:50px";>
+                                <label class="me-2 ms-5">Largura:</label>
+                                <input type="text ms-1" placeholder="mm" class="form-control me-5" style="height: 30px;max-width:80px";>
+                                <label class="me-2 ms-5">Altura:</label>
+                                <input type="text" placeholder="mm" class="form-control" style="height: 30px;max-width:80px";>
+                            </div>
+                            <form class="ms-1 row">
+                                <div class="col-4" id="divacabamento">
+                                    <label for="{{ form.acabamento.id_for_label }}">
+                                        Acabamento:{% if form.acabamento.field.required %}{% endif %}
+                                    </label>
+                                    {{ form.acabamento|attr:"class:form-control custom-input-size" }}
+                                </div>
+                                <div class="col-4" id="divabertura">
+                                    <label class="me-2 ms-5" for="inputabertura" id="labelabertura">Abertura:</label>
+                                    <div class="ms-5">
+                                        <select class="form-select" id="inputabertura" style="height: 35px; width:200px; ";>
+                                            <option value="1"> Opção 1 </option>
+                                            <option value="2"> Opção 2 </option>
+                                            <option value="3"> Opção 3 </option>
+                                            <option value="4"> Opção 4 </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="hidden col" id="divlinha">
+                                    <label class="me-2 ms-5" for="inputlinha" id="labelinha" >Linha:</label>
+                                    <div class="ms-5">
+                                        <select class="form-select" id="inputlinha" style="height: 35px; width:200px; ";>
+                                            <option value="1"> Opção 1 </option>
+                                            <option value="2"> Opção 2 </option>
+                                            <option value="3"> Opção 3 </option>
+                                            <option value="4"> Opção 4 </option>
+                                        </select>
+                                    </div>
+                                </div>
+>>>>>>> origin/master
                             </form>
                         </div>
                     </div>
@@ -101,6 +145,7 @@ Adrofecha - Orçamento
 <!--                    Menu para giro e correr-->
 <!--                Linha Perfil-->
                 <div id="divportas" class="border" style="height: 335px";>
+<<<<<<< HEAD
                     <div class="mx-3 mt-2">
                         <div class="row justify-content-start" id="divperfil">
                             <label for="{{ form.perfil.id_for_label }}">
@@ -122,6 +167,39 @@ Adrofecha - Orçamento
                             <div>
                                 {{ form.perfilpuxador|attr:"class:form-control custom-input-size-selectitems" }}
                             </div>
+=======
+                    <div class="input-group row">
+                      <label class="form-label mt-1 ms-3 mb-0" for="form1">Perfil:</label>
+                      <div class="d-flex inline-block ms-3">
+                        <input type="search" id="form1" class="form-control " style="width: 100px; height: 37px";>
+                        <div class="ms-1" >
+                            <select class="form-select" style="height: 35px; width:350px; ";>
+                                <option value="1"> Opção 1 </option>
+                            </select>
+                        </div>
+                      </div>
+                    </div>
+<!--                    Linha Perfil Puxador-->
+                    <div class="input-group row">
+                      <label class="form-label mt-1 ms-3 mb-0" for="form1">Perfil Puxador:</label>
+                      <div class="d-flex inline-block ms-3">
+                        <input type="search" id="form1" class="form-control " style="width: 100px; height: 37px";>
+                        <div class="ms-1" >
+                            <select class="form-select" style="height: 35px; width:350px; ";>
+                                <option value="1"> Opção 1 </option>
+                            </select>
+                        </div>
+                        <div class="ms-1" >
+                            <select class="form-select" style="height: 35px; width:30px; ";>
+                                <option value="1"> Opção 1 </option>
+                            </select>
+                        </div>
+                        <div class="ms-1" >
+                            <select class="form-select" style="height: 35px; width:80px; ";>
+                                <option value="1"> Opção 1 </option>
+                            </select>
+                        </div>
+>>>>>>> origin/master
                       </div>
                     </div>
 <!--                    Linha Puxador Sobreposto-->
@@ -366,7 +444,10 @@ Adrofecha - Orçamento
     </div>
 </div>
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 <script>
 
 //Escolha de div conforme o modelo de porta
@@ -416,6 +497,7 @@ radioButtons.forEach(radio => {
 
 </script>
 
+<<<<<<< HEAD
 <script>
     $(document).ready(function() {
         $('#id_perfil').select2();
@@ -445,6 +527,13 @@ radioButtons.forEach(radio => {
     padding: 1px 10px;
 }
 
+=======
+<style>
+    .custom-input-size {
+        width: 200px;
+        height: 30px;
+    }
+>>>>>>> origin/master
 </style>
 
 {% endblock %}
