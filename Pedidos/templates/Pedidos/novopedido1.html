@@ -9,8 +9,8 @@ Adrofecha - Orçamento
 {% endblock %}
 
 {% block content %}
-<div class="border" style="margin-top: 65px">
-    <header class="mt-2 p-1 d-flex inline-block" id=listabotoes>
+<div class="container border bg-secondary-subtle" style="height: 850px; margin-top: 65px">
+    <header class="border mt-2 p-1 d-flex inline-block" id=listabotoes style="height: 120px";>
             <div class="input-group ms-2" role="group" id="btnradios" aria-label="Basic radio toggle button group">
                   <input type="radio" class="btn-check" name="btnradio" id="btnPortaGiro" checked="checked" value="PortaGiro" autocomplete="off">
                   <label class="btn btn-outline-primary border me-3 rounded" for="btnPortaGiro" style="height: 110px; width:140px">
@@ -38,64 +38,64 @@ Adrofecha - Orçamento
                   </label>
             </div>
     </header>
-    <hr class="mx-2">
-    <div class="row">
-         <div class="row d-flex justify-content-between">
-            <div class="col-6 border-end">
-                <div class="mt-1 ">
-                    <div class="row mb-1">
-                        <div class="row mx-2">
-                            <div class="mt-1 col d-flex align-items-center justify-content-start">
-                                <label class="me-1" for="{{ form.quantidade.id_for_label }}">
-                                    {{ form.quantidade.label_tag }}
-                                    {% if form.quantidade.field.required %}{% endif %}
-                                </label>
-                                {{ form.quantidade|attr:"class:form-control custom-input-size-quantidade" }}
+    <div class="border mt-2 d-flex justify-content-center" style="height: 700px";>
+         <div class="container row">
+            <div class="col mt-1 me-1 border" style="height: 500px";>
+                <div class="border mt-1" style="height: 90px";>
+                    <div class="row">
+                        <div> <!--                            entrada de dados-->
+                            <div class=" border row mx-2">
+                                <div class="mt-1 col d-flex align-items-center justify-content-start">
+                                    <label class="me-1" for="{{ form.quantidade.id_for_label }}">
+                                        {{ form.quantidade.label_tag }}
+                                        {% if form.quantidade.field.required %}{% endif %}
+                                    </label>
+                                    {{ form.quantidade|attr:"class:form-control custom-input-size-quantidade" }}
+                                </div>
+                                <div class="mt-1 col d-flex align-items-center justify-content-center">
+                                    <label class="me-1" for="{{ form.largura.id_for_label }}">
+                                        {{ form.largura.label_tag }}
+                                        {% if form.largura.field.required %}{% endif %}
+                                    </label>
+                                    {{ form.largura|attr:"class:form-control custom-input-size-medida" }}
+                                </div>
+                                <div class="mt-1 col d-flex align-items-center justify-content-end">
+                                    <label class="me-1" for="{{ form.altura.id_for_label }}">
+                                        {{ form.altura.label_tag }}
+                                        {% if form.altura.field.required %}{% endif %}
+                                    </label>
+                                    {{ form.altura|attr:"class:form-control custom-input-size-medida" }}
+                                </div>
                             </div>
-                            <div class="mt-1 col d-flex align-items-center justify-content-center">
-                                <label class="me-1" for="{{ form.largura.id_for_label }}">
-                                    {{ form.largura.label_tag }}
-                                    {% if form.largura.field.required %}{% endif %}
-                                </label>
-                                {{ form.largura|attr:"class:form-control custom-input-size-medida" }}
-                            </div>
-                            <div class="mt-1 col d-flex align-items-center justify-content-end">
-                                <label class="me-1" for="{{ form.altura.id_for_label }}">
-                                    {{ form.altura.label_tag }}
-                                    {% if form.altura.field.required %}{% endif %}
-                                </label>
-                                {{ form.altura|attr:"class:form-control custom-input-size-medida" }}
-                            </div>
+                            <form class="row mx-3 pt-2">
+                                <div class="col-6 d-flex justify-content-center" id="divacabamento">
+                                    <label class="me-1" for="{{ form.acabamento.id_for_label }}">
+                                        {{ form.acabamento.label_tag }}
+                                        {% if form.acabamento.field.required %}{% endif %}
+                                    </label>
+                                    {{ form.acabamento|attr:"class:form-control custom-input-size-select" }}
+                                </div>
+                                <div class="col-6 d-flex justify-content-center" id="divabertura">
+                                    <label class="me-1" for="{{ form.abertura.id_for_label }}">
+                                        {{ form.abertura.label_tag }}
+                                        {% if form.abertura.field.required %}{% endif %}
+                                    </label>
+                                    {{ form.abertura|attr:"class:form-control custom-input-size-select" }}
+                                </div>
+                                <div class="hidden col" id="divlinha">
+                                    <label class="me-1" for="{{ form.linha.id_for_label }}">
+                                        {{ form.linha.label_tag }}
+                                        {% if form.linha.field.required %}{% endif %}
+                                    </label>
+                                    {{ form.linha|attr:"class:form-control custom-input-size-select" }}
+                                </div>
+                            </form>
                         </div>
-                        <form class="row mx-3 pt-2">
-                            <div class="col-6 d-flex justify-content-center" id="divacabamento">
-                                <label class="me-1" for="{{ form.acabamento.id_for_label }}">
-                                    {{ form.acabamento.label_tag }}
-                                    {% if form.acabamento.field.required %}{% endif %}
-                                </label>
-                                {{ form.acabamento|attr:"class:form-control custom-input-size-select" }}
-                            </div>
-                            <div class="col-6 d-flex justify-content-center" id="divabertura">
-                                <label class="me-1" for="{{ form.abertura.id_for_label }}">
-                                    {{ form.abertura.label_tag }}
-                                    {% if form.abertura.field.required %}{% endif %}
-                                </label>
-                                {{ form.abertura|attr:"class:form-control custom-input-size-select" }}
-                            </div>
-<!--                            <div class="hidden col" id="divlinha">-->
-<!--                                    <label class="me-1" for="{{ form.linha.id_for_label }}">-->
-<!--                                        {{ form.linha.label_tag }}-->
-<!--                                        {% if form.linha.field.required %}{% endif %}-->
-<!--                                    </label>-->
-<!--                                    {{ form.linha|attr:"class:form-control custom-input-size-select" }}-->
-<!--                            </div>-->
-                        </form>
                     </div>
-                </div>
-                <hr class="mx-2">
+<!--    setor de calculo-->
 <!--                    Menu para giro e correr-->
-                <div id="divportas" class="mt-1">
-<!--                    Linha Perfil-->
+<!--                Linha Perfil-->
+                <div id="divportas" class="border" style="height: 335px";>
                     <div class="mx-3 mt-2">
                         <div class="row justify-content-start" id="divperfil">
                             <label for="{{ form.perfil.id_for_label }}">
@@ -105,7 +105,7 @@ Adrofecha - Orçamento
                             <div>
                                 {{ form.perfil|attr:"class:form-control custom-input-size-selectitems" }}
                             </div>
-                        </div>
+                      </div>
                     </div>
 <!--                    Linha Perfil Puxador-->
                     <div class="mx-3 mt-2">
@@ -125,7 +125,7 @@ Adrofecha - Orçamento
                       <div class="d-flex inline-block ms-3">
                         <input type="search" id="form1" class="form-control " style="width: 100px; height: 37px";>
                         <div class="ms-1" >
-                            <select class="form-select";>
+                            <select class="form-select" style="height: 35px; width:350px; ";>
                                 <option value="1"> Opção 1 </option>
                             </select>
                         </div>
@@ -174,7 +174,7 @@ Adrofecha - Orçamento
                 </div>
 <!--                menu para divisoria ambiente-->
 <!--                Linha Superior-->
-                <div id="divambiente" class="border hidden">
+                <div id="divambiente" class="border hidden" style="height: 335px";>
                     <div class="input-group row">
                       <label class="form-label mt-1 ms-3 mb-0" for="form1">Superior:</label>
                       <div class="d-flex inline-block ms-3">
@@ -241,7 +241,7 @@ Adrofecha - Orçamento
                     </div>
                 </div>
 <!--                    menu para vidro-->
-                <div id="divvidros" class="border hidden">
+                <div id="divvidros" class="border hidden" style="height: 335px";>
                     <div class="input-group row">
                       <label class="form-label mt-1 ms-3 mb-0" for="form1">Vidro:</label>
                       <div class="d-flex inline-block ms-3">
@@ -254,24 +254,20 @@ Adrofecha - Orçamento
                       </div>
                     </div>
                 </div>
-<!--                botoes finalizar-->
+<!--                botoes fnalizar-->
                 <div class="mt-1 text-end" style="height: 45px";>
                     <a class="btn btn-primary me-2 mt-1" style="width: 90px"; href="#" role="button">Cancelar</a>
                     <a class="btn btn-primary me-2 mt-1" style="width: 90px"; href="#" role="button">Adicionar</a>
                 </div>
             </div>
-            <div class="border bg-danger-subtle col-6">
-                 <div class="" style="height: 500px" ;>
-                     Desenho Porta
-                 </div>
+            <div class="col bg-danger-subtle mt-1 ms-1 border" style="height: 500px";>
+                Desenho Porta
             </div>
-         </div>
-         <div class="row d-flex justify-content-between">
-            <div class=""><!-- Tabelas-->
-               <div class="row mt-1 ms-1 mb-2">
-                    <div class="col-6 border table-responsive">
+            <div class="container border mb-2" style="height: 180px";>
+                <div class="row">
+                    <div class="col border mx-1 my-1 table-responsive" style="height: 172px";>
                         <header>
-                            <h2 class="bg-warning text-dark text-center fs-6 fw-bold">Insumos</h2>
+                            <h2 class="bg-warning text-dark text-center fs-6 fw-bold ">Insumos</h2>
                             <table class="table table-sm">
                                 <thead>
                                     <tr>
@@ -312,7 +308,7 @@ Adrofecha - Orçamento
                             </table>
                         </header>
                     </div>
-                    <div class="col-6 border table-responsive">
+                    <div class="col border mx-1 my-1 table-responsive" style="height: 172px";>
                         <header>
                             <h2 class="bg-warning text-dark text-center fs-6 fw-bold ">Itens do Orçamento</h2>
                                 <table class="table table-sm ">
@@ -414,11 +410,11 @@ radioButtons.forEach(radio => {
 
 </script>
 
-<!--<script>-->
-<!--$(document).ready(function() {-->
-<!--    $('#id_perfil').select2();-->
-<!--});-->
-<!--</script>-->
+<script>
+    $(document).ready(function() {
+        $('#id_perfil').select2();
+    });
+</script>
 
 <style>
 .custom-input-size-quantidade {
@@ -442,10 +438,6 @@ radioButtons.forEach(radio => {
     height: 30px;
     padding: 1px 10px;
 }
-
-.hidden {
-    display: none;
-}
 </style>
 
 <style>
@@ -455,43 +447,5 @@ radioButtons.forEach(radio => {
     }
 </style>
 
-
-<script>
-$(document).ready(function() {
-  $('#id_acabamento').change(function() {
-    filtrarPerfil();
-  });
-
-  function filtrarPerfil() {
-    var acabamento = $('#id_acabamento').val();
-
-    if (acabamento) {
-      $.ajax({
-        url: '/filtrar_acabamento/',  // Atualize para a URL correta
-        type: 'GET',
-        data: {
-          acabamento: acabamento
-        },
-        success: function(response) {
-          var selectPerfil = $('#id_perfil');
-          selectPerfil.empty();
-
-          $.each(response, function(index, item) {
-            var option = $('<option>').attr('value', item.id).text(item.descricao);
-            selectPerfil.append(option);
-          });
-
-          selectPerfil.show();
-        },
-        error: function(xhr) {
-          console.log(xhr.statusText);
-        }
-      });
-    } else {
-      $('#id_perfil').empty().hide();
-    }
-  }
-});
-</script>
-
 {% endblock %}
+

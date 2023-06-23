@@ -328,14 +328,6 @@ class AcabamentoList(LoginRequiredMixin,PermissionRequiredMixin, ListView):
     permission_required = 'cadastros.view_acabamento'
 
 
-# class ModeloPerfilList(ListView):
-#     model = ModeloPerfil
-#     template_name = 'cadastros/listas/modeloperfil.html'
-#
-# class ModeloPerfilPuxadorList(ListView):
-#     model = ModeloPerfilPuxador
-#     template_name = 'cadastros/listas/modeloperfilpuxador.html'
-
 class TipoList(LoginRequiredMixin, PermissionRequiredMixin, ListView):
     model = Tipo
     template_name = 'cadastros/listas/tipo.html'

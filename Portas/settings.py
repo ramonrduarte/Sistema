@@ -43,12 +43,12 @@ INSTALLED_APPS = [
     'paginas.apps.PaginasConfig',
     'cadastros.apps.CadastrosConfig',
     'multiselectfield',
-    "crispy_forms",
-    "crispy_bootstrap5",
+    'crispy_forms',
+    'crispy_bootstrap5',
     'Clientes.apps.ClientesConfig',
     'Pedidos.apps.PedidosConfig',
     'widget_tweaks',
-    "debug_toolbar",
+    'debug_toolbar',
 ]
 
 # Crispy Forms

@@ -1,12 +1,16 @@
 from django import forms
-from django_select2.widgets import Select2Widget
+from .models import Perfil
 from .models import Pedido
 
 class PedidoForm(forms.Form):
     perfil = forms.ChoiceField(
         label='Perfil',
         queryset=Perfil.objects.all(),
-        widget=Select2Widget,
+    )
+
+    perfilpuxador = forms.ChoiceField(
+        label='Perfil Puxador',
+        queryset=Perfil.objects.all(),
     )
 
     class Meta:
