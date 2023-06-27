@@ -38,11 +38,11 @@
         <div class="row p-3">
             <div class="col-4 border">
                 <div class="pt-1" type="radio" name="encaixe" id="idpermiteperfilpuxador">{{ form.encaixe|as_crispy_field }}</div>
-                <div class="" id="idperfilpuxador" name="perfilpuxador" data-initial-puxador="{{ perfil_puxador_ids }}">
-                    {% for perfil_puxador in perfil_puxador %}
+                <div class="" id="idperfilpuxador" name="perfilpuxador" data-initial-puxador="{{ perfilpuxador_ids }}">
+                    {% for perfilpuxador in perfilpuxador %}
                         <div class="form-check" {% if form.instance.encaixe == '1' %}style="display: block;"{% else %}style="display: none;"{% endif %}>
-                            <input type="checkbox" name="perfil_puxador" id="perfil_puxador_{{ perfil_puxador.id }}" value="{{ perfil_puxador.id }}" class="form-check-input" {% if perfil_puxador.id in perfil_puxador_ids %}checked{% endif %}>
-                            <label for="perfil_puxador_{{ perfil_puxador.id }}" class="form-check-label ps-1">({{ perfil_puxador.codigo }}) {{ perfil_puxador.descricao }}</label>
+                            <input type="checkbox" name="perfilpuxador" id="perfilpuxador_{{ perfilpuxador.id }}" value="{{ perfilpuxador.id }}" class="form-check-input" {% if perfilpuxador.id in perfilpuxador_ids %}checked{% endif %}>
+                            <label for="perfilpuxador_{{ perfilpuxador.id }}" class="form-check-label ps-1">({{ perfilpuxador.codigo }}) {{ perfilpuxador.descricao }}</label>
                         </div>
                     {% endfor %}
                 </div>
@@ -90,7 +90,7 @@
 
       if (encaixe === '1') {
         $.ajax({
-          url: '{% url 'filtrar_acabamento' %}',
+          url: '{% url 'filtrar_perfil' %}',
           type: 'GET',
           data: {
             acabamento: acabamento
@@ -100,9 +100,9 @@
             resultadosPerfilPuxador.empty();
 
             $.each(response, function(index, item) {
-              var checkboxId = 'checkbox_perfil_puxador_' + item.id;
+              var checkboxId = 'checkbox_perfilpuxador_' + item.id;
               var checkboxLabel = $('<label>').attr('for', checkboxId).addClass('form-check-label').text(item.descricao);
-              var checkboxInput = $('<input>').attr('type', 'checkbox').attr('name', 'perfil_puxador').attr('id', checkboxId).attr('value', item.id).addClass('form-check-input');
+              var checkboxInput = $('<input>').attr('type', 'checkbox').attr('name', 'perfilpuxador').attr('id', checkboxId).attr('value', item.id).addClass('form-check-input');
 
               var checkboxDiv = $('<div>').addClass('form-check').append(checkboxInput, checkboxLabel);
               var option = $('<div>').append(checkboxDiv);

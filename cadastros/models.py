@@ -211,7 +211,7 @@ class Perfil(models.Model):
     tipo = models.ForeignKey(Tipo, on_delete=models.PROTECT)
     modelo = models.ForeignKey(ModeloPerfil, on_delete=models.PROTECT)
     encaixe = models.CharField(max_length=3, choices=ENCAIXE, blank=True, null=True)
-    perfil_puxador = models.ManyToManyField(PerfilPuxador, verbose_name="Perfil Puxador", blank=True)
+    perfilpuxador = models.ManyToManyField(PerfilPuxador, verbose_name="Perfil Puxador", blank=True)
     encaixedivisor = models.CharField(max_length=3, choices=ENCAIXE, blank=True, null=True)
     divisor = models.ManyToManyField(Divisor, verbose_name="Divisor", blank=True)
     encaixepuxador = models.CharField(max_length=3, choices=ENCAIXE, blank=True, null=True)

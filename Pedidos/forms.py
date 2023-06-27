@@ -8,11 +8,6 @@ class PedidoForm(forms.Form):
         queryset=Perfil.objects.all(),
     )
 
-    perfilpuxador = forms.ChoiceField(
-        label='Perfil Puxador',
-        queryset=Perfil.objects.all(),
-    )
-
     class Meta:
         model = Pedido
         fields = '__all__'

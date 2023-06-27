@@ -9,7 +9,7 @@ Adrofecha - Orçamento
 {% endblock %}
 
 {% block content %}
-<div class="border" style="margin-top: 65px">
+<div class="border" style="margin-top: 45px">
     <header class="mt-2 p-1 d-flex inline-block" id=listabotoes>
             <div class="input-group ms-2" role="group" id="btnradios" aria-label="Basic radio toggle button group">
                   <input type="radio" class="btn-check" name="btnradio" id="btnPortaGiro" checked="checked" value="PortaGiro" autocomplete="off">
@@ -38,13 +38,13 @@ Adrofecha - Orçamento
                   </label>
             </div>
     </header>
-    <hr class="mx-2">
+    <hr class="mx-2 mghr">
     <div class="row">
          <div class="row d-flex justify-content-between">
             <div class="col-6 border-end">
-                <div class="mt-1 ">
+                <div>
                     <div class="row mb-1">
-                        <div class="row mx-2">
+                        <div class="row mx-1">
                             <div class="mt-1 col d-flex align-items-center justify-content-start">
                                 <label class="me-1" for="{{ form.quantidade.id_for_label }}">
                                     {{ form.quantidade.label_tag }}
@@ -96,80 +96,97 @@ Adrofecha - Orçamento
 <!--                    Menu para giro e correr-->
                 <div id="divportas" class="mt-1">
 <!--                    Linha Perfil-->
-                    <div class="mx-3 mt-2">
-                        <div class="row justify-content-start" id="divperfil">
+                    <div class="mx-3">
+                        <div class="row justify-content-start" id="divperfil" onchange="buscarPerfilPuxadores()>
                             <label for="{{ form.perfil.id_for_label }}">
                                 {{ form.perfil.label_tag }}
                                 {% if form.perfil.field.required %}{% endif %}
                             </label>
                             <div>
-                                {{ form.perfil|attr:"class:form-control custom-input-size-selectitems" }}
+                                {{ form.perfil|attr:"class:form-control custom-input-size-selectitems selectPerfil" }}
                             </div>
                         </div>
                     </div>
 <!--                    Linha Perfil Puxador-->
-                    <div class="mx-3 mt-2">
-                        <div class="row justify-content-start" id="divperfilpuxador">
+                    <div class="mx-3">
+                        <div id="divperfilpuxador">
                             <label for="{{ form.perfilpuxador.id_for_label }}">
                                 {{ form.perfilpuxador.label_tag }}
                                 {% if form.perfilpuxador.field.required %}{% endif %}
                             </label>
-                            <div>
-                                {{ form.perfilpuxador|attr:"class:form-control custom-input-size-selectitems" }}
+                            <div class="d-flex">
+                                <div class="me-1">
+                                    {{ form.perfilpuxador|attr:"class:form-control custom-input-size-selectitems selectPerfilPuxador" }}
+                                </div>
+                                <div id="selecao" class="d-flex">
+                                    <select class="form-control custom-input-qtd flex-grow-1 me-1">
+                                        <option value="1">1</option>
+                                    </select>
+                                    <select class="form-select custom-input-posicao flex-grow-1">
+                                        <option value="1">Posição 1</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>
 <!--                    Linha Puxador Sobreposto-->
-                    <div class="input-group row">
-                      <label class="form-label mt-1 ms-3 mb-0" for="form1">Puxador Sobreposto:</label>
-                      <div class="d-flex inline-block ms-3">
-                        <input type="search" id="form1" class="form-control " style="width: 100px; height: 37px";>
-                        <div class="ms-1" >
-                            <select class="form-select";>
-                                <option value="1"> Opção 1 </option>
-                            </select>
+                    <div class="mx-3">
+                        <div id="divpuxador">
+                            <label for="{{ form.puxador.id_for_label }}">
+                                {{ form.puxador.label_tag }}
+                                {% if form.puxador.field.required %}{% endif %}
+                            </label>
+                            <div class="d-flex">
+                                <div class="me-1">
+                                    {{ form.puxador|attr:"class:form-control custom-input-size-selectitems selectPuxador" }}
+                                </div>
+                                <div class="d-flex">
+                                    <select class="form-control custom-input-qtd flex-grow-1 me-1">
+                                        <option value="1">1</option>
+                                    </select>
+                                    <select class="form-select custom-input-posicao flex-grow-1">
+                                        <option value="1">Posição 1</option>
+                                    </select>
+                                    <select class="form-select custom-input-qtd flex-grow-1">
+                                        <option value="1">1</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
-                        <div class="ms-1" >
-                            <select class="form-select" style="height: 35px; width:30px; ";>
-                                <option value="1"> Opção 1 </option>
-                            </select>
-                        </div>
-                        <div class="ms-1" >
-                            <select class="form-select"  style="height: 35px; width:80px; ";>
-                                <option value="1"> Opção 1 </option>
-                            </select>
-                        </div>
-                        <input type="search" id="form1" placeholder="mm" class="form-control ms-1 " style="width: 70px; height: 37px";>
-                      </div>
                     </div>
 <!--                    Linha Divisor-->
-                    <div class="input-group row">
-                      <label class="form-label mt-1 ms-3 mb-0" for="form1">Divisor:</label>
-                      <div class="d-flex inline-block ms-3">
-                        <input type="search" id="form1" class="form-control " style="width: 100px; height: 37px";>
-                        <div class="ms-1" >
-                            <select class="form-select" style="height: 35px; width:350px; ";>
-                                <option value="1"> Opção 1 </option>
-                            </select>
+                    <div class="mx-3">
+                        <div id="divdivisor">
+                            <label for="{{ form.divisor.id_for_label }}">
+                                {{ form.divisor.label_tag }}
+                                {% if form.divisor.field.required %}{% endif %}
+                            </label>
+                            <div class="d-flex">
+                                <div class="me-1">
+                                    {{ form.divisor|attr:"class:form-control custom-input-size-selectitems selectdivisor" }}
+                                </div>
+                                <div class="d-flex">
+                                    <select class="form-control custom-input-qtd flex-grow-1 me-1">
+                                        <option value="1">1</option>
+                                    </select>
+                                    <select class="form-select custom-input-posicao flex-grow-1">
+                                        <option value="1">Posição 1</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
-                        <div class="ms-1" >
-                            <select class="form-select" style="height: 35px; width:30px; ";>
-                                <option value="1"> Opção 1 </option>
-                            </select>
-                        </div>
-                      </div>
                     </div>
 <!--                    Linha Vidro-->
-                    <div class="input-group row">
-                      <label class="form-label mt-1 ms-3 mb-0" for="form1">Vidro:</label>
-                      <div class="d-flex inline-block ms-3">
-                        <input type="search" id="form1" class="form-control " style="width: 100px; height: 37px";>
-                        <div class="ms-1" >
-                            <select class="form-select" style="height: 35px; width:350px; ";>
-                                <option value="1"> Opção 1 </option>
-                            </select>
+                    <div class="mx-3">
+                        <div id="divvidro">
+                            <label for="{{ form.vidro.id_for_label }}">
+                                {{ form.vidro.label_tag }}
+                                {% if form.vidro.field.required %}{% endif %}
+                            </label>
+                            <div class="me-1">
+                                {{ form.vidro|attr:"class:form-control custom-input-size-selectitems selectVidro" }}
+                            </div>
                         </div>
-                      </div>
                     </div>
                 </div>
 <!--                menu para divisoria ambiente-->
@@ -256,8 +273,8 @@ Adrofecha - Orçamento
                 </div>
 <!--                botoes finalizar-->
                 <div class="mt-1 text-end" style="height: 45px";>
-                    <a class="btn btn-primary me-2 mt-1" style="width: 90px"; href="#" role="button">Cancelar</a>
-                    <a class="btn btn-primary me-2 mt-1" style="width: 90px"; href="#" role="button">Adicionar</a>
+                    <a class="btn btn-primary me-2 mt-1" id="btnpedidocancelar" style="width: 90px"; href="#" role="button">Cancelar</a>
+                    <a class="btn btn-primary me-2 mt-1" id="btnpedidofinalizar" style="width: 90px"; href="#" role="button">Adicionar</a>
                 </div>
             </div>
             <div class="border bg-danger-subtle col-6">
@@ -411,7 +428,6 @@ radioButtons.forEach(radio => {
   });
 });
 
-
 </script>
 
 <!--<script>-->
@@ -438,7 +454,19 @@ radioButtons.forEach(radio => {
 }
 
 .custom-input-size-selectitems {
-    width: 400px;
+    width: 300px;
+    height: 30px;
+    padding: 1px 10px;
+}
+
+.custom-input-qtd {
+    width: 60px;
+    height: 30px;
+    padding: 1px 10px;
+}
+
+.custom-input-posicao {
+    width: 100px;
     height: 30px;
     padding: 1px 10px;
 }
@@ -446,15 +474,18 @@ radioButtons.forEach(radio => {
 .hidden {
     display: none;
 }
-</style>
 
-<style>
-    .custom-input-size {
-        width: 200px;
-        height: 30px;
-    }
-</style>
+.custom-input-size {
+    width: 200px;
+    height: 30px;
+}
 
+.mghr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+</style>
 
 <script>
 $(document).ready(function() {
@@ -476,8 +507,11 @@ $(document).ready(function() {
           var selectPerfil = $('#id_perfil');
           selectPerfil.empty();
 
+          var option = $('<option>').attr('value', '').text('-------');
+          selectPerfil.append(option);
+
           $.each(response, function(index, item) {
-            var option = $('<option>').attr('value', item.id).text(item.descricao);
+            option = $('<option>').attr('value', item.id).text(item.descricao);
             selectPerfil.append(option);
           });
 
@@ -494,4 +528,77 @@ $(document).ready(function() {
 });
 </script>
 
+<script>
+$(document).ready(function() {
+  $('#id_perfil').change(function() {
+    buscarPerfilPuxador();
+  });
+
+  function buscarPerfilPuxador() {
+    var perfil = $('#id_perfil').val();
+
+    if (perfil) {
+      $.ajax({
+        url: '/buscar_PerfilPuxador/',  // Atualize para a URL correta
+        type: 'GET',
+        data: {
+          perfil: perfil
+        },
+        success: function(response) {
+          var selectPerfilPuxador = $('#id_perfilpuxador');
+          selectPerfilPuxador.empty();
+
+          var option = $('<option>').attr('value', '').text('-------');
+          selectPerfilPuxador.append(option);
+
+          $.each(response, function(index, item) {
+            option = $('<option>').attr('value', item.id).text(item.descricao);
+            selectPerfilPuxador.append(option);
+          });
+
+          selectPerfilPuxador.show();
+        },
+        error: function(xhr) {
+          console.log(xhr.statusText);
+        }
+      });
+    } else {
+      $('#id_perfilpuxador').empty().hide();
+    }
+  }
+});
+</script>
+
+<script>
+$(document).ready(function() {
+  // Função para verificar se os campos estão preenchidos
+  function verificarCamposPreenchidos() {
+    var quantidade = $('#id_quantidade').val();
+    var largura = $('#id_largura').val();
+    var altura = $('#id_altura').val();
+    var acabamento = $('#id_acabamento').val();
+    var abertura = $('#id_abertura').val();
+
+    // Verificar se todos os campos estão preenchidos
+    if (quantidade && largura && altura && acabamento && abertura) {
+      // Desbloquear os campos na divportas
+      $('#divportas input, #divportas select').prop('disabled', false);
+    } else {
+      // Bloquear os campos na divportas
+      $('#divportas input, #divportas select').prop('disabled', true);
+    }
+  }
+
+  // Verificar campos ao carregar a página
+  verificarCamposPreenchidos();
+
+  // Verificar campos sempre que houver uma alteração nos campos
+  $('#id_quantidade, #id_largura, #id_altura, #id_acabamento, #id_abertura').on('input', function() {
+    verificarCamposPreenchidos();
+  });
+});
+</script>
+
+
 {% endblock %}
+

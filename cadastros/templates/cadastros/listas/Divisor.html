@@ -5,12 +5,12 @@ Cadastro de Divisores
 {% endblock %}
 
 {% block content %}
-<header class="mt-5 pt-3">
+<header class="mt-5">
   <div>
-      <div class="bg-warning rounded text-dark border border-dark container h-10 d-flex align-items-center justify-content-center">
-        <h1><strong>CADASTRO DE DIVISORES</strong></h1>
+      <div class="bg-warning rounded text-dark border border-dark pt-1 d-flex align-items-center justify-content-center">
+        <h4><strong>CADASTRO DE DIVISORES</strong></h4>
       </div>
-      <div class="mt-3 container h-10 d-flex align-items-center justify-content-end">
+      <div class="mt-2 d-flex align-items-center justify-content-end">
           <input type="email" class="form-control me-3" style="width: 500px;" id="exampleFormControlInput1" placeholder="digite aqui">
           <a href="{% url 'cadastrar-divisor' %}" style="width: 120px;" class="btn btn-primary bg-primary">Novo</a>
       </div>

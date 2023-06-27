@@ -5,12 +5,12 @@ Cadastro de Perfis
 {% endblock %}
 
 {% block content %}
-<header class="mt-5 pt-3">
+<header class="mt-5">
   <div>
-      <div class="bg-warning rounded text-dark border border-dark container h-10 d-flex align-items-center justify-content-center">
-        <h1><strong>CADASTRO DE PERFIS</strong></h1>
+      <div class="bg-warning rounded text-dark border border-dark pt-1 d-flex align-items-center justify-content-center">
+        <h4><strong>CADASTRO DE PERFIS</strong></h4>
       </div>
-      <div class="mt-3 container h-10 d-flex align-items-center justify-content-end">
+      <div class="mt-2 d-flex align-items-center justify-content-end">
           <input type="email" class="form-control me-3" style="width: 500px;" id="" name="busca-perfil" placeholder="digite aqui">
           <a href="{% url 'cadastrar-perfil' %}" style="width: 120px;" class="btn btn-primary bg-primary">Novo</a>
       </div>
@@ -55,9 +55,9 @@ Cadastro de Perfis
                         {% endif %}
                     </td>
                     <td>
-                        {% if perfil.perfil_puxador.all %}
-                            {% for perfil_puxador in perfil.perfil_puxador.all %}
-                                {{ perfil_puxador.codigo }};
+                        {% if perfil.perfilpuxador.all %}
+                            {% for perfilpuxador in perfil.perfilpuxador.all %}
+                                {{ perfilpuxador.codigo }};
                             {% endfor %}
                         {% else %}
                             ---------

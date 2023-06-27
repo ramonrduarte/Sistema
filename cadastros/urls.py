@@ -62,7 +62,7 @@ urlpatterns = [
     path('listar/vidro/', VidroList.as_view(), name='listar-vidro'),
 
     path('listar/modelos/', Modelos, name='listar-modelos'),
-    path('filtrar-acabamento/', views.filtrar_acabamento, name='filtrar_acabamento'),
+    path('filtrar-perfil/', views.filtrar_perfil, name='filtrar_perfil'),
     path('filtrar-divisor/', views.filtrar_divisor, name='filtrar_divisor'),
     path('filtrar-puxador/', views.filtrar_puxador, name='filtrar_puxador'),
 

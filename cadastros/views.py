@@ -192,10 +192,10 @@ class PerfilUpdate(LoginRequiredMixin,PermissionRequiredMixin, UpdateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         perfil = self.get_object()
-        context['perfil_puxador_ids'] = perfil.perfil_puxador.values_list('id',flat=True)
+        context['perfilpuxador_ids'] = perfil.perfilpuxador.values_list('id',flat=True)
         context['divisor_ids'] = perfil.divisor.values_list('id', flat=True)
         context['puxador_ids'] = perfil.puxador.values_list('id', flat=True)
-        context['perfil_puxador'] = PerfilPuxador.objects.filter(acabamento=perfil.acabamento)
+        context['perfilpuxador'] = PerfilPuxador.objects.filter(acabamento=perfil.acabamento)
         context['divisor'] = Divisor.objects.filter(acabamento=perfil.acabamento)
         context['puxador'] = Puxador.objects.filter(acabamento=perfil.acabamento)
         return context
@@ -378,7 +378,7 @@ def Modelos (request):
                                                              'modelovidro': modelovidro})
 
 
-def filtrar_acabamento(request):
+def filtrar_perfil(request):
     acabamento = request.GET.get('acabamento')
 
     queryset = PerfilPuxador.objects.all()
