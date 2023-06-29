@@ -61,3 +61,37 @@ class buscar_PerfilPuxador(View):
             })
 
         return JsonResponse(resultados, safe=False)
+
+class buscar_Puxador(View):
+    def get(self, request):
+        perfil_id = request.GET.get('perfil')
+
+        perfil = get_object_or_404(Perfil, id=perfil_id)
+        puxadores = perfil.puxador.all()
+
+        # Crie uma lista de dicionários com os resultados filtrados
+        resultados = []
+        for objeto in puxadores:
+            resultados.append({
+                'id': objeto.id,
+                'descricao': f"({objeto.codigo}) {objeto.descricao}"
+            })
+
+        return JsonResponse(resultados, safe=False)
+
+class buscar_Divisor(View):
+    def get(self, request):
+        perfil_id = request.GET.get('perfil')
+
+        perfil = get_object_or_404(Perfil, id=perfil_id)
+        divisores = perfil.divisor.all()
+
+        # Crie uma lista de dicionários com os resultados filtrados
+        resultados = []
+        for objeto in divisores:
+            resultados.append({
+                'id': objeto.id,
+                'descricao': f"({objeto.codigo}) {objeto.descricao}"
+            })
+
+        return JsonResponse(resultados, safe=False)

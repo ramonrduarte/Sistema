@@ -68,7 +68,7 @@ Adrofecha - Orçamento
                             </div>
                         </div>
                         <form class="row mx-3 pt-2">
-                            <div class="col-6 d-flex justify-content-center" id="divacabamento">
+                            <div class="col-6 d-flex justify-content-center" id="divacabamento" onchange="limparCampos()">
                                 <label class="me-1" for="{{ form.acabamento.id_for_label }}">
                                     {{ form.acabamento.label_tag }}
                                     {% if form.acabamento.field.required %}{% endif %}
@@ -82,7 +82,7 @@ Adrofecha - Orçamento
                                 </label>
                                 {{ form.abertura|attr:"class:form-control custom-input-size-select" }}
                             </div>
-<!--                            <div class="hidden col" id="divlinha">-->
+<!--                            <div class="hidden col-6 d-flex justify-content-center" id="divlinha">-->
 <!--                                    <label class="me-1" for="{{ form.linha.id_for_label }}">-->
 <!--                                        {{ form.linha.label_tag }}-->
 <!--                                        {% if form.linha.field.required %}{% endif %}-->
@@ -97,7 +97,7 @@ Adrofecha - Orçamento
                 <div id="divportas" class="mt-1">
 <!--                    Linha Perfil-->
                     <div class="mx-3">
-                        <div class="row justify-content-start" id="divperfil" onchange="buscarPerfilPuxadores()>
+                        <div class="row justify-content-start" id="divperfil" onchange="buscarPerfilPuxadores()">
                             <label for="{{ form.perfil.id_for_label }}">
                                 {{ form.perfil.label_tag }}
                                 {% if form.perfil.field.required %}{% endif %}
@@ -144,7 +144,7 @@ Adrofecha - Orçamento
                                     <select class="form-control custom-input-qtd flex-grow-1 me-1">
                                         <option value="1">1</option>
                                     </select>
-                                    <select class="form-select custom-input-posicao flex-grow-1">
+                                    <select class="form-select custom-input-posicao flex-grow-1 me-1">
                                         <option value="1">Posição 1</option>
                                     </select>
                                     <select class="form-select custom-input-qtd flex-grow-1">
@@ -258,17 +258,17 @@ Adrofecha - Orçamento
                     </div>
                 </div>
 <!--                    menu para vidro-->
-                <div id="divvidros" class="border hidden">
-                    <div class="input-group row">
-                      <label class="form-label mt-1 ms-3 mb-0" for="form1">Vidro:</label>
-                      <div class="d-flex inline-block ms-3">
-                        <input type="search" id="form1" class="form-control " style="width: 100px; height: 37px";>
-                        <div class="ms-1" >
-                            <select class="form-select" style="height: 35px; width:350px; ";>
-                                <option value="1"> Opção 1 </option>
-                            </select>
+                <div id="divvidros" class="hidden">
+                    <div class="mx-3">
+                        <div id="divvidro">
+                            <label for="{{ form.vidro.id_for_label }}">
+                                {{ form.vidro.label_tag }}
+                                {% if form.vidro.field.required %}{% endif %}
+                            </label>
+                            <div class="me-1">
+                                {{ form.vidro|attr:"class:form-control custom-input-size-selectitems selectVidro" }}
+                            </div>
                         </div>
-                      </div>
                     </div>
                 </div>
 <!--                botoes finalizar-->
@@ -386,44 +386,37 @@ Adrofecha - Orçamento
 
 //Escolha de div conforme o modelo de porta
 const radioButtons = document.querySelectorAll('input[type="radio"][name="btnradio"]');
-const div1 = document.getElementById("divportas");
-const div2 = document.getElementById("divambiente");
-const div3 = document.getElementById("divvidros");
-const div4 = document.getElementById("divacabamento");
-const div5 = document.getElementById("divabertura");
-const div6 = document.getElementById("divlinha");
+const divportas = document.getElementById("divportas");
+const divambiente = document.getElementById("divambiente");
+const divvidros = document.getElementById("divvidros");
+const divacabamento = document.getElementById("divacabamento");
+const divabertura = document.getElementById("divabertura");
+const divlinha = document.getElementById("divlinha");
 
 
 radioButtons.forEach(radio => {
   radio.addEventListener('change', function() {
-    if (this.value === 'PortaGiro') {
-      div1.style.display = "block";
-      div2.style.display = "none";
-      div3.style.display = "none";
-      div4.style.display = "block";
-      div5.style.display = "block";
-      div6.style.display = "none";
-    } else if (this.value === 'PortaCorrer') {
-      div1.style.display = "block";
-      div2.style.display = "none";
-      div3.style.display = "none";
-      div4.style.display = "block";
-      div5.style.display = "block";
-      div6.style.display = "none";
+    if (this.value === 'PortaGiro' || this.value === 'PortaCorrer') {
+      divportas.style.display = "block";
+      divambiente.style.display = "none";
+      divvidros.style.display = "none";
+      divacabamento.style.display = "block";
+      divabertura.style.display = "block";
+      divlinha.style.display = "none";
     } else if (this.value === 'DivisoriaAmbiente') {
-      div1.style.display = "none";
-      div2.style.display = "block";
-      div3.style.display = "none";
-      div4.style.display = "block";
-      div5.style.display = "none";
-      div6.style.display = "block";
+      divportas.style.display = "none";
+      divambiente.style.display = "block";
+      divvidros.style.display = "none";
+      divacabamento.style.display = "block";
+      divabertura.style.display = "none";
+      divlinha.style.display = "block";
     } else if (this.value === 'Vidros') {
-      div1.style.display = "none";
-      div2.style.display = "none";
-      div3.style.display = "block";
-      div4.style.display = "none";
-      div5.style.display = "none";
-      div6.style.display = "none";
+      divportas.style.display = "none";
+      divambiente.style.display = "none";
+      divvidros.style.display = "block";
+      divacabamento.style.display = "none";
+      divabertura.style.display = "none";
+      divlinha.style.display = "none";
     }
   });
 });
@@ -522,7 +515,7 @@ $(document).ready(function() {
         }
       });
     } else {
-      $('#id_perfil').empty().hide();
+      $('#id_perfil').empty();
     }
   }
 });
@@ -556,6 +549,18 @@ $(document).ready(function() {
             selectPerfilPuxador.append(option);
           });
 
+          // Verificar o número de itens na resposta
+          var numItens = response.length;
+
+          // Desabilitar ou habilitar o campo divisor com base no número de itens
+          if (numItens <= 0) {
+            selectPerfilPuxador.prop('disabled', true);
+            $('#divperfilpuxador :input').prop('disabled', true); // Bloquear campos dentro da div com id="divperfilpuxador"
+          } else {
+            selectPerfilPuxador.prop('disabled', false);
+            $('#divperfilpuxador :input').prop('disabled', false); // Desbloquear campos dentro da div com id="divperfilpuxador"
+          }
+
           selectPerfilPuxador.show();
         },
         error: function(xhr) {
@@ -563,7 +568,123 @@ $(document).ready(function() {
         }
       });
     } else {
-      $('#id_perfilpuxador').empty().hide();
+      $('#id_perfilpuxador').empty();
+      $('#divperfilpuxador :input').prop('disabled', true); // Bloquear campos dentro da div com id="divpuxador"
+    }
+  }
+});
+</script>
+
+<script>
+$(document).ready(function() {
+  $('#id_perfil').change(function() {
+    buscarDivisor();
+    limparCampoVidro(); // Adicionado chamada para a função limparCampoVidro()
+  });
+
+  function buscarDivisor() {
+    var perfil = $('#id_perfil').val();
+
+    if (perfil) {
+      $.ajax({
+        url: '/buscar_Divisor/',  // Atualize para a URL correta
+        type: 'GET',
+        data: {
+          perfil: perfil
+        },
+        success: function(response) {
+          var selectDivisor = $('#id_divisor');
+          selectDivisor.empty();
+
+          var option = $('<option>').attr('value', '').text('-------');
+          selectDivisor.append(option);
+
+          $.each(response, function(index, item) {
+            option = $('<option>').attr('value', item.id).text(item.descricao);
+            selectDivisor.append(option);
+          });
+
+          // Verificar o número de itens na resposta
+          var numItens = response.length;
+
+          // Desabilitar ou habilitar o campo divisor com base no número de itens
+          if (numItens <= 0) {
+            selectDivisor.prop('disabled', true);
+            $('#divdivisor :input').prop('disabled', true); // Bloquear campos dentro da div com id="divdivisor"
+          } else {
+            selectDivisor.prop('disabled', false);
+            $('#divdivisor :input').prop('disabled', false); // Desbloquear campos dentro da div com id="divdivisor"
+          }
+
+          selectDivisor.show();
+        },
+        error: function(xhr) {
+          console.log(xhr.statusText);
+        }
+      });
+    } else {
+      $('#id_divisor').empty();
+      $('#divdivisor :input').prop('disabled', true); // Bloquear campos dentro da div com id="divdivisor"
+    }
+  }
+
+  // Função para limpar o campo id_vidro
+  function limparCampoVidro() {
+    $('#id_vidro').val('');
+  }
+});
+
+</script>
+
+<script>
+$(document).ready(function() {
+  $('#id_perfil').change(function() {
+    buscarPuxador();
+  });
+
+  function buscarPuxador() {
+    var perfil = $('#id_perfil').val();
+
+    if (perfil) {
+      $.ajax({
+        url: '/buscar_Puxador/',  // Atualize para a URL correta
+        type: 'GET',
+        data: {
+          perfil: perfil
+        },
+        success: function(response) {
+          var selectPuxador = $('#id_puxador');
+          selectPuxador.empty();
+
+          var option = $('<option>').attr('value', '').text('-------');
+          selectPuxador.append(option);
+
+          $.each(response, function(index, item) {
+            option = $('<option>').attr('value', item.id).text(item.descricao);
+            selectPuxador.append(option);
+          });
+
+          // Verificar o número de itens na resposta
+          var numItens = response.length;
+
+          // Desabilitar ou habilitar o campo puxador com base no número de itens
+          if (numItens <= 0) {
+            selectPuxador.prop('disabled', true);
+            $('#divpuxador :input').prop('disabled', true); // Bloquear campos dentro da div com id="divpuxador"
+          } else {
+            selectPuxador.prop('disabled', false);
+            $('#divpuxador :input').prop('disabled', false); // Desbloquear campos dentro da div com id="divpuxador"
+          }
+
+          selectPuxador.show();
+        },
+        error: function(xhr) {
+          console.log(xhr.statusText);
+        }
+      });
+    } else {
+      $('#id_puxador').empty();
+      $('#divpuxador :input').prop('disabled', true);
     }
   }
 });
@@ -578,11 +699,21 @@ $(document).ready(function() {
     var altura = $('#id_altura').val();
     var acabamento = $('#id_acabamento').val();
     var abertura = $('#id_abertura').val();
+    var perfil = $('#id_perfil').val();
 
     // Verificar se todos os campos estão preenchidos
     if (quantidade && largura && altura && acabamento && abertura) {
-      // Desbloquear os campos na divportas
-      $('#divportas input, #divportas select').prop('disabled', false);
+      // Desbloquear o campo perfil
+      $('#id_perfil').prop('disabled', false);
+
+      // Verificar se o campo perfil também está preenchido
+      if (perfil) {
+        // Desbloquear os demais campos na divportas
+        $('#divportas input:not(#id_perfil), #divportas select:not(#id_perfil)').prop('disabled', false);
+      } else {
+        // Bloquear os demais campos na divportas
+        $('#divportas input:not(#id_perfil), #divportas select:not(#id_perfil)').prop('disabled', true);
+      }
     } else {
       // Bloquear os campos na divportas
       $('#divportas input, #divportas select').prop('disabled', true);
@@ -593,12 +724,27 @@ $(document).ready(function() {
   verificarCamposPreenchidos();
 
   // Verificar campos sempre que houver uma alteração nos campos
-  $('#id_quantidade, #id_largura, #id_altura, #id_acabamento, #id_abertura').on('input', function() {
+  $('#id_quantidade, #id_largura, #id_altura, #id_acabamento, #id_abertura, #id_perfil').on('input', function() {
     verificarCamposPreenchidos();
   });
 });
 </script>
 
+<script>
+    function limparCampos() {
+        // Selecionar os campos dentro da divportas
+        var camposDivPortas = document.getElementById('divportas').getElementsByTagName('input');
+        var selectsDivPortas = document.getElementById('divportas').getElementsByTagName('select');
+
+        // Limpar os campos
+        for (var i = 0; i < camposDivPortas.length; i++) {
+            camposDivPortas[i].value = '';
+        }
+        for (var i = 0; i < selectsDivPortas.length; i++) {
+            selectsDivPortas[i].value = '';
+        }
+    }
+</script>
 
 {% endblock %}
 
