@@ -8,7 +8,7 @@ from django.shortcuts import get_object_or_404
 class PedidoCreate(CreateView):
     model = Pedido
     fields = '__all__'
-    template_name = 'Pedidos/novopedido.html'
+    template_name = 'Pedidos/orcamento.html'
 
     def get_perfil_puxadores(self, request):
         perfil_id = request.GET.get('perfil_id')

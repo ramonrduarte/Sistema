@@ -1,0 +1,47 @@
+.custom-input-size-quantidade {
+    width: 45px;
+    height: 30px;
+}
+
+.custom-input-size-medida {
+    width: 65px;
+    height: 30px;
+}
+
+.custom-input-size-select {
+    width: 155px;
+    height: 30px;
+    padding: 1px 10px;
+}
+
+.custom-input-size-selectitems {
+    width: 300px;
+    height: 30px;
+    padding: 1px 10px;
+}
+
+.custom-input-qtd {
+    width: 60px;
+    height: 30px;
+    padding: 1px 10px;
+}
+
+.custom-input-posicao {
+    width: 100px;
+    height: 30px;
+    padding: 1px 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+.custom-input-size {
+    width: 200px;
+    height: 30px;
+}
+
+.mghr {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
