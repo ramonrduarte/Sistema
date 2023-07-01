@@ -1,41 +1,42 @@
 <script>
+document.addEventListener("DOMContentLoaded", function() {
 
-//Escolha de div conforme o modelo de porta
-const radioButtons = document.querySelectorAll('input[type="radio"][name="btnradio"]');
-const divportas = document.getElementById("divportas");
-const divambiente = document.getElementById("divambiente");
-const divvidros = document.getElementById("divvidros");
-const divacabamento = document.getElementById("divacabamento");
-const divabertura = document.getElementById("divabertura");
-const divlinha = document.getElementById("divlinha");
+    //Escolha de div conforme o modelo de porta
+    const radioButtons = document.querySelectorAll('input[type="radio"][name="btnradio"]');
+    const divportas = document.getElementById("divportas");
+    const divambiente = document.getElementById("divambiente");
+    const divvidros = document.getElementById("divvidros");
+    const divacabamento = document.getElementById("divacabamento");
+    const divabertura = document.getElementById("divabertura");
+    const divlinha = document.getElementById("divlinha");
 
 
-radioButtons.forEach(radio => {
-  radio.addEventListener('change', function() {
-    if (this.value === 'PortaGiro' || this.value === 'PortaCorrer') {
-      divportas.style.display = "block";
-      divambiente.style.display = "none";
-      divvidros.style.display = "none";
-      divacabamento.style.display = "block";
-      divabertura.style.display = "block";
-      divlinha.style.display = "none";
-    } else if (this.value === 'DivisoriaAmbiente') {
-      divportas.style.display = "none";
-      divambiente.style.display = "block";
-      divvidros.style.display = "none";
-      divacabamento.style.display = "block";
-      divabertura.style.display = "none";
-      divlinha.style.display = "block";
-    } else if (this.value === 'Vidros') {
-      divportas.style.display = "none";
-      divambiente.style.display = "none";
-      divvidros.style.display = "block";
-      divacabamento.style.display = "none";
-      divabertura.style.display = "none";
-      divlinha.style.display = "none";
-    }
-  });
-});
+    radioButtons.forEach(radio => {
+      radio.addEventListener('change', function() {
+        if (this.value === 'PortaGiro' || this.value === 'PortaCorrer') {
+          divportas.style.display = "block";
+          divambiente.style.display = "none";
+          divvidros.style.display = "none";
+          divacabamento.style.display = "block";
+          divabertura.style.display = "block";
+          divlinha.style.display = "none";
+        } else if (this.value === 'DivisoriaAmbiente') {
+          divportas.style.display = "none";
+          divambiente.style.display = "block";
+          divvidros.style.display = "none";
+          divacabamento.style.display = "block";
+          divabertura.style.display = "none";
+          divlinha.style.display = "block";
+        } else if (this.value === 'Vidros') {
+          divportas.style.display = "none";
+          divambiente.style.display = "none";
+          divvidros.style.display = "block";
+          divacabamento.style.display = "none";
+          divabertura.style.display = "none";
+          divlinha.style.display = "none";
+        }
+      });
+    });
 
 </script>
 
