@@ -16,3 +16,7 @@ body{
 #botaoEntrar:hover{
     color: black;
 }
+
+.hidden {
+  display: none;
+}

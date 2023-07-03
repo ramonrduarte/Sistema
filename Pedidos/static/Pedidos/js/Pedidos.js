@@ -313,3 +313,49 @@ $(document).ready(function() {
         }
     }
 </script>
+
+
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Obtém referências para os elementos
+    var btnPortaGiro = document.getElementById('btnPortaGiro');
+    var btnPortaCorrer = document.getElementById('btnPortaCorrer');
+    var btnDivisoria = document.getElementById('btnDivisoria');
+    var btnVidro = document.getElementById('btnVidro');
+    var campoLinha = document.getElementById('divlinha');
+    var campoAcabamento = document.getElementById('divacabamento');
+    var campoAbertura = document.getElementById('divabertura');
+
+    // Adiciona o evento de mudança aos botões de rádio
+    btnPortaGiro.addEventListener('change', function() {
+      campoAcabamento.classList.remove('hidden');
+      campoAbertura.classList.remove('hidden');
+      campoLinha.classList.add('hidden');
+    });
+
+    btnPortaCorrer.addEventListener('change', function() {
+      campoLinha.classList.add('hidden');
+      campoAbertura.classList.add('hidden');
+      campoAcabamento.classList.remove('hidden');
+    });
+
+    btnDivisoria.addEventListener('change', function() {
+      campoAcabamento.classList.remove('hidden');
+      campoLinha.classList.remove('hidden');
+      campoAbertura.classList.add('hidden');
+    });
+
+    btnVidro.addEventListener('change', function() {
+      campoLinha.classList.add('hidden');
+      campoAbertura.classList.add('hidden');
+      campoAcabamento.classList.add('hidden');
+    });
+
+    // Função para limpar o campo Linha
+    function limparCampoLinha() {
+      document.getElementById('id_linha').value = '';
+    }
+  });
+</script>

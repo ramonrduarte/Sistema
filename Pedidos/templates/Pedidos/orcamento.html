@@ -10,6 +10,7 @@ Adrofecha - Orçamento
 
 {% block css %}
 <link rel="stylesheet" href="{% static 'Pedidos/css/style.css' %}">
+<script src='Pedidos/js/Pedidos.js'></script>
 {% endblock %}
 
 {% block content %}
@@ -72,8 +73,8 @@ Adrofecha - Orçamento
                             </div>
                         </div>
                         <div class="row mx-3 pt-2">
-                            <div id="giro" class="row">
-                                <div class="col-6 d-flex justify-content-center" id="divacabamento"
+                            <div class="row" id="divselecao">
+                                <div class="col-6 d-flex justify-content-center align-items-center" id="divacabamento"
                                      onchange="limparCampos()">
                                     <label class="me-1" for="{{ form.acabamento.id_for_label }}">
                                         {{ form.acabamento.label_tag }}
@@ -81,30 +82,20 @@ Adrofecha - Orçamento
                                     </label>
                                     {{ form.acabamento|attr:"class:form-control custom-input-size-select" }}
                                 </div>
-                                <div class="col-6 d-flex justify-content-center" id="divabertura">
+                                <div class="col-6 d-flex justify-content-center align-items-center" id="divabertura">
                                     <label class="me-1" for="{{ form.abertura.id_for_label }}">
                                         {{ form.abertura.label_tag }}
                                         {% if form.abertura.field.required %}{% endif %}
                                     </label>
                                     {{ form.abertura|attr:"class:form-control custom-input-size-select" }}
                                 </div>
-                            </div>
-                            <div id="correr" class="hidden row">
-                                <div class="col-6 d-flex justify-content-center" id="divacabamento"
-                                     onchange="limparCampos()">
-                                    <label class="me-1" for="{{ form.acabamento.id_for_label }}">
-                                        {{ form.acabamento.label_tag }}
-                                        {% if form.acabamento.field.required %}{% endif %}
-                                    </label>
-                                    {{ form.acabamento|attr:"class:form-control custom-input-size-select" }}
-                                </div>
-                                <div class="hidden col-6 d-flex justify-content-center" id="divlinha">
+                                <div class="col-6 d-flex justify-content-center align-items-center d-none" id="divlinha">
                                     <label class="me-1" for="{{ form.linha.id_for_label }}">
                                         {{ form.linha.label_tag }}
                                         {% if form.linha.field.required %}{% endif %}
                                     </label>
                                     {{ form.linha|attr:"class:form-control custom-input-size-select" }}
-                            </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -114,7 +105,7 @@ Adrofecha - Orçamento
                 <div id="divportas" class="mt-1">
 <!--                    Linha Perfil-->
                     <div class="mx-3">
-                        <div class="row justify-content-start" id="divperfil" onchange="buscarPerfilPuxadores()">
+                        <div class="row justify-content-start" id="divperfil">
                             <label for="{{ form.perfil.id_for_label }}">
                                 {{ form.perfil.label_tag }}
                                 {% if form.perfil.field.required %}{% endif %}
@@ -135,11 +126,11 @@ Adrofecha - Orçamento
                                 <div class="me-1">
                                     {{ form.perfilpuxador|attr:"class:form-control custom-input-size-selectitems selectPerfilPuxador" }}
                                 </div>
-                                <div id="selecao" class="d-flex">
-                                    <select class="form-control custom-input-qtd flex-grow-1 me-1">
+                                <div class="d-flex" >
+                                    <select class="form-control custom-input-qtd flex-grow-1 me-1" id="qtd-perfilpuxador>
                                         <option value="1">1</option>
                                     </select>
-                                    <select class="form-select custom-input-posicao flex-grow-1">
+                                    <select class="form-select custom-input-posicao flex-grow-1" id="posicao-perfilpuxador">
                                         <option value="1">Posição 1</option>
                                     </select>
                                 </div>
@@ -208,7 +199,7 @@ Adrofecha - Orçamento
                 </div>
 <!--                menu para divisoria ambiente-->
 <!--                Linha Superior-->
-                <div id="divambiente" class="border hidden">
+                <div id="divambiente" class="hidden">
                     <div class="input-group row">
                       <label class="form-label mt-1 ms-3 mb-0" for="form1">Superior:</label>
                       <div class="d-flex inline-block ms-3">
@@ -400,47 +391,62 @@ Adrofecha - Orçamento
 </div>
 
 <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Obtém referências para os elementos
+    var btnPortaGiro = document.getElementById('btnPortaGiro');
+    var btnPortaCorrer = document.getElementById('btnPortaCorrer');
+    var btnDivisoria = document.getElementById('btnDivisoria');
+    var btnVidro = document.getElementById('btnVidro');
+    var campoLinha = document.getElementById('divlinha');
+    var campoAcabamento = document.getElementById('divacabamento');
+    var campoAbertura = document.getElementById('divabertura');
+    var campoPorta = document.getElementById('divportas');
+    var campoDivisoria = document.getElementById('divambiente');
+    var campoVidro = document.getElementById('divvidros');
 
-//Escolha de div conforme o modelo de porta
-const radioButtons = document.querySelectorAll('input[type="radio"][name="btnradio"]');
-const divportas = document.getElementById("divportas");
-const divambiente = document.getElementById("divambiente");
-const divvidros = document.getElementById("divvidros");
-const divacabamento = document.getElementById("divacabamento");
-const divabertura = document.getElementById("giro");
-const divlinha = document.getElementById("correr");
+    // Adiciona o evento de mudança aos botões de rádio
+    btnPortaGiro.addEventListener('change', function() {
+      campoAcabamento.classList.remove('d-none');
+      campoAbertura.classList.remove('d-none');
+      campoLinha.classList.add('d-none');
+      campoPorta.classList.remove('hidden');
+      campoDivisoria.classList.add('hidden');
+      campoVidro.classList.add('hidden');
+    });
 
+    btnPortaCorrer.addEventListener('change', function() {
+      campoLinha.classList.add('d-none');
+      campoAbertura.classList.add('d-none');
+      campoAcabamento.classList.remove('d-none');
+      campoPorta.classList.remove('hidden');
+      campoDivisoria.classList.add('hidden');
+      campoVidro.classList.add('hidden');
+    });
 
-radioButtons.forEach(radio => {
-  radio.addEventListener('change', function() {
-    if (this.value === 'PortaGiro' || this.value === 'PortaCorrer') {
-      divportas.style.display = "block";
-      divambiente.style.display = "none";
-      divvidros.style.display = "none";
-      divacabamento.style.display = "block";
-      divabertura.style.display = "block";
-      divlinha.style.display = "none";
-    } else if (this.value === 'DivisoriaAmbiente') {
-      divportas.style.display = "none";
-      divambiente.style.display = "block";
-      divvidros.style.display = "none";
-      divacabamento.style.display = "block";
-      divabertura.style.display = "none";
-      divlinha.style.display = "block";
-    } else if (this.value === 'Vidros') {
-      divportas.style.display = "none";
-      divambiente.style.display = "none";
-      divvidros.style.display = "block";
-      divacabamento.style.display = "none";
-      divabertura.style.display = "none";
-      divlinha.style.display = "none";
+    btnDivisoria.addEventListener('change', function() {
+      campoAcabamento.classList.remove('d-none');
+      campoLinha.classList.remove('d-none');
+      campoAbertura.classList.add('d-none');
+      campoPorta.classList.add('hidden');
+      campoDivisoria.classList.remove('hidden');
+      campoVidro.classList.add('hidden');
+    });
+
+    btnVidro.addEventListener('change', function() {
+      campoLinha.classList.add('d-none');
+      campoAbertura.classList.add('d-none');
+      campoAcabamento.classList.add('d-none');
+      campoPorta.classList.add('hidden');
+      campoDivisoria.classList.add('hidden');
+      campoVidro.classList.remove('hidden');
+    });
+
+    // Função para limpar o campo Linha
+    function limparCampoLinha() {
+      document.getElementById('id_linha').value = '';
     }
   });
-});
-
 </script>
-
-
 
 <!--<script>-->
 <!--$(document).ready(function() {-->
@@ -448,13 +454,13 @@ radioButtons.forEach(radio => {
 <!--});-->
 <!--</script>-->
 
-
-
 <script>
 $(document).ready(function() {
   $('#id_acabamento').change(function() {
     filtrarPerfil();
   });
+
+  filtrarPerfil();
 
   function filtrarPerfil() {
     var acabamento = $('#id_acabamento').val();
@@ -477,6 +483,18 @@ $(document).ready(function() {
             option = $('<option>').attr('value', item.id).text(item.descricao);
             selectPerfil.append(option);
           });
+
+           // Verificar o número de itens na resposta
+          var numItens = response.length;
+
+          // Desabilitar ou habilitar o campo divisor com base no número de itens
+          if (numItens <= 0) {
+            selectPerfil.prop('disabled', true);
+            $('#divperfil :input').prop('disabled', true); // Bloquear campos dentro da div com id="divperfi"
+          } else {
+            selectPerfil.prop('disabled', false);
+            $('#divperfil :input').prop('disabled', false); // Desbloquear campos dentro da div com id="divperfil"
+          }
 
           selectPerfil.show();
         },
@@ -714,6 +732,63 @@ $(document).ready(function() {
             selectsDivPortas[i].value = '';
         }
     }
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const perfilPuxador = document.querySelector('id_PerfilPuxador');
+      const qtdPerfilPuxador = document.getElementById('qtd-perfilpuxador');
+      const posicaoPerfilPuxador = document.getElementById('posicao-perfilpuxador');
+      const divAbertura = document.getElementById('divabertura');
+
+      perfilPuxador.addEventListener('change', function() {
+        if (perfilPuxador.value !== '') {
+          qtdPerfilPuxador.value = '1';
+
+          posicaoPerfilPuxador.disabled = false;
+          posicaoPerfilPuxador.innerHTML = '';
+
+          const divAberturaValue = divAbertura.value;
+          if (divAberturaValue === 'Direita') {
+            posicaoPerfilPuxador.innerHTML += '<option value="Esquerda">Esquerda</option>';
+            posicaoPerfilPuxador.innerHTML += '<option value="Cima">Cima</option>';
+            posicaoPerfilPuxador.innerHTML += '<option value="Baixo">Baixo</option>';
+          } else if (divAberturaValue === 'Esquerda') {
+            posicaoPerfilPuxador.innerHTML += '<option value="Direita">Direita</option>';
+            posicaoPerfilPuxador.innerHTML += '<option value="Cima">Cima</option>';
+            posicaoPerfilPuxador.innerHTML += '<option value="Baixo">Baixo</option>';
+          } else if (divAberturaValue === 'Cima') {
+            posicaoPerfilPuxador.innerHTML += '<option value="Baixo">Baixo</option>';
+          } else if (divAberturaValue === 'Baixo') {
+            posicaoPerfilPuxador.innerHTML += '<option value="Cima">Cima</option>';
+          }
+        } else {
+          qtdPerfilPuxador.disabled = true;
+          posicaoPerfilPuxador.disabled = true;
+        }
+      });
+
+      divAbertura.addEventListener('change', function() {
+        if (perfilPuxador.value !== '') {
+          posicaoPerfilPuxador.innerHTML = '';
+
+          const divAberturaValue = divAbertura.value;
+          if (divAberturaValue === 'Direita') {
+            posicaoPerfilPuxador.innerHTML += '<option value="Esquerda">Esquerda</option>';
+            posicaoPerfilPuxador.innerHTML += '<option value="Cima">Cima</option>';
+            posicaoPerfilPuxador.innerHTML += '<option value="Baixo">Baixo</option>';
+          } else if (divAberturaValue === 'Esquerda') {
+            posicaoPerfilPuxador.innerHTML += '<option value="Direita">Direita</option>';
+            posicaoPerfilPuxador.innerHTML += '<option value="Cima">Cima</option>';
+            posicaoPerfilPuxador.innerHTML += '<option value="Baixo">Baixo</option>';
+          } else if (divAberturaValue === 'Cima') {
+            posicaoPerfilPuxador.innerHTML += '<option value="Baixo">Baixo</option>';
+          } else if (divAberturaValue === 'Baixo') {
+            posicaoPerfilPuxador.innerHTML += '<option value="Cima">Cima</option>';
+          }
+        }
+      });
+    });
 </script>
 
 {% endblock %}
