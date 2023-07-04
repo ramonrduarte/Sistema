@@ -127,11 +127,11 @@ Adrofecha - Orçamento
                                     {{ form.perfilpuxador|attr:"class:form-control custom-input-size-selectitems selectPerfilPuxador" }}
                                 </div>
                                 <div class="d-flex" >
-                                    <select class="form-control custom-input-qtd flex-grow-1 me-1" id="qtd-perfilpuxador>
+                                    <select class="form-control custom-input-qtd flex-grow-1 me-1" id="qtd-perfilpuxador">
                                         <option value="1">1</option>
                                     </select>
                                     <select class="form-select custom-input-posicao flex-grow-1" id="posicao-perfilpuxador">
-                                        <option value="1">Posição 1</option>
+                                        <option value="1">--------</option>
                                     </select>
                                 </div>
                             </div>
@@ -200,7 +200,7 @@ Adrofecha - Orçamento
 <!--                menu para divisoria ambiente-->
 <!--                Linha Superior-->
                 <div id="divambiente" class="hidden">
-                    <div class="input-group row">
+                    <div class="input-group row" id="divsuperior">
                       <label class="form-label mt-1 ms-3 mb-0" for="form1">Superior:</label>
                       <div class="d-flex inline-block ms-3">
                         <input type="search" id="form1" class="form-control " style="width: 100px; height: 37px";>
@@ -390,64 +390,6 @@ Adrofecha - Orçamento
     </div>
 </div>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // Obtém referências para os elementos
-    var btnPortaGiro = document.getElementById('btnPortaGiro');
-    var btnPortaCorrer = document.getElementById('btnPortaCorrer');
-    var btnDivisoria = document.getElementById('btnDivisoria');
-    var btnVidro = document.getElementById('btnVidro');
-    var campoLinha = document.getElementById('divlinha');
-    var campoAcabamento = document.getElementById('divacabamento');
-    var campoAbertura = document.getElementById('divabertura');
-    var campoPorta = document.getElementById('divportas');
-    var campoDivisoria = document.getElementById('divambiente');
-    var campoVidro = document.getElementById('divvidros');
-
-    // Adiciona o evento de mudança aos botões de rádio
-    btnPortaGiro.addEventListener('change', function() {
-      campoAcabamento.classList.remove('d-none');
-      campoAbertura.classList.remove('d-none');
-      campoLinha.classList.add('d-none');
-      campoPorta.classList.remove('hidden');
-      campoDivisoria.classList.add('hidden');
-      campoVidro.classList.add('hidden');
-    });
-
-    btnPortaCorrer.addEventListener('change', function() {
-      campoLinha.classList.add('d-none');
-      campoAbertura.classList.add('d-none');
-      campoAcabamento.classList.remove('d-none');
-      campoPorta.classList.remove('hidden');
-      campoDivisoria.classList.add('hidden');
-      campoVidro.classList.add('hidden');
-    });
-
-    btnDivisoria.addEventListener('change', function() {
-      campoAcabamento.classList.remove('d-none');
-      campoLinha.classList.remove('d-none');
-      campoAbertura.classList.add('d-none');
-      campoPorta.classList.add('hidden');
-      campoDivisoria.classList.remove('hidden');
-      campoVidro.classList.add('hidden');
-    });
-
-    btnVidro.addEventListener('change', function() {
-      campoLinha.classList.add('d-none');
-      campoAbertura.classList.add('d-none');
-      campoAcabamento.classList.add('d-none');
-      campoPorta.classList.add('hidden');
-      campoDivisoria.classList.add('hidden');
-      campoVidro.classList.remove('hidden');
-    });
-
-    // Função para limpar o campo Linha
-    function limparCampoLinha() {
-      document.getElementById('id_linha').value = '';
-    }
-  });
-</script>
-
 <!--<script>-->
 <!--$(document).ready(function() {-->
 <!--    $('#id_perfil').select2();-->
@@ -456,56 +398,122 @@ Adrofecha - Orçamento
 
 <script>
 $(document).ready(function() {
-  $('#id_acabamento').change(function() {
-    filtrarPerfil();
+  // Função que atualiza as opções do campo posicao-perfilpuxador
+  function atualizarOpcoes() {
+    var tipo = $('input[name="tipo"]:checked').val();
+    var abertura = $("#id_abertura").val();
+    var qtdPerfilPuxador = $("#qtd-perfilpuxador").val();
+    var posicaoPerfilPuxador = $("#posicao-perfilpuxador");
+
+    posicaoPerfilPuxador.empty();
+
+    if (tipo === "portagiro") {
+      if (abertura === "C") {
+        posicaoPerfilPuxador.append(new Option("Base", "Base"));
+      } else if (abertura === "B") {
+        posicaoPerfilPuxador.append(new Option("Topo", "Topo"));
+      } else if (abertura === "D") {
+        posicaoPerfilPuxador.append(new Option("Esquerda", "Esquerda"));
+        posicaoPerfilPuxador.append(new Option("Topo", "Topo"));
+        posicaoPerfilPuxador.append(new Option("Base", "Base"));
+      } else if (abertura === "E") {
+        posicaoPerfilPuxador.append(new Option("Direita", "Direita"));
+        posicaoPerfilPuxador.append(new Option("Topo", "Topo"));
+        posicaoPerfilPuxador.append(new Option("Base", "Base"));
+      }
+    } else if (tipo === "portacorrer") {
+      if (qtdPerfilPuxador === "1") {
+        posicaoPerfilPuxador.append(new Option("Direita", "Direita"));
+        posicaoPerfilPuxador.append(new Option("Esquerda", "Esquerda"));
+      } else if (qtdPerfilPuxador === "2") {
+        posicaoPerfilPuxador.append(new Option("Esq/Dir", "Esq/Dir"));
+      }
+    }
+  }
+
+  // Chama a função atualizarOpcoes quando o valor selecionado em Abertura é alterado
+  $("#id_abertura").change(function() {
+    atualizarOpcoes();
   });
 
-  filtrarPerfil();
+  // Chama a função atualizarOpcoes quando o valor selecionado em Quantidade Perfil Puxador é alterado
+  $("#id_qtd-perfilpuxador").change(function() {
+    atualizarOpcoes();
+  });
+
+  // Chama a função atualizarOpcoes quando o valor selecionado em Tipo é alterado
+  $("input[name='tipo']").change(function() {
+    atualizarOpcoes();
+  });
+
+  // Executa a função atualizarOpcoes inicialmente para exibir as opções corretas
+  atualizarOpcoes();
+});
+</script>
+
+<script>
+$(document).ready(function() {
+  // Chamar a função filtrarPerfil quando houver alteração nos campos relevantes
+  $('#id_acabamento, #id_quantidade, #id_largura, #id_altura, #id_abertura').change(filtrarPerfil);
 
   function filtrarPerfil() {
     var acabamento = $('#id_acabamento').val();
+    var quantidade = $('#id_quantidade').val();
+    var largura = $('#id_largura').val();
+    var altura = $('#id_altura').val();
+    var abertura = $('#id_abertura').val();
+    var perfilField = $('#id_perfil');
+    var perfilDiv = $('#divperfil');
+    var portaGiroRadioButton = $('#btnPortaGiro');
 
-    if (acabamento) {
-      $.ajax({
-        url: '/filtrar_acabamento/',  // Atualize para a URL correta
-        type: 'GET',
-        data: {
-          acabamento: acabamento
-        },
-        success: function(response) {
-          var selectPerfil = $('#id_perfil');
-          selectPerfil.empty();
+    // Verificar se o radiobutton selecionado é PortaGiro
+    if (portaGiroRadioButton.is(':checked')) {
+      // Verificar se todos os campos estão preenchidos, exceto o campo perfil e abertura
+      if (quantidade && largura && altura && acabamento && abertura) {
+        // Habilitar o campo perfil
+        perfilField.prop('disabled', false);
+        perfilDiv.find(':input').prop('disabled', false); // Desbloquear campos dentro da div com id="divperfil"
 
-          var option = $('<option>').attr('value', '').text('-------');
-          selectPerfil.append(option);
+        // Realizar o filtro de perfil
+        $.ajax({
+          url: '/filtrar_acabamento/', // Atualize para a URL correta
+          type: 'GET',
+          data: {
+            acabamento: acabamento
+          },
+          success: function(response) {
+            perfilField.empty();
 
-          $.each(response, function(index, item) {
-            option = $('<option>').attr('value', item.id).text(item.descricao);
-            selectPerfil.append(option);
-          });
+            var option = $('<option>').attr('value', '').text('-------');
+            perfilField.append(option);
 
-           // Verificar o número de itens na resposta
-          var numItens = response.length;
+            $.each(response, function(index, item) {
+              option = $('<option>').attr('value', item.id).text(item.descricao);
+              perfilField.append(option);
+            });
 
-          // Desabilitar ou habilitar o campo divisor com base no número de itens
-          if (numItens <= 0) {
-            selectPerfil.prop('disabled', true);
-            $('#divperfil :input').prop('disabled', true); // Bloquear campos dentro da div com id="divperfi"
-          } else {
-            selectPerfil.prop('disabled', false);
-            $('#divperfil :input').prop('disabled', false); // Desbloquear campos dentro da div com id="divperfil"
+            perfilField.show();
+          },
+          error: function(xhr) {
+            console.log(xhr.statusText);
           }
-
-          selectPerfil.show();
-        },
-        error: function(xhr) {
-          console.log(xhr.statusText);
-        }
-      });
+        });
+      } else {
+        // Manter o campo perfil bloqueado
+        perfilField.prop('disabled', true);
+        perfilDiv.find(':input').prop('disabled', true); // Bloquear campos dentro da div com id="divperfil"
+        perfilField.empty();
+      }
     } else {
-      $('#id_perfil').empty();
+      // Manter o campo perfil bloqueado para outros radiobuttons selecionados
+      perfilField.prop('disabled', true);
+      perfilDiv.find(':input').prop('disabled', true); // Bloquear campos dentro da div com id="divperfil"
+      perfilField.empty();
     }
   }
+
+  // Chamar a função filtrarPerfil inicialmente
+  filtrarPerfil();
 });
 </script>
 
@@ -687,15 +695,17 @@ $(document).ready(function() {
     var altura = $('#id_altura').val();
     var acabamento = $('#id_acabamento').val();
     var abertura = $('#id_abertura').val();
-    var perfil = $('#id_perfil').val();
 
     // Verificar se todos os campos estão preenchidos
     if (quantidade && largura && altura && acabamento && abertura) {
-      // Desbloquear o campo perfil
-      $('#id_perfil').prop('disabled', false);
+      // Verificar se o radiobutton selecionado é PortaGiro
+      if ($('#btnPortaGiro').is(':checked')) {
+        // Desbloquear somente o campo perfil
+        $('#id_perfil').prop('disabled', false);
+      }
 
       // Verificar se o campo perfil também está preenchido
-      if (perfil) {
+      if ($('#id_perfil').val()) {
         // Desbloquear os demais campos na divportas
         $('#divportas input:not(#id_perfil), #divportas select:not(#id_perfil)').prop('disabled', false);
       } else {
@@ -714,6 +724,32 @@ $(document).ready(function() {
   // Verificar campos sempre que houver uma alteração nos campos
   $('#id_quantidade, #id_largura, #id_altura, #id_acabamento, #id_abertura, #id_perfil').on('input', function() {
     verificarCamposPreenchidos();
+  });
+
+  // Limpar campo perfil ao alterar o campo abertura
+  $('#id_abertura').on('change', function() {
+    $('#id_perfil').val('');
+  });
+});
+</script>
+
+<script>
+$(document).ready(function() {
+  $('#id_acabamento, #id_abertura').change(function() {
+    // Limpar e bloquear os campos da divportas, exceto o campo perfil
+    $('#divportas input:not(#id_perfil), #divportas select:not(#id_perfil)').val('').prop('disabled', true);
+
+    // Verificar se os campos obrigatórios estão preenchidos
+    var quantidade = $('#id_quantidade').val();
+    var largura = $('#id_largura').val();
+    var altura = $('#id_altura').val();
+    var acabamento = $('#id_acabamento').val();
+    var abertura = $('#id_abertura').val();
+
+    if (quantidade && largura && altura && acabamento && abertura) {
+      // Desbloquear o campo perfil
+      $('#id_perfil').prop('disabled', false);
+    }
   });
 });
 </script>
@@ -735,61 +771,110 @@ $(document).ready(function() {
 </script>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const perfilPuxador = document.querySelector('id_PerfilPuxador');
-      const qtdPerfilPuxador = document.getElementById('qtd-perfilpuxador');
-      const posicaoPerfilPuxador = document.getElementById('posicao-perfilpuxador');
-      const divAbertura = document.getElementById('divabertura');
+  document.addEventListener('DOMContentLoaded', function() {
+    var btnPortaGiro = document.getElementById('btnPortaGiro');
+    var btnPortaCorrer = document.getElementById('btnPortaCorrer');
+    var btnDivisoria = document.getElementById('btnDivisoria');
+    var btnVidro = document.getElementById('btnVidro');
+    var campoLinha = document.getElementById('divlinha');
+    var campoAcabamento = document.getElementById('divacabamento');
+    var campoAbertura = document.getElementById('divabertura');
+    var campoPorta = document.getElementById('divportas');
+    var campoDivisoria = document.getElementById('divambiente');
+    var campoVidro = document.getElementById('divvidros');
 
-      perfilPuxador.addEventListener('change', function() {
-        if (perfilPuxador.value !== '') {
-          qtdPerfilPuxador.value = '1';
-
-          posicaoPerfilPuxador.disabled = false;
-          posicaoPerfilPuxador.innerHTML = '';
-
-          const divAberturaValue = divAbertura.value;
-          if (divAberturaValue === 'Direita') {
-            posicaoPerfilPuxador.innerHTML += '<option value="Esquerda">Esquerda</option>';
-            posicaoPerfilPuxador.innerHTML += '<option value="Cima">Cima</option>';
-            posicaoPerfilPuxador.innerHTML += '<option value="Baixo">Baixo</option>';
-          } else if (divAberturaValue === 'Esquerda') {
-            posicaoPerfilPuxador.innerHTML += '<option value="Direita">Direita</option>';
-            posicaoPerfilPuxador.innerHTML += '<option value="Cima">Cima</option>';
-            posicaoPerfilPuxador.innerHTML += '<option value="Baixo">Baixo</option>';
-          } else if (divAberturaValue === 'Cima') {
-            posicaoPerfilPuxador.innerHTML += '<option value="Baixo">Baixo</option>';
-          } else if (divAberturaValue === 'Baixo') {
-            posicaoPerfilPuxador.innerHTML += '<option value="Cima">Cima</option>';
-          }
-        } else {
-          qtdPerfilPuxador.disabled = true;
-          posicaoPerfilPuxador.disabled = true;
-        }
-      });
-
-      divAbertura.addEventListener('change', function() {
-        if (perfilPuxador.value !== '') {
-          posicaoPerfilPuxador.innerHTML = '';
-
-          const divAberturaValue = divAbertura.value;
-          if (divAberturaValue === 'Direita') {
-            posicaoPerfilPuxador.innerHTML += '<option value="Esquerda">Esquerda</option>';
-            posicaoPerfilPuxador.innerHTML += '<option value="Cima">Cima</option>';
-            posicaoPerfilPuxador.innerHTML += '<option value="Baixo">Baixo</option>';
-          } else if (divAberturaValue === 'Esquerda') {
-            posicaoPerfilPuxador.innerHTML += '<option value="Direita">Direita</option>';
-            posicaoPerfilPuxador.innerHTML += '<option value="Cima">Cima</option>';
-            posicaoPerfilPuxador.innerHTML += '<option value="Baixo">Baixo</option>';
-          } else if (divAberturaValue === 'Cima') {
-            posicaoPerfilPuxador.innerHTML += '<option value="Baixo">Baixo</option>';
-          } else if (divAberturaValue === 'Baixo') {
-            posicaoPerfilPuxador.innerHTML += '<option value="Cima">Cima</option>';
-          }
-        }
-      });
+    btnPortaGiro.addEventListener('change', function() {
+      limparCampos();
+      campoAcabamento.classList.remove('d-none');
+      campoAbertura.classList.remove('d-none');
+      campoLinha.classList.add('d-none');
+      campoPorta.classList.remove('hidden');
+      campoDivisoria.classList.add('hidden');
+      campoVidro.classList.add('hidden');
     });
+
+    btnPortaCorrer.addEventListener('change', function() {
+      limparCampos();
+      campoLinha.classList.add('d-none');
+      campoAbertura.classList.add('d-none');
+      campoAcabamento.classList.remove('d-none');
+      campoPorta.classList.remove('hidden');
+      campoDivisoria.classList.add('hidden');
+      campoVidro.classList.add('hidden');
+    });
+
+    btnDivisoria.addEventListener('change', function() {
+      limparCampos();
+      campoAcabamento.classList.remove('d-none');
+      campoLinha.classList.remove('d-none');
+      campoAbertura.classList.add('d-none');
+      campoPorta.classList.add('hidden');
+      campoDivisoria.classList.remove('hidden');
+      campoVidro.classList.add('hidden');
+    });
+
+    btnVidro.addEventListener('change', function() {
+      limparCampos();
+      campoLinha.classList.add('d-none');
+      campoAbertura.classList.add('d-none');
+      campoAcabamento.classList.add('d-none');
+      campoPorta.classList.add('hidden');
+      campoDivisoria.classList.add('hidden');
+      campoVidro.classList.remove('hidden');
+    });
+
+    function limparCampos() {
+      var camposPorta = document.getElementById('divportas').getElementsByTagName('input');
+      var selectsPorta = document.getElementById('divportas').getElementsByTagName('select');
+
+      for (var i = 0; i < camposPorta.length; i++) {
+        camposPorta[i].value = '';
+        camposPorta[i].disabled = true;
+      }
+      for (var i = 0; i < selectsPorta.length; i++) {
+        selectsPorta[i].value = '';
+        selectsPorta[i].disabled = true;
+      }
+
+      var camposDivisoria = document.getElementById('divambiente').getElementsByTagName('input');
+      var selectsDivisoria = document.getElementById('divambiente').getElementsByTagName('select');
+
+      for (var i = 0; i < camposDivisoria.length; i++) {
+        camposDivisoria[i].value = '';
+        camposDivisoria[i].disabled = true;
+      }
+      for (var i = 0; i < selectsDivisoria.length; i++) {
+        selectsDivisoria[i].value = '';
+        selectsDivisoria[i].disabled = true;
+      }
+
+      var camposVidro = document.getElementById('divvidros').getElementsByTagName('input');
+      var selectsVidro = document.getElementById('divvidros').getElementsByTagName('select');
+
+      for (var i = 0; i < camposVidro.length; i++) {
+        camposVidro[i].value = '';
+        camposVidro[i].disabled = true;
+      }
+      for (var i = 0; i < selectsVidro.length; i++) {
+        selectsVidro[i].value = '';
+      }
+
+      var campoAcabamento = document.getElementById('id_acabamento');
+      var campoAbertura = document.getElementById('id_abertura');
+      var campoLinha = document.getElementById('id_linha');
+
+      campoAcabamento.value = '';
+      campoAcabamento.disabled = false;
+
+      campoAbertura.value = '';
+      campoAbertura.disabled = false;
+
+      campoLinha.value = '';
+      campoLinha.disabled = false;
+    }
+  });
 </script>
+
 
 {% endblock %}
 
