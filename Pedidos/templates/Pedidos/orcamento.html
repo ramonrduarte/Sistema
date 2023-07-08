@@ -128,10 +128,10 @@ Adrofecha - Orçamento
                                 </div>
                                 <div class="d-flex" >
                                     <select class="form-control custom-input-qtd flex-grow-1 me-1" id="qtd-perfilpuxador">
-                                        <option value="1">1</option>
+
                                     </select>
                                     <select class="form-select custom-input-posicao flex-grow-1" id="posicao-perfilpuxador">
-                                        <option value="1">--------</option>
+
                                     </select>
                                 </div>
                             </div>
@@ -149,15 +149,13 @@ Adrofecha - Orçamento
                                     {{ form.puxador|attr:"class:form-control custom-input-size-selectitems selectPuxador" }}
                                 </div>
                                 <div class="d-flex">
-                                    <select class="form-control custom-input-qtd flex-grow-1 me-1">
-                                        <option value="1">1</option>
+                                    <select class="form-control custom-input-qtd flex-grow-1 me-1" id="qtd-puxador">
+
                                     </select>
-                                    <select class="form-select custom-input-posicao flex-grow-1 me-1">
-                                        <option value="1">Posição 1</option>
+                                    <select class="form-select custom-input-posicao flex-grow-1 me-1" id="posicao-puxador">
+
                                     </select>
-                                    <select class="form-select custom-input-qtd flex-grow-1">
-                                        <option value="1">1</option>
-                                    </select>
+                                    <input class="form-control custom-input-size-medida flex-grow-1">
                                 </div>
                             </div>
                         </div>
@@ -175,10 +173,9 @@ Adrofecha - Orçamento
                                 </div>
                                 <div class="d-flex">
                                     <select class="form-control custom-input-qtd flex-grow-1 me-1">
+                                        <option value=""></option>
                                         <option value="1">1</option>
-                                    </select>
-                                    <select class="form-select custom-input-posicao flex-grow-1">
-                                        <option value="1">Posição 1</option>
+                                        <option value="2">2</option>
                                     </select>
                                 </div>
                             </div>
@@ -398,56 +395,153 @@ Adrofecha - Orçamento
 
 <script>
 $(document).ready(function() {
-  // Função que atualiza as opções do campo posicao-perfilpuxador
-  function atualizarOpcoes() {
-    var tipo = $('input[name="tipo"]:checked').val();
-    var abertura = $("#id_abertura").val();
+  function atualizarPosicoesPerfilPuxador() {
     var qtdPerfilPuxador = $("#qtd-perfilpuxador").val();
+    var perfilPuxador = $("#id_perfilpuxador").val();
+    var abertura = $("#id_abertura").val();
     var posicaoPerfilPuxador = $("#posicao-perfilpuxador");
 
     posicaoPerfilPuxador.empty();
 
-    if (tipo === "portagiro") {
-      if (abertura === "C") {
-        posicaoPerfilPuxador.append(new Option("Base", "Base"));
-      } else if (abertura === "B") {
-        posicaoPerfilPuxador.append(new Option("Topo", "Topo"));
-      } else if (abertura === "D") {
-        posicaoPerfilPuxador.append(new Option("Esquerda", "Esquerda"));
-        posicaoPerfilPuxador.append(new Option("Topo", "Topo"));
-        posicaoPerfilPuxador.append(new Option("Base", "Base"));
-      } else if (abertura === "E") {
-        posicaoPerfilPuxador.append(new Option("Direita", "Direita"));
-        posicaoPerfilPuxador.append(new Option("Topo", "Topo"));
-        posicaoPerfilPuxador.append(new Option("Base", "Base"));
+    if (perfilPuxador && perfilPuxador !== "" && qtdPerfilPuxador === "2") {
+      if ($("#btnPortaCorrer").is(":checked")) {
+        posicaoPerfilPuxador.append($('<option>', {value: 'Esq/Dir', text: 'Esq/Dir'}));
       }
-    } else if (tipo === "portacorrer") {
-      if (qtdPerfilPuxador === "1") {
-        posicaoPerfilPuxador.append(new Option("Direita", "Direita"));
-        posicaoPerfilPuxador.append(new Option("Esquerda", "Esquerda"));
-      } else if (qtdPerfilPuxador === "2") {
-        posicaoPerfilPuxador.append(new Option("Esq/Dir", "Esq/Dir"));
+    } else {
+      if ($("#btnPortaCorrer").is(":checked")) {
+        if (perfilPuxador && perfilPuxador !== "") {
+          posicaoPerfilPuxador.append($('<option>', {value: 'Direita', text: 'Direita'}));
+          posicaoPerfilPuxador.append($('<option>', {value: 'Esquerda', text: 'Esquerda'}));
+        }
+      }
+    }
+
+    if (abertura === "D") {
+      posicaoPerfilPuxador.append($('<option>', {value: 'Esquerda', text: 'Esquerda'}));
+      posicaoPerfilPuxador.append($('<option>', {value: 'Topo', text: 'Topo'}));
+      posicaoPerfilPuxador.append($('<option>', {value: 'Base', text: 'Base'}));
+    } else if (abertura === "E") {
+      posicaoPerfilPuxador.append($('<option>', {value: 'Direita', text: 'Direita'}));
+      posicaoPerfilPuxador.append($('<option>', {value: 'Topo', text: 'Topo'}));
+      posicaoPerfilPuxador.append($('<option>', {value: 'Base', text: 'Base'}));
+    } else if (abertura === "C") {
+      posicaoPerfilPuxador.append($('<option>', {value: 'Base', text: 'Base'}));
+    } else if (abertura === "B") {
+      posicaoPerfilPuxador.append($('<option>', {value: 'Topo', text: 'Topo'}));
+    }
+  }
+
+  function atualizarQtdPerfilPuxador() {
+    var perfilPuxador = $("#id_perfilpuxador").val();
+    var qtdPerfilPuxador = $("#qtd-perfilpuxador");
+
+    qtdPerfilPuxador.empty();
+
+    if ($("#btnPortaGiro").is(":checked")) {
+      if (perfilPuxador && perfilPuxador !== "") {
+        qtdPerfilPuxador.append($('<option>', {value: '1', text: '1'}));
+      }
+    } else if ($("#btnPortaCorrer").is(":checked")) {
+      if (perfilPuxador && perfilPuxador !== "") {
+        qtdPerfilPuxador.append($('<option>', {value: '1', text: '1'}));
+        qtdPerfilPuxador.append($('<option>', {value: '2', text: '2'}));
       }
     }
   }
 
-  // Chama a função atualizarOpcoes quando o valor selecionado em Abertura é alterado
+  $("#id_perfilpuxador").change(function() {
+    atualizarQtdPerfilPuxador();
+    atualizarPosicoesPerfilPuxador();
+  });
+
+  $("#qtd-perfilpuxador").change(function() {
+    atualizarPosicoesPerfilPuxador();
+  });
+
   $("#id_abertura").change(function() {
-    atualizarOpcoes();
+    atualizarPosicoesPerfilPuxador();
   });
 
-  // Chama a função atualizarOpcoes quando o valor selecionado em Quantidade Perfil Puxador é alterado
-  $("#id_qtd-perfilpuxador").change(function() {
-    atualizarOpcoes();
+  $("input[name='btnradio']").change(function() {
+    atualizarQtdPerfilPuxador();
+    atualizarPosicoesPerfilPuxador();
+  });
+});
+</script>
+
+<script>
+$(document).ready(function() {
+  function atualizarPosicoesPuxador() {
+    var qtdPuxador = $("#qtd-puxador").val();
+    var Puxador = $("#id_puxador").val();
+    var abertura = $("#id_abertura").val();
+    var posicaoPuxador = $("#posicao-puxador");
+
+    posicaoPuxador.empty();
+
+    if (Puxador && Puxador !== "" && qtdPuxador === "2") {
+      if ($("#btnPortaCorrer").is(":checked")) {
+        posicaoPuxador.append($('<option>', {value: 'Esq/Dir', text: 'Esq/Dir'}));
+      }
+    } else {
+      if ($("#btnPortaCorrer").is(":checked")) {
+        if (Puxador && Puxador !== "") {
+          posicaoPuxador.append($('<option>', {value: 'Direita', text: 'Direita'}));
+          posicaoPuxador.append($('<option>', {value: 'Esquerda', text: 'Esquerda'}));
+        }
+      }
+    }
+
+    if (abertura === "D") {
+      posicaoPuxador.append($('<option>', {value: 'Esquerda', text: 'Esquerda'}));
+      posicaoPuxador.append($('<option>', {value: 'Topo', text: 'Topo'}));
+      posicaoPuxador.append($('<option>', {value: 'Base', text: 'Base'}));
+    } else if (abertura === "E") {
+      posicaoPuxador.append($('<option>', {value: 'Direita', text: 'Direita'}));
+      posicaoPuxador.append($('<option>', {value: 'Topo', text: 'Topo'}));
+      posicaoPuxador.append($('<option>', {value: 'Base', text: 'Base'}));
+    } else if (abertura === "C") {
+      posicaoPuxador.append($('<option>', {value: 'Base', text: 'Base'}));
+    } else if (abertura === "B") {
+      posicaoPuxador.append($('<option>', {value: 'Topo', text: 'Topo'}));
+    }
+  }
+
+  function atualizarQtdPuxador() {
+    var Puxador = $("#id_puxador").val();
+    var qtdPuxador = $("#qtd-puxador");
+
+    qtdPuxador.empty();
+
+    if ($("#btnPortaGiro").is(":checked")) {
+      if (Puxador && Puxador !== "") {
+        qtdPuxador.append($('<option>', {value: '1', text: '1'}));
+      }
+    } else if ($("#btnPortaCorrer").is(":checked")) {
+      if (Puxador && Puxador !== "") {
+        qtdPuxador.append($('<option>', {value: '1', text: '1'}));
+        qtdPuxador.append($('<option>', {value: '2', text: '2'}));
+      }
+    }
+  }
+
+  $("#id_puxador").change(function() {
+    atualizarQtdPuxador();
+    atualizarPosicoesPuxador();
   });
 
-  // Chama a função atualizarOpcoes quando o valor selecionado em Tipo é alterado
-  $("input[name='tipo']").change(function() {
-    atualizarOpcoes();
+  $("#qtd-puxador").change(function() {
+    atualizarPosicoesPuxador();
   });
 
-  // Executa a função atualizarOpcoes inicialmente para exibir as opções corretas
-  atualizarOpcoes();
+  $("#id_abertura").change(function() {
+    atualizarPosicoesPuxador();
+  });
+
+  $("input[name='btnradio']").change(function() {
+    atualizarQtdPuxador();
+    atualizarPosicoesPuxador();
+  });
 });
 </script>
 
@@ -464,19 +558,18 @@ $(document).ready(function() {
     var abertura = $('#id_abertura').val();
     var perfilField = $('#id_perfil');
     var perfilDiv = $('#divperfil');
+    var campoPortas = $('#divportas');
     var portaGiroRadioButton = $('#btnPortaGiro');
+    var portaCorrerRadioButton = $('#btnPortaCorrer');
 
     // Verificar se o radiobutton selecionado é PortaGiro
     if (portaGiroRadioButton.is(':checked')) {
-      // Verificar se todos os campos estão preenchidos, exceto o campo perfil e abertura
       if (quantidade && largura && altura && acabamento && abertura) {
-        // Habilitar o campo perfil
         perfilField.prop('disabled', false);
-        perfilDiv.find(':input').prop('disabled', false); // Desbloquear campos dentro da div com id="divperfil"
+        perfilDiv.find(':input').prop('disabled', false);
 
-        // Realizar o filtro de perfil
         $.ajax({
-          url: '/filtrar_acabamento/', // Atualize para a URL correta
+          url: '/filtrar_acabamento/',
           type: 'GET',
           data: {
             acabamento: acabamento
@@ -499,15 +592,43 @@ $(document).ready(function() {
           }
         });
       } else {
-        // Manter o campo perfil bloqueado
-        perfilField.prop('disabled', true);
-        perfilDiv.find(':input').prop('disabled', true); // Bloquear campos dentro da div com id="divperfil"
+        campoPortas.prop('disabled', true);
+        campoPortas.find(':input').prop('disabled', true);
         perfilField.empty();
+      }
+    } else if (portaCorrerRadioButton.is(':checked')) {
+      if (quantidade && largura && altura && acabamento) {
+        perfilField.prop('disabled', false);
+        perfilDiv.find(':input').prop('disabled', false);
+
+        $.ajax({
+          url: '/filtrar_acabamento/',
+          type: 'GET',
+          data: {
+            acabamento: acabamento
+          },
+          success: function(response) {
+            perfilField.empty();
+
+            var option = $('<option>').attr('value', '').text('-------');
+            perfilField.append(option);
+
+            $.each(response, function(index, item) {
+              option = $('<option>').attr('value', item.id).text(item.descricao);
+              perfilField.append(option);
+            });
+
+            perfilField.show();
+          },
+          error: function(xhr) {
+            console.log(xhr.statusText);
+          }
+        });
       }
     } else {
       // Manter o campo perfil bloqueado para outros radiobuttons selecionados
       perfilField.prop('disabled', true);
-      perfilDiv.find(':input').prop('disabled', true); // Bloquear campos dentro da div com id="divperfil"
+      perfilDiv.find(':input').prop('disabled', true);
       perfilField.empty();
     }
   }
@@ -528,7 +649,7 @@ $(document).ready(function() {
 
     if (perfil) {
       $.ajax({
-        url: '/buscar_PerfilPuxador/',  // Atualize para a URL correta
+        url: '/buscar_PerfilPuxador/',
         type: 'GET',
         data: {
           perfil: perfil
@@ -545,16 +666,14 @@ $(document).ready(function() {
             selectPerfilPuxador.append(option);
           });
 
-          // Verificar o número de itens na resposta
           var numItens = response.length;
 
-          // Desabilitar ou habilitar o campo divisor com base no número de itens
           if (numItens <= 0) {
             selectPerfilPuxador.prop('disabled', true);
-            $('#divperfilpuxador :input').prop('disabled', true); // Bloquear campos dentro da div com id="divperfilpuxador"
+            $('#divperfilpuxador :input').prop('disabled', true);
           } else {
             selectPerfilPuxador.prop('disabled', false);
-            $('#divperfilpuxador :input').prop('disabled', false); // Desbloquear campos dentro da div com id="divperfilpuxador"
+            $('#divperfilpuxador :input').prop('disabled', false);
           }
 
           selectPerfilPuxador.show();
@@ -565,7 +684,7 @@ $(document).ready(function() {
       });
     } else {
       $('#id_perfilpuxador').empty();
-      $('#divperfilpuxador :input').prop('disabled', true); // Bloquear campos dentro da div com id="divpuxador"
+      $('#divperfilpuxador :input').prop('disabled', true);
     }
   }
 });
@@ -575,7 +694,7 @@ $(document).ready(function() {
 $(document).ready(function() {
   $('#id_perfil').change(function() {
     buscarDivisor();
-    limparCampoVidro(); // Adicionado chamada para a função limparCampoVidro()
+    limparCampoVidro();
   });
 
   function buscarDivisor() {
@@ -583,7 +702,7 @@ $(document).ready(function() {
 
     if (perfil) {
       $.ajax({
-        url: '/buscar_Divisor/',  // Atualize para a URL correta
+        url: '/buscar_Divisor/',
         type: 'GET',
         data: {
           perfil: perfil
@@ -600,16 +719,14 @@ $(document).ready(function() {
             selectDivisor.append(option);
           });
 
-          // Verificar o número de itens na resposta
           var numItens = response.length;
 
-          // Desabilitar ou habilitar o campo divisor com base no número de itens
           if (numItens <= 0) {
             selectDivisor.prop('disabled', true);
-            $('#divdivisor :input').prop('disabled', true); // Bloquear campos dentro da div com id="divdivisor"
+            $('#divdivisor :input').prop('disabled', true);
           } else {
             selectDivisor.prop('disabled', false);
-            $('#divdivisor :input').prop('disabled', false); // Desbloquear campos dentro da div com id="divdivisor"
+            $('#divdivisor :input').prop('disabled', false);
           }
 
           selectDivisor.show();
@@ -620,7 +737,7 @@ $(document).ready(function() {
       });
     } else {
       $('#id_divisor').empty();
-      $('#divdivisor :input').prop('disabled', true); // Bloquear campos dentro da div com id="divdivisor"
+      $('#divdivisor :input').prop('disabled', true);
     }
   }
 
@@ -643,7 +760,7 @@ $(document).ready(function() {
 
     if (perfil) {
       $.ajax({
-        url: '/buscar_Puxador/',  // Atualize para a URL correta
+        url: '/buscar_Puxador/',
         type: 'GET',
         data: {
           perfil: perfil
@@ -660,16 +777,14 @@ $(document).ready(function() {
             selectPuxador.append(option);
           });
 
-          // Verificar o número de itens na resposta
           var numItens = response.length;
 
-          // Desabilitar ou habilitar o campo puxador com base no número de itens
           if (numItens <= 0) {
             selectPuxador.prop('disabled', true);
-            $('#divpuxador :input').prop('disabled', true); // Bloquear campos dentro da div com id="divpuxador"
+            $('#divpuxador :input').prop('disabled', true);
           } else {
             selectPuxador.prop('disabled', false);
-            $('#divpuxador :input').prop('disabled', false); // Desbloquear campos dentro da div com id="divpuxador"
+            $('#divpuxador :input').prop('disabled', false);
           }
 
           selectPuxador.show();
@@ -686,52 +801,68 @@ $(document).ready(function() {
 });
 </script>
 
-<script>
-$(document).ready(function() {
-  // Função para verificar se os campos estão preenchidos
-  function verificarCamposPreenchidos() {
-    var quantidade = $('#id_quantidade').val();
-    var largura = $('#id_largura').val();
-    var altura = $('#id_altura').val();
-    var acabamento = $('#id_acabamento').val();
-    var abertura = $('#id_abertura').val();
+<!--<script>-->
+<!--$(document).ready(function() {-->
+<!--  // Função para verificar se os campos estão preenchidos-->
+<!--  function verificarCamposPreenchidos() {-->
+<!--    var quantidade = $('#id_quantidade').val();-->
+<!--    var largura = $('#id_largura').val();-->
+<!--    var altura = $('#id_altura').val();-->
+<!--    var acabamento = $('#id_acabamento').val();-->
+<!--    var abertura = $('#id_abertura').val();-->
+<!--    var linha = $('#id_linha').val();-->
 
-    // Verificar se todos os campos estão preenchidos
-    if (quantidade && largura && altura && acabamento && abertura) {
-      // Verificar se o radiobutton selecionado é PortaGiro
-      if ($('#btnPortaGiro').is(':checked')) {
-        // Desbloquear somente o campo perfil
-        $('#id_perfil').prop('disabled', false);
-      }
+<!--    if ($('#btnPortaGiro').is(':checked')) {-->
+<!--        if (quantidade && largura && altura && acabamento && abertura) {-->
+<!--            $('#id_perfil').prop('disabled', false);-->
+<!--          }-->
+<!--          // Verificar se o campo perfil também está preenchido-->
+<!--            if ($('#id_perfil').val()) {-->
+<!--                // Desbloquear os demais campos na divportas-->
+<!--                $('#divportas input:not(#id_perfil), #divportas select:not(#id_perfil)').prop('disabled', false);-->
+<!--            } else {-->
+<!--                // Bloquear os demais campos na divportas-->
+<!--                $('#divportas input:not(#id_perfil), #divportas select:not(#id_perfil)').prop('disabled', true);-->
+<!--            }-->
+<!--        } else {-->
+<!--              // Bloquear os campos na divportas-->
+<!--              $('#divportas input, #divportas select').prop('disabled', true);-->
+<!--            }-->
+<!--        }-->
+<!--    }-->
+<!--    if ($('#btnPortaCorrer').is(':checked')) {-->
+<!--        if (quantidade && largura && altura && acabamento) {-->
+<!--            $('#id_perfil').prop('disabled', false);-->
+<!--          }-->
+<!--          // Verificar se o campo perfil também está preenchido-->
+<!--            if ($('#id_perfil').val()) {-->
+<!--                // Desbloquear os demais campos na divportas-->
+<!--                $('#divportas input:not(#id_perfil), #divportas select:not(#id_perfil)').prop('disabled', false);-->
+<!--            } else {-->
+<!--                // Bloquear os demais campos na divportas-->
+<!--                $('#divportas input:not(#id_perfil), #divportas select:not(#id_perfil)').prop('disabled', true);-->
+<!--            }-->
+<!--        } else {-->
+<!--              // Bloquear os campos na divportas-->
+<!--              $('#divportas input, #divportas select').prop('disabled', true);-->
+<!--            }-->
+<!--        }-->
+<!--    }-->
 
-      // Verificar se o campo perfil também está preenchido
-      if ($('#id_perfil').val()) {
-        // Desbloquear os demais campos na divportas
-        $('#divportas input:not(#id_perfil), #divportas select:not(#id_perfil)').prop('disabled', false);
-      } else {
-        // Bloquear os demais campos na divportas
-        $('#divportas input:not(#id_perfil), #divportas select:not(#id_perfil)').prop('disabled', true);
-      }
-    } else {
-      // Bloquear os campos na divportas
-      $('#divportas input, #divportas select').prop('disabled', true);
-    }
-  }
+<!--  // Verificar campos ao carregar a página-->
+<!--  verificarCamposPreenchidos();-->
 
-  // Verificar campos ao carregar a página
-  verificarCamposPreenchidos();
+<!--  // Verificar campos sempre que houver uma alteração nos campos-->
+<!--  $('#id_quantidade, #id_largura, #id_altura, #id_acabamento, #id_abertura, #id_perfil').on('input', function() {-->
+<!--    verificarCamposPreenchidos();-->
+<!--  });-->
 
-  // Verificar campos sempre que houver uma alteração nos campos
-  $('#id_quantidade, #id_largura, #id_altura, #id_acabamento, #id_abertura, #id_perfil').on('input', function() {
-    verificarCamposPreenchidos();
-  });
-
-  // Limpar campo perfil ao alterar o campo abertura
-  $('#id_abertura').on('change', function() {
-    $('#id_perfil').val('');
-  });
-});
-</script>
+<!--  // Limpar campo perfil ao alterar o campo abertura-->
+<!--  $('#id_abertura').on('change', function() {-->
+<!--    $('#id_perfil').val('');-->
+<!--  });-->
+<!--});-->
+<!--</script>-->
 
 <script>
 $(document).ready(function() {
@@ -746,29 +877,37 @@ $(document).ready(function() {
     var acabamento = $('#id_acabamento').val();
     var abertura = $('#id_abertura').val();
 
-    if (quantidade && largura && altura && acabamento && abertura) {
-      // Desbloquear o campo perfil
-      $('#id_perfil').prop('disabled', false);
+    if ($('#btnPortaGiro').is(':checked')) {
+        if (quantidade && largura && altura && acabamento && abertura) {
+          // Desbloquear o campo perfil
+          $('#id_perfil').prop('disabled', false);
+        }
+    }
+    if ($('#btnPortaCorrer').is(':checked')) {
+        if (quantidade && largura && altura && acabamento) {
+          // Desbloquear o campo perfil
+          $('#id_perfil').prop('disabled', false);
+        }
     }
   });
 });
 </script>
 
-<script>
-    function limparCampos() {
-        // Selecionar os campos dentro da divportas
-        var camposDivPortas = document.getElementById('divportas').getElementsByTagName('input');
-        var selectsDivPortas = document.getElementById('divportas').getElementsByTagName('select');
+<!--<script>-->
+<!--    function limparCampos() {-->
+<!--        // Selecionar os campos dentro da divportas-->
+<!--        var camposDivPortas = document.getElementById('divportas').getElementsByTagName('input');-->
+<!--        var selectsDivPortas = document.getElementById('divportas').getElementsByTagName('select');-->
 
-        // Limpar os campos
-        for (var i = 0; i < camposDivPortas.length; i++) {
-            camposDivPortas[i].value = '';
-        }
-        for (var i = 0; i < selectsDivPortas.length; i++) {
-            selectsDivPortas[i].value = '';
-        }
-    }
-</script>
+<!--        // Limpar os campos-->
+<!--        for (var i = 0; i < camposDivPortas.length; i++) {-->
+<!--            camposDivPortas[i].value = '';-->
+<!--        }-->
+<!--        for (var i = 0; i < selectsDivPortas.length; i++) {-->
+<!--            selectsDivPortas[i].value = '';-->
+<!--        }-->
+<!--    }-->
+<!--</script>-->
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
