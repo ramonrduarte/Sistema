@@ -11,8 +11,8 @@
 <div class="container mt-5 pt-5">
 <h3 class="fs-2 fw-semibold">Cadastro</h3>
 <hr>
-<div class="">
-    <form class="card p-3 mt-5" autocomplete="off" action="" method="POST">
+<div>
+    <form class="card p-3 mt-5" autocomplete="off" action="{% if form.instance.id %}{% url 'editar-perfilpuxador' form.instance.id %}{% else %}{% url 'cadastrar-perfilpuxador' %}{% endif %}" method="POST">
         {% csrf_token %}
         <div class="row">
             <div class="col-2">{{ form.codigo|as_crispy_field }}</div>

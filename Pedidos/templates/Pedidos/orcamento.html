@@ -200,9 +200,9 @@ Adrofecha - Orçamento
                     <div class="input-group row" id="divsuperior">
                       <label class="form-label mt-1 ms-3 mb-0" for="form1">Superior:</label>
                       <div class="d-flex inline-block ms-3">
-                        <input type="search" id="form1" class="form-control " style="width: 100px; height: 37px";>
+                        <input type="search" id="form1" class="form-control " style="width: 100px; height: 37px" ;>
                         <div class="ms-1" >
-                            <select class="form-select" style="height: 35px; width:350px; ";>
+                            <select class="form-select" style="height: 35px; width:350px;" ;>
                                 <option value="1"> Opção 1 </option>
                             </select>
                         </div>
@@ -212,9 +212,9 @@ Adrofecha - Orçamento
                     <div class="input-group row">
                       <label class="form-label mt-1 ms-3 mb-0" for="form1">Inferior:</label>
                       <div class="d-flex inline-block ms-3">
-                        <input type="search" id="form1" class="form-control " style="width: 100px; height: 37px";>
+                        <input type="search" id="form1" class="form-control " style="width: 100px; height: 37px" ;>
                         <div class="ms-1" >
-                            <select class="form-select" style="height: 35px; width:350px; ";>
+                            <select class="form-select" style="height: 35px; width:350px;" ;>
                                 <option value="1"> Opção 1 </option>
                             </select>
                         </div>
@@ -224,9 +224,9 @@ Adrofecha - Orçamento
                     <div class="input-group row">
                       <label class="form-label mt-1 ms-3 mb-0" for="form1">Lateral:</label>
                       <div class="d-flex inline-block ms-3">
-                        <input type="search" id="form1" class="form-control " style="width: 100px; height: 37px";>
+                        <input type="search" id="form1" class="form-control " style="width: 100px; height: 37px" ;>
                         <div class="ms-1" >
-                            <select class="form-select" style="height: 35px; width:350px; ";>
+                            <select class="form-select" style="height: 35px; width:350px;" ;>
                                 <option value="1"> Opção 1 </option>
                             </select>
                         </div>
@@ -236,14 +236,14 @@ Adrofecha - Orçamento
                     <div class="input-group row">
                       <label class="form-label mt-1 ms-3 mb-0" for="form1">Divisor:</label>
                       <div class="d-flex inline-block ms-3">
-                        <input type="search" id="form1" class="form-control " style="width: 100px; height: 37px";>
+                        <input type="search" id="form1" class="form-control " style="width: 100px; height: 37px" ;>
                         <div class="ms-1" >
-                            <select class="form-select" style="height: 35px; width:350px; ";>
+                            <select class="form-select" style="height: 35px; width:350px;" ;>
                                 <option value="1"> Opção 1 </option>
                             </select>
                         </div>
                         <div class="ms-1" >
-                            <select class="form-select" style="height: 35px; width:30px; ";>
+                            <select class="form-select" style="height: 35px; width:30px;" ;>
                                 <option value="1"> Opção 1 </option>
                             </select>
                         </div>
@@ -253,9 +253,9 @@ Adrofecha - Orçamento
                     <div class="input-group row">
                       <label class="form-label mt-1 ms-3 mb-0" for="form1">Vidro:</label>
                       <div class="d-flex inline-block ms-3">
-                        <input type="search" id="form1" class="form-control " style="width: 100px; height: 37px";>
+                        <input type="search" id="form1" class="form-control " style="width: 100px; height: 37px" ;>
                         <div class="ms-1" >
-                            <select class="form-select" style="height: 35px; width:350px; ";>
+                            <select class="form-select" style="height: 35px; width:350px;" ;>
                                 <option value="1"> Opção 1 </option>
                             </select>
                         </div>
@@ -277,9 +277,9 @@ Adrofecha - Orçamento
                     </div>
                 </div>
 <!--                botoes finalizar-->
-                <div class="mt-1 text-end" style="height: 45px";>
-                    <a class="btn btn-primary me-2 mt-1" id="btnpedidocancelar" style="width: 90px"; href="#" role="button">Cancelar</a>
-                    <a class="btn btn-primary me-2 mt-1" id="btnpedidofinalizar" style="width: 90px"; href="#" role="button">Adicionar</a>
+                <div class="mt-1 text-end" style="height: 45px" ;>
+                    <a class="btn btn-primary me-2 mt-1" id="btnpedidocancelar" style="width: 90px" ; href="#" role="button">Cancelar</a>
+                    <a class="btn btn-primary me-2 mt-1" id="btnpedidofinalizar" style="width: 90px" ; href="#" role="button">Adicionar</a>
                 </div>
             </div>
             <div class="border bg-danger-subtle col-6">
@@ -801,69 +801,6 @@ $(document).ready(function() {
 });
 </script>
 
-<!--<script>-->
-<!--$(document).ready(function() {-->
-<!--  // Função para verificar se os campos estão preenchidos-->
-<!--  function verificarCamposPreenchidos() {-->
-<!--    var quantidade = $('#id_quantidade').val();-->
-<!--    var largura = $('#id_largura').val();-->
-<!--    var altura = $('#id_altura').val();-->
-<!--    var acabamento = $('#id_acabamento').val();-->
-<!--    var abertura = $('#id_abertura').val();-->
-<!--    var linha = $('#id_linha').val();-->
-
-<!--    if ($('#btnPortaGiro').is(':checked')) {-->
-<!--        if (quantidade && largura && altura && acabamento && abertura) {-->
-<!--            $('#id_perfil').prop('disabled', false);-->
-<!--          }-->
-<!--          // Verificar se o campo perfil também está preenchido-->
-<!--            if ($('#id_perfil').val()) {-->
-<!--                // Desbloquear os demais campos na divportas-->
-<!--                $('#divportas input:not(#id_perfil), #divportas select:not(#id_perfil)').prop('disabled', false);-->
-<!--            } else {-->
-<!--                // Bloquear os demais campos na divportas-->
-<!--                $('#divportas input:not(#id_perfil), #divportas select:not(#id_perfil)').prop('disabled', true);-->
-<!--            }-->
-<!--        } else {-->
-<!--              // Bloquear os campos na divportas-->
-<!--              $('#divportas input, #divportas select').prop('disabled', true);-->
-<!--            }-->
-<!--        }-->
-<!--    }-->
-<!--    if ($('#btnPortaCorrer').is(':checked')) {-->
-<!--        if (quantidade && largura && altura && acabamento) {-->
-<!--            $('#id_perfil').prop('disabled', false);-->
-<!--          }-->
-<!--          // Verificar se o campo perfil também está preenchido-->
-<!--            if ($('#id_perfil').val()) {-->
-<!--                // Desbloquear os demais campos na divportas-->
-<!--                $('#divportas input:not(#id_perfil), #divportas select:not(#id_perfil)').prop('disabled', false);-->
-<!--            } else {-->
-<!--                // Bloquear os demais campos na divportas-->
-<!--                $('#divportas input:not(#id_perfil), #divportas select:not(#id_perfil)').prop('disabled', true);-->
-<!--            }-->
-<!--        } else {-->
-<!--              // Bloquear os campos na divportas-->
-<!--              $('#divportas input, #divportas select').prop('disabled', true);-->
-<!--            }-->
-<!--        }-->
-<!--    }-->
-
-<!--  // Verificar campos ao carregar a página-->
-<!--  verificarCamposPreenchidos();-->
-
-<!--  // Verificar campos sempre que houver uma alteração nos campos-->
-<!--  $('#id_quantidade, #id_largura, #id_altura, #id_acabamento, #id_abertura, #id_perfil').on('input', function() {-->
-<!--    verificarCamposPreenchidos();-->
-<!--  });-->
-
-<!--  // Limpar campo perfil ao alterar o campo abertura-->
-<!--  $('#id_abertura').on('change', function() {-->
-<!--    $('#id_perfil').val('');-->
-<!--  });-->
-<!--});-->
-<!--</script>-->
-
 <script>
 $(document).ready(function() {
   $('#id_acabamento, #id_abertura').change(function() {
@@ -999,65 +936,67 @@ $(document).ready(function() {
 </script>
 
 <script>
-$(document).ready(function() {
-  // Function to handle changes in the "perfil puxador" field
-  $("#id_perfilpuxador").change(function() {
-    var perfilPuxador = $(this).val();
-    var puxadorField = $("#id_puxador");
-    var qtdpuxadorField = $("#qtd-puxador");
-    var posicaopuxadorField = $("#posicao-puxador");
-    var tamanhopuxadorField = $("#tam-puxador");
+  $(document).ready(function() {
+    $("#id_perfilpuxador").change(function() {
+      var perfilPuxador = $(this).val();
+      var puxadorField = $("#id_puxador");
+      var qtdpuxadorField = $("#qtd-puxador");
+      var posicaopuxadorField = $("#posicao-puxador");
+      var tamanhopuxadorField = $("#tam-puxador");
 
-    if (perfilPuxador && perfilPuxador !== "") {
+      if (perfilPuxador && perfilPuxador !== "") {
       puxadorField.prop('disabled', true);
       qtdpuxadorField.prop('disabled', true);
       posicaopuxadorField.prop('disabled', true);
       tamanhopuxadorField.prop('disabled', true);
-    } else {
-      puxadorField.prop('disabled', false);
-      qtdpuxadorField.prop('disabled', false);
-      posicaopuxadorField.prop('disabled', false);
-      tamanhopuxadorField.prop('disabled', false);
-    }
+      } else {
+        if (PuxadorField.children().length > 0) {
+            puxadorField.prop('disabled', false);
+            qtdpuxadorField.prop('disabled', false);
+            posicaopuxadorField.prop('disabled', false);
+            tamanhopuxadorField.prop('disabled', false);
+        }
+      }
 
-    // Clear the related fields
-    $("#qtd-perfilpuxador").val('');
-    $("#posicao-perfilpuxador").val('');
-  });
+      // Clear the related fields
+      $("#qtd-perfilpuxador").val('');
+      $("#posicao-perfilpuxador").val('');
+    });
 
-  $("#id_puxador").change(function() {
-    var puxador = $(this).val();
-    var perfilPuxadorField = $("#id_perfilpuxador");
-    var qtdperfilPuxadorField = $("#qtd-perfilpuxador");
-    var posicaoperfilPuxadorField = $("#posicao-perfilpuxador");
+    $("#id_puxador").change(function() {
+      var puxador = $(this).val();
+      var perfilPuxadorField = $("#id_perfilpuxador");
+      var qtdperfilPuxadorField = $("#qtd-perfilpuxador");
+      var posicaoperfilPuxadorField = $("#posicao-perfilpuxador");
 
-    if (puxador && puxador !== "") {
+      if (puxador && puxador !== "") {
       perfilPuxadorField.prop('disabled', true);
       qtdperfilPuxadorField.prop('disabled', true);
       posicaoperfilPuxadorField.prop('disabled', true);
-    } else {
-      perfilPuxadorField.prop('disabled', false);
-      qtdperfilPuxadorField.prop('disabled', false);
-      posicaoperfilPuxadorField.prop('disabled', false);
-    }
+      } else {
+        if (perfilPuxadorField.children().length > 0) {
+            perfilPuxadorField.prop('disabled', false);
+            qtdperfilPuxadorField.prop('disabled', false);
+            posicaoperfilPuxadorField.prop('disabled', false);
+        }
+      }
 
-    $("#qtd-puxador").val('');
-    $("#posicao-puxador").val('');
-    $("#tam-puxador").val('');
+      $("#qtd-puxador").val('');
+      $("#posicao-puxador").val('');
+      $("#tam-puxador").val('');
+    });
+
+    $("#id_perfil").change(function() {
+      var perfil = $(this).val();
+      var campoVidro = $("#id_vidro");
+
+      if (perfil && perfil !== "") {
+        campoVidro.prop('disabled', false);
+      } else {
+        campoVidro.prop('disabled', true);
+      }
+    });
   });
-
-  $("#id_perfil").change(function() {
-    var perfil = $(this).val();
-    var campoVidro = $("#id_vidro");
-
-    if (perfil && perfil !== "") {
-      campoVidro.prop('disabled', false);
-    } else {
-      campoVidro.prop('disabled', true);
-    }
-  });
-});
-
 </script>
 
 {% endblock %}
