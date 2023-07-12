@@ -5,16 +5,14 @@ Cadastro de Clientes
 {% endblock %}
 
 {% block content %}
-<header class="mt-5 pt-3">
+<header class="mt-5">
   <div>
-      <div class="bg-warning rounded text-dark border border-dark container h-10 d-flex align-items-center justify-content-center">
-        <h1><strong>CADASTRO DE CLIENTES</strong></h1>
+      <div class="bg-warning rounded text-dark border border-dark pt-1 d-flex align-items-center justify-content-center">
+        <h4><strong>CADASTRO DE CLIENTES</strong></h4>
       </div>
-      <div class="mt-3 ">
-          <form class="container h-10 d-flex align-items-center justify-content-end" action="?" method="GET">
-              <input type="text" name="nome" class="form-control me-3" value="{{ request.GET.nome }}" style="width: 500px;" placeholder="Buscar">
-              <a href="{% url 'cadastrar-clientes' %}" style="width: 120px;" class="btn btn-primary bg-primary">Novo</a>
-          </form>
+      <div class="mt-2 d-flex align-items-center justify-content-end">
+          <input type="email" class="form-control me-3" style="width: 500px;" placeholder="digite aqui">
+          <a href="{% url 'cadastrar-clientes' %}" style="width: 120px;" class="btn btn-primary bg-primary">Novo</a>
       </div>
   </div>
 </header>

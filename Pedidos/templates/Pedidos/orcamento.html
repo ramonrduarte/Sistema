@@ -403,31 +403,29 @@ $(document).ready(function() {
 
     posicaoPerfilPuxador.empty();
 
-    if (perfilPuxador && perfilPuxador !== "" && qtdPerfilPuxador === "2") {
+    if (qtdPerfilPuxador === "2") {
       if ($("#btnPortaCorrer").is(":checked")) {
         posicaoPerfilPuxador.append($('<option>', {value: 'Esq/Dir', text: 'Esq/Dir'}));
       }
-    } else {
-      if ($("#btnPortaCorrer").is(":checked")) {
-        if (perfilPuxador && perfilPuxador !== "") {
+    } else if (qtdPerfilPuxador === "1") {
+        if ($("#btnPortaCorrer").is(":checked")) {
           posicaoPerfilPuxador.append($('<option>', {value: 'Direita', text: 'Direita'}));
           posicaoPerfilPuxador.append($('<option>', {value: 'Esquerda', text: 'Esquerda'}));
+        } else if ($("#btnPortaGiro").is(":checked")) {
+            if (abertura === "D") {
+              posicaoPerfilPuxador.append($('<option>', {value: 'Esquerda', text: 'Esquerda'}));
+              posicaoPerfilPuxador.append($('<option>', {value: 'Topo', text: 'Topo'}));
+              posicaoPerfilPuxador.append($('<option>', {value: 'Base', text: 'Base'}));
+            } else if (abertura === "E") {
+              posicaoPerfilPuxador.append($('<option>', {value: 'Direita', text: 'Direita'}));
+              posicaoPerfilPuxador.append($('<option>', {value: 'Topo', text: 'Topo'}));
+              posicaoPerfilPuxador.append($('<option>', {value: 'Base', text: 'Base'}));
+            } else if (abertura === "C") {
+              posicaoPerfilPuxador.append($('<option>', {value: 'Base', text: 'Base'}));
+            } else if (abertura === "B") {
+              posicaoPerfilPuxador.append($('<option>', {value: 'Topo', text: 'Topo'}));
+            }
         }
-      }
-    }
-
-    if (abertura === "D") {
-      posicaoPerfilPuxador.append($('<option>', {value: 'Esquerda', text: 'Esquerda'}));
-      posicaoPerfilPuxador.append($('<option>', {value: 'Topo', text: 'Topo'}));
-      posicaoPerfilPuxador.append($('<option>', {value: 'Base', text: 'Base'}));
-    } else if (abertura === "E") {
-      posicaoPerfilPuxador.append($('<option>', {value: 'Direita', text: 'Direita'}));
-      posicaoPerfilPuxador.append($('<option>', {value: 'Topo', text: 'Topo'}));
-      posicaoPerfilPuxador.append($('<option>', {value: 'Base', text: 'Base'}));
-    } else if (abertura === "C") {
-      posicaoPerfilPuxador.append($('<option>', {value: 'Base', text: 'Base'}));
-    } else if (abertura === "B") {
-      posicaoPerfilPuxador.append($('<option>', {value: 'Topo', text: 'Topo'}));
     }
   }
 
@@ -479,31 +477,29 @@ $(document).ready(function() {
 
     posicaoPuxador.empty();
 
-    if (Puxador && Puxador !== "" && qtdPuxador === "2") {
+    if (qtdPuxador === "2") {
       if ($("#btnPortaCorrer").is(":checked")) {
         posicaoPuxador.append($('<option>', {value: 'Esq/Dir', text: 'Esq/Dir'}));
       }
-    } else {
-      if ($("#btnPortaCorrer").is(":checked")) {
-        if (Puxador && Puxador !== "") {
+    } else if (qtdPuxador === "1") {
+        if ($("#btnPortaCorrer").is(":checked")) {
           posicaoPuxador.append($('<option>', {value: 'Direita', text: 'Direita'}));
           posicaoPuxador.append($('<option>', {value: 'Esquerda', text: 'Esquerda'}));
+        } else if ($("#btnPortaGiro").is(":checked")) {
+            if (abertura === "D") {
+              posicaoPuxador.append($('<option>', {value: 'Esquerda', text: 'Esquerda'}));
+              posicaoPuxador.append($('<option>', {value: 'Topo', text: 'Topo'}));
+              posicaoPuxador.append($('<option>', {value: 'Base', text: 'Base'}));
+            } else if (abertura === "E") {
+              posicaoPuxador.append($('<option>', {value: 'Direita', text: 'Direita'}));
+              posicaoPuxador.append($('<option>', {value: 'Topo', text: 'Topo'}));
+              posicaoPuxador.append($('<option>', {value: 'Base', text: 'Base'}));
+            } else if (abertura === "C") {
+              posicaoPuxador.append($('<option>', {value: 'Base', text: 'Base'}));
+            } else if (abertura === "B") {
+              posicaoPuxador.append($('<option>', {value: 'Topo', text: 'Topo'}));
+            }
         }
-      }
-    }
-
-    if (abertura === "D") {
-      posicaoPuxador.append($('<option>', {value: 'Esquerda', text: 'Esquerda'}));
-      posicaoPuxador.append($('<option>', {value: 'Topo', text: 'Topo'}));
-      posicaoPuxador.append($('<option>', {value: 'Base', text: 'Base'}));
-    } else if (abertura === "E") {
-      posicaoPuxador.append($('<option>', {value: 'Direita', text: 'Direita'}));
-      posicaoPuxador.append($('<option>', {value: 'Topo', text: 'Topo'}));
-      posicaoPuxador.append($('<option>', {value: 'Base', text: 'Base'}));
-    } else if (abertura === "C") {
-      posicaoPuxador.append($('<option>', {value: 'Base', text: 'Base'}));
-    } else if (abertura === "B") {
-      posicaoPuxador.append($('<option>', {value: 'Topo', text: 'Topo'}));
     }
   }
 
@@ -547,7 +543,6 @@ $(document).ready(function() {
 
 <script>
 $(document).ready(function() {
-  // Chamar a função filtrarPerfil quando houver alteração nos campos relevantes
   $('#id_acabamento, #id_quantidade, #id_largura, #id_altura, #id_abertura').change(filtrarPerfil);
 
   function filtrarPerfil() {
@@ -693,6 +688,7 @@ $(document).ready(function() {
 <script>
 $(document).ready(function() {
   $('#id_perfil').change(function() {
+    limparCamposPortas();
     buscarDivisor();
     limparCampoVidro();
   });
@@ -739,6 +735,12 @@ $(document).ready(function() {
       $('#id_divisor').empty();
       $('#divdivisor :input').prop('disabled', true);
     }
+  }
+
+  function limparCamposPortas() {
+    $('#divportas input:not(#id_perfil), #divportas select:not(#id_perfil)').each(function() {
+      $(this).val('').prop('disabled', true);
+    });
   }
 
   // Função para limpar o campo id_vidro
@@ -950,7 +952,7 @@ $(document).ready(function() {
       posicaopuxadorField.prop('disabled', true);
       tamanhopuxadorField.prop('disabled', true);
       } else {
-        if (PuxadorField.children().length > 0) {
+        if (puxadorField.children().length > 1) {
             puxadorField.prop('disabled', false);
             qtdpuxadorField.prop('disabled', false);
             posicaopuxadorField.prop('disabled', false);
@@ -974,7 +976,7 @@ $(document).ready(function() {
       qtdperfilPuxadorField.prop('disabled', true);
       posicaoperfilPuxadorField.prop('disabled', true);
       } else {
-        if (perfilPuxadorField.children().length > 0) {
+        if (perfilPuxadorField.children().length > 1) {
             perfilPuxadorField.prop('disabled', false);
             qtdperfilPuxadorField.prop('disabled', false);
             posicaoperfilPuxadorField.prop('disabled', false);
