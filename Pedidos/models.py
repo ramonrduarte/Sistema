@@ -1,7 +1,7 @@
 from django.db import models
 from Clientes.models import Cliente
 from cadastros.models import Perfil, PerfilPuxador, Puxador, Divisor, DivisoriaAmbiente, Vidro, LINHA, POSICAODIVISORIA, Acabamento
-from .choices import StatusPedido, Abertura
+from .choices import StatusPedido, Abertura, Linha
 from datetime import datetime
 
 
@@ -15,7 +15,7 @@ class Pedido(models.Model):
     altura = models.CharField(max_length=4)
     acabamento = models.ForeignKey(Acabamento, on_delete=models.SET_NULL, null=True, default="1")
     abertura = models.CharField(max_length=10, choices=Abertura.choices, default="1")
-    linha = models.CharField(max_length=10, choices=LINHA, verbose_name="Linha", blank=False, null=False)
+    linha = models.CharField(max_length=10, choices=Linha.choices, default="1")
     perfil = models.ForeignKey(Perfil, on_delete=models.PROTECT, verbose_name="Perfil")
     perfilpuxador = models.ForeignKey(PerfilPuxador, on_delete=models.PROTECT, verbose_name="Perfil Puxador")
     qtdperfilpuxador = models.CharField(max_length=1)

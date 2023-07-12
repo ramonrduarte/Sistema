@@ -2,7 +2,7 @@ from .models import Pedido
 from django.views.generic.edit import CreateView
 from django.http import JsonResponse
 from django.views import View
-from .models import Perfil, PerfilPuxador
+from .models import Perfil, PerfilPuxador, DivisoriaAmbiente
 from django.shortcuts import get_object_or_404
 
 class PedidoCreate(CreateView):
@@ -89,6 +89,28 @@ class buscar_Divisor(View):
         # Crie uma lista de dicionários com os resultados filtrados
         resultados = []
         for objeto in divisores:
+            resultados.append({
+                'id': objeto.id,
+                'descricao': f"({objeto.codigo}) {objeto.descricao}"
+            })
+
+        return JsonResponse(resultados, safe=False)
+
+
+class filtrar_divisoriaView(View):
+    def get(self, request):
+        acabamento = request.GET.get('acabamento')
+        linha = request.GET.get('linha')
+
+
+        queryset = DivisoriaAmbiente.objects.all()
+
+        if acabamento and linha:
+            queryset = queryset.filter(acabamento_id=acabamento, linha=linha)
+
+        # Crie uma lista de dicionários com os resultados filtrados
+        resultados = []
+        for objeto in queryset:
             resultados.append({
                 'id': objeto.id,
                 'descricao': f"({objeto.codigo}) {objeto.descricao}"

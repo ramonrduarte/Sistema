@@ -12,3 +12,7 @@ class Abertura(TextChoices):
     ESQUERDA = "E", "Esquerda"
     CIMA = "C", "Cima"
     BAIXO = "B", "Baixo"
+
+class Linha(TextChoices):
+    DOPPIO = "Doppio", "Doppio"
+    MIL = "1000", "1000"

@@ -172,10 +172,7 @@ Adrofecha - Orçamento
                                     {{ form.divisor|attr:"class:form-control custom-input-size-selectitems selectdivisor" }}
                                 </div>
                                 <div class="d-flex">
-                                    <select class="form-control custom-input-qtd flex-grow-1 me-1">
-                                        <option value=""></option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
+                                    <select class="form-control custom-input-qtd flex-grow-1 me-1" id="qtd-divisor">
                                     </select>
                                 </div>
                             </div>
@@ -195,18 +192,18 @@ Adrofecha - Orçamento
                     </div>
                 </div>
 <!--                menu para divisoria ambiente-->
-<!--                Linha Superior-->
                 <div id="divambiente" class="hidden">
-                    <div class="input-group row" id="divsuperior">
-                      <label class="form-label mt-1 ms-3 mb-0" for="form1">Superior:</label>
-                      <div class="d-flex inline-block ms-3">
-                        <input type="search" id="form1" class="form-control " style="width: 100px; height: 37px" ;>
-                        <div class="ms-1" >
-                            <select class="form-select" style="height: 35px; width:350px;" ;>
-                                <option value="1"> Opção 1 </option>
-                            </select>
+                    <!--Linha Superior-->
+                    <div class="mx-3">
+                        <div class="row justify-content-start" id="divsuperior">
+                            <label for="{{ form.divisoriaambiente.id_for_label }}" >
+                                Superior:
+                                {% if form.divisoriaambiente.field.required %}{% endif %}
+                            </label>
+                            <div>
+                                {{ form.divisoriaambiente|attr:"class:form-control custom-input-size-selectitems selectPerfil" }}
+                            </div>
                         </div>
-                      </div>
                     </div>
 <!--                    Linha Inferior-->
                     <div class="input-group row">
@@ -1000,6 +997,88 @@ $(document).ready(function() {
     });
   });
 </script>
+
+<script>
+$(document).ready(function() {
+
+  $("#id_divisor").change(function() {
+    var divisor = $(this).val();
+    var qtdDivisor = $("#qtd-divisor");
+
+    qtdDivisor.empty();
+
+    if (divisor && divisor !== "") {
+      qtdDivisor.empty();
+      qtdDivisor.append($('<option>', {value: '1', text: '1'}));
+      qtdDivisor.append($('<option>', {value: '2', text: '2'}));
+      qtdDivisor.prop('disabled', false);
+    }
+  });
+});
+</script>
+
+<script>
+$(document).ready(function() {
+  $('#id_acabamento, #id_quantidade, #id_largura, #id_altura, #id_linha').change(filtrarDivisoria);
+
+  function filtrarDivisoria() {
+    var acabamento = $('#id_acabamento').val();
+    var quantidade = $('#id_quantidade').val();
+    var largura = $('#id_largura').val();
+    var altura = $('#id_altura').val();
+    var linha = $('#id_linha').val();
+    var divsuperiorField = $('#divsuperior');
+    var campoDivisoria = $('#divambiente');
+    var divisoriaRadioButton = $('#btnDivisoria');
+    var idDivisoriaAmbiente = $('#id_divisoriaambiente');
+
+    if (divisoriaRadioButton.is(':checked')) {
+      if (quantidade && largura && altura && acabamento && linha) {
+        idDivisoriaAmbiente.prop('disabled', false);
+        idDivisoriaAmbiente.find(':input').prop('disabled', false);
+      } else {
+        idDivisoriaAmbiente.prop('disabled', true);
+        idDivisoriaAmbiente.find(':input').prop('disabled', true);
+      }
+    } else {
+      idDivisoriaAmbiente.prop('disabled', true);
+      idDivisoriaAmbiente.find(':input').prop('disabled', true);
+    }
+
+    $.ajax({
+      url: '/filtrar_divisoria/',
+      type: 'GET',
+      data: {
+        acabamento: acabamento,
+        linha: linha
+      },
+      success: function(response) {
+        divsuperiorField.empty();
+
+        var option = $('<option>').attr('value', '').text('-------');
+        divsuperiorField.append(option);
+
+        $.each(response, function(index, item) {
+          option = $('<option>').attr('value', item.id).text(item.descricao);
+          divsuperiorField.append(option);
+        });
+
+        divsuperiorField.show();
+      },
+      error: function(xhr) {
+        console.log(xhr.statusText);
+      }
+    });
+  }
+
+  filtrarDivisoria();
+});
+</script>
+
+
+
+
+
 
 {% endblock %}
 
