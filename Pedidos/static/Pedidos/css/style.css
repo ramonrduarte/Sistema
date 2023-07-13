@@ -41,6 +41,12 @@
     height: 30px;
 }
 
+.custom-input-divisorias {
+    width: 400px;
+    height: 30px;
+    padding: 1px 10px;
+}
+
 .mghr {
     margin-top: 10px;
     margin-bottom: 10px;

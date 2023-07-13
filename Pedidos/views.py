@@ -2,7 +2,7 @@ from .models import Pedido
 from django.views.generic.edit import CreateView
 from django.http import JsonResponse
 from django.views import View
-from .models import Perfil, PerfilPuxador, DivisoriaAmbiente
+from .models import Perfil, PerfilPuxador, DivisoriaAmbiente, Acabamento
 from django.shortcuts import get_object_or_404
 
 class PedidoCreate(CreateView):
@@ -117,3 +117,15 @@ class filtrar_divisoriaView(View):
             })
 
         return JsonResponse(resultados, safe=False)
+
+def obter_acabamentos_divisoria_ambiente(request):
+    # Consulta ao banco de dados para obter os acabamentos selecionados na DivisoriaAmbiente
+    divisoria_ambientes = DivisoriaAmbiente.objects.all()
+    acabamentos = divisoria_ambientes.values_list('acabamento', flat=True).distinct()
+    acabamentos = Acabamento.objects.filter(id__in=acabamentos).values('id', 'acabamento')
+
+    data = {
+        'acabamentos': list(acabamentos)
+    }
+
+    return JsonResponse(data)

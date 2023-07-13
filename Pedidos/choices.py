@@ -15,4 +15,4 @@ class Abertura(TextChoices):
 
 class Linha(TextChoices):
     DOPPIO = "Doppio", "Doppio"
-    MIL = "1000", "1000"
+    MIL = "Mil", "Mil"

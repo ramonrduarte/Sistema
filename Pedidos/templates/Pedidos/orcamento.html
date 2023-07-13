@@ -195,68 +195,57 @@ Adrofecha - Orçamento
                 <div id="divambiente" class="hidden">
                     <!--Linha Superior-->
                     <div class="mx-3">
-                        <div class="row justify-content-start" id="divsuperior">
-                            <label for="{{ form.divisoriaambiente.id_for_label }}" >
+                        <div class="justify-content-start" id="divsuperior">
+                            <label>
                                 Superior:
-                                {% if form.divisoriaambiente.field.required %}{% endif %}
                             </label>
-                            <div>
-                                {{ form.divisoriaambiente|attr:"class:form-control custom-input-size-selectitems selectPerfil" }}
-                            </div>
+                            <select class="form-control custom-input-divisorias" id="Selectambientesuperior">
+                            </select>
                         </div>
                     </div>
 <!--                    Linha Inferior-->
-                    <div class="input-group row">
-                      <label class="form-label mt-1 ms-3 mb-0" for="form1">Inferior:</label>
-                      <div class="d-flex inline-block ms-3">
-                        <input type="search" id="form1" class="form-control " style="width: 100px; height: 37px" ;>
-                        <div class="ms-1" >
-                            <select class="form-select" style="height: 35px; width:350px;" ;>
-                                <option value="1"> Opção 1 </option>
+                    <div class="mx-3">
+                        <div class="justify-content-start" id="divinferior">
+                            <label>
+                                Inferior:
+                            </label>
+                            <select class="form-control custom-input-divisorias" id="Selectambienteinferior">
                             </select>
                         </div>
-                      </div>
                     </div>
 <!--                    Linha Lateral-->
-                    <div class="input-group row">
-                      <label class="form-label mt-1 ms-3 mb-0" for="form1">Lateral:</label>
-                      <div class="d-flex inline-block ms-3">
-                        <input type="search" id="form1" class="form-control " style="width: 100px; height: 37px" ;>
-                        <div class="ms-1" >
-                            <select class="form-select" style="height: 35px; width:350px;" ;>
-                                <option value="1"> Opção 1 </option>
+                    <div class="mx-3">
+                        <div class="justify-content-start" id="divlateral">
+                            <label>
+                                Lateral:
+                            </label>
+                            <select class="form-control custom-input-divisorias" id="Selectambientelateral">
                             </select>
                         </div>
-                      </div>
                     </div>
 <!--                    Linha Divisor Ambiente-->
-                    <div class="input-group row">
-                      <label class="form-label mt-1 ms-3 mb-0" for="form1">Divisor:</label>
-                      <div class="d-flex inline-block ms-3">
-                        <input type="search" id="form1" class="form-control " style="width: 100px; height: 37px" ;>
-                        <div class="ms-1" >
-                            <select class="form-select" style="height: 35px; width:350px;" ;>
-                                <option value="1"> Opção 1 </option>
-                            </select>
+                    <div class="mx-3" id="divambientedivisor">
+                            <label>
+                                Divisor:
+                            </label>
+                            <div class="d-flex">
+                                <select class="form-control custom-input-divisorias" id="Selectambientedivisor">
+                                </select>
+                                <div class="d-flex">
+                                    <select class="form-control custom-input-qtd flex-grow-1 ms-1" id="qtd-divisorambiente">
+                                    </select>
+                                </div>
+                            </div>
                         </div>
-                        <div class="ms-1" >
-                            <select class="form-select" style="height: 35px; width:30px;" ;>
-                                <option value="1"> Opção 1 </option>
-                            </select>
-                        </div>
-                      </div>
-                    </div>
 <!--                    Linha Vidro Ambiente-->
-                    <div class="input-group row">
-                      <label class="form-label mt-1 ms-3 mb-0" for="form1">Vidro:</label>
-                      <div class="d-flex inline-block ms-3">
-                        <input type="search" id="form1" class="form-control " style="width: 100px; height: 37px" ;>
-                        <div class="ms-1" >
-                            <select class="form-select" style="height: 35px; width:350px;" ;>
-                                <option value="1"> Opção 1 </option>
+                    <div class="mx-3">
+                        <div class="justify-content-start" id="divambientevidro">
+                            <label>
+                                Vidro:
+                            </label>
+                            <select class="form-control custom-input-divisorias" id="Selectambientevidro">
                             </select>
                         </div>
-                      </div>
                     </div>
                 </div>
 <!--                    menu para vidro-->
@@ -1027,15 +1016,40 @@ $(document).ready(function() {
     var largura = $('#id_largura').val();
     var altura = $('#id_altura').val();
     var linha = $('#id_linha').val();
-    var divsuperiorField = $('#divsuperior');
+    var divsuperiorField = $('#Selectambientesuperior');
     var campoDivisoria = $('#divambiente');
     var divisoriaRadioButton = $('#btnDivisoria');
     var idDivisoriaAmbiente = $('#id_divisoriaambiente');
 
     if (divisoriaRadioButton.is(':checked')) {
       if (quantidade && largura && altura && acabamento && linha) {
-        idDivisoriaAmbiente.prop('disabled', false);
+        divsuperiorField.prop('disabled', false);
         idDivisoriaAmbiente.find(':input').prop('disabled', false);
+
+        $.ajax({
+          url: '/filtrar_divisoria/',
+          type: 'GET',
+          data: {
+            acabamento: acabamento,
+            linha: linha
+          },
+          success: function(response) {
+            divsuperiorField.empty();
+
+            var option = $('<option>').attr('value', '').text('-------');
+            divsuperiorField.append(option);
+
+            $.each(response, function(index, item) {
+              option = $('<option>').attr('value', item.id).text(item.descricao);
+              divsuperiorField.append(option);
+            });
+
+            divsuperiorField.show();
+          },
+          error: function(xhr) {
+            console.log(xhr.statusText);
+          }
+        });
       } else {
         idDivisoriaAmbiente.prop('disabled', true);
         idDivisoriaAmbiente.find(':input').prop('disabled', true);
@@ -1044,38 +1058,44 @@ $(document).ready(function() {
       idDivisoriaAmbiente.prop('disabled', true);
       idDivisoriaAmbiente.find(':input').prop('disabled', true);
     }
-
-    $.ajax({
-      url: '/filtrar_divisoria/',
-      type: 'GET',
-      data: {
-        acabamento: acabamento,
-        linha: linha
-      },
-      success: function(response) {
-        divsuperiorField.empty();
-
-        var option = $('<option>').attr('value', '').text('-------');
-        divsuperiorField.append(option);
-
-        $.each(response, function(index, item) {
-          option = $('<option>').attr('value', item.id).text(item.descricao);
-          divsuperiorField.append(option);
-        });
-
-        divsuperiorField.show();
-      },
-      error: function(xhr) {
-        console.log(xhr.statusText);
-      }
-    });
   }
 
   filtrarDivisoria();
 });
 </script>
 
+<script>
+$(document).ready(function() {
+  $('#btnDivisoria').change(function() {
+     obterAcabamentosDivisoriaAmbiente();
+  });
 
+  function obterAcabamentosDivisoriaAmbiente() {
+    $.ajax({
+      url: '/obter_acabamentos_divisoria_ambiente/',
+      type: 'GET',
+      success: function(response) {
+        var selectAcabamento = $('#id_acabamento');
+        selectAcabamento.empty();
+
+        var option = $('<option>').attr('value', '').text('-------');
+        selectAcabamento.append(option);
+
+        $.each(response, function(index, item) {
+          option = $('<option>').attr('value', item.id).text(item.acabamento);
+          console.log(item);
+          selectAcabamento.append(option);
+        });
+
+        selectAcabamento.prop('disabled', false);
+      },
+      error: function(xhr) {
+        console.log(xhr.statusText);
+      }
+    });
+  }
+});
+</script>
 
 
 

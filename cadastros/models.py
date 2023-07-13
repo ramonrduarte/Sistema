@@ -1,7 +1,7 @@
 from django.db import models
 from multiselectfield import MultiSelectField
 from django.core.validators import MaxValueValidator
-
+from Pedidos.choices import Linha
 
 
 
@@ -19,7 +19,7 @@ ENCAIXE = (('1','Sim'),
     ('2','Não'))
 
 LINHA = (('Doppio','Doppio'),
-        ('mil','1000'))
+        ('Mil','Mil'))
 
 POSICAODIVISORIA = (('Travessa/Inferior','Travessa/Inferior'),
                     ('Superior','Superior'),

@@ -13,4 +13,5 @@ urlpatterns = [
     path('buscar_Divisor/', buscar_Divisor.as_view(), name='buscar_Divisor'),
     path('buscar_Puxador/', buscar_Puxador.as_view(), name='buscar_Puxador'),
     path('filtrar_divisoria/', filtrar_divisoriaView.as_view(), name='filtrar_divisoria'),
+    path('obter_acabamentos_divisoria_ambiente/', views.obter_acabamentos_divisoria_ambiente, name='obter_acabamentos_divisoria_ambiente'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
