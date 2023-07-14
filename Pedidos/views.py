@@ -2,7 +2,8 @@ from .models import Pedido
 from django.views.generic.edit import CreateView
 from django.http import JsonResponse
 from django.views import View
-from .models import Perfil, PerfilPuxador, DivisoriaAmbiente, Acabamento
+from .models import Perfil, PerfilPuxador, DivisoriaAmbiente, Acabamento, Vidro
+from cadastros.models import ModeloVidro
 from django.shortcuts import get_object_or_404
 
 class PedidoCreate(CreateView):
@@ -24,7 +25,6 @@ class PedidoCreate(CreateView):
             })
 
         return JsonResponse(resultados, safe=False)
-
 
 class FiltrarAcabamentoView(View):
     def get(self, request):
@@ -79,6 +79,20 @@ class buscar_Puxador(View):
 
         return JsonResponse(resultados, safe=False)
 
+class buscar_Vidro(View):
+    def get(self, request):
+        modelo = ModeloVidro.objects.get(modelo='4MM')
+        queryset = Vidro.objects.filter(modelo=modelo)
+
+        resultados = []
+        for objeto in queryset:
+            resultados.append({
+                'id': objeto.id,
+                'descricao': f"({objeto.codigo}) {objeto.descricao}"
+            })
+
+        return JsonResponse(resultados, safe=False)
+
 class buscar_Divisor(View):
     def get(self, request):
         perfil_id = request.GET.get('perfil')
@@ -96,14 +110,72 @@ class buscar_Divisor(View):
 
         return JsonResponse(resultados, safe=False)
 
-
 class filtrar_divisoriaView(View):
     def get(self, request):
         acabamento = request.GET.get('acabamento')
         linha = request.GET.get('linha')
 
+        queryset = DivisoriaAmbiente.objects.filter(posicao__in=['Superior', 'Superior/Inferior'])
 
-        queryset = DivisoriaAmbiente.objects.all()
+        if acabamento and linha:
+            queryset = queryset.filter(acabamento_id=acabamento, linha=linha)
+
+        # Crie uma lista de dicionários com os resultados filtrados
+        resultados = []
+        for objeto in queryset:
+            resultados.append({
+                'id': objeto.id,
+                'descricao': f"({objeto.codigo}) {objeto.descricao}"
+            })
+
+        return JsonResponse(resultados, safe=False)
+
+class carregar_divinferiorView(View):
+    def get(self, request):
+        acabamento = request.GET.get('acabamento')
+        linha = request.GET.get('linha')
+
+        queryset = DivisoriaAmbiente.objects.filter(posicao__in=['Inferior', 'Superior/Inferior', 'Travessa/Inferior'])
+
+        if acabamento and linha:
+            queryset = queryset.filter(acabamento_id=acabamento, linha=linha)
+
+        # Crie uma lista de dicionários com os resultados filtrados
+        resultados = []
+        for objeto in queryset:
+            resultados.append({
+                'id': objeto.id,
+                'descricao': f"({objeto.codigo}) {objeto.descricao}"
+            })
+
+        return JsonResponse(resultados, safe=False)
+
+class carregar_divlateralView(View):
+    def get(self, request):
+        acabamento = request.GET.get('acabamento')
+        linha = request.GET.get('linha')
+
+        queryset = DivisoriaAmbiente.objects.filter(posicao__in=['Lateral'])
+
+        if acabamento and linha:
+            queryset = queryset.filter(acabamento_id=acabamento, linha=linha)
+
+        # Crie uma lista de dicionários com os resultados filtrados
+        resultados = []
+        for objeto in queryset:
+            resultados.append({
+                'id': objeto.id,
+                'descricao': f"({objeto.codigo}) {objeto.descricao}"
+            })
+
+        return JsonResponse(resultados, safe=False)
+
+class carregar_divdivisorView(View):
+    def get(self, request):
+        acabamento = request.GET.get('acabamento')
+        linha = request.GET.get('linha')
+
+        queryset = DivisoriaAmbiente.objects.filter(posicao__in=['Travessa', 'Travessa/Inferior'])
 
         if acabamento and linha:
             queryset = queryset.filter(acabamento_id=acabamento, linha=linha)
@@ -122,7 +194,7 @@ def obter_acabamentos_divisoria_ambiente(request):
     # Consulta ao banco de dados para obter os acabamentos selecionados na DivisoriaAmbiente
     divisoria_ambientes = DivisoriaAmbiente.objects.all()
     acabamentos = divisoria_ambientes.values_list('acabamento', flat=True).distinct()
-    acabamentos = Acabamento.objects.filter(id__in=acabamentos).values('id', 'acabamento')
+    acabamentos = Acabamento.objects.filter(divisoriaambiente__isnull=False).distinct().values('id', 'acabamento')
 
     data = {
         'acabamentos': list(acabamentos)

@@ -791,6 +791,60 @@ $(document).ready(function() {
 
 <script>
 $(document).ready(function() {
+  $('#id_perfil').change(function() {
+    buscarVidro();
+  });
+
+  function buscarVidro() {
+  var perfil = $('#id_perfil').val();
+
+  if (perfil) {
+    var vidro = $('#id_vidro').val();
+
+    $.ajax({
+      url: '/buscar_Vidro/',
+      type: 'GET',
+      data: {
+        vidro: vidro
+      },
+      success: function(response) {
+        var selectVidro = $('#id_vidro');
+        selectVidro.empty();
+
+        var option = $('<option>').attr('value', '').text('-------');
+        selectVidro.append(option);
+
+        $.each(response, function(index, item) {
+          option = $('<option>').attr('value', item.id).text(item.descricao);
+          selectVidro.append(option);
+        });
+
+        var numItens = response.length;
+
+        if (numItens <= 0) {
+          selectVidro.prop('disabled', true);
+          $('#divvidro :input').prop('disabled', true);
+        } else {
+          selectVidro.prop('disabled', false);
+          $('#divvidro :input').prop('disabled', false);
+        }
+
+        selectVidro.show();
+      },
+      error: function(xhr) {
+        console.log(xhr.statusText);
+      }
+    });
+  } else {
+    $('#id_vidro').empty();
+    $('#divvidro :input').prop('disabled', true);
+  }
+}
+});
+</script>
+
+<script>
+$(document).ready(function() {
   $('#id_acabamento, #id_abertura').change(function() {
     // Limpar e bloquear os campos da divportas, exceto o campo perfil
     $('#divportas input:not(#id_perfil), #divportas select:not(#id_perfil)').val('').prop('disabled', true);
@@ -1008,6 +1062,25 @@ $(document).ready(function() {
 
 <script>
 $(document).ready(function() {
+
+  $("#Selectambientedivisor").change(function() {
+    var divisor = $(this).val();
+    var qtdDivisor = $("#qtd-divisorambiente");
+
+    qtdDivisor.empty();
+
+    if (divisor && divisor !== "") {
+      qtdDivisor.empty();
+      qtdDivisor.append($('<option>', {value: '1', text: '1'}));
+      qtdDivisor.append($('<option>', {value: '2', text: '2'}));
+      qtdDivisor.prop('disabled', false);
+    }
+  });
+});
+</script>
+
+<script>
+$(document).ready(function() {
   $('#id_acabamento, #id_quantidade, #id_largura, #id_altura, #id_linha').change(filtrarDivisoria);
 
   function filtrarDivisoria() {
@@ -1017,6 +1090,9 @@ $(document).ready(function() {
     var altura = $('#id_altura').val();
     var linha = $('#id_linha').val();
     var divsuperiorField = $('#Selectambientesuperior');
+    var divinferiorField = $('#Selectambienteinferior');
+    var divlateralField = $('#Selectambienteinferior');
+    var divdivisorField = $('#Selectambientedivisor');
     var campoDivisoria = $('#divambiente');
     var divisoriaRadioButton = $('#btnDivisoria');
     var idDivisoriaAmbiente = $('#id_divisoriaambiente');
@@ -1044,7 +1120,21 @@ $(document).ready(function() {
               divsuperiorField.append(option);
             });
 
+            var numItens = response.length;
+
+            if (numItens <= 0) {
+              divsuperiorField.prop('disabled', true);
+              $('#divsuperior :input').prop('disabled', true);
+            } else {
+              divsuperiorField.prop('disabled', false);
+              $('#divsuperior :input').prop('disabled', false);
+            }
+
             divsuperiorField.show();
+
+            carregarDivinferior(acabamento, linha);
+            carregarDivlateral(acabamento, linha);
+            carregarDivdivisor(acabamento, linha);
           },
           error: function(xhr) {
             console.log(xhr.statusText);
@@ -1060,6 +1150,124 @@ $(document).ready(function() {
     }
   }
 
+  function carregarDivinferior(acabamento, linha) {
+    var divinferiorField = $('#Selectambienteinferior');
+
+    $.ajax({
+      url: '/carregar_divinferior/',
+      type: 'GET',
+      data: {
+        acabamento: acabamento,
+        linha: linha
+      },
+      success: function(response) {
+        divinferiorField.empty();
+        console.log(response)
+
+        var option = $('<option>').attr('value', '').text('-------');
+        divinferiorField.append(option);
+
+        $.each(response, function(index, item) {
+          option = $('<option>').attr('value', item.id).text(item.descricao);
+          divinferiorField.append(option);
+        });
+
+        var numItens = response.length;
+
+        if (numItens <= 0) {
+          divinferiorField.prop('disabled', true);
+          $('#divinferior :input').prop('disabled', true);
+        } else {
+          divinferiorField.prop('disabled', false);
+          $('#divinferior :input').prop('disabled', false);
+        }
+
+        divinferiorField.show();
+      },
+      error: function(xhr) {
+        console.log(xhr.statusText);
+      }
+    });
+  }
+  function carregarDivlateral(acabamento, linha) {
+    var divlateralField = $('#Selectambientelateral');
+
+    $.ajax({
+      url: '/carregar_divlateral/',
+      type: 'GET',
+      data: {
+        acabamento: acabamento,
+        linha: linha
+      },
+      success: function(response) {
+        divlateralField.empty();
+        console.log(response)
+
+        var option = $('<option>').attr('value', '').text('-------');
+        divlateralField.append(option);
+
+        $.each(response, function(index, item) {
+          option = $('<option>').attr('value', item.id).text(item.descricao);
+          divlateralField.append(option);
+        });
+
+        var numItens = response.length;
+
+        if (numItens <= 0) {
+          divlateralField.prop('disabled', true);
+          $('#divlateral :input').prop('disabled', true);
+        } else {
+          divlateralField.prop('disabled', false);
+          $('#divlateral :input').prop('disabled', false);
+        }
+
+        divlateralField.show();
+      },
+      error: function(xhr) {
+        console.log(xhr.statusText);
+      }
+    });
+  }
+  function carregarDivdivisor(acabamento, linha) {
+    var divdivisorField = $('#Selectambientedivisor');
+
+    $.ajax({
+      url: '/carregar_divdivisor/',
+      type: 'GET',
+      data: {
+        acabamento: acabamento,
+        linha: linha
+      },
+      success: function(response) {
+        divdivisorField.empty();
+        console.log(response)
+
+        var option = $('<option>').attr('value', '').text('-------');
+        divdivisorField.append(option);
+
+        $.each(response, function(index, item) {
+          option = $('<option>').attr('value', item.id).text(item.descricao);
+          divdivisorField.append(option);
+        });
+
+        var numItens = response.length;
+
+        if (numItens <= 0) {
+          divdivisorField.prop('disabled', true);
+          $('#divdivisor :input').prop('disabled', true);
+        } else {
+          divdivisorField.prop('disabled', false);
+          $('#divdivisor :input').prop('disabled', false);
+        }
+
+        divdivisorField.show();
+      },
+      error: function(xhr) {
+        console.log(xhr.statusText);
+      }
+    });
+  }
+
   filtrarDivisoria();
 });
 </script>
@@ -1071,32 +1279,79 @@ $(document).ready(function() {
   });
 
   function obterAcabamentosDivisoriaAmbiente() {
+  $.ajax({
+    url: '/obter_acabamentos_divisoria_ambiente/',
+    type: 'GET',
+    success: function(response) {
+      var selectAcabamento = $('#id_acabamento');
+      selectAcabamento.empty();
+
+      $.each(response.acabamentos, function(index, item) {
+        var option = $('<option>').attr('value', item.id).text(item.acabamento);
+        selectAcabamento.append(option);
+      });
+    },
+    error: function(xhr) {
+      console.log(xhr.statusText);
+    }
+  });
+}
+});
+</script>
+
+<script>
+$(document).ready(function() {
+  $('#Selectambientesuperior').change(function() {
+    buscarVidro();
+  });
+
+  function buscarVidro() {
+  var divsuperior = $('#Selectambientesuperior').val();
+
+  if (divsuperior) {
+    var vidro = $('#Selectambientevidro').val();
+
     $.ajax({
-      url: '/obter_acabamentos_divisoria_ambiente/',
+      url: '/buscar_Vidro/',
       type: 'GET',
+      data: {
+        vidro: vidro
+      },
       success: function(response) {
-        var selectAcabamento = $('#id_acabamento');
-        selectAcabamento.empty();
+        var selectVidro = $('#Selectambientevidro');
+        selectVidro.empty();
 
         var option = $('<option>').attr('value', '').text('-------');
-        selectAcabamento.append(option);
+        selectVidro.append(option);
 
         $.each(response, function(index, item) {
-          option = $('<option>').attr('value', item.id).text(item.acabamento);
-          console.log(item);
-          selectAcabamento.append(option);
+          option = $('<option>').attr('value', item.id).text(item.descricao);
+          selectVidro.append(option);
         });
 
-        selectAcabamento.prop('disabled', false);
+        var numItens = response.length;
+
+        if (numItens <= 0) {
+          selectVidro.prop('disabled', true);
+          $('#divambientevidro :input').prop('disabled', true);
+        } else {
+          selectVidro.prop('disabled', false);
+          $('#divambientevidro :input').prop('disabled', false);
+        }
+
+        selectVidro.show();
       },
       error: function(xhr) {
         console.log(xhr.statusText);
       }
     });
+  } else {
+    $('#Selectambientevidro').empty();
+    $('#divambientevidro :input').prop('disabled', true);
   }
+}
 });
 </script>
-
 
 
 
