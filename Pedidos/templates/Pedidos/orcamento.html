@@ -10,7 +10,7 @@ Adrofecha - Orçamento
 
 {% block css %}
 <link rel="stylesheet" href="{% static 'Pedidos/css/style.css' %}">
-<script src='Pedidos/js/Pedidos.js'></script>
+<script src={% static 'Pedidos/js/Pedidos.js' %}></script>
 {% endblock %}
 
 {% block content %}
@@ -264,15 +264,143 @@ Adrofecha - Orçamento
                 </div>
 <!--                botoes finalizar-->
                 <div class="mt-1 text-end" style="height: 45px" ;>
-                    <a class="btn btn-primary me-2 mt-1" id="btnpedidocancelar" style="width: 90px" ; href="#" role="button">Cancelar</a>
-                    <a class="btn btn-primary me-2 mt-1" id="btnpedidofinalizar" style="width: 90px" ; href="#" role="button">Adicionar</a>
+                    <a class="btn btn-primary me-2 mt-1" id="btnpedidocancelar" style="width: 90px" ; href="#" role="button" onclick="mudarCor()">Cancelar</a>
+                    <a class="btn btn-primary me-2 mt-1" id="btnpedidofinalizar" style="width: 90px" ; href="#" role="button" onclick="diminuirOpacidade()">Adicionar</a>
                 </div>
             </div>
-            <div class="border bg-danger-subtle col-6">
-                 <div class="" style="height: 500px" ;>
-                     Desenho Porta
+             <div class="col-6 svg-container">
+                 <div class="svg-content">
+                     <svg class="" width="100%" height="100%" viewBox="-100 -30 640 450" xmlns="http://www.w3.org/2000/svg">
+                     <style type="text/css">
+                            .st0{fill:#BC4646;}
+                            .st1{opacity:0.45;}
+                            .st2{fill:url(#Reflexo_1_);}
+                            .st3{fill:#896728;}
+                            .st4{fill:#8E959C;}
+                            .st5{font-family:'MyriadPro-Regular';}
+                            .st6{font-size:12px;}
+                            .st7{fill:#C4C7C5;}
+                            .st8{fill:#989EA6;}
+                            .st9{fill:#AF0E0E;}
+                            .st10{display:none;}
+                            .st11{display:inline;}
+                            .st12{fill:#661D1D;}
+                     </style>
+                        <g transform="translate(115, 40)" id="Porta">
+                            <rect id="Pelicula" x="23.3" y="24.6" class="st0" width="148.5" height="250"/>
+                        <g id="Vidro">
+
+                                <image style="overflow:visible;opacity:0.35;enable-background:new    ;" width="113" height="196" id="Incolor" xlink:href="{% static 'Pedidos/images/Vidro-incolor.png' %}" transform="matrix(1.3355 0 0 1.3355 22.1574 17.9436)">
+                            </image>
+                            <g class="st1">
+
+                                    <linearGradient id="Reflexo_1_" gradientUnits="userSpaceOnUse" x1="-450.9049" y1="379.7536" x2="-200.4658" y2="379.7536" gradientTransform="matrix(4.489659e-11 -1 1 4.489659e-11 -280.9852 -172.1921)">
+                                    <stop  offset="0" style="stop-color:#DEF7FF"/>
+                                    <stop  offset="9.815443e-02" style="stop-color:#BBD4DC"/>
+                                    <stop  offset="0.2746" style="stop-color:#839CA4"/>
+                                    <stop  offset="0.4461" style="stop-color:#546D75"/>
+                                    <stop  offset="0.6084" style="stop-color:#304951"/>
+                                    <stop  offset="0.7592" style="stop-color:#152E36"/>
+                                    <stop  offset="0.8941" style="stop-color:#061F27"/>
+                                    <stop  offset="1" style="stop-color:#001921"/>
+                                </linearGradient>
+                                <path id="Reflexo" class="st2" d="M173.1,267.3c2.5,6.3-0.8,11.4-7.6,11.4H36c-6.7,0-12.3-5.5-12.3-12.3V33.6
+                                    c0-6.7,2.1-7.2,4.7-0.9L173.1,267.3z"/>
+                            </g>
+                        </g>
+                        <g id="Perfis">
+                            <g id="Superior_1_">
+                                <polygon id="barra_5_" class="st3" points="184.6,11.8 10.5,11.8 23.3,24.6 171.8,24.6 			"/>
+                                <polygon id="acabamento-int_5_" class="st4" points="23.3,24.6 171.8,24.6 169.5,27 25.7,27 			"/>
+                                <polygon id="acabamento-ext_5_" class="st4" points="10.5,11.8 8.1,9.4 187,9.4 184.6,11.8 			"/>
+                                <text id="modelo-perfil-sup" transform="matrix(-1 0 0 -1 110.1142 28.2734)" class="st5 st6">3579</text>
+                            </g>
+                            <g id="Direita">
+                                <polygon id="barra" class="st3" points="171.8,24.6 171.8,274.5 184.6,287.3 184.6,11.8 			"/>
+                                <polygon id="acabamento-int" class="st4" points="169.5,272.1 171.8,274.5 171.8,24.6 169.5,27 			"/>
+                                <polygon id="acabamento-ext" class="st4" points="187,9.4 187,289.6 184.6,287.3 184.6,11.8 			"/>
+                                <text id="modelo-perfil-dir" transform="matrix(4.489659e-11 -1 1 4.489659e-11 167.4019 161.8276)" class="st5 st6">3579</text>
+                            </g>
+                            <g id="Esquerda_1_">
+                                <polygon id="barra_4_" class="st3" points="10.5,11.8 10.5,287.3 23.3,274.5 23.3,24.6 			"/>
+                                <polygon id="acabamento-int_4_" class="st8" points="25.7,27 23.3,24.6 23.3,274.5 25.7,272.1 			"/>
+                                <polygon id="acabamento-ext_2_" class="st4" points="8.1,289.6 8.1,9.4 10.5,11.8 10.5,287.3 			"/>
+                                <text id="modelo-perfil-esq" transform="matrix(-1.346898e-10 1 -1 -1.346898e-10 28.0912 137.2043)" class="st5 st6">3579</text>
+                            </g>
+                            <g id="Inferior">
+                                <polygon id="barra_3_" class="st3" points="171.8,274.5 23.3,274.5 10.5,287.3 184.6,287.3 			"/>
+                                <polygon id="acabamento-int_2_" class="st4" points="171.8,274.5 23.3,274.5 25.7,272.1 169.5,272.1 			"/>
+                                <polygon id="acabamento-ext_1_" class="st8" points="8.1,289.6 10.5,287.3 184.6,287.3 187,289.6 			"/>
+                                <text id="modelo-perfil-inf" transform="matrix(1 0 0 1 85.4903 270.0915)" class="st5 st6">3579</text>
+                            </g>
+                        </g>
+                        <g id="Puxadores_2_">
+                            <g id="Superior">
+
+                                    <rect id="Puxador-sup-int" x="96" y="-88" transform="matrix(-6.548380e-11 1 -1 -6.548380e-11 99.002 -96.002)" class="st9" width="3" height="178.9"/>
+
+                                    <rect id="Puxador-sup-trecho" x="96" y="-23.5" transform="matrix(-5.517649e-11 1 -1 -5.517649e-11 99.002 -96.002)" class="st9" width="3" height="50"/>
+                                <text id="modelo-puxador-sup" transform="matrix(1 0 0 1 85.9114 -14.1337)" class="st5 st6">3579</text>
+                                <text id="tamanho-puxador-sup" transform="matrix(1 0 0 1 78.9814 -2.1337)" class="st5 st6">100mm</text>
+                            </g>
+                            <g id="Direita_1_">
+
+                                    <rect id="Puxador-dir-int" x="192.6" y="9.4" transform="matrix(-1 -5.699497e-11 5.699497e-11 -1 388.2089 299.0257)" class="st9" width="3" height="280.2"/>
+
+                                    <rect id="Puxador-dir-trecho" x="192.6" y="124.5" transform="matrix(-1 -1.030743e-11 1.030743e-11 -1 388.2089 299.0257)" class="st9" width="3" height="50"/>
+                                <text id="modelo-puxador-dir_1_" transform="matrix(-1.346898e-10 1 -1 -1.346898e-10 211.9359 138.0434)" class="st5 st6">3579</text>
+                                <text id="tamanho-puxador-dir_1_" transform="matrix(-1.346898e-10 1 -1 -1.346898e-10 198.9359 131.1138)" class="st5 st6">100mm</text>
+                            </g>
+                            <g id="Esquerda">
+
+                                    <rect id="Puxador-esq-int" x="0" y="9.4" transform="matrix(-1 -5.699497e-11 5.699497e-11 -1 3 299.0257)" class="st9" width="3" height="280.2"/>
+
+                                    <rect id="Puxador-esq-trecho" x="0" y="124.5" transform="matrix(-1 -1.030743e-11 1.030743e-11 -1 3 299.0257)" class="st9" width="3" height="50"/>
+                                <text id="modelo-puxador-esq" transform="matrix(4.489659e-11 -1 1 4.489659e-11 -15.7694 161.8276)" class="st5 st6">3579</text>
+                                <text id="tamanho-puxador-esq" transform="matrix(4.489659e-11 -1 1 4.489659e-11 -2.7695 168.7573)" class="st5 st6">100mm</text>
+                            </g>
+                            <g id="Inferior_1_">
+
+                                    <rect id="Puxador-sup-int_1_" x="96" y="208.1" transform="matrix(-6.548380e-11 1 -1 -6.548380e-11 395.0337 200.0297)" class="st9" width="3" height="178.9"/>
+
+                                    <rect id="Puxador-sup-trecho_1_" x="96" y="272.5" transform="matrix(-5.517649e-11 1 -1 -5.517649e-11 395.0337 200.0297)" class="st9" width="3" height="50"/>
+                                <text id="modelo-puxador-inf" transform="matrix(1 0 0 1 87.1599 310.9168)" class="st5 st6">3579</text>
+                                <text id="tamanho-puxador-inf" transform="matrix(1 0 0 1 80.2297 322.9148)" class="st5 st6">100mm</text>
+                            </g>
+                        </g>
+                        <g id="Perfis_Puxadores" class="st10">
+                            <g id="PerfilPux_Superior" class="st11">
+                                <polygon id="Barra_2_" class="st9" points="187.1,9.4 187.1,2.9 8.1,2.9 8.1,9.4 8.2,9.4 10.6,11.8 23.4,24.6 171.9,24.6
+                                    184.7,11.8 187.1,9.4 			"/>
+                                <polygon id="Acabamento-Int" class="st12" points="23.4,24.6 171.9,24.6 169.6,27 25.8,27 			"/>
+
+                                    <rect id="Acabamento-ext_2_" x="96.6" y="-85.7" transform="matrix(2.870599e-11 -1 1 2.870599e-11 93.7442 101.3709)" class="st12" width="1.9" height="179"/>
+                            </g>
+                            <g id="PerfilPux_Direita_1_" class="st11">
+                                <polygon id="barra_1_" class="st9" points="186.9,9.4 186.9,9.4 184.5,11.8 171.7,24.6 171.7,274.5 184.5,287.3 186.9,289.6
+                                    186.9,289.6 190.7,289.6 190.7,9.4 			"/>
+                                <polygon id="acabamento-int_3_" class="st12" points="169.4,272.1 171.7,274.5 171.7,24.6 169.4,27 			"/>
+                                <rect id="Acabamento-ext" x="190.7" y="9.4" class="st12" width="1.9" height="280.2"/>
+                            </g>
+                            <g id="PerfilPux_Esquerda_1_" class="st11">
+                                <polygon id="barra_2_" class="st9" points="8.2,289.6 8.2,289.6 10.6,287.2 23.4,274.4 23.4,24.5 10.6,11.7 8.2,9.4 8.2,9.4
+                                    4.4,9.4 4.4,289.6 			"/>
+                                <polygon id="acabamento-int_1_" class="st12" points="25.7,26.9 23.4,24.5 23.4,274.4 25.7,272 			"/>
+
+                                    <rect id="Acabamento-ext_1_" x="2.4" y="9.4" transform="matrix(-1 -8.994507e-11 8.994507e-11 -1 6.7999 299.0257)" class="st12" width="1.9" height="280.2"/>
+                            </g>
+                            <g id="PerfilPux_Inferior_1_" class="st11">
+                                <polygon id="Barra_3_" class="st9" points="8.1,289.6 8.1,296.2 187.1,296.2 187.1,289.6 187,289.6 184.6,287.2 171.8,274.4
+                                    23.3,274.4 10.5,287.2 8.1,289.6 			"/>
+                                <polygon id="Acabamento-Int_1_" class="st12" points="171.8,274.4 23.3,274.4 25.6,272 169.4,272 			"/>
+
+                                    <rect id="Acabamento-ext_3_" x="96.6" y="205.7" transform="matrix(2.870599e-11 -1 1 2.870599e-11 -197.6508 392.7659)" class="st12" width="1.9" height="179"/>
+                            </g>
+                        </g>
+                        </g>
+                     </svg>
                  </div>
-            </div>
+             </div>
          </div>
          <div class="row d-flex justify-content-between">
             <div class=""><!-- Tabelas-->
@@ -378,6 +506,23 @@ Adrofecha - Orçamento
 <!--    $('#id_perfil').select2();-->
 <!--});-->
 <!--</script>-->
+
+<script>
+        function mudarCor() {
+            var retangulo = document.getElementById("retangulo");
+            retangulo.setAttribute("fill", "red");
+        }
+
+        function diminuirOpacidade() {
+            var imagem = document.getElementById("imagem");
+            var currentOpacity = parseFloat(imagem.getAttribute("opacity"));
+
+            if (currentOpacity > 0) {
+                currentOpacity -= 0.1; // Diminui a opacidade em 0.1 a cada clique
+                imagem.setAttribute("opacity", currentOpacity);
+            }
+        }
+</script>
 
 <script>
 $(document).ready(function() {
@@ -1081,6 +1226,38 @@ $(document).ready(function() {
 
 <script>
 $(document).ready(function() {
+  // Funções reutilizáveis
+  function carregarOpcoes(selectElement, data) {
+    selectElement.empty();
+    var option = $('<option>').attr('value', '').text('-------');
+    selectElement.append(option);
+
+    if (data.length > 0) {
+      $.each(data, function(index, item) {
+        option = $('<option>').attr('value', item.id).text(item.descricao);
+        selectElement.append(option);
+      });
+
+      selectElement.prop('disabled', false);
+      selectElement.show();
+    } else {
+      selectElement.prop('disabled', true);
+    }
+  }
+
+  function realizarRequisicao(url, params, successCallback) {
+    $.ajax({
+      url: url,
+      type: 'GET',
+      data: params,
+      success: successCallback,
+      error: function(xhr) {
+        console.log(xhr.statusText);
+      }
+    });
+  }
+
+  // Filtrar Divisoria
   $('#id_acabamento, #id_quantidade, #id_largura, #id_altura, #id_linha').change(filtrarDivisoria);
 
   function filtrarDivisoria() {
@@ -1091,7 +1268,7 @@ $(document).ready(function() {
     var linha = $('#id_linha').val();
     var divsuperiorField = $('#Selectambientesuperior');
     var divinferiorField = $('#Selectambienteinferior');
-    var divlateralField = $('#Selectambienteinferior');
+    var divlateralField = $('#Selectambientelateral');
     var divdivisorField = $('#Selectambientedivisor');
     var campoDivisoria = $('#divambiente');
     var divisoriaRadioButton = $('#btnDivisoria');
@@ -1102,43 +1279,11 @@ $(document).ready(function() {
         divsuperiorField.prop('disabled', false);
         idDivisoriaAmbiente.find(':input').prop('disabled', false);
 
-        $.ajax({
-          url: '/filtrar_divisoria/',
-          type: 'GET',
-          data: {
-            acabamento: acabamento,
-            linha: linha
-          },
-          success: function(response) {
-            divsuperiorField.empty();
-
-            var option = $('<option>').attr('value', '').text('-------');
-            divsuperiorField.append(option);
-
-            $.each(response, function(index, item) {
-              option = $('<option>').attr('value', item.id).text(item.descricao);
-              divsuperiorField.append(option);
-            });
-
-            var numItens = response.length;
-
-            if (numItens <= 0) {
-              divsuperiorField.prop('disabled', true);
-              $('#divsuperior :input').prop('disabled', true);
-            } else {
-              divsuperiorField.prop('disabled', false);
-              $('#divsuperior :input').prop('disabled', false);
-            }
-
-            divsuperiorField.show();
-
-            carregarDivinferior(acabamento, linha);
-            carregarDivlateral(acabamento, linha);
-            carregarDivdivisor(acabamento, linha);
-          },
-          error: function(xhr) {
-            console.log(xhr.statusText);
-          }
+        realizarRequisicao('/filtrar_divisoria/', { acabamento: acabamento, linha: linha }, function(response) {
+          carregarOpcoes(divsuperiorField, response);
+          carregarDivinferior(acabamento, linha);
+          carregarDivlateral(acabamento, linha);
+          carregarDivdivisor(acabamento, linha);
         });
       } else {
         idDivisoriaAmbiente.prop('disabled', true);
@@ -1150,210 +1295,87 @@ $(document).ready(function() {
     }
   }
 
+  // Carregar Divinferior
   function carregarDivinferior(acabamento, linha) {
     var divinferiorField = $('#Selectambienteinferior');
 
-    $.ajax({
-      url: '/carregar_divinferior/',
-      type: 'GET',
-      data: {
-        acabamento: acabamento,
-        linha: linha
-      },
-      success: function(response) {
-        divinferiorField.empty();
-        console.log(response)
-
-        var option = $('<option>').attr('value', '').text('-------');
-        divinferiorField.append(option);
-
-        $.each(response, function(index, item) {
-          option = $('<option>').attr('value', item.id).text(item.descricao);
-          divinferiorField.append(option);
-        });
-
-        var numItens = response.length;
-
-        if (numItens <= 0) {
-          divinferiorField.prop('disabled', true);
-          $('#divinferior :input').prop('disabled', true);
-        } else {
-          divinferiorField.prop('disabled', false);
-          $('#divinferior :input').prop('disabled', false);
-        }
-
-        divinferiorField.show();
-      },
-      error: function(xhr) {
-        console.log(xhr.statusText);
-      }
+    realizarRequisicao('/carregar_divinferior/', { acabamento: acabamento, linha: linha }, function(response) {
+      carregarOpcoes(divinferiorField, response);
     });
   }
+
+  // Carregar Divlateral
   function carregarDivlateral(acabamento, linha) {
     var divlateralField = $('#Selectambientelateral');
 
-    $.ajax({
-      url: '/carregar_divlateral/',
-      type: 'GET',
-      data: {
-        acabamento: acabamento,
-        linha: linha
-      },
-      success: function(response) {
-        divlateralField.empty();
-        console.log(response)
-
-        var option = $('<option>').attr('value', '').text('-------');
-        divlateralField.append(option);
-
-        $.each(response, function(index, item) {
-          option = $('<option>').attr('value', item.id).text(item.descricao);
-          divlateralField.append(option);
-        });
-
-        var numItens = response.length;
-
-        if (numItens <= 0) {
-          divlateralField.prop('disabled', true);
-          $('#divlateral :input').prop('disabled', true);
-        } else {
-          divlateralField.prop('disabled', false);
-          $('#divlateral :input').prop('disabled', false);
-        }
-
-        divlateralField.show();
-      },
-      error: function(xhr) {
-        console.log(xhr.statusText);
-      }
+    realizarRequisicao('/carregar_divlateral/', { acabamento: acabamento, linha: linha }, function(response) {
+      carregarOpcoes(divlateralField, response);
     });
   }
+
+  // Carregar Divdivisor
   function carregarDivdivisor(acabamento, linha) {
     var divdivisorField = $('#Selectambientedivisor');
 
-    $.ajax({
-      url: '/carregar_divdivisor/',
-      type: 'GET',
-      data: {
-        acabamento: acabamento,
-        linha: linha
-      },
-      success: function(response) {
-        divdivisorField.empty();
-        console.log(response)
+    realizarRequisicao('/carregar_divdivisor/', { acabamento: acabamento, linha: linha }, function(response) {
+      carregarOpcoes(divdivisorField, response);
+    });
+  }
 
-        var option = $('<option>').attr('value', '').text('-------');
-        divdivisorField.append(option);
+  // Obter acabamentos DivisoriaAmbiente
+  $('#btnDivisoria').change(obterAcabamentosDivisoriaAmbiente);
 
-        $.each(response, function(index, item) {
-          option = $('<option>').attr('value', item.id).text(item.descricao);
-          divdivisorField.append(option);
+  function obterAcabamentosDivisoriaAmbiente() {
+    realizarRequisicao('/obter_acabamentos_divisoria_ambiente/', {}, function(response) {
+      var selectAcabamento = $('#id_acabamento');
+      selectAcabamento.empty();
+
+      if (response.acabamentos.length > 0) {
+        $.each(response.acabamentos, function(index, item) {
+          var option = $('<option>').attr('value', item.id).text(item.acabamento);
+          selectAcabamento.append(option);
         });
 
-        var numItens = response.length;
-
-        if (numItens <= 0) {
-          divdivisorField.prop('disabled', true);
-          $('#divdivisor :input').prop('disabled', true);
-        } else {
-          divdivisorField.prop('disabled', false);
-          $('#divdivisor :input').prop('disabled', false);
-        }
-
-        divdivisorField.show();
-      },
-      error: function(xhr) {
-        console.log(xhr.statusText);
+        selectAcabamento.prop('disabled', false);
+        selectAcabamento.show();
+      } else {
+        selectAcabamento.prop('disabled', true);
+        selectAcabamento.hide();
       }
     });
+  }
+
+  // Buscar Vidro
+  $('#Selectambientesuperior').change(buscarVidro);
+
+  function buscarVidro() {
+    var divsuperior = $('#Selectambientesuperior').val();
+
+    if (divsuperior) {
+      var vidro = $('#Selectambientevidro').val();
+
+      realizarRequisicao('/buscar_Vidro/', { vidro: vidro }, function(response) {
+        var selectVidro = $('#Selectambientevidro');
+        carregarOpcoes(selectVidro, response);
+
+        if (response.length > 0) {
+          selectVidro.prop('disabled', false);
+          selectVidro.show();
+        } else {
+          selectVidro.prop('disabled', true);
+          selectVidro.hide();
+        }
+      });
+    } else {
+      $('#Selectambientevidro').empty();
+      $('#divambientevidro :input').prop('disabled', true);
+    }
   }
 
   filtrarDivisoria();
 });
+
 </script>
-
-<script>
-$(document).ready(function() {
-  $('#btnDivisoria').change(function() {
-     obterAcabamentosDivisoriaAmbiente();
-  });
-
-  function obterAcabamentosDivisoriaAmbiente() {
-  $.ajax({
-    url: '/obter_acabamentos_divisoria_ambiente/',
-    type: 'GET',
-    success: function(response) {
-      var selectAcabamento = $('#id_acabamento');
-      selectAcabamento.empty();
-
-      $.each(response.acabamentos, function(index, item) {
-        var option = $('<option>').attr('value', item.id).text(item.acabamento);
-        selectAcabamento.append(option);
-      });
-    },
-    error: function(xhr) {
-      console.log(xhr.statusText);
-    }
-  });
-}
-});
-</script>
-
-<script>
-$(document).ready(function() {
-  $('#Selectambientesuperior').change(function() {
-    buscarVidro();
-  });
-
-  function buscarVidro() {
-  var divsuperior = $('#Selectambientesuperior').val();
-
-  if (divsuperior) {
-    var vidro = $('#Selectambientevidro').val();
-
-    $.ajax({
-      url: '/buscar_Vidro/',
-      type: 'GET',
-      data: {
-        vidro: vidro
-      },
-      success: function(response) {
-        var selectVidro = $('#Selectambientevidro');
-        selectVidro.empty();
-
-        var option = $('<option>').attr('value', '').text('-------');
-        selectVidro.append(option);
-
-        $.each(response, function(index, item) {
-          option = $('<option>').attr('value', item.id).text(item.descricao);
-          selectVidro.append(option);
-        });
-
-        var numItens = response.length;
-
-        if (numItens <= 0) {
-          selectVidro.prop('disabled', true);
-          $('#divambientevidro :input').prop('disabled', true);
-        } else {
-          selectVidro.prop('disabled', false);
-          $('#divambientevidro :input').prop('disabled', false);
-        }
-
-        selectVidro.show();
-      },
-      error: function(xhr) {
-        console.log(xhr.statusText);
-      }
-    });
-  } else {
-    $('#Selectambientevidro').empty();
-    $('#divambientevidro :input').prop('disabled', true);
-  }
-}
-});
-</script>
-
-
 
 {% endblock %}
 

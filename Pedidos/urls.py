@@ -7,7 +7,7 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-    path('orcamento/', PedidoCreate.as_view(), name='orcamento'),
+    path('Pedidos/', PedidoCreate.as_view(), name='Pedidos'),
     path('filtrar_acabamento/', FiltrarAcabamentoView.as_view(), name='filtrar_acabamento'),
     path('buscar_PerfilPuxador/', buscar_PerfilPuxador.as_view(), name='buscar_PerfilPuxador'),
     path('buscar_Divisor/', buscar_Divisor.as_view(), name='buscar_Divisor'),
