@@ -30,6 +30,7 @@ POSICAODIVISORIA = (('Travessa/Inferior','Travessa/Inferior'),
 
 class Acabamento(models.Model):
     acabamento = models.CharField(max_length=50, unique=True)
+    codigo_rgb = models.CharField(max_length=15, verbose_name="Código RGB",)
 
     class Meta:
         verbose_name = 'Acabamento'

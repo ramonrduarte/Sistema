@@ -13,7 +13,7 @@ from django.views.decorators.http import require_GET
 
 class AcabamentoCreate(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     model = Acabamento
-    fields = ['acabamento']
+    fields = ['acabamento', 'codigo_rgb']
     template_name = 'cadastros/form3.html'
     success_url = reverse_lazy('listar-acabamento')
     permission_required = 'cadastros.add.acabamento'
@@ -122,7 +122,7 @@ class VidroCreate(LoginRequiredMixin,PermissionRequiredMixin, CreateView):
 
 class AcabamentoUpdate(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = Acabamento
-    fields = ['acabamento']
+    fields = ['acabamento', 'codigo_rgb']
     template_name = 'cadastros/form3.html'
     success_url = reverse_lazy('listar-acabamento')
     permission_required = 'cadastros.change.acabamento'

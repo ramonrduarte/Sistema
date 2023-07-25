@@ -1,0 +1,112 @@
+<svg version="1.1" id="Camada_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 313.6 213.4" enable-background="new 0 0 313.6 213.4" xml:space="preserve">
+<g id="Porta" transform="translate(115, 40)">
+	<g id="Medida_Desenho">
+		<text id="Medida-largura" transform="matrix(1 0 0 1 5.0029 170.002)" font-family="'ArialMT'" font-size="10.3125px">2000mm</text>
+		<polygon id="Traco-largura" points="141.6,165 144.6,165 144.6,150.2 141.6,150.2 141.6,156.3 -93.2,156.3 -93.2,150.2 
+			-96.2,150.2 -96.2,165 -93.2,165 -93.2,158.9 141.6,158.9 		"/>
+		
+			<text id="Medida-altura" transform="matrix(4.489659e-11 -1 1 4.489659e-11 195.2256 74.9429)" font-family="'ArialMT'" font-size="10.3125px">2000mm</text>
+		<polygon id="Traco-altura" points="174.9,131 174.9,132.9 189.6,132.9 189.6,131 183.5,131 183.5,-18.9 189.6,-18.9 189.6,-20.9 
+			174.9,-20.9 174.9,-18.9 180.9,-18.9 180.9,131 		"/>
+	</g>
+	<rect id="Pelicula" x="-83.2" y="-7.8" fill="#BC4646" width="214.8" height="127.6"/>
+	<g id="Vidro">
+		
+			<image overflow="visible" opacity="0.35" enable-background="new    " width="113" height="196" id="Incolor" xlink:href="../Pedidos/static/Pedidos/images/Vidro-incolor.png"  transform="matrix(-1.545828e-10 1.1477 -1.0957 -1.475800e-10 135.21 -9.6513)">
+		</image>
+		<g opacity="0.45">
+			
+				<linearGradient id="Reflexo_1_" gradientUnits="userSpaceOnUse" x1="-883.0284" y1="451.1039" x2="-631.3284" y2="451.1039" gradientTransform="matrix(0.8594 0 0 0.8594 675.6954 -331.3855)">
+				<stop  offset="0" style="stop-color:#DEF7FF"/>
+				<stop  offset="9.815443e-02" style="stop-color:#BBD4DC"/>
+				<stop  offset="0.2746" style="stop-color:#839CA4"/>
+				<stop  offset="0.4461" style="stop-color:#546D75"/>
+				<stop  offset="0.6084" style="stop-color:#304951"/>
+				<stop  offset="0.7592" style="stop-color:#152E36"/>
+				<stop  offset="0.8941" style="stop-color:#061F27"/>
+				<stop  offset="1" style="stop-color:#001921"/>
+			</linearGradient>
+			<path id="Reflexo" fill="url(#Reflexo_1_)" d="M-73.3,120.1c-5.4,2.1-9.8-0.7-9.8-6.5V2.3c0-5.8,4.8-10.6,10.6-10.6h201.1
+				c5.8,0,6.2,1.8,0.8,4L-73.3,120.1z"/>
+		</g>
+	</g>
+	<g id="Divisores">
+		<rect id="Divisor-superior" x="59.2" y="-7.8" fill="#137009" width="4.3" height="127.6"/>
+		<rect id="Divisor-inferior" x="-14.1" y="-7.8" fill="#137009" width="4.3" height="127.6"/>
+		<rect id="Divisor-meio" x="22" y="-7.8" fill="#137009" width="4.3" height="127.6"/>
+	</g>
+	<g id="Perfis">
+		<g id="Perfil-esquerda">
+			<polygon id="barra_5_" fill="#C5C7C6" points="-94.2,-18.8 -94.2,130.8 -83.2,119.8 -83.2,-7.8 			"/>
+			<polygon id="acabamento-int_5_" fill="#8E959C" points="-83.2,119.8 -83.2,-7.8 -81.1,-5.8 -81.1,117.7 			"/>
+			<polygon id="acabamento-ext_5_" fill="#8E959C" points="-94.2,130.8 -96.2,132.9 -96.2,-20.9 -94.2,-18.8 			"/>
+		</g>
+		<g id="Perfil-superior">
+			<polygon id="barra" fill="#C4C7C5" points="-83.2,-7.8 131.6,-7.8 142.6,-18.8 -94.2,-18.8 			"/>
+			<polygon id="acabamento-int" fill="#8E959C" points="129.5,-5.8 131.6,-7.8 -83.2,-7.8 -81.1,-5.8 			"/>
+			<polygon id="acabamento-ext" fill="#8E959C" points="-96.2,-20.9 144.6,-20.9 142.6,-18.8 -94.2,-18.8 			"/>
+		</g>
+		<g id="Perfil-inferior">
+			<polygon id="barra_4_" fill="#C4C7C5" points="-94.2,130.8 142.6,130.8 131.6,119.8 -83.2,119.8 			"/>
+			<polygon id="acabamento-int_4_" fill="#989EA6" points="-81.1,117.7 -83.2,119.8 131.6,119.8 129.5,117.7 			"/>
+			<polygon id="acabamento-ext_2_" fill="#8E959C" points="144.6,132.9 -96.2,132.9 -94.2,130.8 142.6,130.8 			"/>
+		</g>
+		<g id="Perfil-direita">
+			<polygon id="barra_3_" fill="#C4C7C5" points="131.6,-7.8 131.6,119.8 142.6,130.8 142.6,-18.8 			"/>
+			<polygon id="acabamento-int_2_" fill="#8E959C" points="131.6,-7.8 131.6,119.8 129.5,117.7 129.5,-5.8 			"/>
+			<polygon id="acabamento-ext_1_" fill="#989EA6" points="144.6,132.9 142.6,130.8 142.6,-18.8 144.6,-20.9 			"/>
+		</g>
+	</g>
+	<g id="Puxadores_2_">
+		<g id="Puxador-esquerda">
+			<rect id="Puxador-esquerda-int" x="-104.3" y="-20.9" fill="#AF0E0E" width="2.6" height="153.7"/>
+			<rect id="Puxador-esquerda-trecho" x="-104.3" y="34.5" fill="#AF0E0E" width="2.6" height="43"/>
+			
+				<text id="tamanho-puxador-esquerda" transform="matrix(4.489659e-11 -1 1 4.489659e-11 -106.1504 71.936)" font-family="'ArialMT'" font-size="10.3125px">100mm</text>
+		</g>
+		<g id="Puxador-superior">
+			<rect id="Puxador-superior-int" x="-96.2" y="-28.3" fill="#AF0E0E" width="240.8" height="2.6"/>
+			<rect id="Puxador-superior-trecho" x="2.7" y="-28.3" fill="#AF0E0E" width="43" height="2.6"/>
+			<text id="tam-puxador-superior" transform="matrix(1 0 0 1 8.3589 -31.1504)" font-family="'ArialMT'" font-size="10.3125px">100mm</text>
+		</g>
+		<g id="Puxador-inferior">
+			<rect id="Puxador-inferior-int" x="-96.2" y="137.2" fill="#AF0E0E" width="240.8" height="2.6"/>
+			<rect id="Puxador-inferior-trecho" x="2.7" y="137.2" fill="#AF0E0E" width="43" height="2.6"/>
+			<text id="tam-puxador-inferior" transform="matrix(1 0 0 1 8.3574 150.1904)" font-family="'ArialMT'" font-size="10.3125px">100mm</text>
+		</g>
+		<g id="Puxador-direita">
+			<rect id="Puxador-direita-int" x="150.1" y="-20.8" fill="#AF0E0E" width="2.6" height="153.7"/>
+			<rect id="Puxador-direita-trecho" x="150.1" y="34.5" fill="#AF0E0E" width="2.6" height="43"/>
+			
+				<text id="tam-puxador-direita" transform="matrix(4.489659e-11 -1 1 4.489659e-11 162.0166 70.8633)" font-family="'ArialMT'" font-size="10.3125px">100mm</text>
+		</g>
+	</g>
+	<g id="Perfis_Puxadores">
+		<g id="PerfilPux_esquerda">
+			<polygon id="Barra_2_" fill="#AF0E0E" points="-96.2,-21 -101.9,-21 -101.9,132.9 -96.2,132.9 -96.2,132.8 -94.2,130.7 
+				-83.2,119.7 -83.2,-7.9 -94.2,-18.9 			"/>
+			<polygon id="Acabamento-Int" fill="#661D1D" points="-83.2,119.7 -83.2,-7.9 -81.1,-5.9 -81.1,117.7 			"/>
+			<rect id="Acabamento-ext_2_" x="-101.8" y="-21" fill="#661D1D" width="1.6" height="153.8"/>
+		</g>
+		<g id="PerfilPux_superior">
+			<polygon id="barra_1_" fill="#AF0E0E" points="-96.2,-20.8 -96.2,-20.8 -94.2,-18.7 -83.2,-7.7 131.6,-7.7 142.6,-18.7 
+				144.6,-20.8 144.6,-20.8 144.6,-24.1 -96.2,-24.1 			"/>
+			<polygon id="acabamento-int_3_" fill="#661D1D" points="129.5,-5.8 131.6,-7.7 -83.2,-7.7 -81.1,-5.8 			"/>
+			<rect id="Acabamento-ext" x="-96.2" y="-25.7" fill="#661D1D" width="240.8" height="1.6"/>
+		</g>
+		<g id="PerfilPux_inferior">
+			<polygon id="barra_2_" fill="#AF0E0E" points="144.6,132.8 144.6,132.8 142.5,130.7 131.5,119.7 -83.2,119.7 -94.2,130.7 
+				-96.2,132.8 -96.2,132.8 -96.2,136 144.6,136 			"/>
+			<polygon id="acabamento-int_1_" fill="#661D1D" points="-81.2,117.7 -83.2,119.7 131.5,119.7 129.5,117.7 			"/>
+			<rect id="Acabamento-ext_1_" x="-96.2" y="136.1" fill="#661D1D" width="240.8" height="1.6"/>
+		</g>
+		<g id="PerfilPux_direita">
+			<polygon id="Barra_3_" fill="#AF0E0E" points="144.6,132.9 150.2,132.9 150.2,-21 144.6,-21 144.6,-20.9 142.5,-18.8 131.5,-7.8 
+				131.5,119.8 142.5,130.8 			"/>
+			<polygon id="Acabamento-Int_1_" fill="#661D1D" points="131.5,-7.8 131.5,119.8 129.5,117.8 129.5,-5.8 			"/>
+			<rect id="Acabamento-ext_3_" x="148.6" y="-21" fill="#661D1D" width="1.6" height="153.8"/>
+		</g>
+	</g>
+</g>
+</svg>
