@@ -1,5 +1,4 @@
-{% load static %}
-<svg class="img-responsive" width="100%" viewBox="0 0 640 450" xmlns="http://www.w3.org/2000/svg">
+<svg class="img-responsive" width="100%" viewBox="0 0 640 450" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <style type="text/css">
         .st0{display:none;fill:#BC4646;}
         .st1{opacity:0.45;}
@@ -18,10 +17,10 @@
     </style>
     <g transform="translate(200, 40)" id="Porta">
         <rect id="Pelicula" x="23.3" y="24.6" class="st0" width="148.5" height="250"/>
-        <g id="Vidro" class="">
+        <g id="Vidro" class="st3">
 
             <image style="overflow:visible;opacity:0.35;enable-background:new    ;" width="113" height="196"
-                   id="Incolor" xlink:href="{% static 'Pedidos/images/Vidro-incolor.png' %}"
+                   id="Incolor" xlink:href="Vidro-incolor.png"
                    transform="matrix(1.3355 0 0 1.3355 22.1574 17.9436)">
             </image>
             <g class="st1">
@@ -48,28 +47,28 @@
             <rect id="Divisor-meio" x="49.1" y="171.2" class="st4" width="148.5" height="5"/>
         </g>
         <g id="Perfis" class="">
-            <g id="Superior_1_">
-                <polygon id="barra_5_" class="st5" points="210.4,36 36.3,36 49.1,48.8 197.6,48.8 			"/>
+            <g id="Perf-Superior" class="st3">
+                <polygon id="barra_5_" class="st5" points="210.4,36 36.3,36 49.1,48.8 197.6,48.8"/>
                 <polygon id="acabamento-int_5_" class="st6"
-                         points="49.1,48.8 197.6,48.8 195.3,51.2 51.5,51.2 			"/>
+                         points="49.1,48.8 197.6,48.8 195.3,51.2 51.5,51.2"/>
                 <polygon id="acabamento-ext_5_" class="st6"
-                         points="36.3,36 33.9,33.6 212.8,33.6 210.4,36 			"/>
+                         points="36.3,36 33.9,33.6 212.8,33.6 210.4,36"/>
             </g>
-            <g id="Perf-Direita">
+            <g id="Perf-Direita" class="st3">
                 <polygon id="barra-dir-altura" class="st7" points="197.6,48.8 197.6,298.7 210.4,311.5 210.4,36 			"/>
                 <polygon id="acabamento-int" class="st6"
                          points="195.3,296.3 197.6,298.7 197.6,48.8 195.3,51.2 			"/>
                 <polygon id="acabamento-ext" class="st6"
                          points="212.8,33.6 212.8,313.8 210.4,311.5 210.4,36 			"/>
             </g>
-            <g id="Perf-Esquerda">
+            <g id="Perf-Esquerda" class="st3">
                 <polygon id="barra-esq-altura" class="st7 " points="36.3,36 36.3,311.5 49.1,298.7 49.1,48.8"/>
                 <polygon id="acabamento-int_4_" class="st8"
                          points="51.5,51.2 49.1,48.8 49.1,298.7 51.5,296.3 			"/>
                 <polygon id="acabamento-ext_2_" class="st6"
                          points="33.9,313.8 33.9,33.6 36.3,36 36.3,311.5 			"/>
             </g>
-            <g id="Inferior">
+            <g id="Perf-Inferior" class="st3">
                 <polygon id="barra_3_" class="st7" points="197.6,298.7 49.1,298.7 36.3,311.5 210.4,311.5"/>
                 <polygon id="acabamento-int_2_" class="st6"
                          points="197.6,298.7 49.1,298.7 51.5,296.3 195.3,296.3 			"/>
@@ -136,13 +135,12 @@
             </g>
         </g>
         <g id="Medida_Desenho" class="hidden">
-        <text id="medida-pe-largura" transform="matrix(1 0 0 1 101.2962 372.7368)" class="st9 st11 st12"></text>
-        <text id="medida-pe-altura" transform="matrix(4.489659e-11 -1 1 4.489659e-11 288.3225 196.0137)" class="st9 st11 st12"></text>
-        <polygon id="traco-pe-altura" class="st9 traco-pe-altura" points="282.5,37.1 282.5,33.6 265.3,33.6 265.3,37.1 272.4,37.1 272.4,310.3
+        <text id="Medida-largura" transform="matrix(1 0 0 1 101.2962 372.7368)" class="st3 st11 st12"></text>
+        <text id="Medida-altura" transform="matrix(4.489659e-11 -1 1 4.489659e-11 288.3225 196.0137)" class="st3 st11 st12"></text>
+        <polygon id="Traco-altura" class="st3" points="282.5,37.1 282.5,33.6 265.3,33.6 265.3,37.1 272.4,37.1 272.4,310.3
                             265.3,310.3 265.3,313.8 282.5,313.8 282.5,310.3 275.4,310.3 275.4,37.1"/>
-        <polygon id="Medida-pe-largura" class="st9" points="36.1,349.1 33.9,349.1 33.9,366.2 36.1,366.2 36.1,359.1 210.5,359.1
+        <polygon id="Traco-largura" class="st3" points="36.1,349.1 33.9,349.1 33.9,366.2 36.1,366.2 36.1,359.1 210.5,359.1
                             210.5,366.2 212.8,366.2 212.8,349.1 210.5,349.1 210.5,356.1 36.1,356.1"/>
     </g>
     </g>
-
 </svg>

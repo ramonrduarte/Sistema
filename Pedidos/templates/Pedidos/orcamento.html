@@ -269,8 +269,8 @@ Adrofecha - Orçamento
                 </div>
             </div>
                 <div class="col-6">
-                    <div class="svg-content">
-                        {% include 'Pedidos/Porta_Pe.html' %}
+                    <div class="svg-content" id="Desenho">
+                        <object id="svgObject" type="image/svg+xml"></object>
                     </div>
                 </div>
              </div>
@@ -374,111 +374,118 @@ Adrofecha - Orçamento
 </div>
 
 <script>
-    // Função para verificar as medidas de altura e largura e decidir qual SVG incluir
-    function decidirSVG() {
-        const altura = document.getElementById('id_altura').value;
-        const largura = document.getElementById('id_largura').value;
+  // Função para mostrar os elementos quando um perfil for selecionado
+  function mostrarElementos() {
+    var perfilSelecionado = $('#id_perfil').val();
 
-        if (altura >= largura) {
-            document.querySelector('.svg-content').innerHTML = `{% include 'Pedidos/Porta_Pe.html' %}`;
-        } else {
-            document.querySelector('.svg-content').innerHTML = `{% include 'Pedidos/Porta_Deitada.html' %}`;
-        }
+    // Verifica se um perfil foi selecionado e, se sim, mostra os elementos relacionados
+    if (perfilSelecionado) {
+      $('.st3').removeClass('st3').addClass('st9');
+    } else {
+      $('.st9').removeClass('st9').addClass('st3');
     }
+  }
 
-    // Função para atualizar o desenho SVG com base nas medidas de altura e largura
-    function atualizarDesenhoSVG() {
-        // Código para atualizar o desenho SVG conforme as medidas
-        // ...
-        // (coloque aqui o código que modifica o SVG conforme as medidas)
-        // ...
+  // Chamar a função quando a página carregar e quando o campo id_perfil for alterado
+  $(document).ready(function() {
+    mostrarElementos();
 
-        // Após atualizar o desenho, chame a função para decidir qual SVG incluir
-        decidirSVG();
-    }
-
-    // Adicionando os eventos de mudança nos campos de altura e largura
-    const alturaInput = document.getElementById('altura');
-    const larguraInput = document.getElementById('largura');
-
-    alturaInput.addEventListener('change', atualizarDesenhoSVG);
-    larguraInput.addEventListener('change', atualizarDesenhoSVG);
-
-    // Chame a função inicialmente para que o SVG correto seja incluído na página ao carregar
-    decidirSVG();
-</script>
-
-<script>
-  const alturaInput = document.getElementById('id_altura');
-  const medidaAlturaText = document.getElementById('medida-pe-altura');
-  const larguraInput = document.getElementById('id_largura');
-  const medidaLarguraText = document.getElementById('medida-pe-largura');
-
-  alturaInput.addEventListener('input', function() {
-    const alturaValue = this.value;
-    medidaAlturaText.textContent = alturaValue + 'mm';
-  });
-  larguraInput.addEventListener('input', function() {
-    const larguraValue = this.value;
-    medidaLarguraText.textContent = larguraValue + 'mm';
+    $('#id_perfil').on('change', function() {
+      mostrarElementos();
+    });
   });
 </script>
 
-<!--<script>-->
-<!--$(document).ready(function() {-->
-<!--    $('#id_perfil').select2();-->
-<!--});-->
-<!--</script>-->
-
-<!--<script>-->
-<!--function mostrarGrupoPerfil() {-->
-<!--  var perfilSelecionado = $('#id_perfil').val();-->
-<!--  var grupoPerfil = $('#Perfis');-->
-
-<!--  if (perfilSelecionado && perfilSelecionado !== "") {-->
-<!--    grupoPerfil.removeClass('hidden');-->
-<!--  } else {-->
-<!--    grupoPerfil.addClass('hidden');-->
-<!--  }-->
-<!--}-->
-
-<!--$(document).ready(function() {-->
-<!--  $('#id_perfil').change(mostrarGrupoPerfil);-->
-<!--  $('#id_acabamento, #id_quantidade, #id_largura, #id_altura, #id_abertura').change(atualizarEstilosSVG);-->
-<!--  mostrarGrupoPerfil();-->
-
-<!--function atualizarEstilosSVG() {-->
-<!--  var selectElement = document.getElementById("id_acabamento");-->
-<!--  var selectedOption = selectElement.options[selectElement.selectedIndex];-->
-<!--  var codigoRGB = selectedOption.getAttribute("data-codigo-rgb");-->
-<!--  acabamentoRGB = codigoRGB;-->
-
-<!--  // Atualizar os estilos do SVG com a nova cor do acabamento-->
-<!--  var estilo = document.createElement('style');-->
-<!--  estilo.type = 'text/css';-->
-<!--  estilo.innerHTML = '.st5 { fill: ' + acabamentoRGB + '; }';-->
-<!--  var svg = document.getElementsByTagName('svg')[0];-->
-<!--  svg.appendChild(estilo);-->
-<!--}-->
-<!--});-->
-<!--</script>-->
 
 <script>
-        function mudarCor() {
-            var retangulo = document.getElementById("retangulo");
-            retangulo.setAttribute("fill", "red");
-        }
+    // Função para verificar a largura e altura e definir o arquivo SVG a ser carregado
+    function verificarEAtualizarSVG() {
+        var largura = parseFloat($('#id_largura').val());
+        var altura = parseFloat($('#id_altura').val());
+        var svgObject = $('#svgObject');
 
-        function diminuirOpacidade() {
-            var imagem = document.getElementById("imagem");
-            var currentOpacity = parseFloat(imagem.getAttribute("opacity"));
+        // Verifica a regra de largura e altura e define o arquivo SVG
+        var svgFile = largura > altura ? 'moldura_deitada.svg' : 'moldura.svg';
 
-            if (currentOpacity > 0) {
-                currentOpacity -= 0.1; // Diminui a opacidade em 0.1 a cada clique
-                imagem.setAttribute("opacity", currentOpacity);
-            }
-        }
+        // Define o caminho completo para o arquivo SVG incluindo o namespace do app "Pedidos"
+        var svgPath = '{% static "Pedidos/images/" %}' + svgFile;
+
+        // Atualiza o atributo "data" com o caminho do arquivo SVG
+        svgObject.attr('data', svgPath);
+    }
+
+    // Chamar a função quando a página carregar
+    $(document).ready(function () {
+        verificarEAtualizarSVG();
+
+        // Chamar a função quando os campos perderem o foco (quando o usuário sair do campo de input)
+        $('#id_largura, #id_altura').on('blur', function () {
+            verificarEAtualizarSVG();
+        });
+    });
 </script>
+
+<script>
+    const larguraInput = document.getElementById("id_largura");
+    const alturaInput = document.getElementById("id_altura");
+
+    larguraInput.addEventListener("input", formatarValor);
+    alturaInput.addEventListener("input", formatarValor);
+
+    function formatarValor(event) {
+        const input = event.target;
+        let valor = input.value;
+
+        // Remova qualquer não número e ponto decimal adicional
+        valor = valor.replace(/[^0-9.]/g, '');
+
+        // Separe os valores inteiros e decimais
+        const partes = valor.split('.');
+        let parteInteira = partes[0];
+        let parteDecimal = partes[1] || '';
+
+        // Limita a parte inteira a 4 dígitos (9.999)
+        if (parteInteira.length > 4) {
+            parteInteira = parteInteira.slice(0, 4);
+        }
+
+        // Limita a parte decimal a 3 dígitos
+        if (parteDecimal.length > 3) {
+            parteDecimal = parteDecimal.slice(0, 3);
+        }
+
+        // Formata novamente com a parte decimal
+        valor = parteInteira + (parteDecimal ? '.' + parteDecimal : '');
+
+        // Se o valor formatado não for um número válido, use o valor anterior
+        if (isNaN(parseFloat(valor))) {
+            valor = input.value;
+        }
+
+        input.value = valor;
+    }
+</script>
+
+<!--<script>-->
+<!--  const alturaInp = document.getElementById('id_altura');-->
+<!--  const medidaAlturaText = document.getElementById('Medida-altura');-->
+<!--  const larguraInp = document.getElementById('id_largura');-->
+<!--  const medidaLarguraText = document.getElementById('Medida-largura');-->
+
+<!--  alturaInp.addEventListener('input', function() {-->
+<!--    const alturaValue = this.value;-->
+<!--    if (medidaAlturaText) {-->
+<!--      medidaAlturaText.textContent = alturaValue + 'mm';-->
+<!--    }-->
+<!--  });-->
+
+<!--  larguraInp.addEventListener('input', function() {-->
+<!--    const larguraValue = this.value;-->
+<!--    if (medidaLarguraText) {-->
+<!--      medidaLarguraText.textContent = larguraValue + 'mm';-->
+<!--    }-->
+<!--  });-->
+<!--</script>-->
 
 <script>
 $(document).ready(function() {
