@@ -201,3 +201,14 @@ def obter_acabamentos_divisoria_ambiente(request):
     }
 
     return JsonResponse(data)
+
+def obter_acabamentos(request):
+    perfil = Perfil.objects.all()
+    acabamentos = perfil.values_list('acabamento', flat=True).distinct()
+    acabamentos = Acabamento.objects.filter(perfil__isnull=False).distinct().values('id', 'acabamento')
+
+    data = {
+        'acabamentos': list(acabamentos)
+    }
+
+    return JsonResponse(data)

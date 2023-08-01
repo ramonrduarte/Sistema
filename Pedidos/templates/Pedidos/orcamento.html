@@ -1355,6 +1355,29 @@ $(document).ready(function() {
     });
   }
 
+  // Obter acabamentos
+  $('#btnPortaGiro, #btnPortaCorrer').change(obterAcabamentos);
+
+  function obterAcabamentos() {
+    realizarRequisicao('/obter_acabamentos/', {}, function(response) {
+      var selectAcabamento = $('#id_acabamento');
+      selectAcabamento.empty();
+
+      if (response.acabamentos.length > 0) {
+        $.each(response.acabamentos, function(index, item) {
+          var option = $('<option>').attr('value', item.id).text(item.acabamento);
+          selectAcabamento.append(option);
+        });
+
+        selectAcabamento.prop('disabled', false);
+        selectAcabamento.show();
+      } else {
+        selectAcabamento.prop('disabled', true);
+        selectAcabamento.hide();
+      }
+    });
+  }
+
   // Buscar Vidro
   $('#Selectambientesuperior').change(buscarVidro);
 
@@ -1383,6 +1406,7 @@ $(document).ready(function() {
   }
 
   filtrarDivisoria();
+  obterAcabamentos();
 });
 
 </script>

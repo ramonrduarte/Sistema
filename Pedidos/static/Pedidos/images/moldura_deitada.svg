@@ -45,25 +45,25 @@
 		<rect id="Divisor-meio" x="22" y="-7.8" class="st4" width="4.3" height="127.6"/>
 	</g>
 	<g id="Perfis">
-		<g id="Perfil-esquerda">
-			<polygon id="barra_5_" class="st3 st14" points="-94.2,-18.8 -94.2,130.8 -83.2,119.8 -83.2,-7.8 			"/>
-			<polygon id="acabamento-int_5_" class="st3 st15" points="-83.2,119.8 -83.2,-7.8 -81.1,-5.8 -81.1,117.7 			"/>
-			<polygon id="acabamento-ext_5_" class="st3 st15" points="-94.2,130.8 -96.2,132.9 -96.2,-20.9 -94.2,-18.8 			"/>
+		<g id="Perf-Esquerda" class="st3">
+			<polygon id="barra-esq-altura" class="st7" points="-94.2,-18.8 -94.2,130.8 -83.2,119.8 -83.2,-7.8"/>
+			<polygon id="acabamento-int_4_" class="st8" points="-83.2,119.8 -83.2,-7.8 -81.1,-5.8 -81.1,117.7"/>
+			<polygon id="acabamento-ext_2_" class="st6" points="-94.2,130.8 -96.2,132.9 -96.2,-20.9 -94.2,-18.8"/>
 		</g>
-		<g id="Perfil-superior">
-			<polygon id="barra" class="st3 st14" points="-83.2,-7.8 131.6,-7.8 142.6,-18.8 -94.2,-18.8 			"/>
-			<polygon id="acabamento-int" class="st3 st15" points="129.5,-5.8 131.6,-7.8 -83.2,-7.8 -81.1,-5.8 			"/>
-			<polygon id="acabamento-ext" class="st3 st15" points="-96.2,-20.9 144.6,-20.9 142.6,-18.8 -94.2,-18.8 			"/>
+		<g id="Perf-Superior" class="st3">
+			<polygon id="barra_5_" class="st5" points="-83.2,-7.8 131.6,-7.8 142.6,-18.8 -94.2,-18.8"/>
+			<polygon id="acabamento-int_5_" class="st6" points="129.5,-5.8 131.6,-7.8 -83.2,-7.8 -81.1,-5.8"/>
+			<polygon id="acabamento-ext_5_" class="st6" points="-96.2,-20.9 144.6,-20.9 142.6,-18.8 -94.2,-18.8"/>
 		</g>
-		<g id="Perfil-inferior">
-			<polygon id="barra_4_" class="st3 st14" points="-94.2,130.8 142.6,130.8 131.6,119.8 -83.2,119.8 			"/>
-			<polygon id="acabamento-int_4_" class="st3 st15" points="-81.1,117.7 -83.2,119.8 131.6,119.8 129.5,117.7 			"/>
-			<polygon id="acabamento-ext_2_" class="st3 st15" points="144.6,132.9 -96.2,132.9 -94.2,130.8 142.6,130.8 			"/>
+		<g id="Perf-Inferior" class="st3">
+			<polygon id="barra_3_" class="st7" points="-94.2,130.8 142.6,130.8 131.6,119.8 -83.2,119.8"/>
+			<polygon id="acabamento-int_2_" class="st6" points="-81.1,117.7 -83.2,119.8 131.6,119.8 129.5,117.7"/>
+			<polygon id="acabamento-ext_1_" class="st8" points="144.6,132.9 -96.2,132.9 -94.2,130.8 142.6,130.8"/>
 		</g>
-		<g id="Perfil-direita">
-			<polygon id="barra_3_" class="st3 st14" points="131.6,-7.8 131.6,119.8 142.6,130.8 142.6,-18.8 			"/>
-			<polygon id="acabamento-int_2_" class="st3 st15" points="131.6,-7.8 131.6,119.8 129.5,117.7 129.5,-5.8 			"/>
-			<polygon id="acabamento-ext_1_" class="st3 st15" points="144.6,132.9 142.6,130.8 142.6,-18.8 144.6,-20.9 			"/>
+		<g id="Perf-Direita" class="st3">
+			<polygon id="barra-dir-altura" class="st7" points="131.6,-7.8 131.6,119.8 142.6,130.8 142.6,-18.8"/>
+			<polygon id="acabamento-int" class="st6" points="131.6,-7.8 131.6,119.8 129.5,117.7 129.5,-5.8"/>
+			<polygon id="acabamento-ext" class="st6" points="144.6,132.9 142.6,130.8 142.6,-18.8 144.6,-20.9"/>
 		</g>
 	</g>
 	<g id="Puxadores_2_" class="st3">
@@ -115,8 +115,8 @@
 		</g>
 	</g>
 	<g id="Medida_Desenho" class="st3">
-		<text id="Medida-largura" transform="matrix(1 0 0 1 5.0029 170.002)" class="st11 st12">2000mm</text>
-		<text id="Medida-altura" transform="matrix(4.489659e-11 -1 1 4.489659e-11 195.2256 74.9429)" class="st11 st12">2000mm</text>
+		<text id="Medida-largura" transform="matrix(1 0 0 1 5.0029 170.002)" class="st11 st12"> </text>
+		<text id="Medida-altura" transform="matrix(4.489659e-11 -1 1 4.489659e-11 195.2256 74.9429)" class="st11 st12"> </text>
 		<polygon id="Traco-largura" points="141.6,165 144.6,165 144.6,150.2 141.6,150.2 141.6,156.3 -93.2,156.3 -93.2,150.2
 			-96.2,150.2 -96.2,165 -93.2,165 -93.2,158.9 141.6,158.9"/>
 		<polygon id="Traco-altura" points="174.9,131 174.9,132.9 189.6,132.9 189.6,131 183.5,131 183.5,-18.9 189.6,-18.9 189.6,-20.9
