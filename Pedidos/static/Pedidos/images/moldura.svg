@@ -14,6 +14,8 @@
         .st11{font-family:'ArialMT';}
         .st12{font-size:12px;}
         .st13{fill:#661D1D;}
+        .st14{fill:#C5C7C6;}
+        .st15{fill:#8E959C;}
     </style>
     <g transform="translate(200, 40)" id="Porta">
         <rect id="Pelicula" x="23.3" y="24.6" class="st0" width="148.5" height="250"/>
@@ -77,27 +79,27 @@
             </g>
         </g>
         <g id="Puxadores_2_" class="st3">
-            <g id="Superior" class="st9">
+            <g id="Puxador-superior" class="st9">
                 <rect id="Puxador-sup-int" x="33.9" y="24.2" class="st10" width="178.9" height="3"/>
                 <rect id="Puxador-sup-trecho" x="98.3" y="24.2" class="st10" width="50" height="3"/>
                 <text id="tamanho-puxador-sup" transform="matrix(1 0 0 1 104.795 22.0441)" class="st11 st12">100mm
                 </text>
             </g>
-            <g id="Direita_1_" class="st9">
+            <g id="Puxador-direita" class="st9">
                 <rect id="Puxador-dir-int" x="218.4" y="33.6" class="st10" width="3" height="280.2"/>
                 <rect id="Puxador-dir-trecho" x="218.4" y="148.7" class="st10" width="3" height="50"/>
                 <text id="tamanho-puxador-dir_1_" transform="matrix(-1.346898e-10 1 -1 -1.346898e-10 224.75 155.2915)"
                       class="st11 st12">100mm
                 </text>
             </g>
-            <g id="Esquerda" class="st9">
+            <g id="Puxador-esquerda" class="st9">
                 <rect id="Puxador-esq-int" x="25.8" y="33.6" class="st10" width="3" height="280.2"/>
                 <rect id="Puxador-esq-trecho" x="25.8" y="148.7" class="st10" width="3" height="50"/>
                 <text id="tamanho-puxador-esq" transform="matrix(4.489659e-11 -1 1 4.489659e-11 23.0441 192.9355)"
                       class="st11 st12">100mm
                 </text>
             </g>
-            <g id="Inferior_1_" class="st9">
+            <g id="Puxador-inferior" class="st9">
                 <rect id="Puxador-sup-int_1_" x="33.8" y="320.2" class="st10" width="178.9" height="3"/>
                 <rect id="Puxador-sup-trecho_1_" x="98.3" y="320.2" class="st10" width="50" height="3"/>
                 <text id="tamanho-puxador-inf" transform="matrix(1 0 0 1 106.0433 334.0926)" class="st11 st12">100mm
@@ -106,40 +108,40 @@
         </g>
         <g id="Perfis_Puxadores" class="">
             <g id="PerfilPux_Superior" class="st3">
-                <polygon id="Barra_2_" class="st10" points="212.9,33.6 212.9,27 33.9,27 33.9,33.6 34,33.6 36.4,36 49.2,48.8 197.7,48.8
+                <polygon id="Barra_Superior" class="st10" points="212.9,33.6 212.9,27 33.9,27 33.9,33.6 34,33.6 36.4,36 49.2,48.8 197.7,48.8
                                     210.5,36 			"/>
                 <polygon id="Acabamento-Int" class="st13"
                          points="49.2,48.8 197.7,48.8 195.4,51.2 51.6,51.2 			"/>
-                <rect id="Acabamento-ext_2_" x="33.9" y="27.1" class="st13" width="179" height="1.9"/>
+                <rect id="Acabamento-Ext" x="33.9" y="27.1" class="st13" width="179" height="1.9"/>
             </g>
-            <g id="PerfilPux_Direita_1_" class="st3">
-                <polygon id="barra_1_" class="st10" points="212.7,33.6 212.7,33.6 210.3,36 197.5,48.8 197.5,298.7 210.3,311.5 212.7,313.8
+            <g id="PerfilPux_Direita" class="st3">
+                <polygon id="Barra_Direita" class="st10" points="212.7,33.6 212.7,33.6 210.3,36 197.5,48.8 197.5,298.7 210.3,311.5 212.7,313.8
                                     212.7,313.8 216.5,313.8 216.5,33.6 			"/>
                 <polygon id="acabamento-int_3_" class="st13"
                          points="195.2,296.3 197.5,298.7 197.5,48.8 195.2,51.2 			"/>
                 <rect id="Acabamento-ext" x="216.5" y="33.6" class="st13" width="1.9" height="280.2"/>
             </g>
-            <g id="PerfilPux_Esquerda_1_" class="st3">
-                <polygon id="barra_2_" class="st10" points="34,313.8 34,313.8 36.4,311.4 49.2,298.6 49.2,48.7 36.4,35.9 34,33.6 34,33.6
+            <g id="PerfilPux_Esquerda" class="st3">
+                <polygon id="Barra_Esquerda" class="st10" points="34,313.8 34,313.8 36.4,311.4 49.2,298.6 49.2,48.7 36.4,35.9 34,33.6 34,33.6
                                     30.2,33.6 30.2,313.8 			"/>
                 <polygon id="acabamento-int_1_" class="st13"
                          points="51.5,51.1 49.2,48.7 49.2,298.6 51.5,296.2 			"/>
                 <rect id="Acabamento-ext_1_" x="28.2" y="33.6" class="st13" width="1.9" height="280.2"/>
             </g>
-            <g id="PerfilPux_Inferior_1_" class="st3">
-                <polygon id="Barra_3_" class="st10" points="33.9,313.8 33.9,320.3 212.9,320.3 212.9,313.8 212.8,313.8 210.4,311.4
+            <g id="PerfilPux_Inferior" class="st3">
+                <polygon id="Barra_Inferior" class="st10" points="33.9,313.8 33.9,320.3 212.9,320.3 212.9,313.8 212.8,313.8 210.4,311.4
                                     197.6,298.6 49.1,298.6 36.3,311.4 			"/>
                 <polygon id="Acabamento-Int_1_" class="st13"
                          points="197.6,298.6 49.1,298.6 51.4,296.2 195.2,296.2 			"/>
                 <rect id="Acabamento-ext_3_" x="33.9" y="318.5" class="st13" width="179" height="1.9"/>
             </g>
         </g>
-        <g id="Medida_Desenho" class="hidden">
-        <text id="Medida-largura" transform="matrix(1 0 0 1 101.2962 372.7368)" class="st3 st11 st12"></text>
-        <text id="Medida-altura" transform="matrix(4.489659e-11 -1 1 4.489659e-11 288.3225 196.0137)" class="st3 st11 st12"></text>
-        <polygon id="Traco-altura" class="st3" points="282.5,37.1 282.5,33.6 265.3,33.6 265.3,37.1 272.4,37.1 272.4,310.3
+        <g id="Medida_Desenho" class="st3">
+        <text id="Medida-largura" transform="matrix(1 0 0 1 101.2962 372.7368)" class="st11 st12"></text>
+        <text id="Medida-altura" transform="matrix(4.489659e-11 -1 1 4.489659e-11 288.3225 196.0137)" class="st11 st12"></text>
+        <polygon id="Traco-altura" points="282.5,37.1 282.5,33.6 265.3,33.6 265.3,37.1 272.4,37.1 272.4,310.3
                             265.3,310.3 265.3,313.8 282.5,313.8 282.5,310.3 275.4,310.3 275.4,37.1"/>
-        <polygon id="Traco-largura" class="st3" points="36.1,349.1 33.9,349.1 33.9,366.2 36.1,366.2 36.1,359.1 210.5,359.1
+        <polygon id="Traco-largura" points="36.1,349.1 33.9,349.1 33.9,366.2 36.1,366.2 36.1,359.1 210.5,359.1
                             210.5,366.2 212.8,366.2 212.8,349.1 210.5,349.1 210.5,356.1 36.1,356.1"/>
     </g>
     </g>
