@@ -212,3 +212,13 @@ def obter_acabamentos(request):
     }
 
     return JsonResponse(data)
+
+def obter_codigo_rgb(request):
+    acabamento_id = request.GET.get('acabamento_id')
+    acabamento = Acabamento.objects.get(pk=acabamento_id)
+
+    # Supondo que o modelo Acabamento possui um campo chamado "codigo_rgb"
+    codigo_rgb = acabamento.codigo_rgb
+
+    # Retornar o código RGB como resposta na requisição Ajax
+    return JsonResponse({'codigo_rgb': codigo_rgb})

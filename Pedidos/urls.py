@@ -19,4 +19,5 @@ urlpatterns = [
     path('carregar_divdivisor/', carregar_divdivisorView.as_view(), name='carregar_divdivisor'),
     path('obter_acabamentos_divisoria_ambiente/', views.obter_acabamentos_divisoria_ambiente, name='obter_acabamentos_divisoria_ambiente'),
     path('obter_acabamentos/', views.obter_acabamentos, name='obter_acabamentos'),
+    path('obter_codigo_rgb/', views.obter_codigo_rgb, name='obter_codigo_rgb'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

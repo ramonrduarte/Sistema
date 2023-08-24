@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 25.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 550 450" style="enable-background:new 0 0 550 450;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#D7D8D7;}
+	.st1{fill:#F4FDFF;}
+	.st2{display:none;}
+	.st3{display:inline;fill:#137009;}
+	.st4{opacity:0.45;}
+	.st5{fill:url(#Reflexo_1_);}
+	.st6{display:inline;}
+	.st7{font-family:'ArialMT';}
+	.st8{font-size:10.3125px;}
+	.st9{fill:#AF0E0E;}
+	.st10{opacity:0.55;}
+	.st11{fill:url(#SVGID_1_);}
+	.st12{opacity:0.51;}
+	.st13{fill:#4C2F12;}
+	.st14{fill:url(#SVGID_2_);}
+	.st15{fill:url(#SVGID_3_);}
+	.st16{fill:url(#SVGID_4_);}
+</style>
+<g id="Porta" transform="translate(200, 40)">
+	<g id="Perfis">
+		<polygon id="Perf-Direita" class="st0" points="-32.7,115.7 182,115.7 193,104.7 -43.7,104.7 		"/>
+		<polygon id="Perf-Superior" class="st0" points="-43.7,104.7 -43.7,254.3 -32.7,243.3 -32.7,115.7 		"/>
+		<polygon id="Perf-Esquerda" class="st0" points="-43.7,254.3 193,254.3 182,243.3 -32.7,243.3 		"/>
+		<polygon id="Perf-Inferior" class="st0" points="182,115.7 182,243.3 193,254.3 193,104.7 		"/>
+	</g>
+	<rect id="Pelicula" x="-43.7" y="104.7" class="st1" width="236.8" height="149.6"/>
+	<g id="Divisores" class="st2">
+		<rect id="Divisor-inf" x="109.7" y="115.7" class="st3" width="4.3" height="127.6"/>
+		<rect id="Divisor-sup" x="36.3" y="115.7" class="st3" width="4.3" height="127.6"/>
+		<rect id="Divisor-meio" x="72.4" y="115.7" class="st3" width="4.3" height="127.6"/>
+	</g>
+	<g id="Vidro">
+		
+			<image style="overflow:visible;opacity:0.35;enable-background:new    ;" width="113" height="196" id="Incolor" xlink:href="../Desktop/Vidro-incolor.png"  transform="matrix(5.944309e-11 -1.324 1.2079 5.423060e-11 -43.7412 254.3223)">
+		</image>
+		<g class="st4">
+			
+				<linearGradient id="Reflexo_1_" gradientUnits="userSpaceOnUse" x1="-1130.3203" y1="526.6828" x2="-854.8268" y2="526.6828" gradientTransform="matrix(-0.8594 0 0 -0.8594 -778.377 632.146)">
+				<stop  offset="0" style="stop-color:#DEF7FF"/>
+				<stop  offset="9.815443e-02" style="stop-color:#BBD4DC"/>
+				<stop  offset="0.2746" style="stop-color:#839CA4"/>
+				<stop  offset="0.4461" style="stop-color:#546D75"/>
+				<stop  offset="0.6084" style="stop-color:#304951"/>
+				<stop  offset="0.7592" style="stop-color:#152E36"/>
+				<stop  offset="0.8941" style="stop-color:#061F27"/>
+				<stop  offset="1" style="stop-color:#001921"/>
+			</linearGradient>
+			<path id="Reflexo" class="st5" d="M192.6,104.9v149.2c11.9,0.5-236.3,0-236.3,0c0-8.8-0.1-143.2,0-149.2
+				C-43.7,104.9,200.9,104.5,192.6,104.9z"/>
+		</g>
+	</g>
+	<g id="Acabamento">
+		<g id="acabamento-Direita">
+			
+				<image style="overflow:visible;opacity:0.3;enable-background:new    ;" width="33" height="268" xlink:href="../Desktop/C727B485.png"  transform="matrix(4.489659e-11 -1 0.9562 4.293012e-11 -52.9616 127.3926)">
+			</image>
+			<g>
+				<polygon class="st0" points="-43.7,104.7 193,104.7 190.9,106.8 -41.7,106.8 				"/>
+			</g>
+		</g>
+		<g id="acabamento-Superior">
+			
+				<image style="overflow:visible;opacity:0.3;enable-background:new    ;" width="180" height="34" xlink:href="../Desktop/C727B486.png"  transform="matrix(3.788374e-11 -0.8438 1 4.489659e-11 -54.6943 256.5708)">
+			</image>
+			<g>
+				<polygon class="st0" points="-41.7,252.3 -43.7,254.3 -43.7,104.7 -41.7,106.8 				"/>
+			</g>
+		</g>
+		<g id="acabamento-Esquerda">
+			
+				<image style="overflow:visible;opacity:0.3;enable-background:new    ;" width="33" height="268" xlink:href="../Desktop/C727B484.png"  transform="matrix(4.489659e-11 -1 0.9508 4.268768e-11 -54.6943 264.3926)">
+			</image>
+			<g>
+				<polygon class="st0" points="193,254.3 -43.7,254.3 -41.7,252.3 190.9,252.3 				"/>
+			</g>
+		</g>
+		<g id="acabamento-Inferior">
+			
+				<image style="overflow:visible;opacity:0.3;enable-background:new    ;" width="180" height="33" xlink:href="../Desktop/C727B48C.png"  transform="matrix(4.143057e-11 -0.9228 1 4.489659e-11 170.3057 260.4916)">
+			</image>
+			<g>
+				<polygon class="st0" points="193,254.3 190.9,252.3 190.9,106.8 193,104.7 				"/>
+			</g>
+		</g>
+	</g>
+	<g id="Puxadores_2_" class="st2">
+		<g id="Puxador-superior" class="st6">
+			<text id="tamanho-puxador-sup" transform="matrix(4.489659e-11 -1 1 4.489659e-11 -55.7343 196.707)" class="st7 st8">100mm</text>
+			<rect id="Puxador-sup-int" x="-53.9" y="104.7" class="st9" width="2.6" height="149.6"/>
+			<rect id="Puxador-sup-trecho" x="-53.9" y="158" class="st9" width="2.6" height="43"/>
+		</g>
+		<g id="Puxador-direita" class="st6">
+			<text id="tamanho-puxador-dir_1_" transform="matrix(1 0 0 1 57.4012 92.373)" class="st7 st8">100mm</text>
+			<rect id="Puxador-dir-int" x="-43.8" y="95.2" class="st9" width="236.8" height="2.6"/>
+			<rect id="Puxador-dir-trecho" x="53.1" y="95.2" class="st9" width="43" height="2.6"/>
+		</g>
+		<g id="Puxador-esquerda" class="st6">
+			<text id="tamanho-puxador-esq" transform="matrix(-1 0 0 -1 91.7881 265.7148)" class="st7 st8">100mm</text>
+			<rect id="Puxador-esq-int" x="-43.8" y="260.8" class="st9" width="236.8" height="2.6"/>
+			<rect id="Puxador-esq-trecho" x="53.1" y="260.8" class="st9" width="43" height="2.6"/>
+		</g>
+		<g id="Puxador-inferior" class="st6">
+			<text id="tamanho-puxador-inf" transform="matrix(4.489659e-11 -1 1 4.489659e-11 212.4327 196.793)" class="st7 st8">100mm</text>
+			<rect id="Puxador-sup-int_1_" x="200.5" y="104.8" class="st9" width="2.6" height="149.6"/>
+			<rect id="Puxador-sup-trecho_1_" x="200.5" y="158" class="st9" width="2.6" height="43"/>
+		</g>
+	</g>
+	<g id="Perfis_Puxadores" class="st2">
+		<g id="PerfilPux_Direita_1_" class="st6">
+			<g id="Cava-dir_10_" class="st10">
+				<g>
+					
+						<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="-247.3661" y1="145.35" x2="-242.6584" y2="145.35" gradientTransform="matrix(4.489659e-11 -1 1 4.489659e-11 -70.6943 -142.6074)">
+						<stop  offset="0" style="stop-color:#252525"/>
+						<stop  offset="0.25" style="stop-color:#252525;stop-opacity:0.3"/>
+						<stop  offset="0.5" style="stop-color:#F1F1F1"/>
+						<stop  offset="0.5112" style="stop-color:#FFFFFF"/>
+						<stop  offset="0.75" style="stop-color:#919191;stop-opacity:0.3"/>
+						<stop  offset="1" style="stop-color:#252525"/>
+					</linearGradient>
+					<polyline class="st11" points="-43.7,104.8 -43.7,100.1 193,100.1 193,104.8 					"/>
+				</g>
+				<g class="st12">
+					<polyline class="st13" points="-43.7,104.8 -43.7,100.1 193,100.1 193,104.8 					"/>
+				</g>
+			</g>
+			<rect id="detalhe-dir_12_" x="-43.7" y="98.4" class="st0" width="236.8" height="1.7"/>
+		</g>
+		<g id="PerfilPux_Esquerda_1_" class="st6">
+			<g id="Cava-esq_11_" class="st10">
+				<g>
+					
+						<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="-187.7436" y1="5.8975" x2="-183.0359" y2="5.8975" gradientTransform="matrix(-4.489659e-11 1 -1 -4.489659e-11 80.5532 442.0659)">
+						<stop  offset="0" style="stop-color:#252525"/>
+						<stop  offset="0.25" style="stop-color:#252525;stop-opacity:0.3"/>
+						<stop  offset="0.5" style="stop-color:#F1F1F1"/>
+						<stop  offset="0.5112" style="stop-color:#FFFFFF"/>
+						<stop  offset="0.75" style="stop-color:#919191;stop-opacity:0.3"/>
+						<stop  offset="1" style="stop-color:#252525"/>
+					</linearGradient>
+					<polyline class="st14" points="193,254.3 193,259 -43.7,259 -43.7,254.3 					"/>
+				</g>
+				<g class="st12">
+					<polyline class="st13" points="193,254.3 193,259 -43.7,259 -43.7,254.3 					"/>
+				</g>
+			</g>
+			<rect id="detalhe-esq_12_" x="-43.7" y="259.1" class="st0" width="236.8" height="1.7"/>
+		</g>
+		<g id="PerfilPux_Inferior_1_" class="st6">
+			<g id="Cava-inf_10_" class="st10">
+				<g>
+					
+						<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="-93.5561" y1="40.5658" x2="-88.8484" y2="40.5658" gradientTransform="matrix(1 0 0 1 286.573 138.9768)">
+						<stop  offset="0" style="stop-color:#252525"/>
+						<stop  offset="0.25" style="stop-color:#252525;stop-opacity:0.3"/>
+						<stop  offset="0.5" style="stop-color:#F1F1F1"/>
+						<stop  offset="0.5112" style="stop-color:#FFFFFF"/>
+						<stop  offset="0.75" style="stop-color:#919191;stop-opacity:0.3"/>
+						<stop  offset="1" style="stop-color:#252525"/>
+					</linearGradient>
+					<polyline class="st15" points="193,104.8 197.7,104.8 197.7,254.3 193,254.3 					"/>
+				</g>
+				<g class="st12">
+					<polyline class="st13" points="193,104.8 197.7,104.8 197.7,254.3 193,254.3 					"/>
+				</g>
+			</g>
+			<rect id="detalhe-inf_12_" x="197.7" y="104.7" class="st0" width="1.7" height="149.6"/>
+		</g>
+		<g id="PerfilPux_Superior" class="st6">
+			<g id="Cava-sup_10_" class="st10">
+				<g>
+					
+						<linearGradient id="SVGID_4_" gradientUnits="userSpaceOnUse" x1="1.0268" y1="204.246" x2="5.7344" y2="204.246" gradientTransform="matrix(-1 0 0 -1 -42.7141 383.7886)">
+						<stop  offset="0" style="stop-color:#252525"/>
+						<stop  offset="0.25" style="stop-color:#252525;stop-opacity:0.3"/>
+						<stop  offset="0.5" style="stop-color:#F1F1F1"/>
+						<stop  offset="0.5112" style="stop-color:#FFFFFF"/>
+						<stop  offset="0.75" style="stop-color:#919191;stop-opacity:0.3"/>
+						<stop  offset="1" style="stop-color:#252525"/>
+					</linearGradient>
+					<polyline class="st16" points="-43.7,254.3 -48.5,254.3 -48.5,104.8 -43.7,104.8 					"/>
+				</g>
+				<g class="st12">
+					<polyline class="st13" points="-43.7,254.3 -48.5,254.3 -48.5,104.8 -43.7,104.8 					"/>
+				</g>
+			</g>
+			<rect id="detalhe-sup_12_" x="-50.2" y="104.7" class="st0" width="1.7" height="149.6"/>
+		</g>
+	</g>
+	<g id="Medida_Desenho">
+		<g id="Largura">
+			<text id="Medida-largura" transform="matrix(1 0 0 1 60.6856 352.6522)" class="st7 st8">100mm</text>
+			<polygon id="Traco-largura" points="-39.5,334.2 -40.5,334.2 -40.5,349 -39.5,349 -39.5,342.9 195.1,342.9 195.1,349 196.2,349 
+				196.2,334.2 195.1,334.2 195.1,340.3 -39.5,340.3 			"/>
+		</g>
+		<g id="Altura">
+			<text id="Medida-altura" transform="matrix(-1.346898e-10 1 -1 -1.346898e-10 248.3477 162.3031)" class="st7 st8">100mm</text>
+			<polygon id="Traco-altura" points="250.6,105.3 250.6,104.7 235.9,104.7 235.9,105.3 242,105.3 242,253.7 235.9,253.7 
+				235.9,254.3 250.6,254.3 250.6,253.7 244.5,253.7 244.5,105.3 			"/>
+		</g>
+	</g>
+</g>
+</svg>

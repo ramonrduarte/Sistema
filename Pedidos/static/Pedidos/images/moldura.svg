@@ -1,4 +1,4 @@
-<svg class="img-responsive" width="100%" viewBox="0 0 640 450" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg id="svg" class="img-responsive" width="100%" viewBox="0 0 640 450" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <style type="text/css">
         .st0{display:none;fill:#BC4646;}
         .st1{opacity:0.45;}
@@ -16,12 +16,13 @@
         .st13{fill:#661D1D;}
         .st14{fill:#C5C7C6;}
         .st15{fill:#8E959C;}
+        .nova{fill:blue;}
     </style>
     <g transform="translate(200, 40)" id="Porta">
         <rect id="Pelicula" x="23.3" y="24.6" class="st0" width="148.5" height="250"/>
         <g id="Vidro" class="st3">
 
-            <image style="overflow:visible;opacity:0.35;enable-background:new    ;" width="113" height="196"
+            <image style="overflow:visible;opacity:0.35;enable-background:new;" width="113" height="196"
                    id="Incolor" xlink:href="Vidro-incolor.png"
                    transform="matrix(1.3355 0 0 1.3355 22.1574 17.9436)">
             </image>
@@ -57,24 +58,24 @@
                          points="36.3,36 33.9,33.6 212.8,33.6 210.4,36"/>
             </g>
             <g id="Perf-Direita" class="st3">
-                <polygon id="barra-dir-altura" class="st7" points="197.6,48.8 197.6,298.7 210.4,311.5 210.4,36 			"/>
+                <polygon id="barra-dir-altura" class="st5" points="197.6,48.8 197.6,298.7 210.4,311.5 210.4,36 			"/>
                 <polygon id="acabamento-int" class="st6"
                          points="195.3,296.3 197.6,298.7 197.6,48.8 195.3,51.2 			"/>
                 <polygon id="acabamento-ext" class="st6"
                          points="212.8,33.6 212.8,313.8 210.4,311.5 210.4,36 			"/>
             </g>
             <g id="Perf-Esquerda" class="st3">
-                <polygon id="barra-esq-altura" class="st7 " points="36.3,36 36.3,311.5 49.1,298.7 49.1,48.8"/>
-                <polygon id="acabamento-int_4_" class="st8"
+                <polygon id="barra-esq-altura" fill="#C4C7C5" points="36.3,36 36.3,311.5 49.1,298.7 49.1,48.8"/>
+                <polygon id="acabamento-int_4_" class="st6"
                          points="51.5,51.2 49.1,48.8 49.1,298.7 51.5,296.3 			"/>
                 <polygon id="acabamento-ext_2_" class="st6"
                          points="33.9,313.8 33.9,33.6 36.3,36 36.3,311.5 			"/>
             </g>
             <g id="Perf-Inferior" class="st3">
-                <polygon id="barra_3_" class="st7" points="197.6,298.7 49.1,298.7 36.3,311.5 210.4,311.5"/>
+                <polygon id="barra_3_" class="st5" points="197.6,298.7 49.1,298.7 36.3,311.5 210.4,311.5"/>
                 <polygon id="acabamento-int_2_" class="st6"
                          points="197.6,298.7 49.1,298.7 51.5,296.3 195.3,296.3 			"/>
-                <polygon id="acabamento-ext_1_" class="st8"
+                <polygon id="acabamento-ext_1_" class="st6"
                          points="33.9,313.8 36.3,311.5 210.4,311.5 212.8,313.8 			"/>
             </g>
         </g>
