@@ -163,10 +163,10 @@
 						<stop  offset="0.75" style="stop-color:#919191;stop-opacity:0.3"/>
 						<stop  offset="1" style="stop-color:#252525"/>
 					</linearGradient>
-					<polyline class="st15" points="193,104.8 197.7,104.8 197.7,254.3 193,254.3 					"/>
+					<polyline id="pl1" class="st15" points="193,104.8 197.7,104.8 197.7,254.3 193,254.3"/>
 				</g>
 				<g class="st12">
-					<polyline class="st13" points="193,104.8 197.7,104.8 197.7,254.3 193,254.3 					"/>
+					<polyline id="pl1" class="st13" points="193,104.8 197.7,104.8 197.7,254.3 193,254.3"/>
 				</g>
 			</g>
 			<rect id="detalhe-inf_12_" x="197.7" y="104.7" class="st0" width="1.7" height="149.6"/>
@@ -201,7 +201,7 @@
 		<g id="Altura">
 			<text id="Medida-altura" transform="matrix(-1.346898e-10 1 -1 -1.346898e-10 248.3477 162.3031)" class="st7 st8">100mm</text>
 			<polygon id="Traco-altura" points="250.6,105.3 250.6,104.7 235.9,104.7 235.9,105.3 242,105.3 242,253.7 235.9,253.7 
-				235.9,254.3 250.6,254.3 250.6,253.7 244.5,253.7 244.5,105.3 			"/>
+				235.9,254.3 250.6,254.3 250.6,253.7 244.5,253.7 244.5,105.3"/>
 		</g>
 	</g>
 </g>
