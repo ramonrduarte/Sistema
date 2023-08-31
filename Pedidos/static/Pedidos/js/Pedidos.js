@@ -1,3 +1,4 @@
+// gira porta conforme calculo de largura x altura
 function rotacionarGrupo() {
     var grupoVidro = document.getElementById('Desenho');
     var largura = parseFloat($('#id_largura').val());
@@ -18,18 +19,19 @@ function rotacionarGrupo() {
     updateAnimation();
 
     updateMedidas(largura, altura);
-
+// mostra barra de medidas caso tenha valores nos campos
     if (!isNaN(largura) && !isNaN(altura)) {
         var medidaDesenho = document.getElementById('MedidaDesenho');
-        medidaDesenho.classList.remove('st2'); // Remove a classe st2
-        medidaDesenho.classList.add('st6');    // Adiciona a classe st6
+        medidaDesenho.classList.remove('st2');
+        medidaDesenho.classList.add('st6');
     } else {
         var medidaDesenho = document.getElementById('MedidaDesenho');
-        medidaDesenho.classList.remove('st6'); // Remove a classe st6
-        medidaDesenho.classList.add('st2');    // Adiciona a classe st2
+        medidaDesenho.classList.remove('st6');
+        medidaDesenho.classList.add('st2');
     }
 }
 
+// atualiza valor de medidas
 function updateMedidas(largura, altura) {
     var medidaLargura = document.getElementById('Medida-A'); // Alterado para Medida-A
     var medidaAltura = document.getElementById('Medida-B'); // Alterado para Medida-B

@@ -1212,3 +1212,98 @@ $(document).ready(function() {
 });
 
 </script>
+
+<!--<script>-->
+<!--  document.addEventListener("DOMContentLoaded", function () {-->
+<!--    const svgObject = document.getElementById("svgObject");-->
+
+<!--    // Carregar o SVG e adicionar evento de carregamento-->
+<!--    svgObject.addEventListener("load", function () {-->
+<!--      const svgDocument = svgObject.contentDocument; // Acessar o conteúdo do SVG-->
+
+<!--      // Função para adicionar ou remover classes de acordo com o valor do elemento "id_perfil"-->
+<!--      function ajustarClassesDoPerfil() {-->
+<!--        const idPerfil = document.getElementById("id_perfil").value;-->
+
+<!--        // Selecionar os elementos pelos seus ids-->
+<!--        const perfSuperior = svgDocument.getElementById("Perf-Superior");-->
+<!--        const perfInferior = svgDocument.getElementById("Perf-Inferior");-->
+<!--        const perfDireita = svgDocument.getElementById("Perf-Direita");-->
+<!--        const perfEsquerda = svgDocument.getElementById("Perf-Esquerda");-->
+<!--        const MedidaDesenho = svgDocument.getElementById("Medida_Desenho");-->
+
+<!--        // Verificar se o valor do elemento com id="id_perfil" está vazio-->
+<!--        if (idPerfil === "") {-->
+<!--          // Caso esteja vazio, ocultar com a classe st3 e remover a classe st9-->
+<!--          perfSuperior.classList.add("st3");-->
+<!--          perfSuperior.classList.remove("st9");-->
+
+<!--          perfInferior.classList.add("st3");-->
+<!--          perfInferior.classList.remove("st9");-->
+
+<!--          perfDireita.classList.add("st3");-->
+<!--          perfDireita.classList.remove("st9");-->
+
+<!--          perfEsquerda.classList.add("st3");-->
+<!--          perfEsquerda.classList.remove("st9");-->
+
+<!--          MedidaDesenho.classList.add("st3");-->
+<!--          MedidaDesenho.classList.remove("st9");-->
+
+<!--          // Atualizar medidas no SVG quando o perfil estiver vazio-->
+<!--          const alturaInput = document.getElementById("id_altura");-->
+<!--          const larguraInput = document.getElementById("id_largura");-->
+<!--          const medidaAlturaText = svgDocument.getElementById("Medida-altura");-->
+<!--          const medidaLarguraText = svgDocument.getElementById("Medida-largura");-->
+
+<!--          atualizarMedida(alturaInput, medidaAlturaText);-->
+<!--          atualizarMedida(larguraInput, medidaLarguraText);-->
+<!--        } else {-->
+<!--          // Caso tenha um valor selecionado, remover a classe st3 e adicionar a classe st9-->
+<!--          perfSuperior.classList.remove("st3");-->
+<!--          perfSuperior.classList.add("st9");-->
+
+<!--          perfInferior.classList.remove("st3");-->
+<!--          perfInferior.classList.add("st9");-->
+
+<!--          perfDireita.classList.remove("st3");-->
+<!--          perfDireita.classList.add("st9");-->
+
+<!--          perfEsquerda.classList.remove("st3");-->
+<!--          perfEsquerda.classList.add("st9");-->
+
+<!--          MedidaDesenho.classList.remove("st3");-->
+<!--          MedidaDesenho.classList.add("st9");-->
+<!--        }-->
+<!--      }-->
+
+<!--      // Adicionar um evento para detectar mudanças no valor do elemento com id="id_perfil"-->
+<!--      document.getElementById("id_perfil").addEventListener("change", ajustarClassesDoPerfil);-->
+
+<!--      // Chamar a função inicialmente para configurar as classes de acordo com o valor inicial-->
+<!--      ajustarClassesDoPerfil();-->
+
+<!--      // Atualizar as medidas quando o perfil for carregado-->
+<!--      const alturaInput = document.getElementById("id_altura");-->
+<!--      const larguraInput = document.getElementById("id_largura");-->
+<!--      const medidaAlturaText = svgDocument.getElementById("Medida-altura");-->
+<!--      const medidaLarguraText = svgDocument.getElementById("Medida-largura");-->
+
+<!--      alturaInput.addEventListener("input", function () {-->
+<!--        atualizarMedida(alturaInput, medidaAlturaText);-->
+<!--      });-->
+
+<!--      larguraInput.addEventListener("input", function () {-->
+<!--        atualizarMedida(larguraInput, medidaLarguraText);-->
+<!--      });-->
+<!--    });-->
+<!--  });-->
+
+<!--  // Função para atualizar a medida no campo de texto do SVG-->
+<!--  function atualizarMedida(campoInput, campoMedida) {-->
+<!--    const valor = campoInput.value;-->
+<!--    if (campoMedida) {-->
+<!--      campoMedida.textContent = valor + "mm";-->
+<!--    }-->
+<!--  }-->
+<!--</script>-->

@@ -604,7 +604,6 @@ Adrofecha - Orçamento
     </div>
 </div>
 
-
 <script>
     const larguraInput = document.getElementById("id_largura");
     const alturaInput = document.getElementById("id_altura");
@@ -645,101 +644,6 @@ Adrofecha - Orçamento
         input.value = valor;
     }
 </script>
-
-<!--<script>-->
-<!--  document.addEventListener("DOMContentLoaded", function () {-->
-<!--    const svgObject = document.getElementById("svgObject");-->
-
-<!--    // Carregar o SVG e adicionar evento de carregamento-->
-<!--    svgObject.addEventListener("load", function () {-->
-<!--      const svgDocument = svgObject.contentDocument; // Acessar o conteúdo do SVG-->
-
-<!--      // Função para adicionar ou remover classes de acordo com o valor do elemento "id_perfil"-->
-<!--      function ajustarClassesDoPerfil() {-->
-<!--        const idPerfil = document.getElementById("id_perfil").value;-->
-
-<!--        // Selecionar os elementos pelos seus ids-->
-<!--        const perfSuperior = svgDocument.getElementById("Perf-Superior");-->
-<!--        const perfInferior = svgDocument.getElementById("Perf-Inferior");-->
-<!--        const perfDireita = svgDocument.getElementById("Perf-Direita");-->
-<!--        const perfEsquerda = svgDocument.getElementById("Perf-Esquerda");-->
-<!--        const MedidaDesenho = svgDocument.getElementById("Medida_Desenho");-->
-
-<!--        // Verificar se o valor do elemento com id="id_perfil" está vazio-->
-<!--        if (idPerfil === "") {-->
-<!--          // Caso esteja vazio, ocultar com a classe st3 e remover a classe st9-->
-<!--          perfSuperior.classList.add("st3");-->
-<!--          perfSuperior.classList.remove("st9");-->
-
-<!--          perfInferior.classList.add("st3");-->
-<!--          perfInferior.classList.remove("st9");-->
-
-<!--          perfDireita.classList.add("st3");-->
-<!--          perfDireita.classList.remove("st9");-->
-
-<!--          perfEsquerda.classList.add("st3");-->
-<!--          perfEsquerda.classList.remove("st9");-->
-
-<!--          MedidaDesenho.classList.add("st3");-->
-<!--          MedidaDesenho.classList.remove("st9");-->
-
-<!--          // Atualizar medidas no SVG quando o perfil estiver vazio-->
-<!--          const alturaInput = document.getElementById("id_altura");-->
-<!--          const larguraInput = document.getElementById("id_largura");-->
-<!--          const medidaAlturaText = svgDocument.getElementById("Medida-altura");-->
-<!--          const medidaLarguraText = svgDocument.getElementById("Medida-largura");-->
-
-<!--          atualizarMedida(alturaInput, medidaAlturaText);-->
-<!--          atualizarMedida(larguraInput, medidaLarguraText);-->
-<!--        } else {-->
-<!--          // Caso tenha um valor selecionado, remover a classe st3 e adicionar a classe st9-->
-<!--          perfSuperior.classList.remove("st3");-->
-<!--          perfSuperior.classList.add("st9");-->
-
-<!--          perfInferior.classList.remove("st3");-->
-<!--          perfInferior.classList.add("st9");-->
-
-<!--          perfDireita.classList.remove("st3");-->
-<!--          perfDireita.classList.add("st9");-->
-
-<!--          perfEsquerda.classList.remove("st3");-->
-<!--          perfEsquerda.classList.add("st9");-->
-
-<!--          MedidaDesenho.classList.remove("st3");-->
-<!--          MedidaDesenho.classList.add("st9");-->
-<!--        }-->
-<!--      }-->
-
-<!--      // Adicionar um evento para detectar mudanças no valor do elemento com id="id_perfil"-->
-<!--      document.getElementById("id_perfil").addEventListener("change", ajustarClassesDoPerfil);-->
-
-<!--      // Chamar a função inicialmente para configurar as classes de acordo com o valor inicial-->
-<!--      ajustarClassesDoPerfil();-->
-
-<!--      // Atualizar as medidas quando o perfil for carregado-->
-<!--      const alturaInput = document.getElementById("id_altura");-->
-<!--      const larguraInput = document.getElementById("id_largura");-->
-<!--      const medidaAlturaText = svgDocument.getElementById("Medida-altura");-->
-<!--      const medidaLarguraText = svgDocument.getElementById("Medida-largura");-->
-
-<!--      alturaInput.addEventListener("input", function () {-->
-<!--        atualizarMedida(alturaInput, medidaAlturaText);-->
-<!--      });-->
-
-<!--      larguraInput.addEventListener("input", function () {-->
-<!--        atualizarMedida(larguraInput, medidaLarguraText);-->
-<!--      });-->
-<!--    });-->
-<!--  });-->
-
-<!--  // Função para atualizar a medida no campo de texto do SVG-->
-<!--  function atualizarMedida(campoInput, campoMedida) {-->
-<!--    const valor = campoInput.value;-->
-<!--    if (campoMedida) {-->
-<!--      campoMedida.textContent = valor + "mm";-->
-<!--    }-->
-<!--  }-->
-<!--</script>-->
 
 <script>
 $(document).ready(function() {
@@ -1653,6 +1557,82 @@ $(document).ready(function() {
         });
     });
 </script>
+
+<script>
+$(document).ready(function() {
+  // Função para atualizar as posições do perfil puxador
+  function atualizarPosicoesPerfilPuxador() {
+    var qtdPerfilPuxador = $("#qtd-perfilpuxador").val();
+    var posicaoPerfilPuxador = $("#posicao-perfilpuxador").val();
+    var larguraMaiorQueAltura = parseFloat($('#id_largura').val()) > parseFloat($('#id_altura').val());
+
+    if (posicaoPerfilPuxador === "") {
+      // Remover classes st6 e st9 dos elementos
+      $("#PerfilPux-A, #PerfilPux-B, #PerfilPux-C, #PerfilPux-D")
+        .removeClass("st6 st9");
+      $("#Acabamento-A, #Acabamento-B, #Acabamento-C, #Acabamento-D, #Perf-A, #Perf-B, #Perf-C, #Perf-D")
+        .removeClass("st9");
+    } else {
+      // Remover classes st6 e st9 dos elementos
+      $("#PerfilPux-A, #PerfilPux-B, #PerfilPux-C, #PerfilPux-D")
+        .removeClass("st6 st9");
+
+      // Remover classe st9 dos demais elementos
+      $("#Acabamento-A, #Acabamento-B, #Acabamento-C, #Acabamento-D, #Perf-A, #Perf-B, #Perf-C, #Perf-D")
+        .removeClass("st9");
+
+      // Adicionar classes st6 e st9 com base nas condições
+      if (larguraMaiorQueAltura && posicaoPerfilPuxador === "Esquerda") {
+        $("#PerfilPux-A").addClass("st6 st9");
+        $("#Perf-A, #Acabamento-A").addClass("st9");
+      } else if (larguraMaiorQueAltura && posicaoPerfilPuxador === "Topo") {
+        $("#PerfilPux-B").addClass("st6 st9");
+        $("#Perf-B, #Acabamento-B").addClass("st9");
+      } else if (larguraMaiorQueAltura && posicaoPerfilPuxador === "Base") {
+        $("#PerfilPux-D").addClass("st6 st9");
+        $("#Perf-D, #Acabamento-D").addClass("st9");
+      } else if (larguraMaiorQueAltura && posicaoPerfilPuxador === "Direita") {
+        $("#PerfilPux-C").addClass("st6 st9");
+        $("#Perf-C, #Acabamento-C").addClass("st9");
+      }
+    }
+  }
+
+  // Evento 'input' para campo posicao-perfilpuxador
+  $("#posicao-perfilpuxador").on('input', function() {
+    atualizarPosicoesPerfilPuxador();
+  });
+
+  // Outros eventos para atualizar as posições do perfil puxador
+  $("#id_perfilpuxador").change(function() {
+    atualizarQtdPerfilPuxador();
+    atualizarPosicoesPerfilPuxador();
+  });
+
+  $("#qtd-perfilpuxador").change(function() {
+    atualizarPosicoesPerfilPuxador();
+  });
+
+  $("#id_abertura").change(function() {
+    $("#posicao-perfilpuxador").val(""); // Limpar campo posicao-perfilpuxador
+    atualizarPosicoesPerfilPuxador();
+  });
+
+  $("input[name='btnradio']").change(function() {
+    $("#posicao-perfilpuxador").val(""); // Limpar campo posicao-perfilpuxador
+    atualizarQtdPerfilPuxador();
+    atualizarPosicoesPerfilPuxador();
+  });
+
+  // Resto do código...
+});
+</script>
+
+
+
+
+
+
 
 
 {% endblock %}
