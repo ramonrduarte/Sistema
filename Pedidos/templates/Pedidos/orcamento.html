@@ -1111,7 +1111,7 @@ $(document).ready(function() {
 
 <script>
 $(document).ready(function() {
-  $('#id_acabamento, #id_abertura').change(function() {
+  $('#id_acabamento, #id_abertura, #id_largura, #id_altura, #id_quantidade').change(function() {
     // Limpar e bloquear os campos da divportas, exceto o campo perfil
     $('#divportas input:not(#id_perfil), #divportas select:not(#id_perfil)').val('').prop('disabled', true);
 
@@ -1379,7 +1379,7 @@ $(document).ready(function() {
   }
 
   // Filtrar Divisoria
-  $('#id_acabamento, #id_quantidade, #id_largura, #id_altura, #id_linha').change(filtrarDivisoria);
+  $('#id_acabamento, #id_quantidade, #id_largura, #id_altura, #id_linha, #id_quantidade').change(filtrarDivisoria);
 
   function filtrarDivisoria() {
     var acabamento = $('#id_acabamento').val();
@@ -1560,56 +1560,97 @@ $(document).ready(function() {
 
 <script>
 $(document).ready(function() {
-  // Função para atualizar as posições do perfil puxador
   function atualizarPosicoesPerfilPuxador() {
-    var qtdPerfilPuxador = $("#qtd-perfilpuxador").val();
-    var posicaoPerfilPuxador = $("#posicao-perfilpuxador").val();
-    var larguraMaiorQueAltura = parseFloat($('#id_largura').val()) > parseFloat($('#id_altura').val());
+      var posicaoPerfilPuxador = $("#posicao-perfilpuxador").val();
+      var larguraMaiorQueAltura = parseFloat($('#id_largura').val()) > parseFloat($('#id_altura').val());
+      var largura = parseFloat($('#id_largura').val());
+      var altura = parseFloat($('#id_altura').val());
 
-    if (posicaoPerfilPuxador === "") {
-      // Remover classes st6 e st9 dos elementos
-      $("#PerfilPux-A, #PerfilPux-B, #PerfilPux-C, #PerfilPux-D")
-        .removeClass("st6 st9");
-      $("#Acabamento-A, #Acabamento-B, #Acabamento-C, #Acabamento-D, #Perf-A, #Perf-B, #Perf-C, #Perf-D")
-        .removeClass("st9");
-    } else {
-      // Remover classes st6 e st9 dos elementos
-      $("#PerfilPux-A, #PerfilPux-B, #PerfilPux-C, #PerfilPux-D")
-        .removeClass("st6 st9");
+      if (posicaoPerfilPuxador === "") {
+        // Remover classes st6 e st9 dos elementos
+        $("#PerfilPux-A, #PerfilPux-B, #PerfilPux-C, #PerfilPux-D")
+          .removeClass("st6 st9");
+        $("#Acabamento-A, #Acabamento-B, #Acabamento-C, #Acabamento-D, #Perf-A, #Perf-B, #Perf-C, #Perf-D")
+          .removeClass("st9");
+      } else {
+        // Remover classes st6 e st9 dos elementos
+        $("#PerfilPux-A, #PerfilPux-B, #PerfilPux-C, #PerfilPux-D")
+          .removeClass("st6 st9");
 
-      // Remover classe st9 dos demais elementos
-      $("#Acabamento-A, #Acabamento-B, #Acabamento-C, #Acabamento-D, #Perf-A, #Perf-B, #Perf-C, #Perf-D")
-        .removeClass("st9");
+        // Remover classe st9 dos demais elementos
+        $("#Acabamento-A, #Acabamento-B, #Acabamento-C, #Acabamento-D, #Perf-A, #Perf-B, #Perf-C, #Perf-D")
+          .removeClass("st9");
 
-      // Adicionar classes st6 e st9 com base nas condições
-      if (larguraMaiorQueAltura && posicaoPerfilPuxador === "Esquerda") {
-        $("#PerfilPux-A").addClass("st6 st9");
-        $("#Perf-A, #Acabamento-A").addClass("st9");
-      } else if (larguraMaiorQueAltura && posicaoPerfilPuxador === "Topo") {
-        $("#PerfilPux-B").addClass("st6 st9");
-        $("#Perf-B, #Acabamento-B").addClass("st9");
-      } else if (larguraMaiorQueAltura && posicaoPerfilPuxador === "Base") {
-        $("#PerfilPux-D").addClass("st6 st9");
-        $("#Perf-D, #Acabamento-D").addClass("st9");
-      } else if (larguraMaiorQueAltura && posicaoPerfilPuxador === "Direita") {
-        $("#PerfilPux-C").addClass("st6 st9");
-        $("#Perf-C, #Acabamento-C").addClass("st9");
+        // Adicionar classes st6 e st9 com base nas condições
+        if (larguraMaiorQueAltura) {
+          if (posicaoPerfilPuxador === "Esquerda") {
+            $("#PerfilPux-A").addClass("st6 st9");
+            $("#Perf-A, #Acabamento-A").addClass("st9");
+          } else if (posicaoPerfilPuxador === "Topo") {
+            $("#PerfilPux-B").addClass("st6 st9");
+            $("#Perf-B, #Acabamento-B").addClass("st9");
+          } else if (posicaoPerfilPuxador === "Base") {
+            $("#PerfilPux-D").addClass("st6 st9");
+            $("#Perf-D, #Acabamento-D").addClass("st9");
+          } else if (posicaoPerfilPuxador === "Direita") {
+            $("#PerfilPux-C").addClass("st6 st9");
+            $("#Perf-C, #Acabamento-C").addClass("st9");
+          } else if (posicaoPerfilPuxador === "Esq/Dir") {
+            // Adicione classes st6 e st9 para Esq/Dir
+            $("#PerfilPux-A, #PerfilPux-C").addClass("st6 st9");
+            $("#Perf-A, #Perf-C, #Acabamento-A, #Acabamento-C").addClass("st9");
+          }
+        } else if (largura <= altura) {
+          if (posicaoPerfilPuxador === "Esquerda") {
+            $("#PerfilPux-D").addClass("st6 st9");
+            $("#Perf-D, #Acabamento-D").addClass("st9");
+          } else if (posicaoPerfilPuxador === "Topo") {
+            $("#PerfilPux-A").addClass("st6 st9");
+            $("#Perf-A, #Acabamento-A").addClass("st9");
+          } else if (posicaoPerfilPuxador === "Base") {
+            $("#PerfilPux-C").addClass("st6 st9");
+            $("#Perf-C, #Acabamento-C").addClass("st9");
+          } else if (posicaoPerfilPuxador === "Direita") {
+            $("#PerfilPux-B").addClass("st6 st9");
+            $("#Perf-B, #Acabamento-B").addClass("st9");
+          } else if (posicaoPerfilPuxador === "Esq/Dir") {
+            $("#PerfilPux-B, #PerfilPux-D").addClass("st6 st9");
+            $("#Perf-B, #Perf-D, #Acabamento-B, #Acabamento-D").addClass("st9");
+          }
+        }
       }
     }
-  }
 
   // Evento 'input' para campo posicao-perfilpuxador
   $("#posicao-perfilpuxador").on('input', function() {
     atualizarPosicoesPerfilPuxador();
   });
 
-  // Outros eventos para atualizar as posições do perfil puxador
   $("#id_perfilpuxador").change(function() {
-    atualizarQtdPerfilPuxador();
+    atualizarPosicoesPerfilPuxador();
+  });
+
+  $("#id_perfil").change(function() {
+    atualizarPosicoesPerfilPuxador();
+  });
+
+  $("#id_acabamento").change(function() {
+    atualizarPosicoesPerfilPuxador();
+  });
+
+  $("#id_quantidade").change(function() {
     atualizarPosicoesPerfilPuxador();
   });
 
   $("#qtd-perfilpuxador").change(function() {
+    atualizarPosicoesPerfilPuxador();
+  });
+
+  $("#id_largura").change(function() {
+    atualizarPosicoesPerfilPuxador();
+  });
+
+  $("#id_altura").change(function() {
     atualizarPosicoesPerfilPuxador();
   });
 
@@ -1626,14 +1667,8 @@ $(document).ready(function() {
 
   // Resto do código...
 });
+
 </script>
-
-
-
-
-
-
-
 
 {% endblock %}
 
