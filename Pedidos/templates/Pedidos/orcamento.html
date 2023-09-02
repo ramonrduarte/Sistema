@@ -370,34 +370,34 @@ Adrofecha - Orçamento
                                             </g>
                                         </g>
                                     </g>
-                                    <g id="Puxadores_2_" class="st2">
-                                        <g id="Puxador-D">
-                                            <text id="Tam-pux-D"
+                                    <g id="Puxadores_2_" class="">
+                                        <g id="Puxador-D" class="st2">
+                                            <text id="Puxador-D-Tam"
                                                   transform="matrix(4.489659e-11 -1 1 4.489659e-11 -8.3213 192.4824)" class="st7 st8">100mm
                                             </text>
-                                            <rect id="Puxador-esq-int" x="-6" y="56.9" class="st9" width="2.6" height="236.8"/>
-                                            <rect id="Puxador-esq-trecho" x="-6" y="153.8" class="st9" width="2.6" height="43"/>
+                                            <rect id="Puxador-D-int" x="-6" y="56.9" class="st9" width="2.6" height="236.8"/>
+                                            <rect id="Puxador-D-trecho" x="-6" y="153.8" class="st9" width="2.6" height="43"/>
                                         </g>
-                                        <g id="Puxador-C">
-                                            <text id="Tam-pux-C" transform="matrix(1 0 0 1 60.5996 313.127)" class="st7 st8">100mm
+                                        <g id="Puxador-C" class="st2">
+                                            <text id="Puxador-C-Tam" transform="matrix(1 0 0 1 60.5996 313.127)" class="st7 st8">100mm
                                             </text>
-                                            <rect id="Puxador-sup-int_1_" x="3" y="301.2" class="st9" width="149.6" height="2.6"/>
-                                            <rect id="Puxador-sup-trecho_1_" x="56.4" y="301.2" class="st9" width="43" height="2.6"/>
+                                            <rect id="Puxador-C-int_1_" x="3" y="301.2" class="st9" width="149.6" height="2.6"/>
+                                            <rect id="Puxador-C-trecho_1_" x="56.4" y="301.2" class="st9" width="43" height="2.6"/>
                                         </g>
-                                        <g id="Puxador-B">
-                                            <text id="Tam-pux-B"
+                                        <g id="Puxador-B" class="st2">
+                                            <text id="Puxador-B-Tam"
                                                   transform="matrix(-1.346898e-10 1 -1 -1.346898e-10 165.0195 158.0955)"
                                                   class="st7 st8">100mm
                                             </text>
-                                            <rect id="Puxador-dir-int" x="159.6" y="56.9" class="st9" width="2.6" height="236.8"/>
-                                            <rect id="Puxador-dir-trecho" x="159.6" y="153.8" class="st9" width="2.6" height="43"/>
+                                            <rect id="Puxador-B-int" x="159.6" y="56.9" class="st9" width="2.6" height="236.8"/>
+                                            <rect id="Puxador-B-trecho" x="159.6" y="153.8" class="st9" width="2.6" height="43"/>
                                         </g>
-                                        <g id="Puxador-A">
-                                            <text id="Tam-pux-A" transform="matrix(1 0 0 1 60.6853 44.96)" class="st7 st8">
+                                        <g id="Puxador-A" class="st2">
+                                            <text id="Puxador-A-Tam" transform="matrix(1 0 0 1 60.6853 44.96)" class="st7 st8">
                                                 100mm
                                             </text>
-                                            <rect id="Puxador-sup-int" x="3.1" y="46.8" class="st9" width="149.6" height="2.6"/>
-                                            <rect id="Puxador-sup-trecho" x="56.4" y="46.8" class="st9" width="43" height="2.6"/>
+                                            <rect id="Puxador-A-int" x="3.1" y="46.8" class="st9 st2" width="149.6" height="2.6"/>
+                                            <rect id="Puxador-A-trecho" x="56.4" y="46.8" class="st9 st2" width="43" height="2.6"/>
                                         </g>
                                     </g>
                                     <g id="PerfisPuxadores">
@@ -1596,7 +1596,6 @@ $(document).ready(function() {
             $("#PerfilPux-C").addClass("st6 st9");
             $("#Perf-C, #Acabamento-C").addClass("st9");
           } else if (posicaoPerfilPuxador === "Esq/Dir") {
-            // Adicione classes st6 e st9 para Esq/Dir
             $("#PerfilPux-A, #PerfilPux-C").addClass("st6 st9");
             $("#Perf-A, #Perf-C, #Acabamento-A, #Acabamento-C").addClass("st9");
           }
@@ -1665,7 +1664,109 @@ $(document).ready(function() {
     atualizarPosicoesPerfilPuxador();
   });
 
-  // Resto do código...
+});
+
+</script>
+
+<script>
+$(document).ready(function() {
+  function atualizarPosicoesPuxador() {
+      var posicaoPuxador = $("#posicao-puxador").val(); // Use o ID correto do campo de posição do puxador
+      var tamPuxador = parseFloat($("#tam-puxador").val());
+      var larguraMaiorQueAltura = parseFloat($('#id_largura').val()) > parseFloat($('#id_altura').val());
+      var largura = parseFloat($('#id_largura').val());
+      var altura = parseFloat($('#id_altura').val());
+
+      if (posicaoPuxador === "") {
+        $("#Puxador-A, #Puxador-B, #Puxador-C, #Puxador-D")
+          .removeClass("st6 st9");
+      } else {
+        $("#Puxador-A, #Puxador-B, #Puxador-C, #Puxador-D")
+          .removeClass("st6 st9");
+
+        if (larguraMaiorQueAltura) {
+          if (posicaoPuxador === "Esquerda") {
+              if (tamPuxador < altura) {
+                $("#Puxador-A").addClass("st6");
+                $("#Puxador-A-int").removeClass("st6");
+                $("#Puxador-A-trecho").addClass("st6");
+              } else {
+                $("#Puxador-A").addClass("st6");
+                $("#Puxador-A-int").addClass("st6");
+                $("#Puxador-A-trecho").removeClass("st6");
+              }
+          } else if (posicaoPuxador === "Topo") {
+            $("#Puxador-B").addClass("st6");
+          } else if (posicaoPuxador === "Base") {
+            $("#Puxador-D").addClass("st6");
+          } else if (posicaoPuxador === "Direita") {
+            $("#Puxador-C").addClass("st6");
+          } else if (posicaoPuxador === "Esq/Dir") {
+            $("#Puxador-A, #Puxador-C").addClass("st6");
+          }
+        } else if (largura <= altura) {
+          if (posicaoPuxador === "Esquerda") {
+            $("#Puxador-D").addClass("st6");
+          } else if (posicaoPuxador === "Topo") {
+            $("#Puxador-A").addClass("st6");
+          } else if (posicaoPuxador === "Base") {
+            $("#Puxador-C").addClass("st6");
+          } else if (posicaoPuxador === "Direita") {
+            $("#Puxador-B").addClass("st6");
+          } else if (posicaoPuxador === "Esq/Dir") {
+            $("#Puxador-B, #Puxador-D").addClass("st6");
+          }
+        }
+      }
+    }
+
+  // Evento 'input' para campo posicao-puxador
+  $("#posicao-puxador").on('input', function() {
+    atualizarPosicoesPuxador();
+  });
+
+  $("#tam-puxador").on('input', function() {
+    atualizarPosicoesPuxador();
+  });
+
+  $("#id_puxador").change(function() {
+    atualizarPosicoesPuxador();
+  });
+
+  $("#id_perfil").change(function() {
+    atualizarPosicoesPuxador();
+  });
+
+  $("#id_acabamento").change(function() {
+    atualizarPosicoesPuxador();
+  });
+
+  $("#id_quantidade").change(function() {
+    atualizarPosicoesPuxador();
+  });
+
+  $("#qtd-puxador").change(function() {
+    atualizarPosicoesPuxador();
+  });
+
+  $("#id_largura").change(function() {
+    atualizarPosicoesPuxador();
+  });
+
+  $("#id_altura").change(function() {
+    atualizarPosicoesPuxador();
+  });
+
+  $("#id_abertura").change(function() {
+    $("#posicao-puxador").val("");
+    atualizarPosicoesPuxador();
+  });
+
+  $("input[name='btnradio']").change(function() {
+    $("#posicao-puxador").val("");
+    atualizarPosicoesPuxador();
+  });
+
 });
 
 </script>
