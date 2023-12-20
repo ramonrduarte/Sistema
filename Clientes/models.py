@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Cliente(models.Model):
     codigo = models.CharField(max_length=6, verbose_name="Código")
     nome = models.CharField(max_length=150, verbose_name="Nome")
@@ -18,4 +19,3 @@ class Cliente(models.Model):
 
     def __str__(self):
         return self.nome
-

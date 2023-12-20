@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% load static %}
+{% load crispy_forms_tags %}
+{% load widget_tweaks %}
+
 {% block titulo %}
 Cadastro de Perfis
 {% endblock %}
@@ -12,7 +16,7 @@ Cadastro de Perfis
       </div>
       <div class="mt-2 d-flex align-items-center justify-content-end">
           <input type="email" class="form-control me-3" style="width: 500px;" id="" name="busca-perfil" placeholder="digite aqui">
-          <a href="{% url 'cadastrar-perfil' %}" style="width: 120px;" class="btn btn-primary bg-primary">Novo</a>
+          <a href="{% url 'cadastrar-perfil' %}" style="width: 120px;" class="btn btn-primary bg-primary" >Novo</a>
       </div>
   </div>
 </header>

@@ -1,7 +1,6 @@
 from django import forms
-from .models import Perfil, PerfilPuxador, Puxador, ENCAIXE, Acabamento, Divisor, Vidro
-from django.views.generic.edit import CreateView
-from django.urls import reverse
+from .models import Perfil, PerfilPuxador, Puxador, ENCAIXE, Divisor
+
 
 class PerfilForm(forms.ModelForm):
 
@@ -30,7 +29,7 @@ class PerfilForm(forms.ModelForm):
         label='Puxadores',
         queryset=Puxador.objects.all(),
         widget=forms.CheckboxSelectMultiple,
-        required = False,
+        required=False,
     )
     perfil_puxador = forms.ModelMultipleChoiceField(
         label='Perfil Puxador',
@@ -38,8 +37,6 @@ class PerfilForm(forms.ModelForm):
         widget=forms.CheckboxSelectMultiple,
         required=False,
     )
-
-
 
     class Meta:
         model = Perfil

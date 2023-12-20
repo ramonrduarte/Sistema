@@ -25,7 +25,6 @@ class Pedido(models.Model):
     divisoriaambiente = models.ForeignKey(DivisoriaAmbiente, on_delete=models.PROTECT, verbose_name="Divisoria de Ambiente")
     vidro = models.ForeignKey(Vidro, on_delete=models.PROTECT, verbose_name="Vidro")
 
-
     class Meta:
         verbose_name = 'Pedido'
         verbose_name_plural = 'Pedidos'

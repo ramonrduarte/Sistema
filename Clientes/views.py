@@ -3,7 +3,7 @@ from .models import Cliente
 from django.views.generic.list import ListView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
-from django.shortcuts import render
+
 
 class ClientesCreate(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     model = Cliente
@@ -32,4 +32,3 @@ class ClientesList(LoginRequiredMixin, PermissionRequiredMixin, ListView):
     model = Cliente
     template_name = 'clientes/Clientes.html'
     permission_required = 'Clientes.view_cliente'
-

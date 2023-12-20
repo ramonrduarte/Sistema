@@ -15,34 +15,43 @@ Adrofecha - Orçamento
 
 {% block content %}
 <div class="border" style="margin-top: 45px">
-    <header class="mt-2 p-1 d-flex inline-block" id=listabotoes>
-            <div class="input-group ms-2" role="group" id="btnradios" aria-label="Basic radio toggle button group">
-                  <input type="radio" class="btn-check" name="btnradio" id="btnPortaGiro" checked="checked" value="PortaGiro" autocomplete="off">
-                  <label class="btn btn-outline-primary border me-3 rounded" for="btnPortaGiro" style="height: 110px; width:140px">
-                      <div class="d-flex justify-content-center" style="width:120px">
-                          <img src="{% static 'Pedidos/images/PortaGiro.png' %}"  class="border bg-white rounded" style="height: 100px; width:180px">
-                      </div>
-                  </label>
-                  <input type="radio" class="btn-check" name="btnradio" id="btnPortaCorrer" value="PortaCorrer" autocomplete="off">
-                  <label class="btn btn-outline-primary border me-3 rounded" for="btnPortaCorrer">
-                      <div class="d-flex justify-content-center" style="width:120px">
-                          <img src="{% static 'Pedidos/images/PortaCorrer.png' %}"  class="border bg-white rounded" style="height: 100px; width:180px">
-                      </div>
-                  </label>
-                  <input type="radio" class="btn-check" name="btnradio" value="DivisoriaAmbiente" id="btnDivisoria">
-                  <label class="btn btn-outline-primary border me-3 rounded" for="btnDivisoria">
-                      <div class="d-flex justify-content-center" style="width:120px">
-                          <img src="{% static 'Pedidos/images/PortaDivisoria.png' %}"  class="border bg-white rounded" style="height: 100px; width:180px">
-                      </div>
-                  </label>
-                  <input type="radio" class="btn-check" name="btnradio" value="Vidros" id="btnVidro">
-                  <label class="btn btn-outline-primary border me-3 rounded" for="btnVidro">
-                      <div class="d-flex justify-content-center" style="width:120px">
-                          <img src="{% static 'Pedidos/images/Vidro.png' %}"  class="border bg-white rounded" style="height: 100px; width:180px">
-                      </div>
-                  </label>
-            </div>
-    </header>
+    <div class="container">
+      <div class="radio-tile-group" id=listabotoes>
+
+        <div class="input-container">
+          <input type="radio" name="btnradio" id="btnPortaGiro" value="PortaGiro" checked>
+          <div class="radio-tile">
+<!--              <i class="bi bi-door-open"></i>-->
+            <label for="btnPortaGiro">Giro</label>
+          </div>
+        </div>
+
+        <div class="input-container">
+          <input type="radio" name="btnradio" id="btnPortaCorrer" value="PortaCorrer">
+          <div class="radio-tile">
+<!--            <ion-icon name="bicycle"></ion-icon>-->
+            <label for="btnPortaCorrer">Correr</label>
+          </div>
+        </div>
+
+        <div class="input-container">
+          <input type="radio" name="btnradio" id="btnDivisoria" value="DivisoriaAmbiente">
+          <div class="radio-tile">
+<!--            <ion-icon name="car-sport"></ion-icon>-->
+            <label for="btnDivisoria">Divisoria</label>
+          </div>
+        </div>
+
+        <div class="input-container">
+          <input type="radio" name="btnradio" id="btnVidro" value="Vidros">
+          <div class="radio-tile">
+<!--            <ion-icon name="airplane"></ion-icon>-->
+            <label for="btnVidro">Vidro</label>
+          </div>
+        </div>
+
+      </div>
+    </div>
     <hr class="mx-2 mghr">
     <div class="row">
          <div class="row d-flex justify-content-between">
@@ -179,13 +188,39 @@ Adrofecha - Orçamento
                     </div>
 <!--                    Linha Vidro-->
                     <div class="mx-3">
-                        <div id="divvidro">
+                        <div id="divvidro" class="">
                             <label for="{{ form.vidro.id_for_label }}">
                                 {{ form.vidro.label_tag }}
                                 {% if form.vidro.field.required %}{% endif %}
                             </label>
                             <div class="me-1">
                                 {{ form.vidro|attr:"class:form-control custom-input-size-selectitems selectVidro" }}
+                            </div>
+                        </div>
+                        <!-- Campos de vidro extras -->
+                        <div id="divvidro1" class="st2">
+                            <label for="id_vidro1">
+                                Vidro 1
+                            </label>
+                            <div class="me-1">
+                                {{ form.vidro|attr:"class:form-control custom-input-size-selectitems selectVidro" |attr:"id:id_vidro1" }}
+                            </div>
+                        </div>
+                        <div id="divvidro2" class="st2">
+                            <label for="id_vidro2">
+                                Vidro 2
+                            </label>
+                            <div class="me-1">
+                                {{ form.vidro|attr:"class:form-control custom-input-size-selectitems selectVidro" |attr:"id:id_vidro2" }}
+                            </div>
+                        </div>
+
+                        <div id="divvidro3" class="st2">
+                            <label for="id_vidro3">
+                                Vidro 3
+                            </label>
+                            <div class="me-1">
+                                {{ form.vidro|attr:"class:form-control custom-input-size-selectitems selectVidro" |attr:"id:id_vidro3" }}
                             </div>
                         </div>
                     </div>
@@ -262,9 +297,9 @@ Adrofecha - Orçamento
                     </div>
                 </div>
 <!--                botoes finalizar-->
-                <div class="mt-1 text-end" style="height: 45px" ;>
-                    <a class="btn btn-primary me-2 mt-1" id="btnpedidocancelar" style="width: 90px" ; href="#" role="button" onclick="updatePerfilPuxInferior(); return false;">Cancelar</a>
-                    <a class="btn btn-primary me-2 mt-1" id="btnpedidofinalizar" style="width: 90px" ; href="#" role="button" onclick="diminuirOpacidade()">Adicionar</a>
+                <div class="mt-1 text-end">
+                    <a class="btn btn-primary me-2 mt-1" id="btnpedidocancelar" href="#" role="button" onclick="updatePerfilPuxInferior(); return false;">Cancelar</a>
+                    <a class="btn btn-primary me-2 mt-1" id="btnpedidofinalizar" href="#" role="button" onclick="diminuirOpacidade()">Adicionar</a>
                 </div>
             </div>
                 <div class="col-6">
@@ -299,10 +334,10 @@ Adrofecha - Orçamento
                                         <polygon id="Perf-A" class="" points="152.7,57 3.1,57 14.1,68 141.7,68"/>
                                     </g>
                                     <rect id="Pelicula" x="3.1" y="57" class="st1" width="149.6" height="236.8"/>
-                                    <g id="Divisores" class="st2">
-                                        <rect id="Divisor-C" x="14.1" y="210.4" class="st3" width="127.6" height="4.3"/>
-                                        <rect id="Divisor-B" x="14.1" y="173.1" class="st3" width="127.6" height="4.3"/>
-                                        <rect id="Divisor-A" x="14.1" y="137" class="st3" width="127.6" height="4.3"/>
+                                    <g id="Divisores" class="">
+                                        <rect id="Divisor-C" x="14.1" y="210.4" class="st2" fill="#137009" width="127.6" height="4.3"/>
+                                        <rect id="Divisor-B" x="14.1" y="173.1" class="st2" fill="#137009" width="127.6" height="4.3"/>
+                                        <rect id="Divisor-A" x="14.1" y="137" class="st2" fill="#137009" width="127.6" height="4.3"/>
                                     </g>
                                     <g id="Vidro" class="st2">
                                         <image style="display:inline;overflow:visible;opacity:0.35;enable-background:new    ;"
@@ -504,7 +539,7 @@ Adrofecha - Orçamento
                         </svg>
                     </div>
                 </div>
-             </div>
+            </div>
          <div class="row d-flex justify-content-between">
             <div class=""><!-- Tabelas-->
                <div class="row mt-1 ms-1 mb-2">
@@ -603,7 +638,12 @@ Adrofecha - Orçamento
          </div>
     </div>
 </div>
-
+<nav class="navbar navbar-dark bg-dark fixed-bottom d-flex justify-content-center border">
+  <div class="d-flex justify-content-end col-8 align-items-center">
+      <a style="color:white">R$100,00</a>
+      <button type="button" class="ms-4 btn btn-primary btn-sm">Finalizar</button>
+  </div>
+</nav>
 <script>
     const larguraInput = document.getElementById("id_largura");
     const alturaInput = document.getElementById("id_altura");
@@ -882,6 +922,7 @@ $(document).ready(function() {
 
   // Chamar a função filtrarPerfil inicialmente
   filtrarPerfil();
+
 });
 </script>
 
@@ -1660,7 +1701,6 @@ $(document).ready(function() {
 
   $("input[name='btnradio']").change(function() {
     $("#posicao-perfilpuxador").val(""); // Limpar campo posicao-perfilpuxador
-    atualizarQtdPerfilPuxador();
     atualizarPosicoesPerfilPuxador();
   });
 
@@ -1861,6 +1901,81 @@ $(document).ready(function() {
 
 });
 </script>
+
+<script>
+$(document).ready(function() {
+  function atualizarPosicoesDivisor() {
+    var qtdDivisor = $("#qtd-divisor").val();
+
+    if (qtdDivisor === "1") {
+      $("#Divisor-A, #Divisor-B, #Divisor-C").removeClass("st6");
+      $("#divvidro1, #divvidro2, #divvidro3").addClass("st2");
+      $("#divvidro").addClass("st2");
+      $("#Divisor-B").addClass("st6");
+      $("#divvidro1, #divvidro2").removeClass("st2");
+      $("#id_vidro1, #id_vidro2").prop("disabled", false);
+    } else if (qtdDivisor === "2") {
+      $("#Divisor-A, #Divisor-B, #Divisor-C").removeClass("st6");
+      $("#divvidro").addClass("st2");
+      $("#Divisor-A, #Divisor-C").addClass("st6");
+      $("#divvidro1, #divvidro2, #divvidro3").removeClass("st2");
+      $("#id_vidro1, #id_vidro2, #id_vidro3").prop("disabled", false);
+    } else {
+      $("#Divisor-A, #Divisor-B, #Divisor-C").removeClass("st6");
+      $("#divvidro1, #divvidro2, #divvidro3").removeClass("st6");
+      $("#divvidro1, #divvidro2, #divvidro3").addClass("st2");
+      $("#divvidro").removeClass("st2");
+      }
+  }
+
+  $("#qtd-divisor").on('input', function() {
+    atualizarPosicoesDivisor();
+  });
+
+  $("#id_divisor").on('change', function() {
+    atualizarPosicoesDivisor();
+  });
+
+  $("#id_puxador").change(function() {
+    atualizarPosicoesDivisor();
+  });
+
+  $("#id_perfil").change(function() {
+    atualizarPosicoesDivisor();
+  });
+
+  $("#id_acabamento").change(function() {
+    atualizarPosicoesDivisor();
+  });
+
+  $("#id_quantidade").change(function() {
+    atualizarPosicoesDivisor();
+  });
+
+  $("#qtd-puxador").change(function() {
+    atualizarPosicoesDivisor();
+  });
+
+  $("#id_largura").change(function() {
+    atualizarPosicoesDivisor();
+  });
+
+  $("#id_altura").change(function() {
+    atualizarPosicoesDivisor();
+  });
+
+  $("#id_abertura").change(function() {
+    atualizarPosicoesDivisor();
+  });
+
+  $("input[name='btnradio']").change(function() {
+    $("#qtd-divisor").val("");
+    atualizarPosicoesDivisor();
+  });
+
+});
+</script>
+
 
 {% endblock %}
 

@@ -9,6 +9,7 @@ from django.http import JsonResponse, HttpResponse
 from django.views.decorators.http import require_GET
 
 
+
 # Create your views here.
 
 class AcabamentoCreate(LoginRequiredMixin, PermissionRequiredMixin, CreateView):

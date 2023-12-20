@@ -1,7 +1,7 @@
 from django.urls import path
-from .views import AcabamentoCreate, ModeloPerfilCreate,ModeloPerfilPuxadorCreate, ModeloPuxadorCreate, ModeloDivisorCreate, ModeloDivisoriaAmbienteCreate, ModeloVidroCreate, TipoCreate, PerfilCreate, PerfilPuxadorCreate, PuxadorCreate, DivisorCreate, DivisoriaAmbienteCreate, VidroCreate
-from .views import AcabamentoUpdate, ModeloPerfilUpdate,ModeloPerfilPuxadorUpdate, ModeloPuxadorUpdate, ModeloDivisorUpdate, ModeloDivisoriaAmbienteUpdate, ModeloVidroUpdate, TipoUpdate, PerfilUpdate, PerfilPuxadorUpdate, PuxadorUpdate, DivisorUpdate, DivisoriaAmbienteUpdate, VidroUpdate
-from .views import AcabamentoDelete, ModeloPerfilDelete,ModeloPerfilPuxadorDelete, ModeloPuxadorDelete, ModeloDivisorDelete, ModeloDivisoriaAmbienteDelete, ModeloVidroDelete, TipoDelete, PerfilDelete, PerfilPuxadorDelete, PuxadorDelete, DivisorDelete, DivisoriaAmbienteDelete, VidroDelete
+from .views import AcabamentoCreate, ModeloPerfilCreate, ModeloPerfilPuxadorCreate, ModeloPuxadorCreate, ModeloDivisorCreate, ModeloDivisoriaAmbienteCreate, ModeloVidroCreate, TipoCreate, PerfilCreate, PerfilPuxadorCreate, PuxadorCreate, DivisorCreate, DivisoriaAmbienteCreate, VidroCreate
+from .views import AcabamentoUpdate, ModeloPerfilUpdate, ModeloPerfilPuxadorUpdate, ModeloPuxadorUpdate, ModeloDivisorUpdate, ModeloDivisoriaAmbienteUpdate, ModeloVidroUpdate, TipoUpdate, PerfilUpdate, PerfilPuxadorUpdate, PuxadorUpdate, DivisorUpdate, DivisoriaAmbienteUpdate, VidroUpdate
+from .views import AcabamentoDelete, ModeloPerfilDelete, ModeloPerfilPuxadorDelete, ModeloPuxadorDelete, ModeloDivisorDelete, ModeloDivisoriaAmbienteDelete, ModeloVidroDelete, TipoDelete, PerfilDelete, PerfilPuxadorDelete, PuxadorDelete, DivisorDelete, DivisoriaAmbienteDelete, VidroDelete
 from .views import AcabamentoList, TipoList, PerfilList, PerfilPuxadorList, PuxadorList, DivisorList, DivisoriaAmbienteList, VidroList
 from .views import Modelos
 from . import views
@@ -27,7 +27,7 @@ urlpatterns = [
     path('editar/modelo-perfilpuxador/<int:pk>/', ModeloPerfilPuxadorUpdate.as_view(), name='editar-modelo-perfilpuxador'),
     path('editar/modelo-puxador/<int:pk>/', ModeloPuxadorUpdate.as_view(), name='editar-modelo-puxador'),
     path('editar/modelo-divisor/<int:pk>/', ModeloDivisorUpdate.as_view(), name='editar-modelo-divisor'),
-    path('editar/modelo-divisoriaambiente/<int:pk>/', ModeloDivisoriaAmbienteUpdate.as_view(),name='editar-modelo-divisoriaambiente'),
+    path('editar/modelo-divisoriaambiente/<int:pk>/', ModeloDivisoriaAmbienteUpdate.as_view(), name='editar-modelo-divisoriaambiente'),
     path('editar/modelo-vidro/<int:pk>/', ModeloVidroUpdate.as_view(), name='editar-modelo-vidro'),
     path('editar/tipo/<int:pk>/', TipoUpdate.as_view(), name='editar-tipo'),
     path('editar/perfil/<int:pk>/', PerfilUpdate.as_view(), name='editar-perfil'),
@@ -42,7 +42,7 @@ urlpatterns = [
     path('excluir/modelo-perfilpuxador/<int:pk>/', ModeloPerfilPuxadorDelete.as_view(), name='excluir-modelo-perfilpuxador'),
     path('excluir/modelo-puxador/<int:pk>/', ModeloPuxadorDelete.as_view(), name='excluir-modelo-puxador'),
     path('excluir/modelo-divisor/<int:pk>/', ModeloDivisorDelete.as_view(), name='excluir-modelo-divisor'),
-    path('excluir/modelo-divisoriaambiente/<int:pk>/', ModeloDivisoriaAmbienteDelete.as_view(),name='excluir-modelo-divisoriaambiente'),
+    path('excluir/modelo-divisoriaambiente/<int:pk>/', ModeloDivisoriaAmbienteDelete.as_view(), name='excluir-modelo-divisoriaambiente'),
     path('excluir/modelo-vidro/<int:pk>/', ModeloVidroDelete.as_view(), name='excluir-modelo-vidro'),
     path('excluir/tipo/<int:pk>/', TipoDelete.as_view(), name='excluir-tipo'),
     path('excluir/perfil/<int:pk>/', PerfilDelete.as_view(), name='excluir-perfil'),
