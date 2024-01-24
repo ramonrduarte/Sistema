@@ -392,7 +392,8 @@ def filtrar_perfil(request):
     for objeto in queryset:
         resultados.append({
             'id': objeto.id,
-            'descricao': (f"({objeto.codigo}) {objeto.descricao}")})
+            'descricao': (f"({objeto.codigo}) {objeto.descricao}"),
+        })
 
     return JsonResponse(resultados, safe=False)
 
@@ -408,7 +409,8 @@ def filtrar_divisor(request):
     for objeto in queryset:
         resultados.append({
             'id': objeto.id,
-            'descricao': (f"({objeto.codigo}) {objeto.descricao}")})
+            'descricao': (f"({objeto.codigo}) {objeto.descricao}"),
+        })
 
     return JsonResponse(resultados, safe=False)
 
@@ -424,6 +426,7 @@ def filtrar_puxador(request):
     for objeto in queryset:
         resultados.append({
             'id': objeto.id,
-            'descricao': (f"({objeto.codigo}) {objeto.descricao}")})
+            'descricao': (f"({objeto.codigo}) {objeto.descricao}"),
+        })
 
     return JsonResponse(resultados, safe=False)

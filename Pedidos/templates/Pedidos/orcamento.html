@@ -35,14 +35,6 @@ Adrofecha - Orçamento
         </div>
 
         <div class="input-container">
-          <input type="radio" name="btnradio" id="btnDivisoria" value="DivisoriaAmbiente">
-          <div class="radio-tile">
-<!--            <ion-icon name="car-sport"></ion-icon>-->
-            <label for="btnDivisoria">Divisoria</label>
-          </div>
-        </div>
-
-        <div class="input-container">
           <input type="radio" name="btnradio" id="btnVidro" value="Vidros">
           <div class="radio-tile">
 <!--            <ion-icon name="airplane"></ion-icon>-->
@@ -56,6 +48,7 @@ Adrofecha - Orçamento
     <div class="row">
          <div class="row d-flex justify-content-between">
             <div class="col-6 border-end">
+<!--====================  INPUTS =======================-->
                 <form>
                     <div class="row mb-1">
                         <div class="row mx-1">
@@ -97,17 +90,11 @@ Adrofecha - Orçamento
                                     </label>
                                     {{ form.abertura|attr:"class:form-control custom-input-size-select" }}
                                 </div>
-                                <div class="col-6 d-flex justify-content-center align-items-center d-none" id="divlinha">
-                                    <label class="me-1" for="{{ form.linha.id_for_label }}">
-                                        {{ form.linha.label_tag }}
-                                        {% if form.linha.field.required %}{% endif %}
-                                    </label>
-                                    {{ form.linha|attr:"class:form-control custom-input-size-select" }}
-                                </div>
                             </div>
                         </div>
                     </div>
                 </form>
+<!--====================  END INPUTS =======================-->
                 <hr class="mx-2">
 <!--                    Menu para giro e correr-->
                 <div id="divportas" class="mt-1">
@@ -188,99 +175,42 @@ Adrofecha - Orçamento
                     </div>
 <!--                    Linha Vidro-->
                     <div class="mx-3">
-                        <div id="divvidro" class="">
-                            <label for="{{ form.vidro.id_for_label }}">
-                                {{ form.vidro.label_tag }}
-                                {% if form.vidro.field.required %}{% endif %}
-                            </label>
-                            <div class="me-1">
-                                {{ form.vidro|attr:"class:form-control custom-input-size-selectitems selectVidro" }}
-                            </div>
-                        </div>
-                        <!-- Campos de vidro extras -->
-                        <div id="divvidro1" class="st2">
-                            <label for="id_vidro1">
-                                Vidro 1
-                            </label>
-                            <div class="me-1">
-                                {{ form.vidro|attr:"class:form-control custom-input-size-selectitems selectVidro" |attr:"id:id_vidro1" }}
-                            </div>
-                        </div>
-                        <div id="divvidro2" class="st2">
-                            <label for="id_vidro2">
-                                Vidro 2
-                            </label>
-                            <div class="me-1">
-                                {{ form.vidro|attr:"class:form-control custom-input-size-selectitems selectVidro" |attr:"id:id_vidro2" }}
-                            </div>
-                        </div>
+  <div id="divvidro" class="">
+    <label for="{{ form.vidro.id_for_label }}">
+      {{ form.vidro.label_tag }}
+      {% if form.vidro.field.required %}{% endif %}
+    </label>
+    <div class="me-1">
+      {{ form.vidro|attr:"class:form-control custom-input-size-selectitems selectVidro" }}
+    </div>
+  </div>
+  <!-- Campos de vidro extras -->
+  <div id="divvidro1" class="st2">
+    <label for="id_vidro1">
+      Vidro 1
+    </label>
+    <div class="me-1">
+      {{ form.vidro|attr:"class:form-control custom-input-size-selectitems selectVidro" |attr:"id:id_vidro1" }}
+    </div>
+  </div>
+  <div id="divvidro2" class="st2">
+    <label for="id_vidro2">
+      Vidro 2
+    </label>
+    <div class="me-1">
+      {{ form.vidro|attr:"class:form-control custom-input-size-selectitems selectVidro" |attr:"id:id_vidro2" }}
+    </div>
+  </div>
 
-                        <div id="divvidro3" class="st2">
-                            <label for="id_vidro3">
-                                Vidro 3
-                            </label>
-                            <div class="me-1">
-                                {{ form.vidro|attr:"class:form-control custom-input-size-selectitems selectVidro" |attr:"id:id_vidro3" }}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-<!--                menu para divisoria ambiente-->
-                <div id="divambiente" class="hidden">
-                    <!--Linha Superior-->
-                    <div class="mx-3">
-                        <div class="justify-content-start" id="divsuperior">
-                            <label>
-                                Superior:
-                            </label>
-                            <select class="form-control custom-input-divisorias" id="Selectambientesuperior">
-                            </select>
-                        </div>
-                    </div>
-<!--                    Linha Inferior-->
-                    <div class="mx-3">
-                        <div class="justify-content-start" id="divinferior">
-                            <label>
-                                Inferior:
-                            </label>
-                            <select class="form-control custom-input-divisorias" id="Selectambienteinferior">
-                            </select>
-                        </div>
-                    </div>
-<!--                    Linha Lateral-->
-                    <div class="mx-3">
-                        <div class="justify-content-start" id="divlateral">
-                            <label>
-                                Lateral:
-                            </label>
-                            <select class="form-control custom-input-divisorias" id="Selectambientelateral">
-                            </select>
-                        </div>
-                    </div>
-<!--                    Linha Divisor Ambiente-->
-                    <div class="mx-3" id="divambientedivisor">
-                            <label>
-                                Divisor:
-                            </label>
-                            <div class="d-flex">
-                                <select class="form-control custom-input-divisorias" id="Selectambientedivisor">
-                                </select>
-                                <div class="d-flex">
-                                    <select class="form-control custom-input-qtd flex-grow-1 ms-1" id="qtd-divisorambiente">
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-<!--                    Linha Vidro Ambiente-->
-                    <div class="mx-3">
-                        <div class="justify-content-start" id="divambientevidro">
-                            <label>
-                                Vidro:
-                            </label>
-                            <select class="form-control custom-input-divisorias" id="Selectambientevidro">
-                            </select>
-                        </div>
-                    </div>
+  <div id="divvidro3" class="st2">
+    <label for="id_vidro3">
+      Vidro 3
+    </label>
+    <div class="me-1">
+      {{ form.vidro|attr:"class:form-control custom-input-size-selectitems selectVidro" |attr:"id:id_vidro3" }}
+    </div>
+  </div>
+</div>
                 </div>
 <!--                    menu para vidro-->
                 <div id="divvidros" class="hidden">
@@ -298,11 +228,12 @@ Adrofecha - Orçamento
                 </div>
 <!--                botoes finalizar-->
                 <div class="mt-1 text-end">
-                    <a class="btn btn-primary me-2 mt-1" id="btnpedidocancelar" href="#" role="button" onclick="updatePerfilPuxInferior(); return false;">Cancelar</a>
+                    <a class="btn btn-primary me-2 mt-1" id="btnpedidocancelar" href="#" role="button">Cancelar</a>
                     <a class="btn btn-primary me-2 mt-1" id="btnpedidofinalizar" href="#" role="button" onclick="diminuirOpacidade()">Adicionar</a>
                 </div>
             </div>
                 <div class="col-6">
+                    <div class="text-center" id="nomeporta"></div>
                     <div class="svg-content" id="Desenho">
                         <svg id="svg" class="img-responsive" width="100%" viewBox="0 50 550 350"
                              xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -542,12 +473,12 @@ Adrofecha - Orçamento
             </div>
          <div class="row d-flex justify-content-between">
             <div class=""><!-- Tabelas-->
-               <div class="row mt-1 ms-1 mb-2">
-                    <div class="col-6 border table-responsive">
+               <div class="row mt-1 mb-2">
+                    <div class="col-6 table-responsive">
                         <header>
                             <h2 class="bg-warning text-dark text-center fs-6 fw-bold">Insumos</h2>
-                            <table class="table table-sm">
-                                <thead>
+                            <table class="table table-bordered table-sm">
+                                <thead class="table-active">
                                     <tr>
                                       <th scope="col">Id</th>
                                       <th scope="col">Código</th>
@@ -586,11 +517,11 @@ Adrofecha - Orçamento
                             </table>
                         </header>
                     </div>
-                    <div class="col-6 border table-responsive">
+                    <div class="col-6 table-responsive">
                         <header>
-                            <h2 class="bg-warning text-dark text-center fs-6 fw-bold ">Itens do Orçamento</h2>
-                                <table class="table table-sm ">
-                                    <thead>
+                            <h2 class="bg-warning text-dark text-center fs-6 fw-bold">Itens do Orçamento</h2>
+                                <table class="table table-bordered table-sm ">
+                                    <thead class="table-active">
                                         <tr>
                                           <th scope="col">Id</th>
                                           <th scope="col">Qt</th>
@@ -644,6 +575,7 @@ Adrofecha - Orçamento
       <button type="button" class="ms-4 btn btn-primary btn-sm">Finalizar</button>
   </div>
 </nav>
+
 <script>
     const larguraInput = document.getElementById("id_largura");
     const alturaInput = document.getElementById("id_altura");
@@ -833,12 +765,14 @@ $(document).ready(function() {
 });
 </script>
 
+<!--=============== BUSCAR ======================-->
+
 <script>
 $(document).ready(function() {
   $('#id_acabamento, #id_quantidade, #id_largura, #id_altura, #id_abertura').change(filtrarPerfil);
 
   function filtrarPerfil() {
-    var acabamento = $('#id_acabamento').val();
+    var acabamento = parseInt($('#id_acabamento').val(), 10);
     var quantidade = $('#id_quantidade').val();
     var largura = $('#id_largura').val();
     var altura = $('#id_altura').val();
@@ -856,7 +790,7 @@ $(document).ready(function() {
         perfilDiv.find(':input').prop('disabled', false);
 
         $.ajax({
-          url: '/filtrar_acabamento/',
+          url: '/buscar_perfil/',
           type: 'GET',
           data: {
             acabamento: acabamento
@@ -869,10 +803,15 @@ $(document).ready(function() {
 
             $.each(response, function(index, item) {
               option = $('<option>').attr('value', item.id).text(item.descricao);
+              option.data('id', item.id);
+              option.data('descricao', item.descricao);
+              option.data('preco', item.preco);
+              option.data('modelo', item.modelo);
               perfilField.append(option);
             });
 
             perfilField.show();
+
           },
           error: function(xhr) {
             console.log(xhr.statusText);
@@ -889,7 +828,7 @@ $(document).ready(function() {
         perfilDiv.find(':input').prop('disabled', false);
 
         $.ajax({
-          url: '/filtrar_acabamento/',
+          url: '/buscar_perfil/',
           type: 'GET',
           data: {
             acabamento: acabamento
@@ -903,6 +842,7 @@ $(document).ready(function() {
             $.each(response, function(index, item) {
               option = $('<option>').attr('value', item.id).text(item.descricao);
               perfilField.append(option);
+
             });
 
             perfilField.show();
@@ -951,6 +891,10 @@ $(document).ready(function() {
 
           $.each(response, function(index, item) {
             option = $('<option>').attr('value', item.id).text(item.descricao);
+            option.data('id', item.id);
+            option.data('descricao', item.descricao);
+            option.data('preco', item.preco);
+            option.data('modelo', item.modelo);
             selectPerfilPuxador.append(option);
           });
 
@@ -973,6 +917,62 @@ $(document).ready(function() {
     } else {
       $('#id_perfilpuxador').empty();
       $('#divperfilpuxador :input').prop('disabled', true);
+    }
+  }
+});
+</script>
+
+<script>
+$(document).ready(function() {
+  $('#id_perfil').change(function() {
+    buscarPuxador();
+  });
+
+  function buscarPuxador() {
+    var perfil = $('#id_perfil').val();
+
+    if (perfil) {
+      $.ajax({
+        url: '/buscar_Puxador/',
+        type: 'GET',
+        data: {
+          perfil: perfil
+        },
+        success: function(response) {
+          var selectPuxador = $('#id_puxador');
+          selectPuxador.empty();
+
+          var option = $('<option>').attr('value', '').text('-------');
+          selectPuxador.append(option);
+
+          $.each(response, function(index, item) {
+            option = $('<option>').attr('value', item.id).text(item.descricao);
+            option.data('id', item.id);
+            option.data('descricao', item.descricao);
+            option.data('preco', item.preco);
+            option.data('modelo', item.modelo);
+            selectPuxador.append(option);
+          });
+
+          var numItens = response.length;
+
+          if (numItens <= 0) {
+            selectPuxador.prop('disabled', true);
+            $('#divpuxador :input').prop('disabled', true);
+          } else {
+            selectPuxador.prop('disabled', false);
+            $('#divpuxador :input').prop('disabled', false);
+          }
+
+          selectPuxador.show();
+        },
+        error: function(xhr) {
+          console.log(xhr.statusText);
+        }
+      });
+    } else {
+      $('#id_puxador').empty();
+      $('#divpuxador :input').prop('disabled', true);
     }
   }
 });
@@ -1005,6 +1005,10 @@ $(document).ready(function() {
 
           $.each(response, function(index, item) {
             option = $('<option>').attr('value', item.id).text(item.descricao);
+            option.data('id', item.id);
+            option.data('descricao', item.descricao);
+            option.data('preco', item.preco);
+            option.data('modelo', item.modelo);
             selectDivisor.append(option);
           });
 
@@ -1047,108 +1051,67 @@ $(document).ready(function() {
 <script>
 $(document).ready(function() {
   $('#id_perfil').change(function() {
-    buscarPuxador();
+    buscarVidro(''); // Chama para o vidro principal
+    for (var i = 1; i <= 3; i++) {
+      buscarVidro(i);
+    }
   });
 
-  function buscarPuxador() {
+  function buscarVidro(numeroVidro) {
     var perfil = $('#id_perfil').val();
+    var idVidro = numeroVidro ? '#id_vidro' + numeroVidro : '#id_vidro';
 
     if (perfil) {
+      var vidro = $(idVidro).val();
+
       $.ajax({
-        url: '/buscar_Puxador/',
+        url: '/buscar_Vidro/',
         type: 'GET',
         data: {
-          perfil: perfil
+          vidro: vidro
         },
         success: function(response) {
-          var selectPuxador = $('#id_puxador');
-          selectPuxador.empty();
+          var selectVidro = $(idVidro);
+          selectVidro.empty();
 
           var option = $('<option>').attr('value', '').text('-------');
-          selectPuxador.append(option);
+          selectVidro.append(option);
 
           $.each(response, function(index, item) {
             option = $('<option>').attr('value', item.id).text(item.descricao);
-            selectPuxador.append(option);
+            option.data('id', item.id);
+            option.data('descricao', item.descricao);
+            option.data('nome', item.nome);
+            option.data('preco', item.preco);
+            option.data('modelo', item.modelo);
+            selectVidro.append(option);
           });
 
           var numItens = response.length;
 
           if (numItens <= 0) {
-            selectPuxador.prop('disabled', true);
-            $('#divpuxador :input').prop('disabled', true);
+            selectVidro.prop('disabled', true);
+            $('#divvidro' + numeroVidro + ' :input').prop('disabled', true);
           } else {
-            selectPuxador.prop('disabled', false);
-            $('#divpuxador :input').prop('disabled', false);
+            selectVidro.prop('disabled', false);
+            $('#divvidro' + numeroVidro + ' :input').prop('disabled', false);
           }
 
-          selectPuxador.show();
+          selectVidro.show();
         },
         error: function(xhr) {
           console.log(xhr.statusText);
         }
       });
     } else {
-      $('#id_puxador').empty();
-      $('#divpuxador :input').prop('disabled', true);
+      $(idVidro).empty();
+      $('#divvidro' + numeroVidro + ' :input').prop('disabled', true);
     }
   }
 });
 </script>
 
-<script>
-$(document).ready(function() {
-  $('#id_perfil').change(function() {
-    buscarVidro();
-  });
-
-  function buscarVidro() {
-  var perfil = $('#id_perfil').val();
-
-  if (perfil) {
-    var vidro = $('#id_vidro').val();
-
-    $.ajax({
-      url: '/buscar_Vidro/',
-      type: 'GET',
-      data: {
-        vidro: vidro
-      },
-      success: function(response) {
-        var selectVidro = $('#id_vidro');
-        selectVidro.empty();
-
-        var option = $('<option>').attr('value', '').text('-------');
-        selectVidro.append(option);
-
-        $.each(response, function(index, item) {
-          option = $('<option>').attr('value', item.id).text(item.descricao);
-          selectVidro.append(option);
-        });
-
-        var numItens = response.length;
-
-        if (numItens <= 0) {
-          selectVidro.prop('disabled', true);
-          $('#divvidro :input').prop('disabled', true);
-        } else {
-          selectVidro.prop('disabled', false);
-          $('#divvidro :input').prop('disabled', false);
-        }
-
-        selectVidro.show();
-      },
-      error: function(xhr) {
-        console.log(xhr.statusText);
-      }
-    });
-  } else {
-    $('#id_vidro').empty();
-    $('#divvidro :input').prop('disabled', true);
-  }
-}
-});
-</script>
+<!--=============== END BUSCAR ======================-->
 
 <script>
 $(document).ready(function() {
@@ -1183,52 +1146,36 @@ $(document).ready(function() {
   document.addEventListener('DOMContentLoaded', function() {
     var btnPortaGiro = document.getElementById('btnPortaGiro');
     var btnPortaCorrer = document.getElementById('btnPortaCorrer');
-    var btnDivisoria = document.getElementById('btnDivisoria');
+
     var btnVidro = document.getElementById('btnVidro');
     var campoLinha = document.getElementById('divlinha');
     var campoAcabamento = document.getElementById('divacabamento');
     var campoAbertura = document.getElementById('divabertura');
     var campoPorta = document.getElementById('divportas');
-    var campoDivisoria = document.getElementById('divambiente');
+
     var campoVidro = document.getElementById('divvidros');
 
     btnPortaGiro.addEventListener('change', function() {
       limparCampos();
       campoAcabamento.classList.remove('d-none');
       campoAbertura.classList.remove('d-none');
-      campoLinha.classList.add('d-none');
       campoPorta.classList.remove('hidden');
-      campoDivisoria.classList.add('hidden');
       campoVidro.classList.add('hidden');
     });
 
     btnPortaCorrer.addEventListener('change', function() {
       limparCampos();
-      campoLinha.classList.add('d-none');
       campoAbertura.classList.add('d-none');
       campoAcabamento.classList.remove('d-none');
       campoPorta.classList.remove('hidden');
-      campoDivisoria.classList.add('hidden');
-      campoVidro.classList.add('hidden');
-    });
-
-    btnDivisoria.addEventListener('change', function() {
-      limparCampos();
-      campoAcabamento.classList.remove('d-none');
-      campoLinha.classList.remove('d-none');
-      campoAbertura.classList.add('d-none');
-      campoPorta.classList.add('hidden');
-      campoDivisoria.classList.remove('hidden');
       campoVidro.classList.add('hidden');
     });
 
     btnVidro.addEventListener('change', function() {
       limparCampos();
-      campoLinha.classList.add('d-none');
       campoAbertura.classList.add('d-none');
       campoAcabamento.classList.add('d-none');
       campoPorta.classList.add('hidden');
-      campoDivisoria.classList.add('hidden');
       campoVidro.classList.remove('hidden');
     });
 
@@ -1245,18 +1192,6 @@ $(document).ready(function() {
         selectsPorta[i].disabled = true;
       }
 
-      var camposDivisoria = document.getElementById('divambiente').getElementsByTagName('input');
-      var selectsDivisoria = document.getElementById('divambiente').getElementsByTagName('select');
-
-      for (var i = 0; i < camposDivisoria.length; i++) {
-        camposDivisoria[i].value = '';
-        camposDivisoria[i].disabled = true;
-      }
-      for (var i = 0; i < selectsDivisoria.length; i++) {
-        selectsDivisoria[i].value = '';
-        selectsDivisoria[i].disabled = true;
-      }
-
       var camposVidro = document.getElementById('divvidros').getElementsByTagName('input');
       var selectsVidro = document.getElementById('divvidros').getElementsByTagName('select');
 
@@ -1270,7 +1205,6 @@ $(document).ready(function() {
 
       var campoAcabamento = document.getElementById('id_acabamento');
       var campoAbertura = document.getElementById('id_abertura');
-      var campoLinha = document.getElementById('id_linha');
 
       campoAcabamento.value = '';
       campoAcabamento.disabled = false;
@@ -1278,8 +1212,6 @@ $(document).ready(function() {
       campoAbertura.value = '';
       campoAbertura.disabled = false;
 
-      campoLinha.value = '';
-      campoLinha.disabled = false;
     }
   });
 </script>
@@ -1369,25 +1301,6 @@ $(document).ready(function() {
 
 <script>
 $(document).ready(function() {
-
-  $("#Selectambientedivisor").change(function() {
-    var divisor = $(this).val();
-    var qtdDivisor = $("#qtd-divisorambiente");
-
-    qtdDivisor.empty();
-
-    if (divisor && divisor !== "") {
-      qtdDivisor.empty();
-      qtdDivisor.append($('<option>', {value: '1', text: '1'}));
-      qtdDivisor.append($('<option>', {value: '2', text: '2'}));
-      qtdDivisor.prop('disabled', false);
-    }
-  });
-});
-</script>
-
-<script>
-$(document).ready(function() {
   // Funções reutilizáveis
   function carregarOpcoes(selectElement, data) {
     selectElement.empty();
@@ -1419,100 +1332,9 @@ $(document).ready(function() {
     });
   }
 
-  // Filtrar Divisoria
-  $('#id_acabamento, #id_quantidade, #id_largura, #id_altura, #id_linha, #id_quantidade').change(filtrarDivisoria);
-
-  function filtrarDivisoria() {
-    var acabamento = $('#id_acabamento').val();
-    var quantidade = $('#id_quantidade').val();
-    var largura = $('#id_largura').val();
-    var altura = $('#id_altura').val();
-    var linha = $('#id_linha').val();
-    var divsuperiorField = $('#Selectambientesuperior');
-    var divinferiorField = $('#Selectambienteinferior');
-    var divlateralField = $('#Selectambientelateral');
-    var divdivisorField = $('#Selectambientedivisor');
-    var campoDivisoria = $('#divambiente');
-    var divisoriaRadioButton = $('#btnDivisoria');
-    var idDivisoriaAmbiente = $('#id_divisoriaambiente');
-
-    if (divisoriaRadioButton.is(':checked')) {
-      if (quantidade && largura && altura && acabamento && linha) {
-        divsuperiorField.prop('disabled', false);
-        idDivisoriaAmbiente.find(':input').prop('disabled', false);
-
-        realizarRequisicao('/filtrar_divisoria/', { acabamento: acabamento, linha: linha }, function(response) {
-          carregarOpcoes(divsuperiorField, response);
-          carregarDivinferior(acabamento, linha);
-          carregarDivlateral(acabamento, linha);
-          carregarDivdivisor(acabamento, linha);
-
-          var rgb = $('#id_acabamento option:selected').data('rgb');
-          $('.st5').attr('fill', rgb);
-        });
-      } else {
-        idDivisoriaAmbiente.prop('disabled', true);
-        idDivisoriaAmbiente.find(':input').prop('disabled', true);
-      }
-    } else {
-      idDivisoriaAmbiente.prop('disabled', true);
-      idDivisoriaAmbiente.find(':input').prop('disabled', true);
-    }
-  }
-
-  // Carregar Divinferior
-  function carregarDivinferior(acabamento, linha) {
-    var divinferiorField = $('#Selectambienteinferior');
-
-    realizarRequisicao('/carregar_divinferior/', { acabamento: acabamento, linha: linha }, function(response) {
-      carregarOpcoes(divinferiorField, response);
-    });
-  }
-
-  // Carregar Divlateral
-  function carregarDivlateral(acabamento, linha) {
-    var divlateralField = $('#Selectambientelateral');
-
-    realizarRequisicao('/carregar_divlateral/', { acabamento: acabamento, linha: linha }, function(response) {
-      carregarOpcoes(divlateralField, response);
-    });
-  }
-
-  // Carregar Divdivisor
-  function carregarDivdivisor(acabamento, linha) {
-    var divdivisorField = $('#Selectambientedivisor');
-
-    realizarRequisicao('/carregar_divdivisor/', { acabamento: acabamento, linha: linha }, function(response) {
-      carregarOpcoes(divdivisorField, response);
-    });
-  }
-
-  // Obter acabamentos DivisoriaAmbiente
-  $('#btnDivisoria').change(obterAcabamentosDivisoriaAmbiente);
-
-  function obterAcabamentosDivisoriaAmbiente() {
-    realizarRequisicao('/obter_acabamentos_divisoria_ambiente/', {}, function(response) {
-      var selectAcabamento = $('#id_acabamento');
-      selectAcabamento.empty();
-
-      if (response.acabamentos.length > 0) {
-        $.each(response.acabamentos, function(index, item) {
-          var option = $('<option>').attr('value', item.id).text(item.acabamento);
-          option.data('rgb', item.codigo_rgb);
-          selectAcabamento.append(option);
-        });
-
-        selectAcabamento.prop('disabled', false);
-        selectAcabamento.show();
-      } else {
-        selectAcabamento.prop('disabled', true);
-        selectAcabamento.hide();
-      }
-    });
-  }
-
   // Obter acabamentos
-  $('#btnPortaGiro, #btnPortaCorrer').change(obterAcabamentos);
+<!--  $('#btnPortaGiro, #btnPortaCorrer').change(obterAcabamentos);-->
+  obterAcabamentos();
 
   function obterAcabamentos() {
     realizarRequisicao('/obter_acabamentos/', {}, function(response) {
@@ -1533,179 +1355,123 @@ $(document).ready(function() {
       }
     });
   }
-
-  // Buscar Vidro
-  $('#Selectambientesuperior').change(buscarVidro);
-
-  function buscarVidro() {
-    var divsuperior = $('#Selectambientesuperior').val();
-
-    if (divsuperior) {
-      var vidro = $('#Selectambientevidro').val();
-
-      realizarRequisicao('/buscar_Vidro/', { vidro: vidro }, function(response) {
-        var selectVidro = $('#Selectambientevidro');
-        carregarOpcoes(selectVidro, response);
-
-        if (response.length > 0) {
-          selectVidro.prop('disabled', false);
-          selectVidro.show();
-        } else {
-          selectVidro.prop('disabled', true);
-          selectVidro.hide();
-        }
-      });
-    } else {
-      $('#Selectambientevidro').empty();
-      $('#divambientevidro :input').prop('disabled', true);
-    }
-  }
-
-  filtrarDivisoria();
-  obterAcabamentos();
 });
-
 </script>
 
 <script>
-    $(document).ready(function () {
-        $('#id_acabamento').on('change', function () {
-            var acabamentoID = $(this).val();
+$(document).ready(function () {
+    $('#id_acabamento').on('change', function () {
+        var acabamentoID = $(this).val();
 
-            $.ajax({
-                type: 'GET',
-                url: '{% url "obter_codigo_rgb" %}',
-                data: {
-                    acabamento_id: acabamentoID
-                },
-                success: function (response) {
-                    console.log('Evento de mudança disparado!');
-                    var svgElement = $('#svg');
+        $.ajax({
+            type: 'GET',
+            url: '{% url "obter_codigo_rgb" %}',
+            data: {
+                acabamento_id: acabamentoID
+            },
+            success: function (response) {
+                console.log('Evento de mudança disparado!');
+                var svgElement = $('#svg');
 
-                    // Atualizar o atributo fill da classe st0 do SVG com o código RGB recebido
-                    $('#Perfis').attr('fill', response.codigo_rgb);
-                    $('#Acabamento').attr('fill', response.codigo_rgb);
-                    $('#PerfilPux-A').attr('fill', response.codigo_rgb);
-                    $('#PerfilPux-B').attr('fill', response.codigo_rgb);
-                    $('#PerfilPux-C').attr('fill', response.codigo_rgb);
-                    $('#PerfilPux-D').attr('fill', response.codigo_rgb);
-                    console.log(response.codigo_rgb);
-                },
-                error: function (xhr, status, error) {
-                    console.error(error);
-                }
-            });
+                // Atualizar o atributo fill da classe st0 do SVG com o código RGB recebido
+                $('#Perfis').attr('fill', response.codigo_rgb);
+                $('#Acabamento').attr('fill', response.codigo_rgb);
+                $('#PerfilPux-A').attr('fill', response.codigo_rgb);
+                $('#PerfilPux-B').attr('fill', response.codigo_rgb);
+                $('#PerfilPux-C').attr('fill', response.codigo_rgb);
+                $('#PerfilPux-D').attr('fill', response.codigo_rgb);
+                console.log(response.codigo_rgb);
+            },
+            error: function (xhr, status, error) {
+                console.error(error);
+            }
         });
     });
+});
 </script>
 
 <script>
-$(document).ready(function() {
-  function atualizarPosicoesPerfilPuxador() {
+  $(document).ready(function() {
+
+    function atualizarPosicoesPerfilPuxador() {
+      // Verificar se os campos obrigatórios estão preenchidos
+      var larguraPreenchida = $('#id_largura').val() !== "";
+      var alturaPreenchida = $('#id_altura').val() !== "";
+      var perfilPuxadorPreenchido = $('#id_perfilpuxador').val() !== "";
+
       var posicaoPerfilPuxador = $("#posicao-perfilpuxador").val();
-      var larguraMaiorQueAltura = parseFloat($('#id_largura').val()) > parseFloat($('#id_altura').val());
-      var largura = parseFloat($('#id_largura').val());
-      var altura = parseFloat($('#id_altura').val());
 
-      if (posicaoPerfilPuxador === "") {
-        // Remover classes st6 e st9 dos elementos
-        $("#PerfilPux-A, #PerfilPux-B, #PerfilPux-C, #PerfilPux-D")
-          .removeClass("st6 st9");
-        $("#Acabamento-A, #Acabamento-B, #Acabamento-C, #Acabamento-D, #Perf-A, #Perf-B, #Perf-C, #Perf-D")
-          .removeClass("st9");
-      } else {
-        // Remover classes st6 e st9 dos elementos
-        $("#PerfilPux-A, #PerfilPux-B, #PerfilPux-C, #PerfilPux-D")
-          .removeClass("st6 st9");
+      // Remover classes st6 e st9 de todos os elementos
+      $("#PerfilPux-A, #PerfilPux-B, #PerfilPux-C, #PerfilPux-D")
+        .removeClass("st6 st9");
+      $("#Acabamento-A, #Acabamento-B, #Acabamento-C, #Acabamento-D, #Perf-A, #Perf-B, #Perf-C, #Perf-D")
+        .removeClass("st9");
 
-        // Remover classe st9 dos demais elementos
-        $("#Acabamento-A, #Acabamento-B, #Acabamento-C, #Acabamento-D, #Perf-A, #Perf-B, #Perf-C, #Perf-D")
-          .removeClass("st9");
+      if (larguraPreenchida && alturaPreenchida && perfilPuxadorPreenchido) {
+        var posicaoPerfilPuxador = $("#posicao-perfilpuxador").val();
+        var larguraMaiorQueAltura = parseFloat($('#id_largura').val()) > parseFloat($('#id_altura').val());
+        var largura = parseFloat($('#id_largura').val());
+        var altura = parseFloat($('#id_altura').val());
 
-        // Adicionar classes st6 e st9 com base nas condições
-        if (larguraMaiorQueAltura) {
-          if (posicaoPerfilPuxador === "Esquerda") {
-            $("#PerfilPux-A").addClass("st6 st9");
-            $("#Perf-A, #Acabamento-A").addClass("st9");
-          } else if (posicaoPerfilPuxador === "Topo") {
-            $("#PerfilPux-B").addClass("st6 st9");
-            $("#Perf-B, #Acabamento-B").addClass("st9");
-          } else if (posicaoPerfilPuxador === "Base") {
-            $("#PerfilPux-D").addClass("st6 st9");
-            $("#Perf-D, #Acabamento-D").addClass("st9");
-          } else if (posicaoPerfilPuxador === "Direita") {
-            $("#PerfilPux-C").addClass("st6 st9");
-            $("#Perf-C, #Acabamento-C").addClass("st9");
-          } else if (posicaoPerfilPuxador === "Esq/Dir") {
-            $("#PerfilPux-A, #PerfilPux-C").addClass("st6 st9");
-            $("#Perf-A, #Perf-C, #Acabamento-A, #Acabamento-C").addClass("st9");
-          }
-        } else if (largura <= altura) {
-          if (posicaoPerfilPuxador === "Esquerda") {
-            $("#PerfilPux-D").addClass("st6 st9");
-            $("#Perf-D, #Acabamento-D").addClass("st9");
-          } else if (posicaoPerfilPuxador === "Topo") {
-            $("#PerfilPux-A").addClass("st6 st9");
-            $("#Perf-A, #Acabamento-A").addClass("st9");
-          } else if (posicaoPerfilPuxador === "Base") {
-            $("#PerfilPux-C").addClass("st6 st9");
-            $("#Perf-C, #Acabamento-C").addClass("st9");
-          } else if (posicaoPerfilPuxador === "Direita") {
-            $("#PerfilPux-B").addClass("st6 st9");
-            $("#Perf-B, #Acabamento-B").addClass("st9");
-          } else if (posicaoPerfilPuxador === "Esq/Dir") {
-            $("#PerfilPux-B, #PerfilPux-D").addClass("st6 st9");
-            $("#Perf-B, #Perf-D, #Acabamento-B, #Acabamento-D").addClass("st9");
+        if (posicaoPerfilPuxador === "") {
+          // Remover classes st6 e st9 dos elementos
+          $("#PerfilPux-A, #PerfilPux-B, #PerfilPux-C, #PerfilPux-D")
+            .removeClass("st6 st9");
+          $("#Acabamento-A, #Acabamento-B, #Acabamento-C, #Acabamento-D, #Perf-A, #Perf-B, #Perf-C, #Perf-D")
+            .removeClass("st9");
+        } else {
+          // Remover classes st6 e st9 dos elementos
+          $("#PerfilPux-A, #PerfilPux-B, #PerfilPux-C, #PerfilPux-D")
+            .removeClass("st6 st9");
+
+          // Remover classe st9 dos demais elementos
+          $("#Acabamento-A, #Acabamento-B, #Acabamento-C, #Acabamento-D, #Perf-A, #Perf-B, #Perf-C, #Perf-D")
+            .removeClass("st9");
+
+          // Adicionar classes st6 e st9 com base nas condições
+          if (larguraMaiorQueAltura) {
+            if (posicaoPerfilPuxador === "Esquerda") {
+              $("#PerfilPux-A").addClass("st6 st9");
+              $("#Perf-A, #Acabamento-A").addClass("st9");
+            } else if (posicaoPerfilPuxador === "Topo") {
+              $("#PerfilPux-B").addClass("st6 st9");
+              $("#Perf-B, #Acabamento-B").addClass("st9");
+            } else if (posicaoPerfilPuxador === "Base") {
+              $("#PerfilPux-D").addClass("st6 st9");
+              $("#Perf-D, #Acabamento-D").addClass("st9");
+            } else if (posicaoPerfilPuxador === "Direita") {
+              $("#PerfilPux-C").addClass("st6 st9");
+              $("#Perf-C, #Acabamento-C").addClass("st9");
+            } else if (posicaoPerfilPuxador === "Esq/Dir") {
+              $("#PerfilPux-A, #PerfilPux-C").addClass("st6 st9");
+              $("#Perf-A, #Perf-C, #Acabamento-A, #Acabamento-C").addClass("st9");
+            }
+          } else if (largura <= altura) {
+            if (posicaoPerfilPuxador === "Esquerda") {
+              $("#PerfilPux-D").addClass("st6 st9");
+              $("#Perf-D, #Acabamento-D").addClass("st9");
+            } else if (posicaoPerfilPuxador === "Topo") {
+              $("#PerfilPux-A").addClass("st6 st9");
+              $("#Perf-A, #Acabamento-A").addClass("st9");
+            } else if (posicaoPerfilPuxador === "Base") {
+              $("#PerfilPux-C").addClass("st6 st9");
+              $("#Perf-C, #Acabamento-C").addClass("st9");
+            } else if (posicaoPerfilPuxador === "Direita") {
+              $("#PerfilPux-B").addClass("st6 st9");
+              $("#Perf-B, #Acabamento-B").addClass("st9");
+            } else if (posicaoPerfilPuxador === "Esq/Dir") {
+              $("#PerfilPux-B, #PerfilPux-D").addClass("st6 st9");
+              $("#Perf-B, #Perf-D, #Acabamento-B, #Acabamento-D").addClass("st9");
+            }
           }
         }
       }
     }
 
-  // Evento 'input' para campo posicao-perfilpuxador
-  $("#posicao-perfilpuxador").on('input', function() {
-    atualizarPosicoesPerfilPuxador();
+    // Eventos de mudança para chamar a função
+    $("#posicao-perfilpuxador").on('input', atualizarPosicoesPerfilPuxador);
+    $("#id_perfilpuxador, #id_perfil, #id_acabamento, #id_quantidade, #qtd-perfilpuxador, #id_largura, #id_altura, #id_abertura, input[name='btnradio']").change(atualizarPosicoesPerfilPuxador);
   });
-
-  $("#id_perfilpuxador").change(function() {
-    atualizarPosicoesPerfilPuxador();
-  });
-
-  $("#id_perfil").change(function() {
-    atualizarPosicoesPerfilPuxador();
-  });
-
-  $("#id_acabamento").change(function() {
-    atualizarPosicoesPerfilPuxador();
-  });
-
-  $("#id_quantidade").change(function() {
-    atualizarPosicoesPerfilPuxador();
-  });
-
-  $("#qtd-perfilpuxador").change(function() {
-    atualizarPosicoesPerfilPuxador();
-  });
-
-  $("#id_largura").change(function() {
-    atualizarPosicoesPerfilPuxador();
-  });
-
-  $("#id_altura").change(function() {
-    atualizarPosicoesPerfilPuxador();
-  });
-
-  $("#id_abertura").change(function() {
-    $("#posicao-perfilpuxador").val(""); // Limpar campo posicao-perfilpuxador
-    atualizarPosicoesPerfilPuxador();
-  });
-
-  $("input[name='btnradio']").change(function() {
-    $("#posicao-perfilpuxador").val(""); // Limpar campo posicao-perfilpuxador
-    atualizarPosicoesPerfilPuxador();
-  });
-
-});
-
 </script>
 
 <script>
@@ -1976,6 +1742,55 @@ $(document).ready(function() {
 });
 </script>
 
+<script>
+$(document).ready(function() {
+  // Adiciona eventos de change para os campos relevantes
+  $('#id_quantidade, #id_largura, #id_altura, #id_acabamento, #id_perfil, #id_perfilpuxador, #id_puxador, #id_divisor, #id_vidro').change(function() {
+    atualizarStringPorta();
+  });
+
+  // Adiciona um evento para os radio buttons
+  $('input[name="tipoPorta"]').change(function() {
+    atualizarStringPorta();
+  });
+
+  function atualizarStringPorta() {
+    var tipoPorta = $('input[name="tipoPorta"]:checked').val();
+    var quantidade = $('#id_quantidade').val() || '';
+    var largura = $('#id_largura').val() || '';
+    var altura = $('#id_altura').val() || '';
+    var acabamentoDescricao = $('#id_acabamento option:selected').text() || '';
+    var perfilModelo = $('#id_perfil option:selected').data('modelo') || '';
+    var perfilPuxadorModelo = $('#id_perfilpuxador option:selected').data('modelo') || '';
+    var puxadorModelo = $('#id_puxador option:selected').data('modelo') || '';
+    var divisorModelo = $('#id_divisor option:selected').data('modelo') || '';
+    var vidroModelo = $('#id_vidro option:selected').data('nome') || '';
+
+    // Construa a string com os separadores condicionalmente
+    var stringPorta =
+      (quantidade ? quantidade : '') +
+      (quantidade && (acabamentoDescricao || perfilModelo) ? ' Porta ' : '') +
+      (acabamentoDescricao ? acabamentoDescricao : '') +
+      ((acabamentoDescricao && perfilModelo) ? ' ' : '') +
+      (perfilModelo ? perfilModelo : '') +
+      (perfilModelo && (perfilPuxadorModelo || puxadorModelo || divisorModelo) ? '/' : '') +
+      (perfilPuxadorModelo ? perfilPuxadorModelo : '') +
+      (perfilPuxadorModelo && (puxadorModelo || divisorModelo) ? '/' : '') +
+      (puxadorModelo ? puxadorModelo : '') +
+      (puxadorModelo && divisorModelo ? '/' : '') +
+      (divisorModelo ? divisorModelo : '') +
+      ((largura || altura) ? ' ' : '') +
+      ((largura && altura) ? largura + 'X' + altura + 'mm ' : '') +
+      (vidroModelo ? vidroModelo + ' ' : '');
+
+    // Atualiza a <div> com a string gerada
+    $('#nomeporta').text(stringPorta);
+  }
+
+  // Chama a função inicialmente
+  atualizarStringPorta();
+});
+</script>
 
 {% endblock %}
 

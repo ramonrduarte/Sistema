@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+<!-- Page content -->
+{% block content %}
+<div class="container">
+
+    <br><br>
+
+    <a class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#addModal">
+        <i class="fas fa-plus"></i>&nbsp;&nbsp; Adicionar Cliente
+    </a>
+
+    <!-- Input search + reset buton -->
+    <div class="input-group input-group-sm mb-3 mt-4">
+        <input type="text" class="form-control" id="search" placeholder="Serch for...">
+        <a href="{% url 'listar-clientes' %}" class="btn btn-dark" style="margin-left:2px;"><i class="fas fa-sync-alt"></i></a>
+    </div>
+
+    <table class="table table-bordered table-sm mt-4" id="myTable" style="text-align: center; font-size: 14px;">
+        <thead class="table-warning">
+            <tr class="chk-th">
+                <th scope="col ">Código</th>
+                <th scope="col ">Nome</th>
+                <th scope="col ">CPF/CNPJ</th>
+                <th scope="col ">CEP</th>
+                <th scope="col ">Logradouro</th>
+                <th scope="col ">Número</th>
+                <th scope="col ">Bairro</th>
+                <th scope="col ">Cidade</th>
+                <th scope="col ">Telefone</th>
+                <th scope="col ">Editar</th>
+                <th scope="col ">Excluir</th>
+            </tr>
+        </thead>
+        <!-- Back-end data -->
+        {% for cliente in object_list %}
+        <tr>
+                    <td>{{ cliente.codigo }}</td>
+                    <td>{{ cliente.nome }}</td>
+                    <td>{{ cliente.cpf_cnpj }}</td>
+                    <td>{{ cliente.cep }}</td>
+                    <td>{{ cliente.logradouro }}</td>
+                    <td>{{ cliente.numero }}</td>
+                    <td>{{ cliente.bairro }}</td>
+                    <td>{{ cliente.cidade }}</td>
+                    <td>{{ cliente.telefone }}</td>
+            <td>
+                <a class="btn btn-warning" title="Editar cliente" data-bs-toggle="modal" data-bs-target="#editModal{{ cliente.pk }}">
+                    <i class="fas fa-pen"></i>
+                </a>
+            </td>
+            <td>
+                <a href="#" class="btn btn-secondary delete-btn" data-bs-toggle="modal"
+                   data-bs-target="#confirmDeleteModal" data-product-id="{{ cliente.id }}" title="Deletar cliente">
+                    <i class="fas fa-trash-alt"></i>
+                </a>
+            </td>
+        </tr>
+
+        <!-- Include (Required here to get the OK) -->
+        {% include 'clientes/editcliente.html' %}
+
+        {% endfor %}
+    </table>
+
+</div> <!-- END // container -->
+
+<span class="text-danger" id="no-data"></span>
+
+<!-- Message from backend -->
+{% for message in messages %}
+    {% if message.tags == 'success' %}
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        var m = "{{ message }}";
+        swal("Perfect !", m, "success")
+    </script>
+    {% endif %}
+{% endfor %}
+
+<!-- Include (Required here to get the OK) -->
+        {% include 'clientes/cadastrocliente.html' %}
+
+<!-- Include (Required here to get the OK) -->
+        {% include 'clientes/saveModal.html' %}
+
+<!-- Include (Required here to get the OK) -->
+        {% include 'clientes/confirmDeleteModal.html' %}
+
+{% endblock content %}
+

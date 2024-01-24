@@ -20,3 +20,7 @@ body{
 .hidden {
   display: none;
 }
+
+.modal-body {
+    padding: 10px; /* Ajuste conforme necessário */
+}

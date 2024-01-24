@@ -30,5 +30,5 @@ class ClientesDelete(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
 
 class ClientesList(LoginRequiredMixin, PermissionRequiredMixin, ListView):
     model = Cliente
-    template_name = 'clientes/Clientes.html'
+    template_name = 'clientes/novocliente.html'
     permission_required = 'Clientes.view_cliente'

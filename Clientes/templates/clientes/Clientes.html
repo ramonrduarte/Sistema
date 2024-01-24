@@ -8,12 +8,17 @@ Cadastro de Clientes
 <header class="mt-5">
   <div>
       <div class="bg-warning rounded text-dark border border-dark pt-1 d-flex align-items-center justify-content-center">
-        <h4><strong>CADASTRO DE CLIENTES</strong></h4>
+        <h4><strong>CLIENTES</strong></h4>
       </div>
       <div class="mt-2 d-flex align-items-center justify-content-end">
           <input type="email" class="form-control me-3" style="width: 500px;" placeholder="digite aqui">
           <a href="{% url 'cadastrar-clientes' %}" style="width: 120px;" class="btn btn-primary bg-primary">Novo</a>
       </div>
+      <div class="input-group input-group-sm mb-3 mt-4">
+          <input type="text" class="form-control" id="search" placeholder="Serch for...">
+          <a href="{% url 'cadastrar-clientes' %}" class="btn btn-dark" style="margin-left:2px;"><i class="fas fa-sync-alt"></i></a>
+      </div>
+
   </div>
 </header>
 <div class="mt-3">

@@ -1,0 +1,25 @@
+<!-- Modal -->
+<div class="modal fade" id="saveModal" tabindex="-1" role="dialog" aria-labelledby="saveModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="saveModalLabel"><i class="fas fa-hdd"></i>&nbsp;&nbsp;Save changes ?</h6>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <div class="text-center text-secondary mt-3">
+                                <span class="fa-stack fa-3x">
+                                    <i class="fas fa-cloud fa-stack-2x"></i>
+                                    <i class="fas fa-hdd fa-stack-1x fa-inverse"></i>
+                                </span>
+                </div>
+                <div class="mb-3 mt-3">Gostaria de salvar as alterações?</div>
+            </div>
+            <div class="modal-footer">
+                <a href="{% url 'listar-clientes' %}" class="btn btn-outline-dark btn-sm" data-dismiss="modal" style="width:70px;">Nao</a>
+                <a href="#" id="confirmEditBtn" class="btn btn-primary btn-sm" style="width:70px;">Salvar</a>
+            </div>
+        </div>
+    </div>
+</div>

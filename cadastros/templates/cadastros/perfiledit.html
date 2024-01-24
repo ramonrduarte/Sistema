@@ -1,0 +1,253 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+{% load widget_tweaks %}
+
+{% block titulo %}
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5 pt-5">
+<h3 class="fs-2 fw-semibold">Cadastro</h3>
+<hr>
+<div>
+    <form class="card p-3 mt-5" autocomplete="off" action="{% if form.instance.id %}{% url 'editar-perfil' form.instance.id %}{% else %}{% url 'cadastrar-perfil' %}{% endif %}" method="POST">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-2">{{ form.codigo|as_crispy_field }}</div>
+            <div class="col-8">{{ form.descricao|as_crispy_field }}</div>
+            <div class="col-2">{{ form.preco|as_crispy_field }}</div>
+        </div>
+        <div class="row">
+            <div class="col-4" id="idacabamentoperfil" name="acabamento" value="{{acabamento.id}}">
+                {{ form.acabamento|as_crispy_field }}
+                <script>
+                    $(document).ready(function() {
+                        $('#id_acabamento').on('change', function() {
+                            $('input[name="encaixe"]').prop('checked', false).filter('[value="2"]').prop('checked', true);
+                            $('input[name="encaixedivisor"]').prop('checked', false).filter('[value="2"]').prop('checked', true);
+                            $('input[name="encaixepuxador"]').prop('checked', false).filter('[value="2"]').prop('checked', true);
+                        });
+                    });
+                </script>
+            </div>
+            <div class="col-4">{{ form.tipo|as_crispy_field }}</div>
+            <div class="col-4">{{ form.modelo|as_crispy_field }}</div>
+        </div>
+        <div class="row p-3">
+            <div class="col-4 border">
+                <div class="pt-1" type="radio" name="encaixe" id="idpermiteperfilpuxador">{{ form.encaixe|as_crispy_field }}</div>
+                <div class="" id="idperfilpuxador" name="perfilpuxador" data-initial-puxador="{{ perfilpuxador_ids }}">
+                    {% for perfilpuxador in perfilpuxador %}
+                        <div class="form-check" {% if form.instance.encaixe == '1' %}style="display: block;"{% else %}style="display: none;"{% endif %}>
+                            <input type="checkbox" name="perfilpuxador" id="perfilpuxador_{{ perfilpuxador.id }}" value="{{ perfilpuxador.id }}" class="form-check-input" {% if perfilpuxador.id in perfilpuxador_ids %}checked{% endif %}>
+                            <label for="perfilpuxador_{{ perfilpuxador.id }}" class="form-check-label ps-1">({{ perfilpuxador.codigo }}) {{ perfilpuxador.descricao }}</label>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-4 border">
+                <div class="pt-1" type="radio" name="encaixedivisor" id="idpermitedivisor">{{ form.encaixedivisor|as_crispy_field }}</div>
+                <div class="" id="iddivisor" name="divisor" data-initial-divisor="{{ divisor_ids }}">
+                    {% for divisor in divisor %}
+                        <div class="" id="iddivisor" name="divdivisor" {% if form.instance.encaixedivisor == '1' %}style="display: block;"{% else %}style="display: none;"{% endif %}>
+                            <input type="checkbox" name="divisor" id="divisor_{{ divisor.id }}" value="{{ divisor.id }}" class="form-check-input" {% if divisor.id in divisor_ids %}checked>{% endif %}
+                            <label for="divisor_{{ divisor.id }}" class="form-check-label ps-1">({{ divisor.codigo }}) {{ divisor.descricao }}</label>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-4 border">
+                <div class="pt-1" type="radio" name="encaixepuxador" id="idpermitepuxador">{{ form.encaixepuxador|as_crispy_field }}</div>
+                <div class="" id="idpuxador" name="puxador" data-initial-puxador="{{ puxador_ids }}">
+                    {% for puxador in puxador %}
+                    <div class="" id="idpuxador" name="puxadorsobreposto" {% if form.instance.encaixepuxador == '1' %}style="display: block;"{% else %}style="display: none;"{% endif %}>
+                        <input type="checkbox" name="puxador" id="puxador_{{ puxador.id }}" value="{{ puxador.id }}" class="form-check-input" {% if puxador.id in puxador_ids %}checked{% endif %}>
+                        <label for="puxador_{{ puxador.id }}" class="form-check-label ps-1">({{ puxador.codigo }}) {{ puxador.descricao }}</label>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-end">
+            <button type="submit" class="btn btn-outline-primary" style="width: 100px;">
+                {% if form.instance.id %}
+                    Salvar
+                {% else %}
+                    Cadastrar
+                {% endif %}
+            </button>
+        </div>
+    </form>
+</div>
+
+<script>
+  $(document).ready(function() {
+    function filtrarPerfilPuxador() {
+      var encaixe = $('input[name="encaixe"]:checked').val();
+      var acabamento = $('#id_acabamento').val();
+
+      if (encaixe === '1') {
+        $.ajax({
+          url: '{% url 'filtrar_perfil' %}',
+          type: 'GET',
+          data: {
+            acabamento: acabamento
+          },
+          success: function(response) {
+            var resultadosPerfilPuxador = $('#idperfilpuxador');
+            resultadosPerfilPuxador.empty();
+
+            $.each(response, function(index, item) {
+              var checkboxId = 'checkbox_perfilpuxador_' + item.id;
+              var checkboxLabel = $('<label>').attr('for', checkboxId).addClass('form-check-label').text(item.descricao);
+              var checkboxInput = $('<input>').attr('type', 'checkbox').attr('name', 'perfilpuxador').attr('id', checkboxId).attr('value', item.id).addClass('form-check-input');
+
+              var checkboxDiv = $('<div>').addClass('form-check').append(checkboxInput, checkboxLabel);
+              var option = $('<div>').append(checkboxDiv);
+
+              resultadosPerfilPuxador.append(option);
+            });
+
+            $('#idperfilpuxador').show();
+          },
+          error: function(xhr) {
+            console.log(xhr.statusText);
+          }
+        });
+      } else {
+        $('#idperfilpuxador').empty().hide();
+      }
+    }
+
+    function filtrarDivisor() {
+      var encaixedivisor = $('input[name="encaixedivisor"]:checked').val();
+      var acabamento = $('#id_acabamento').val();
+
+      if (encaixedivisor === '1') {
+        $.ajax({
+          url: '{% url 'filtrar_divisor' %}',
+          type: 'GET',
+          data: {
+            acabamento: acabamento
+          },
+          success: function(response) {
+            var resultadosDivisor = $('#iddivisor');
+            resultadosDivisor.empty();
+
+            $.each(response, function(index, item) {
+              var checkboxId = 'checkbox_divisor_' + item.id;
+              var checkboxLabel = $('<label>').attr('for', checkboxId).addClass('form-check-label').text(item.descricao);
+              var checkboxInput = $('<input>').attr('type', 'checkbox').attr('name', 'divisor').attr('id', checkboxId).attr('value', item.id).addClass('form-check-input');
+
+              var checkboxDiv = $('<div>').addClass('form-check').append(checkboxInput, checkboxLabel);
+              var option = $('<div>').append(checkboxDiv);
+
+              resultadosDivisor.append(option);
+            });
+
+            $('#iddivisor').show();
+          },
+          error: function(xhr) {
+            console.log(xhr.statusText);
+          }
+        });
+      } else {
+        $('#iddivisor').empty().hide();
+      }
+    }
+
+    function filtrarPuxador() {
+      var encaixepuxador = $('input[name="encaixepuxador"]:checked').val();
+      var acabamento = $('#id_acabamento').val();
+
+      if (encaixepuxador === '1') {
+        $.ajax({
+          url: '{% url 'filtrar_puxador' %}',
+          type: 'GET',
+          data: {
+            acabamento: acabamento
+          },
+          success: function(response) {
+            var resultadosPuxador = $('#idpuxador');
+            resultadosPuxador.empty();
+
+            $.each(response, function(index, item) {
+              var checkboxId = 'checkbox_puxador_' + item.id;
+              var checkboxLabel = $('<label>').attr('for', checkboxId).addClass('form-check-label').text(item.descricao);
+              var checkboxInput = $('<input>').attr('type', 'checkbox').attr('name', 'puxador').attr('id', checkboxId).attr('value', item.id).addClass('form-check-input');
+
+              var checkboxDiv = $('<div>').addClass('form-check').append(checkboxInput, checkboxLabel);
+              var option = $('<div>').append(checkboxDiv);
+
+              resultadosPuxador.append(option);
+            });
+
+            $('#idpuxador').show();
+          },
+          error: function(xhr) {
+            console.log(xhr.statusText);
+          }
+        });
+      } else {
+        $('#idpuxador').empty().hide();
+      }
+    }
+
+    function limparDivs() {
+      $('input[name="encaixe"]').each(function() {
+        if ($(this).val() === '2') {
+          $('#idperfilpuxador').empty().hide();
+        }
+      });
+
+      $('input[name="encaixedivisor"]').each(function() {
+        if ($(this).val() === '2') {
+          $('#iddivisor').empty().hide();
+        }
+      });
+
+      $('input[name="encaixepuxador"]').each(function() {
+        if ($(this).val() === '2') {
+          $('#idpuxador').empty().hide();
+        }
+      });
+    }
+
+    $('#id_acabamento').on('change', function() {
+      limparDivs();
+      filtrarPerfilPuxador();
+      filtrarDivisor();
+      filtrarPuxador();
+    });
+
+    $('input[name="encaixe"]').on('change', function() {
+      if ($(this).val() === '2') {
+        $('#idperfilpuxador').empty().hide();
+      } else {
+        filtrarPerfilPuxador();
+      }
+    });
+
+    $('input[name="encaixedivisor"]').on('change', function() {
+      if ($(this).val() === '2') {
+        $('#iddivisor').empty().hide();
+      } else {
+        filtrarDivisor();
+      }
+    });
+
+    $('input[name="encaixepuxador"]').on('change', function() {
+      if ($(this).val() === '2') {
+        $('#idpuxador').empty().hide();
+      } else {
+        filtrarPuxador();
+      }
+    });
+  });
+</script>
+
+
+{% endblock %}
+

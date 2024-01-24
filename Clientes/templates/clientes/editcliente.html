@@ -1,0 +1,65 @@
+{% extends 'clientes/cadastrocliente.html' %}
+
+<!-- Modal ID -->
+{% block modal-id %} id="editModal{{ cliente.pk }}" {% endblock modal-id %}
+
+<!-- Modal title -->
+{% block modal-title %}<i class="fas fa-edit"></i>&nbsp;&nbsp; Editar Cliente {% endblock modal-title %}
+
+<!-- Form action -->
+{% block action %} action="editar/clientes/<int:pk>/" {% endblock action %}
+
+<!-- Button Action (content) -->
+{% block btn-action %}<button type="submit" class="btn btn-secondary mb-3 btn-action"><i class="fas fa-server"></i>&nbsp;&nbsp; Save Changes </button>{% endblock btn-action %}
+
+<!--====================================== ALL <inputs>  ======================================-->
+<!-- ID -->
+{% block value-id %}
+<div class="input-group mb-3">
+    <span class="side-label btn border-secondary bg-light"><i class="fas fa-key"></i></span>
+    <input type="text" class="form-control" name="id" value="{{ cliente.id }}" readonly>
+</div>
+{% endblock value-id %}
+<!-- CODIGO -->
+{% block value-codigo %} value="{{ cliente.codigo }}" {% endblock value-codigo %}
+<!-- NOME -->
+{% block value-nome %} value="{{ cliente.nome }}" {% endblock value-nome %}
+<!-- CPF/CNPJ -->
+{% block value-cpf_cnpj %} value="{{ cliente.cpf_cnpj }}" {% endblock value-cpf_cnpj %}
+<!-- CEP -->
+{% block value-cep %} value="{{ cliente.cep }}" {% endblock value-cep %}
+<!-- LOGRADOURO -->
+{% block value-logradouro %} value="{{ cliente.logradouro }}" {% endblock value-logradouro %}
+<!-- NUMERO -->
+{% block value-numero %} value="{{ cliente.numero }}" {% endblock value-numero %}
+<!-- BAIRRO -->
+{% block value-bairro %} value="{{ cliente.bairro }}" {% endblock value-bairro %}
+<!-- CIDADE -->
+{% block value-cidade %} value="{{ cliente.cidade }}" {% endblock value-cidade %}
+<!-- TELEFONE -->
+{% block value-telefone %} value="{{ cliente.telefone }}" {% endblock value-telefone %}
+<!--====================================== END // ALL <inputs>  ======================================-->
+
+<!-- Content hidden (needed to compare the information -->
+{% block save-changes %}
+<div class="text-center mt-5" style="display:none">
+    <input id="codigo2" value="{{ cliente.codigo }}">
+    <input id="nome2" value="{{ cliente.nome }}">
+    <input id="cpf_cnpj2" value="{{ cliente.cpf_cnpj }}">
+    <input id="cep2" value="{{ cliente.cep }}">
+    <input id="logradouro2" value="{{ cliente.logradouro }}">
+    <input id="numero2" value="{{ cliente.numero }}">
+    <input id="bairro2" value="{{ cliente.bairro }}">
+    <input id="cidade2" value="{{ cliente.cidade }}">
+    <input id="telefone2" value="{{ cliente.telefone }}">
+</div>
+{% endblock save-changes %}
+
+<!-- Confirm save changes (Note: Not delete the "type="button", because will not work well) -->
+{% block btn-saveHidden %}
+<button id="modal-confirm" type="button" style="display: none;" data-bs-toggle="modal" data-bs-target="#saveModal"></button>
+{% endblock btn-saveHidden %}
+
+<!-- ID back here (and denied in add.html) -->
+{% block btn-back %} id="btn-back" {% endblock btn-back %}
+

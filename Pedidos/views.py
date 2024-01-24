@@ -2,9 +2,12 @@ from .models import Pedido
 from django.views.generic.edit import CreateView
 from django.http import JsonResponse
 from django.views import View
-from .models import Perfil, PerfilPuxador, DivisoriaAmbiente, Acabamento, Vidro
+from .models import Perfil, Acabamento, Vidro
 from cadastros.models import ModeloVidro
 from django.shortcuts import get_object_or_404
+# from .serializers import ModeloPerfilSerializer
+from .serializers import PerfilSerializer, PerfilPuxadorSerializer, PuxadorSerializer, VidroSerializer, DivisorSerializer
+
 
 class PedidoCreate(CreateView):
     model = Pedido
@@ -26,7 +29,28 @@ class PedidoCreate(CreateView):
 
         return JsonResponse(resultados, safe=False)
 
-class FiltrarAcabamentoView(View):
+
+class BaseBuscarView(View):
+    model = None
+    serializer_class = None
+
+    def get_queryset(self, **kwargs):
+        raise NotImplementedError("Subclasses of BaseBuscarView must provide a get_queryset method.")
+
+    def serialize_data(self, queryset):
+        serialized_data = self.serializer_class(queryset, many=True).data
+        return serialized_data
+
+    def get(self, request, *args, **kwargs):
+        data = self.request.GET
+        queryset = self.get_queryset(**data)
+
+        serialized_data = self.serialize_data(queryset)
+
+        return JsonResponse(serialized_data, safe=False)
+
+
+class BuscarPerfil(View):
     def get(self, request):
         acabamento = request.GET.get('acabamento')
 
@@ -35,172 +59,92 @@ class FiltrarAcabamentoView(View):
         if acabamento:
             queryset = queryset.filter(acabamento__id=acabamento)
 
-        # Crie uma lista de dicionários com os resultados filtrados
-        resultados = []
-        for objeto in queryset:
-            resultados.append({
-                'id': objeto.id,
-                'descricao': f"({objeto.codigo}) {objeto.descricao}"
-            })
+        serializer = PerfilSerializer(queryset, many=True)
 
-        return JsonResponse(resultados, safe=False)
+        return JsonResponse(serializer.data, safe=False)
 
-class buscar_PerfilPuxador(View):
+
+# class BuscarPerfil(View):
+#     def get(self, request):
+#         acabamento = request.GET.get('acabamento')
+#
+#         queryset = Perfil.objects.all()
+#
+#         # Inicialize serialized_data fora do bloco condicional
+#         serialized_data = []
+#
+#         if acabamento:
+#             queryset = queryset.filter(acabamento__id=acabamento)
+#
+#             # Serialize os objetos usando o serializer
+#             serializer = ModeloPerfilSerializer(queryset, many=True)
+#             serialized_data = serializer.data
+#
+#         return JsonResponse(serialized_data, safe=False)
+
+
+# class BuscarPerfilPuxador(View):
+#     def get(self, request):
+#         perfil_id = request.GET.get('perfil')
+#
+#         perfil = get_object_or_404(Perfil, id=perfil_id)
+#         perfispuxadores = perfil.perfilpuxador.all()
+#
+#         # Crie uma lista de dicionários com os resultados filtrados
+#         resultados = []
+#         for objeto in perfispuxadores:
+#             resultados.append({
+#                 'id': objeto.id,
+#                 'descricao': f"({objeto.codigo}) {objeto.descricao}",
+#             })
+#
+#         return JsonResponse(resultados, safe=False)
+
+class BuscarPerfilPuxador(View):
     def get(self, request):
         perfil_id = request.GET.get('perfil')
 
         perfil = get_object_or_404(Perfil, id=perfil_id)
         perfispuxadores = perfil.perfilpuxador.all()
 
-        # Crie uma lista de dicionários com os resultados filtrados
-        resultados = []
-        for objeto in perfispuxadores:
-            resultados.append({
-                'id': objeto.id,
-                'descricao': f"({objeto.codigo}) {objeto.descricao}"
-            })
+        serializer = PerfilPuxadorSerializer(perfispuxadores, many=True)
 
-        return JsonResponse(resultados, safe=False)
+        return JsonResponse(serializer.data, safe=False)
 
-class buscar_Puxador(View):
+
+class BuscarPuxador(View):
     def get(self, request):
         perfil_id = request.GET.get('perfil')
 
         perfil = get_object_or_404(Perfil, id=perfil_id)
         puxadores = perfil.puxador.all()
 
-        # Crie uma lista de dicionários com os resultados filtrados
-        resultados = []
-        for objeto in puxadores:
-            resultados.append({
-                'id': objeto.id,
-                'descricao': f"({objeto.codigo}) {objeto.descricao}"
-            })
+        serializer = PuxadorSerializer(puxadores, many=True)
 
-        return JsonResponse(resultados, safe=False)
+        return JsonResponse(serializer.data, safe=False)
 
-class buscar_Vidro(View):
+
+class BuscarVidro(View):
     def get(self, request):
         modelo = ModeloVidro.objects.get(modelo='4MM')
         queryset = Vidro.objects.filter(modelo=modelo)
 
-        resultados = []
-        for objeto in queryset:
-            resultados.append({
-                'id': objeto.id,
-                'descricao': f"({objeto.codigo}) {objeto.descricao}"
-            })
+        serializer = VidroSerializer(queryset, many=True)
 
-        return JsonResponse(resultados, safe=False)
+        return JsonResponse(serializer.data, safe=False)
 
-class buscar_Divisor(View):
+
+class BuscarDivisor(View):
     def get(self, request):
         perfil_id = request.GET.get('perfil')
 
         perfil = get_object_or_404(Perfil, id=perfil_id)
         divisores = perfil.divisor.all()
 
-        # Crie uma lista de dicionários com os resultados filtrados
-        resultados = []
-        for objeto in divisores:
-            resultados.append({
-                'id': objeto.id,
-                'descricao': f"({objeto.codigo}) {objeto.descricao}"
-            })
+        serializer = DivisorSerializer(divisores, many=True)
 
-        return JsonResponse(resultados, safe=False)
+        return JsonResponse(serializer.data, safe=False)
 
-class filtrar_divisoriaView(View):
-    def get(self, request):
-        acabamento = request.GET.get('acabamento')
-        linha = request.GET.get('linha')
-
-        queryset = DivisoriaAmbiente.objects.filter(posicao__in=['Superior', 'Superior/Inferior'])
-
-        if acabamento and linha:
-            queryset = queryset.filter(acabamento_id=acabamento, linha=linha)
-
-        # Crie uma lista de dicionários com os resultados filtrados
-        resultados = []
-        for objeto in queryset:
-            resultados.append({
-                'id': objeto.id,
-                'descricao': f"({objeto.codigo}) {objeto.descricao}"
-            })
-
-        return JsonResponse(resultados, safe=False)
-
-class carregar_divinferiorView(View):
-    def get(self, request):
-        acabamento = request.GET.get('acabamento')
-        linha = request.GET.get('linha')
-
-        queryset = DivisoriaAmbiente.objects.filter(posicao__in=['Inferior', 'Superior/Inferior', 'Travessa/Inferior'])
-
-        if acabamento and linha:
-            queryset = queryset.filter(acabamento_id=acabamento, linha=linha)
-
-        # Crie uma lista de dicionários com os resultados filtrados
-        resultados = []
-        for objeto in queryset:
-            resultados.append({
-                'id': objeto.id,
-                'descricao': f"({objeto.codigo}) {objeto.descricao}"
-            })
-
-        return JsonResponse(resultados, safe=False)
-
-class carregar_divlateralView(View):
-    def get(self, request):
-        acabamento = request.GET.get('acabamento')
-        linha = request.GET.get('linha')
-
-        queryset = DivisoriaAmbiente.objects.filter(posicao__in=['Lateral'])
-
-        if acabamento and linha:
-            queryset = queryset.filter(acabamento_id=acabamento, linha=linha)
-
-        # Crie uma lista de dicionários com os resultados filtrados
-        resultados = []
-        for objeto in queryset:
-            resultados.append({
-                'id': objeto.id,
-                'descricao': f"({objeto.codigo}) {objeto.descricao}"
-            })
-
-        return JsonResponse(resultados, safe=False)
-
-class carregar_divdivisorView(View):
-    def get(self, request):
-        acabamento = request.GET.get('acabamento')
-        linha = request.GET.get('linha')
-
-        queryset = DivisoriaAmbiente.objects.filter(posicao__in=['Travessa', 'Travessa/Inferior'])
-
-        if acabamento and linha:
-            queryset = queryset.filter(acabamento_id=acabamento, linha=linha)
-
-        # Crie uma lista de dicionários com os resultados filtrados
-        resultados = []
-        for objeto in queryset:
-            resultados.append({
-                'id': objeto.id,
-                'descricao': f"({objeto.codigo}) {objeto.descricao}"
-            })
-
-        return JsonResponse(resultados, safe=False)
-
-def obter_acabamentos_divisoria_ambiente(request):
-    # Consulta ao banco de dados para obter os acabamentos selecionados na DivisoriaAmbiente
-    divisoria_ambientes = DivisoriaAmbiente.objects.all()
-    acabamentos = divisoria_ambientes.values_list('acabamento', flat=True).distinct()
-    acabamentos = Acabamento.objects.filter(divisoriaambiente__isnull=False).distinct().values('id', 'acabamento')
-
-    data = {
-        'acabamentos': list(acabamentos)
-    }
-
-    return JsonResponse(data)
 
 def obter_acabamentos(request):
     perfil = Perfil.objects.all()
@@ -212,6 +156,7 @@ def obter_acabamentos(request):
     }
 
     return JsonResponse(data)
+
 
 def obter_codigo_rgb(request):
     acabamento_id = request.GET.get('acabamento_id')
