@@ -108,6 +108,7 @@ Adrofecha - Orçamento
                             <div>
                                 {{ form.perfil|attr:"class:form-control custom-input-size-selectitems selectPerfil" }}
                             </div>
+                            <label class="mx-3" id="valorperfil"></label>
                         </div>
                     </div>
 <!--                    Linha Perfil Puxador-->
@@ -122,12 +123,9 @@ Adrofecha - Orçamento
                                     {{ form.perfilpuxador|attr:"class:form-control custom-input-size-selectitems selectPerfilPuxador" }}
                                 </div>
                                 <div class="d-flex" >
-                                    <select class="form-control custom-input-qtd flex-grow-1 me-1" id="qtd-perfilpuxador">
-
-                                    </select>
-                                    <select class="form-select custom-input-posicao flex-grow-1" id="posicao-perfilpuxador">
-
-                                    </select>
+                                    <select class="form-control custom-input-qtd flex-grow-1 me-1" id="qtd-perfilpuxador"></select>
+                                    <select class="form-select custom-input-posicao flex-grow-1" id="posicao-perfilpuxador"></select>
+                                    <label class="mx-3" id="valorperfilpuxador"></label>
                                 </div>
                             </div>
                         </div>
@@ -144,13 +142,10 @@ Adrofecha - Orçamento
                                     {{ form.puxador|attr:"class:form-control custom-input-size-selectitems selectPuxador" }}
                                 </div>
                                 <div class="d-flex">
-                                    <select class="form-control custom-input-qtd flex-grow-1 me-1" id="qtd-puxador">
-
-                                    </select>
-                                    <select class="form-select custom-input-posicao flex-grow-1 me-1" id="posicao-puxador">
-
-                                    </select>
+                                    <select class="form-control custom-input-qtd flex-grow-1 me-1" id="qtd-puxador"></select>
+                                    <select class="form-select custom-input-posicao flex-grow-1 me-1" id="posicao-puxador"></select>
                                     <input class="form-control custom-input-size-medida flex-grow-1" id="tam-puxador">
+                                    <label class="mx-3" id="valorpuxador"></label>
                                 </div>
                             </div>
                         </div>
@@ -167,8 +162,8 @@ Adrofecha - Orçamento
                                     {{ form.divisor|attr:"class:form-control custom-input-size-selectitems selectdivisor" }}
                                 </div>
                                 <div class="d-flex">
-                                    <select class="form-control custom-input-qtd flex-grow-1 me-1" id="qtd-divisor">
-                                    </select>
+                                    <select class="form-control custom-input-qtd flex-grow-1 me-1" id="qtd-divisor"></select>
+                                    <label class="mx-3" id="valordivisor"></label>
                                 </div>
                             </div>
                         </div>
@@ -249,223 +244,132 @@ Adrofecha - Orçamento
                             .st8{font-size:13px;}
                             .st9{fill:#AF0E0E;}
                             .st10{opacity:0.55;}
-                            .st11{fill:url(#SVGID_1_);}
                             .st12{opacity:0.51;}
                             .st13{fill:#4C2F12;}
-                            .st14{fill:url(#SVGID_2_);}
-                            .st15{fill:url(#SVGID_3_);}
-                            .st16{fill:url(#SVGID_4_);}
                             </style>
                             <g id="Porta" transform="translate(200, 40)">
                                 <g id="Desenho">
                                     <g id="Perfis" class="st2" fill="#D7D8D7">
-                                        <polygon id="Perf-D" class="" points="3.1,57 3.1,293.7 14.1,282.7 14.1,68"/>
-                                        <polygon id="Perf-C" class="" points="141.7,282.7 14.1,282.7 3.1,293.7 152.7,293.7"/>
-                                        <polygon id="Perf-B" class="" points="141.7,68 141.7,282.7 152.7,293.7 152.7,57"/>
-                                        <polygon id="Perf-A" class="" points="152.7,57 3.1,57 14.1,68 141.7,68"/>
+                                        <polygon id="perfil_esquerda" class=""
+                                                 points="3.1,57 3.1,293.7 14.1,282.7 14.1,68"/>
+                                        <polygon id="perfil_inferior" class=""
+                                                 points="141.7,282.7 14.1,282.7 3.1,293.7 152.7,293.7"/>
+                                        <polygon id="perfil_direita" class=""
+                                                 points="141.7,68 141.7,282.7 152.7,293.7 152.7,57"/>
+                                        <polygon id="perfil_superior" class=""
+                                                 points="152.7,57 3.1,57 14.1,68 141.7,68"/>
                                     </g>
-                                    <rect id="Pelicula" x="3.1" y="57" class="st1" width="149.6" height="236.8"/>
                                     <g id="Divisores" class="">
-                                        <rect id="Divisor-C" x="14.1" y="210.4" class="st2" fill="#137009" width="127.6" height="4.3"/>
-                                        <rect id="Divisor-B" x="14.1" y="173.1" class="st2" fill="#137009" width="127.6" height="4.3"/>
-                                        <rect id="Divisor-A" x="14.1" y="137" class="st2" fill="#137009" width="127.6" height="4.3"/>
+                                        <polygon id="Divisor-A" class="st2" fill="#137009" points="14.1,136.7 14.1,141 141.7,141 141.7,136.7"/>
+                                        <polygon id="Divisor-B" class="st2" fill="#137009" points="14.1,173.2 14.1,177.5 141.7,177.5 141.7,173.2"/>
+                                        <polygon id="Divisor-C" class="st2" fill="#137009" points="14.1,209.7 14.1,214 141.7,214 141.7,209.7"/>
                                     </g>
-                                    <g id="Vidro" class="st2">
-                                        <image style="display:inline;overflow:visible;opacity:0.35;enable-background:new    ;"
-                                               width="113" height="196" id="Incolor"
-                                               xlink:href="{% static 'Pedidos/images/Vidro-incolor.png' %}"
-                                               transform="matrix(1.324 0 0 1.2079 3.0703 56.9531)">
-                                        </image>
-                                        <g class="st4">
-                                            <linearGradient id="Reflexo_1_" gradientUnits="userSpaceOnUse"
-                                                            x1="-1130.3203"
-                                                            y1="526.6828" x2="-854.8268" y2="526.6828"
-                                                            gradientTransform="matrix(3.858301e-11 -0.8594 0.8594 3.858301e-11 -374.7534 -677.6826)">
-                                                <stop offset="0" style="stop-color:#DEF7FF"/>
-                                                <stop offset="9.815443e-02" style="stop-color:#BBD4DC"/>
-                                                <stop offset="0.2746" style="stop-color:#839CA4"/>
-                                                <stop offset="0.4461" style="stop-color:#546D75"/>
-                                                <stop offset="0.6084" style="stop-color:#304951"/>
-                                                <stop offset="0.7592" style="stop-color:#152E36"/>
-                                                <stop offset="0.8941" style="stop-color:#061F27"/>
-                                                <stop offset="1" style="stop-color:#001921"/>
-                                            </linearGradient>
-                                            <path id="Reflexo" class="st5" d="M152.5,293.3H3.3C2.8,305.2,3.3,57,3.3,57c8.8,0,143.2-0.1,149.2,0
-				C152.5,57,152.9,301.6,152.5,293.3z"/>
-                                        </g>
+                                    <g id="Vidros">
+                                        <polygon id="Vidro" class="st2" fill="#DEF7FF" points="14.1,68 14.1,282.7 141.7,282.7 141.7,68"/>
                                     </g>
-                                    <g id="Acabamento" class="st2" fill="#D7D8D7">
-                                        <g id="Acabamento-D">
-                                            <image style="overflow:visible;opacity:0.3;enable-background:new;"
-                                                   width="33" height="268"
-                                                   xlink:href="{% static '/Pedidos/images/C727B484.png' %}"
-                                                   transform="matrix(1 0 0 0.9508 -7 46)">
-                                            </image>
-                                            <g>
-                                                <polygon points="3.1,293.7 3.1,57 5.1,59 5.1,291.6"/>
-                                            </g>
-                                        </g>
-                                        <g id="Acabamento-C">
-                                            <image style="overflow:visible;opacity:0.3;enable-background:new    ;"
-                                                   width="180" height="33"
-                                                   xlink:href="{% static '/Pedidos/images/C727B48C.png' %}"
-                                                   transform="matrix(0.9228 0 0 1 -3.099 271)">
-                                            </image>
-                                            <g>
-                                                <polygon points="3.1,293.7 5.1,291.6 150.6,291.6 152.7,293.7"/>
-                                            </g>
-                                        </g>
-                                        <g id="Acabamento-B">
-                                            <image style="overflow:visible;opacity:0.3;enable-background:new    ;"
-                                                   width="33" height="268"
-                                                   xlink:href="{% static '/Pedidos/images/C727B485.png' %}"
-                                                   transform="matrix(1 0 0 0.9562 130 47.7327)">
-                                            </image>
-                                            <g>
-                                                <polygon points="152.7,57 152.7,293.7 150.6,291.6 150.6,59"/>
-                                            </g>
-                                        </g>
-                                        <g id="Acabamento-A">
-                                            <image style="overflow:visible;opacity:0.3;enable-background:new    ;"
-                                                   width="180" height="34"
-                                                   xlink:href="{% static '/Pedidos/images/C727B486.png' %}"
-                                                   transform="matrix(0.8438 0 0 1 0.8218 46)">
-                                            </image>
-                                            <g>
-                                                <polygon points="5.1,59 3.1,57 152.7,57 150.6,59"/>
-                                            </g>
-                                        </g>
+                                    <g id="Vidros2">
+                                        <polygon id="Vidro1_2" class="st2" fill="#DEF7FF" points="14.1,68 14.1,175.35 141.7,175.35 141.7,68"/>
+                                        <polygon id="Vidro2_2" class="st2" fill="#DEF7FF" points="14.1,179.65 14.1,282.7 141.7,282.7 141.7,179.65"/>
                                     </g>
-                                    <g id="Puxadores_2_" class="">
-                                        <g id="Puxador-D" class="st2">
-                                            <text id="Puxador-D-Tam"
-                                                  transform="matrix(4.489659e-11 -1 1 4.489659e-11 -8.3213 192.4824)" class="st7 st8">100mm
-                                            </text>
-                                            <rect id="Puxador-D-int" x="-6" y="56.9" class="st9 st2" width="2.6" height="236.8"/>
-                                            <rect id="Puxador-D-trecho" x="-6" y="153.8" class="st9 st2" width="2.6" height="43"/>
+                                    <g id="Vidros3">
+                                        <polygon id="Vidro1_3" class="st2" fill="#DEF7FF" points="14.1,68 14.1,136.7 141.7,136.7 141.7,68"/>
+                                        <polygon id="Vidro2_3" class="st2" fill="#DEF7FF" points="14.1,141.86 14.1,209.7 141.7,209.7 141.7,141.86"/>
+                                        <polygon id="Vidro3_3" class="st2" fill="#DEF7FF" points="14.1,214 14.1,282.7 141.7,282.7 141.7,214"/>
+                                    </g>
+                                    <g id="Puxadores" class="">
+                                        <g id="Puxador-Esquerda" class="st2 pux">
+                                            <polygon id="Puxador-Esquerda-int" fill="#ff0000" points="3.1,57 3.1,293.7 5.85,293.7 5.85,57"/>
+                                            <g id="Puxador-Esquerda-trecho" class="st2 pux"
+                                               onclick="alterarCorPuxadores('Puxador-Esquerda-trecho')">
+                                                <polygon id="Puxador-Esquerda-trecho-1" points="3.1,57 3.1,96.45 5.85,96.45 5.85,57"/>
+                                                <polygon id="Puxador-Esquerda-trecho-2" points="3.1,155.62 3.1,195.08 5.85,195.08 5.85,155.62"/>
+                                                <polygon id="Puxador-Esquerda-trecho-3" points="3.1,254.25 3.1,293.7 5.85,293.7 5.85,254.25"/>
+                                            </g>
                                         </g>
-                                        <g id="Puxador-C" class="st2">
-                                            <text id="Puxador-C-Tam" transform="matrix(1 0 0 1 60.5996 313.127)" class="st7 st8">100mm
-                                            </text>
-                                            <rect id="Puxador-C-int" x="3" y="301.2" class="st9 st2" width="149.6" height="2.6"/>
-                                            <rect id="Puxador-C-trecho" x="56.4" y="301.2" class="st9 st2" width="43" height="2.6"/>
+                                        <g id="Puxador-Base" class="st2 pux">
+                                            <polygon id="Puxador-Base-int" fill="#ff0000"
+                                                     points="3.1,290.95 3.1,293.7 152.7,293.7 152.7,290.95"/>
+                                            <g id="Puxador-Base-trecho" class="st2 pux"
+                                               onclick="alterarCorPuxadores('Puxador-Base-trecho')">
+                                                <polygon id="Puxador-Base-trecho-1"
+                                                         points="3.1,290.95 3.1,293.7 42.55,293.7 42.55,290.95"/>
+                                                <polygon id="Puxador-Base-trecho-2"
+                                                         points="52.96,290.95 52.96,293.7 102.82,293.7 102.82,290.95"/>
+                                                <polygon id="Puxador-Base-trecho-3"
+                                                         points="113.25,290.95 113.25,293.7 152.7,293.7 152.7,290.95"/>
+                                            </g>
                                         </g>
-                                        <g id="Puxador-B" class="st2">
-                                            <text id="Puxador-B-Tam"
-                                                  transform="matrix(-1.346898e-10 1 -1 -1.346898e-10 165.0195 158.0955)"
-                                                  class="st7 st8">100mm
-                                            </text>
-                                            <rect id="Puxador-B-int" x="159.6" y="56.9" class="st9 st2" width="2.6" height="236.8"/>
-                                            <rect id="Puxador-B-trecho" x="159.6" y="153.8" class="st9 st2" width="2.6" height="43"/>
+                                        <g id="Puxador-Direita" class="st2 pux">
+                                            <polygon id="Puxador-Direita-int" fill="#ff0000"
+                                                     points="149.95,57 149.95,293.7 152.7,293.7 152.7,57"/>
+                                            <g id="Puxador-Direita-trecho" class="st2 pux"
+                                               onclick="alterarCorPuxadores('Puxador-Direita-trecho')">
+                                                <polygon id="Puxador-Direita-trecho-1"
+                                                         points="149.95,57 149.95,96.45 152.7,96.45 152.7,57"/>
+                                                <polygon id="Puxador-Direita-trecho-2"
+                                                         points="149.95,155.62 149.95,195.08 152.7,195.08 152.7,155.62"/>
+                                                <polygon id="Puxador-Direita-trecho-3"
+                                                         points="149.95,254.25 149.95,293.7 152.7,293.7 152.7,254.25"/>
+                                            </g>
                                         </g>
-                                        <g id="Puxador-A" class="st2">
-                                            <text id="Puxador-A-Tam" transform="matrix(1 0 0 1 60.6853 44.96)" class="st7 st8">
-                                                100mm
-                                            </text>
-                                            <rect id="Puxador-A-int" x="3.1" y="46.8" class="st9 st2" width="149.6" height="2.6"/>
-                                            <rect id="Puxador-A-trecho" x="56.4" y="46.8" class="st9 st2" width="43" height="2.6"/>
+                                        <g id="Puxador-Topo" class="st2 pux">
+                                            <polygon id="Puxador-Topo-int" fill="#ff0000"
+                                                     points="3.1,57 3.1,59.75 152.7,59.75 152.7,57"/>
+                                            <g id="Puxador-Topo-trecho" class="st2 pux"
+                                               onclick="alterarCorPuxadores('Puxador-Topo-trecho')">
+                                                <polygon id="Puxador-Topo-trecho-1"
+                                                         points="3.1,57 3.1,59.75 42.55,59.75 42.55,57"/>
+                                                <polygon id="Puxador-Topo-trecho-2"
+                                                         points="52.96,57 52.96,59.75 102.82,59.75 102.82,57"/>
+                                                <polygon id="Puxador-Topo-trecho-3"
+                                                         points="113.25,57 113.25,59.75 152.7,59.75 152.7,57"/>
+                                            </g>
                                         </g>
                                     </g>
                                     <g id="PerfisPuxadores">
-                                        <g id="PerfilPux-D" class="st2" fill="#151618">
-                                            <g id="PerfilPux-D-Cava" class="st10">
-                                                <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse"
-                                                                x1="-187.7436" y1="5.8975" x2="-183.0359"
-                                                                y2="5.8975"
-                                                                gradientTransform="matrix(-1 0 0 -1 -184.6733 181.2475)">
-                                                    <stop offset="0" style="stop-color:#252525"/>
-                                                    <stop offset="0.25"
-                                                          style="stop-color:#252525;stop-opacity:0.3"/>
-                                                    <stop offset="0.5" style="stop-color:#F1F1F1"/>
-                                                    <stop offset="0.5112" style="stop-color:#FFFFFF"/>
-                                                    <stop offset="0.75"
-                                                          style="stop-color:#919191;stop-opacity:0.3"/>
-                                                    <stop offset="1" style="stop-color:#252525"/>
-                                                </linearGradient>
-                                                <polyline class="st11" points="3.1,293.7 -1.6,293.7 -1.6,57 3.1,57"/>
-                                                <polyline class="st12" points="3.1,293.7 -1.6,293.7 -1.6,57 3.1,57"/>
-                                            </g>
-                                            <rect id="PerfilPux-D-detalhe" x="-3.4" y="57" width="1.7" height="236.8"/>
+                                        <g id="PerfilPux-Esquerda" class="st2" fill="#151618">
+                                            <polygon id="PerfilPux-Esquerda-Cava" class="st10"
+                                                     points="-1.6,57 -1.6,293.7 3.1,293.7 3.1,57"/>
+                                            <polygon id="PerfilPux-Esquerda-detalhe"
+                                                     points="-4.77,57 -4.77,293.7 -1.6,293.7 -1.6,57"/>
                                         </g>
-                                        <g id="PerfilPux-C" class="st2" fill="#151618">
-                                            <g id="PerfilPux-C-Cava" class="st10">
-                                                <linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse"
-                                                                x1="-93.5561" y1="40.5658" x2="-88.8484"
-                                                                y2="40.5658"
-                                                                gradientTransform="matrix(-1.346898e-10 1 -1 -1.346898e-10 118.4158 387.2673)">
-                                                    <stop offset="0" style="stop-color:#252525"/>
-                                                    <stop offset="0.25"
-                                                          style="stop-color:#252525;stop-opacity:0.3"/>
-                                                    <stop offset="0.5" style="stop-color:#F1F1F1"/>
-                                                    <stop offset="0.5112" style="stop-color:#FFFFFF"/>
-                                                    <stop offset="0.75"
-                                                          style="stop-color:#919191;stop-opacity:0.3"/>
-                                                    <stop offset="1" style="stop-color:#252525"/>
-                                                </linearGradient>
-                                                <polyline class="st14" points="152.6,293.7 152.6,298.4 3.1,298.4 3.1,293.7"/>
-                                                <polyline class="st12" points="152.6,293.7 152.6,298.4 3.1,298.4 3.1,293.7"/>
-                                            </g>
-                                            <rect id="PerfilPux-C-detalhe" x="3.1" y="298.4" width="149.6" height="1.7"/>
+                                        <g id="PerfilPux-Base" class="st2" fill="#151618">
+                                            <polygon id="PerfilPux-Base-Cava" class="st10"
+                                                     points="3.1,293.7 3.1,298.4 152.7,298.4 152.7,293.7"/>
+                                            <polygon id="PerfilPux-Base-detalhe"
+                                                     points="3.1,298.4 3.1,301.57 152.7,301.57 152.7,298.4"/>
                                         </g>
-                                        <g id="PerfilPux-B" class="st2" fill="#151618">
-                                            <g id="PerfilPux-B-Cava" class="st10" >
-                                                <linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse"
-                                                                x1="-247.3661" y1="145.35" x2="-242.6584"
-                                                                y2="145.35"
-                                                                gradientTransform="matrix(1 0 0 1 400 30)">
-                                                    <stop offset="0" style="stop-color:#252525"/>
-                                                    <stop offset="0.25"
-                                                          style="stop-color:#252525;stop-opacity:0.3"/>
-                                                    <stop offset="0.5" style="stop-color:#F1F1F1"/>
-                                                    <stop offset="0.5112" style="stop-color:#FFFFFF"/>
-                                                    <stop offset="0.75"
-                                                          style="stop-color:#919191;stop-opacity:0.3"/>
-                                                    <stop offset="1" style="stop-color:#252525"/>
-                                                </linearGradient>
-                                                <polyline class="st15" points="152.6,57 157.3,57 157.3,293.7 152.6,293.7"/>
-                                                <polyline class="st12" points="152.6,57 157.3,57 157.3,293.7 152.6,293.7"/>
-                                            </g>
-                                            <rect id="PerfilPux-B-detalhe" x="157.3" y="57" width="1.7" height="236.8"/>
+                                        <g id="PerfilPux-Direita" class="st2" fill="#151618">
+                                            <polygon id="PerfilPux-Direita-Cava" class="st10"
+                                                     points="152.7,57 152.7,293.7 157.4,293.7 157.4,57"/>
+                                            <polygon id="PerfilPux-Direita-detalhe"
+                                                     points="157.4,57 157.4,293.7 160.57,293.7 160.57,57"/>
                                         </g>
-                                        <g id="PerfilPux-A" class="st2" fill="#151618">
-                                            <g id="PerfilPux-A-Cava" class="st10">
-                                                <linearGradient id="SVGID_4_" gradientUnits="userSpaceOnUse"
-                                                                x1="1.0268"
-                                                                y1="204.246" x2="5.7344" y2="204.246"
-                                                                gradientTransform="matrix(2.244830e-10 -1 1 2.244830e-10 -126.396 57.9802)">
-                                                    <stop offset="0" style="stop-color:#252525"/>
-                                                    <stop offset="0.25"
-                                                          style="stop-color:#252525;stop-opacity:0.3"/>
-                                                    <stop offset="0.5" style="stop-color:#F1F1F1"/>
-                                                    <stop offset="0.5112" style="stop-color:#FFFFFF"/>
-                                                    <stop offset="0.75"
-                                                          style="stop-color:#919191;stop-opacity:0.3"/>
-                                                    <stop offset="1" style="stop-color:#252525"/>
-                                                </linearGradient>
-                                                <polyline class="st16" points="3.1,57 3.1,52.2 152.6,52.2 152.6,57"/>
-                                                <polyline class="st12" points="3.1,57 3.1,52.2 152.6,52.2 152.6,57"/>
-                                            </g>
-                                            <rect id="PerfilPux-A-detalhe" x="3.1" y="50.5" width="149.6" height="1.7"/>
+                                        <g id="PerfilPux-Topo" class="st2" fill="#151618">
+                                            <polygon id="PerfilPux-Topo-Cava" class="st10"
+                                                     points="3.1,52.3 3.1,57 152.7,57 152.7,52.3"/>
+                                            <polygon id="PerfilPux-Topo-detalhe"
+                                                     points="3.1,49.13 3.1,52.3 152.7,52.3 152.7,49.13"/>
+                                        </g>
+                                    </g>
+                                    <g id="MedidaDesenho" class="st2">
+                                        <g id="Tamanho-A">
+                                            <text id="texto-largura" transform="matrix(1 0 0 1 60.6856 356)"
+                                                  class="st7 st8">
+                                            </text>
+                                            <polygon id="medida-largura" points="-4.77,334.2 -4.77,349 -3.07,349 -3.07,342.9 158.87,342.9 158.87,349 160.57,349 160.57,334.2
+                                                                               158.87,334.2 158.87,340.3 -3.07,340.3 -3.07,334.2"/>
+                                        </g>
+                                        <g id="Tamanho-B">
+                                            <text id="texto-altura"
+                                                  transform="matrix(-1.346898e-10 1 -1 -1.346898e-10 205 158)"
+                                                  class="st7 st8">
+                                            </text>
+                                            <polygon id="medida-altura"
+                                                     points="193.2,49.13 193.2,50.83 199.3,50.83 199.3,299.87 193.2,299.87 193.2,301.57 208,301.57 208,299.87 201.9,299.87 201.9,50.83 208,50.83 208,49.13"/>
                                         </g>
                                     </g>
                                 </g>
-                            <g id="MedidaDesenho" class="st2">
-                                <g id="Tamanho-A">
-                                    <text id="Medida-A" transform="matrix(1 0 0 1 60.6856 354.6522)"
-                                          class="st7 st8">00mm
-                                    </text>
-                                    <polygon id="Traco-A" points="3.7,334.2 3.1,334.2 3.1,349 3.7,349 3.7,342.9 152,342.9 152,349 152.7,349 152.7,334.2
-            152,334.2 152,340.3 3.7,340.3"/>
-                                </g>
-                                <g id="Tamanho-B">
-                                    <text id="Medida-B"
-                                          transform="matrix(-1.346898e-10 1 -1 -1.346898e-10 212.3477 158.1368)"
-                                          class="st7 st8">00mm
-                                    </text>
-                                    <polygon id="Traco-B" points="214.6,57.9 214.6,57 199.9,57 199.9,57.9 206,57.9 206,292.7 199.9,292.7 199.9,293.7
-            214.6,293.7 214.6,292.7 208.5,292.7 208.5,57.9"/>
-                                </g>
-                            </g>
                             </g>
                         </svg>
                     </div>
@@ -1049,66 +953,64 @@ $(document).ready(function() {
 </script>
 
 <script>
-$(document).ready(function() {
-  $('#id_perfil').change(function() {
-    buscarVidro(''); // Chama para o vidro principal
-    for (var i = 1; i <= 3; i++) {
-      buscarVidro(i);
-    }
+$(document).ready(function () {
+  $('#id_perfil').change(function () {
+    buscarVidros();
   });
 
-  function buscarVidro(numeroVidro) {
+  function buscarVidros() {
     var perfil = $('#id_perfil').val();
-    var idVidro = numeroVidro ? '#id_vidro' + numeroVidro : '#id_vidro';
 
     if (perfil) {
-      var vidro = $(idVidro).val();
+      var vidroPrincipal = $('#id_vidro');
+      var vidrosExtras = ['#id_vidro1', '#id_vidro2', '#id_vidro3'];
 
+      var vidros = vidroPrincipal.val();
       $.ajax({
         url: '/buscar_Vidro/',
         type: 'GET',
         data: {
-          vidro: vidro
+          vidro: vidros
         },
-        success: function(response) {
-          var selectVidro = $(idVidro);
-          selectVidro.empty();
-
+        success: function (response) {
           var option = $('<option>').attr('value', '').text('-------');
-          selectVidro.append(option);
 
-          $.each(response, function(index, item) {
+          vidroPrincipal.empty().append(option);
+          $(vidrosExtras.join(',')).empty().append(option.clone());
+
+          $.each(response, function (index, item) {
             option = $('<option>').attr('value', item.id).text(item.descricao);
             option.data('id', item.id);
             option.data('descricao', item.descricao);
             option.data('nome', item.nome);
             option.data('preco', item.preco);
             option.data('modelo', item.modelo);
-            selectVidro.append(option);
+
+            vidroPrincipal.append(option);
+            $(vidrosExtras.join(',')).append(option.clone());
           });
 
           var numItens = response.length;
 
           if (numItens <= 0) {
-            selectVidro.prop('disabled', true);
-            $('#divvidro' + numeroVidro + ' :input').prop('disabled', true);
+            $(vidrosExtras.join(',')).prop('disabled', true);
+            $('.st2 :input').prop('disabled', true);
           } else {
-            selectVidro.prop('disabled', false);
-            $('#divvidro' + numeroVidro + ' :input').prop('disabled', false);
+            $(vidrosExtras.join(',')).prop('disabled', false);
+            $('.st2 :input').prop('disabled', false);
           }
-
-          selectVidro.show();
         },
-        error: function(xhr) {
+        error: function (xhr) {
           console.log(xhr.statusText);
         }
       });
     } else {
-      $(idVidro).empty();
-      $('#divvidro' + numeroVidro + ' :input').prop('disabled', true);
+      $('#id_vidro, #id_vidro1, #id_vidro2, #id_vidro3').empty();
+      $('.st2 :input').prop('disabled', true);
     }
   }
 });
+
 </script>
 
 <!--=============== END BUSCAR ======================-->
@@ -1146,13 +1048,11 @@ $(document).ready(function() {
   document.addEventListener('DOMContentLoaded', function() {
     var btnPortaGiro = document.getElementById('btnPortaGiro');
     var btnPortaCorrer = document.getElementById('btnPortaCorrer');
-
     var btnVidro = document.getElementById('btnVidro');
     var campoLinha = document.getElementById('divlinha');
     var campoAcabamento = document.getElementById('divacabamento');
     var campoAbertura = document.getElementById('divabertura');
     var campoPorta = document.getElementById('divportas');
-
     var campoVidro = document.getElementById('divvidros');
 
     btnPortaGiro.addEventListener('change', function() {
@@ -1376,10 +1276,10 @@ $(document).ready(function () {
                 // Atualizar o atributo fill da classe st0 do SVG com o código RGB recebido
                 $('#Perfis').attr('fill', response.codigo_rgb);
                 $('#Acabamento').attr('fill', response.codigo_rgb);
-                $('#PerfilPux-A').attr('fill', response.codigo_rgb);
-                $('#PerfilPux-B').attr('fill', response.codigo_rgb);
-                $('#PerfilPux-C').attr('fill', response.codigo_rgb);
-                $('#PerfilPux-D').attr('fill', response.codigo_rgb);
+                $('#PerfilPux-Topo').attr('fill', response.codigo_rgb);
+                $('#PerfilPux-Direita').attr('fill', response.codigo_rgb);
+                $('#PerfilPux-Base').attr('fill', response.codigo_rgb);
+                $('#PerfilPux-Esquerda').attr('fill', response.codigo_rgb);
                 console.log(response.codigo_rgb);
             },
             error: function (xhr, status, error) {
@@ -1402,9 +1302,9 @@ $(document).ready(function () {
       var posicaoPerfilPuxador = $("#posicao-perfilpuxador").val();
 
       // Remover classes st6 e st9 de todos os elementos
-      $("#PerfilPux-A, #PerfilPux-B, #PerfilPux-C, #PerfilPux-D")
+      $("#PerfilPux-Topo, #PerfilPux-Direita, #PerfilPux-Base, #PerfilPux-Esquerda")
         .removeClass("st6 st9");
-      $("#Acabamento-A, #Acabamento-B, #Acabamento-C, #Acabamento-D, #Perf-A, #Perf-B, #Perf-C, #Perf-D")
+      $("#perfil_superior, #perfil_direita, #perfil_inferior, #perfil_esquerda")
         .removeClass("st9");
 
       if (larguraPreenchida && alturaPreenchida && perfilPuxadorPreenchido) {
@@ -1415,55 +1315,36 @@ $(document).ready(function () {
 
         if (posicaoPerfilPuxador === "") {
           // Remover classes st6 e st9 dos elementos
-          $("#PerfilPux-A, #PerfilPux-B, #PerfilPux-C, #PerfilPux-D")
+          $("#PerfilPux-Topo, #PerfilPux-Direita, #PerfilPux-Base, #PerfilPux-Esquerda")
             .removeClass("st6 st9");
-          $("#Acabamento-A, #Acabamento-B, #Acabamento-C, #Acabamento-D, #Perf-A, #Perf-B, #Perf-C, #Perf-D")
+          $("#perfil_superior, #perfil_direita, #perfil_inferior, #perfil_esquerda")
             .removeClass("st9");
         } else {
           // Remover classes st6 e st9 dos elementos
-          $("#PerfilPux-A, #PerfilPux-B, #PerfilPux-C, #PerfilPux-D")
+          $("#PerfilPux-Topo, #PerfilPux-Direita, #PerfilPux-Base, #PerfilPux-Esquerda")
             .removeClass("st6 st9");
 
           // Remover classe st9 dos demais elementos
-          $("#Acabamento-A, #Acabamento-B, #Acabamento-C, #Acabamento-D, #Perf-A, #Perf-B, #Perf-C, #Perf-D")
+          $("#perfil_superior, #perfil_direita, #perfil_inferior, #perfil_esquerda")
             .removeClass("st9");
 
           // Adicionar classes st6 e st9 com base nas condições
-          if (larguraMaiorQueAltura) {
             if (posicaoPerfilPuxador === "Esquerda") {
-              $("#PerfilPux-A").addClass("st6 st9");
-              $("#Perf-A, #Acabamento-A").addClass("st9");
+              $("#PerfilPux-Esquerda").addClass("st6 st9");
+              $("#perfil_esquerda").addClass("st9");
             } else if (posicaoPerfilPuxador === "Topo") {
-              $("#PerfilPux-B").addClass("st6 st9");
-              $("#Perf-B, #Acabamento-B").addClass("st9");
+              $("#PerfilPux-Topo").addClass("st6 st9");
+              $("#perfil_superior").addClass("st9");
             } else if (posicaoPerfilPuxador === "Base") {
-              $("#PerfilPux-D").addClass("st6 st9");
-              $("#Perf-D, #Acabamento-D").addClass("st9");
+              $("#PerfilPux-Base").addClass("st6 st9");
+              $("#perfil_inferior").addClass("st9");
             } else if (posicaoPerfilPuxador === "Direita") {
-              $("#PerfilPux-C").addClass("st6 st9");
-              $("#Perf-C, #Acabamento-C").addClass("st9");
+              $("#PerfilPux-Direita").addClass("st6 st9");
+              $("#perfil_direita").addClass("st9");
             } else if (posicaoPerfilPuxador === "Esq/Dir") {
-              $("#PerfilPux-A, #PerfilPux-C").addClass("st6 st9");
-              $("#Perf-A, #Perf-C, #Acabamento-A, #Acabamento-C").addClass("st9");
+              $("#PerfilPux-Esquerda, #PerfilPux-Direita").addClass("st6 st9");
+              $("#perfil_esquerda, #perfil_direita").addClass("st9");
             }
-          } else if (largura <= altura) {
-            if (posicaoPerfilPuxador === "Esquerda") {
-              $("#PerfilPux-D").addClass("st6 st9");
-              $("#Perf-D, #Acabamento-D").addClass("st9");
-            } else if (posicaoPerfilPuxador === "Topo") {
-              $("#PerfilPux-A").addClass("st6 st9");
-              $("#Perf-A, #Acabamento-A").addClass("st9");
-            } else if (posicaoPerfilPuxador === "Base") {
-              $("#PerfilPux-C").addClass("st6 st9");
-              $("#Perf-C, #Acabamento-C").addClass("st9");
-            } else if (posicaoPerfilPuxador === "Direita") {
-              $("#PerfilPux-B").addClass("st6 st9");
-              $("#Perf-B, #Acabamento-B").addClass("st9");
-            } else if (posicaoPerfilPuxador === "Esq/Dir") {
-              $("#PerfilPux-B, #PerfilPux-D").addClass("st6 st9");
-              $("#Perf-B, #Perf-D, #Acabamento-B, #Acabamento-D").addClass("st9");
-            }
-          }
         }
       }
     }
@@ -1472,151 +1353,92 @@ $(document).ready(function () {
     $("#posicao-perfilpuxador").on('input', atualizarPosicoesPerfilPuxador);
     $("#id_perfilpuxador, #id_perfil, #id_acabamento, #id_quantidade, #qtd-perfilpuxador, #id_largura, #id_altura, #id_abertura, input[name='btnradio']").change(atualizarPosicoesPerfilPuxador);
   });
+
+
 </script>
 
 <script>
 $(document).ready(function() {
-  function atualizarPosicoesPuxador() {
-      var posicaoPuxador = $("#posicao-puxador").val();
-      var tamPuxador = parseFloat($("#tam-puxador").val());
-      var larguraMaiorQueAltura = parseFloat($('#id_largura').val()) > parseFloat($('#id_altura').val());
-      var largura = parseFloat($('#id_largura').val());
-      var altura = parseFloat($('#id_altura').val());
+function atualizarPosicoesPuxador() {
 
-      if (posicaoPuxador === "") {
-        $("#Puxador-A, #Puxador-B, #Puxador-C, #Puxador-D")
-          .removeClass("st6 st9");
-      } else {
-        $("#Puxador-A, #Puxador-B, #Puxador-C, #Puxador-D")
-          .removeClass("st6 st9");
+    $('#Puxador-Esquerda, #Puxador-Base, #Puxador-Direita, #Puxador-Topo').removeClass('st6');
 
-        if (larguraMaiorQueAltura) {
-          if (posicaoPuxador === "Esquerda") {
-              if (tamPuxador < altura) {
-                $("#Puxador-A").addClass("st6");
-                $("#Puxador-A-int").removeClass("st6");
-                $("#Puxador-A-trecho").addClass("st6");
-                $("#Puxador-A-Tam").text(tamPuxador + "mm");
-              } else {
-                $("#Puxador-A").addClass("st6");
-                $("#Puxador-A-int").addClass("st6");
-                $("#Puxador-A-trecho").removeClass("st6");
-                $("#Puxador-A-Tam").text(tamPuxador + "mm");
-              }
-          } else if (posicaoPuxador === "Topo") {
-              if (tamPuxador < largura) {
-                $("#Puxador-B").addClass("st6");
-                $("#Puxador-B-int").removeClass("st6");
-                $("#Puxador-B-trecho").addClass("st6");
-                $("#Puxador-B-Tam").text(tamPuxador + "mm");
-              } else {
-                $("#Puxador-B").addClass("st6");
-                $("#Puxador-B-int").addClass("st6");
-                $("#Puxador-B-trecho").removeClass("st6");
-                $("#Puxador-B-Tam").text(tamPuxador + "mm");
-              }
-          } else if (posicaoPuxador === "Base") {
-            if (tamPuxador < largura) {
-                $("#Puxador-D").addClass("st6");
-                $("#Puxador-D-int").removeClass("st6");
-                $("#Puxador-D-trecho").addClass("st6");
-                $("#Puxador-D-Tam").text(tamPuxador + "mm");
-              } else {
-                $("#Puxador-D").addClass("st6");
-                $("#Puxador-D-int").addClass("st6");
-                $("#Puxador-D-trecho").removeClass("st6");
-                $("#Puxador-D-Tam").text(tamPuxador + "mm");
-              }
-          } else if (posicaoPuxador === "Direita") {
-            if (tamPuxador < altura) {
-                $("#Puxador-C").addClass("st6");
-                $("#Puxador-C-int").removeClass("st6");
-                $("#Puxador-C-trecho").addClass("st6");
-                $("#Puxador-C-Tam").text(tamPuxador + "mm");
-              } else {
-                $("#Puxador-C").addClass("st6");
-                $("#Puxador-C-int").addClass("st6");
-                $("#Puxador-C-trecho").removeClass("st6");
-                $("#Puxador-C-Tam").text(tamPuxador + "mm");
-              }
-          } else if (posicaoPuxador === "Esq/Dir") {
-            if (tamPuxador < altura) {
-                $("#Puxador-A, #Puxador-C").addClass("st6");
-                $("#Puxador-A-int, #Puxador-C-int").removeClass("st6");
-                $("#Puxador-A-trecho, #Puxador-C-trecho").addClass("st6");
-                $("#Puxador-A-Tam, #Puxador-C-Tam").text(tamPuxador + "mm");
-              } else {
-                $("#Puxador-A, #Puxador-C").addClass("st6");
-                $("#Puxador-A-int, #Puxador-C-int").addClass("st6");
-                $("#Puxador-A-trecho, Puxador-C-trecho").removeClass("st6");
-                $("#Puxador-A-Tam, #Puxador-C-Tam").text(tamPuxador + "mm");
-              }
-          }
-        } else if (largura <= altura) {
-          if (posicaoPuxador === "Esquerda") {
-            if (tamPuxador < altura) {
-                $("#Puxador-D").addClass("st6");
-                $("#Puxador-D-int").removeClass("st6");
-                $("#Puxador-D-trecho").addClass("st6");
-                $("#Puxador-D-Tam").text(tamPuxador + "mm");
-              } else {
-                $("#Puxador-D").addClass("st6");
-                $("#Puxador-D-int").addClass("st6");
-                $("#Puxador-D-trecho").removeClass("st6");
-                $("#Puxador-D-Tam").text(tamPuxador + "mm");
-              }
-          } else if (posicaoPuxador === "Topo") {
-            if (tamPuxador < largura) {
-                $("#Puxador-A").addClass("st6");
-                $("#Puxador-A-int").removeClass("st6");
-                $("#Puxador-A-trecho").addClass("st6");
-                $("#Puxador-A-Tam").text(tamPuxador + "mm");
-              } else {
-                $("#Puxador-A").addClass("st6");
-                $("#Puxador-A-int").addClass("st6");
-                $("#Puxador-A-trecho").removeClass("st6");
-                $("#Puxador-A-Tam").text(tamPuxador + "mm");
-              }
-          } else if (posicaoPuxador === "Base") {
-            if (tamPuxador < largura) {
-                $("#Puxador-C").addClass("st6");
-                $("#Puxador-C-int").removeClass("st6");
-                $("#Puxador-C-trecho").addClass("st6");
-                $("#Puxador-C-Tam").text(tamPuxador + "mm");
-              } else {
-                $("#Puxador-C").addClass("st6");
-                $("#Puxador-C-int").addClass("st6");
-                $("#Puxador-C-trecho").removeClass("st6");
-                $("#Puxador-C-Tam").text(tamPuxador + "mm");
-              }
-          } else if (posicaoPuxador === "Direita") {
-            if (tamPuxador < altura) {
-                $("#Puxador-B").addClass("st6");
-                $("#Puxador-B-int").removeClass("st6");
-                $("#Puxador-B-trecho").addClass("st6");
-                $("#Puxador-B-Tam").text(tamPuxador + "mm");
-              } else {
-                $("#Puxador-B").addClass("st6");
-                $("#Puxador-B-int").addClass("st6");
-                $("#Puxador-B-trecho").removeClass("st6");
-                $("#Puxador-B-Tam").text(tamPuxador + "mm");
-              }
-          } else if (posicaoPuxador === "Esq/Dir") {
-            if (tamPuxador < altura) {
-                $("#Puxador-D, #Puxador-B").addClass("st6");
-                $("#Puxador-D-int, #Puxador-B-int").removeClass("st6");
-                $("#Puxador-D-trecho, #Puxador-B-trecho").addClass("st6");
-                $("#Puxador-D-Tam, #Puxador-B-Tam").text(tamPuxador + "mm");
-              } else {
-                $("#Puxador-D, #Puxador-B").addClass("st6");
-                $("#Puxador-D-int, #Puxador-B-int").addClass("st6");
-                $("#Puxador-D-trecho, Puxador-B-trecho").removeClass("st6");
-                $("#Puxador-D-Tam, #Puxador-B-Tam").text(tamPuxador + "mm");
-              }
-          }
+    var posicaoPuxador = $("#posicao-puxador").val();
+    var tamPuxador = parseFloat($("#tam-puxador").val());
+    var largura = parseFloat($('#id_largura').val());
+    var altura = parseFloat($('#id_altura').val());
+
+    if (tamPuxador !== "") {
+      if (posicaoPuxador === "Esquerda") {
+        if (tamPuxador < altura) {
+          $(".pux").removeClass("st6");
+          $("#Puxador-Esquerda").addClass("st6");
+          $("#Puxador-Esquerda-int").removeClass("st6");
+          $("#Puxador-Esquerda-int").addClass("st2");
+          $("#Puxador-Esquerda-trecho").addClass("st6");
+        } else {
+          $(".pux").removeClass("st6");
+          $("#Puxador-Esquerda").addClass("st6");
+          $("#Puxador-Esquerda-int").addClass("st6");
+          $("#Puxador-Esquerda-trecho").removeClass("st6");
+        }
+      } else if (posicaoPuxador === "Topo") {
+        if (tamPuxador < largura) {
+          $(".pux").removeClass("st6");
+          $("#Puxador-Topo").addClass("st6");
+          $("#Puxador-Topo-int").removeClass("st6");
+          $("#Puxador-Topo-int").addClass("st2");
+          $("#Puxador-Topo-trecho").addClass("st6");
+        } else {
+          $(".pux").removeClass("st6");
+          $("#Puxador-Topo").addClass("st6");
+          $("#Puxador-Topo-int").addClass("st6");
+          $("#Puxador-Topo-trecho").removeClass("st6");
+        }
+      } else if (posicaoPuxador === "Base") {
+        if (tamPuxador < largura) {
+          $(".pux").removeClass("st6");
+          $("#Puxador-Base").addClass("st6");
+          $("#Puxador-Base-int").removeClass("st6");
+          $("#Puxador-Base-int").addClass("st2");
+          $("#Puxador-Base-trecho").addClass("st6");
+        } else {
+          $(".pux").removeClass("st6");
+          $("#Puxador-Base").addClass("st6");
+          $("#Puxador-Base-int").addClass("st6");
+          $("#Puxador-Base-trecho").removeClass("st6");
+        }
+      } else if (posicaoPuxador === "Direita") {
+        if (tamPuxador < altura) {
+          $(".pux").removeClass("st6");
+          $("#Puxador-Direita").addClass("st6");
+          $("#Puxador-Direita-int").removeClass("st6");
+          $("#Puxador-Direita-int").addClass("st2");
+          $("#Puxador-Direita-trecho").addClass("st6");
+        } else {
+          $(".pux").removeClass("st6");
+          $("#Puxador-Direita").addClass("st6");
+          $("#Puxador-Direita-int").addClass("st6");
+          $("#Puxador-Direita-trecho").removeClass("st6");
+        }
+      } else if (posicaoPuxador === "Esq/Dir") {
+        if (tamPuxador < altura) {
+          $(".pux").removeClass("st6");
+          $("#Puxador-Esquerda, #Puxador-Direita").addClass("st6");
+          $("#Puxador-Esquerda-int, #Puxador-Direita-int").removeClass("st6");
+          $("#Puxador-Esquerda-int, #Puxador-Direita-int").addClass("st2");
+          $("#Puxador-Esquerda-trecho, #Puxador-Direita-trecho").addClass("st6");
+        } else {
+          $(".pux").removeClass("st6");
+          $("#Puxador-Esquerda, #Puxador-Direita").addClass("st6");
+          $("#Puxador-Esquerda-int, #Puxador-Direita-int").addClass("st6");
+          $("#Puxador-Esquerda-trecho, #Puxador-Direita-trecho").removeClass("st6");
         }
       }
+    } else {
+      $(".pux").removeClass("st6");
     }
+  }
 
   // Evento 'input' para campo posicao-puxador
   $("#posicao-puxador").on('input', function() {
@@ -1666,6 +1488,7 @@ $(document).ready(function() {
   });
 
 });
+
 </script>
 
 <script>
@@ -1743,19 +1566,17 @@ $(document).ready(function() {
 </script>
 
 <script>
-$(document).ready(function() {
-  // Adiciona eventos de change para os campos relevantes
-  $('#id_quantidade, #id_largura, #id_altura, #id_acabamento, #id_perfil, #id_perfilpuxador, #id_puxador, #id_divisor, #id_vidro').change(function() {
+$(document).ready(function () {
+  $('#id_quantidade, #id_largura, #id_altura, #id_acabamento, #id_perfil, #id_perfilpuxador, #id_puxador, #id_divisor, #id_vidro').change(function () {
     atualizarStringPorta();
   });
 
-  // Adiciona um evento para os radio buttons
-  $('input[name="tipoPorta"]').change(function() {
+  $('input[name="btnradio"]').change(function () {
     atualizarStringPorta();
   });
 
   function atualizarStringPorta() {
-    var tipoPorta = $('input[name="tipoPorta"]:checked').val();
+    var tipoPorta = $('input[name="btnradio"]:checked').val();
     var quantidade = $('#id_quantidade').val() || '';
     var largura = $('#id_largura').val() || '';
     var altura = $('#id_altura').val() || '';
@@ -1767,30 +1588,518 @@ $(document).ready(function() {
     var vidroModelo = $('#id_vidro option:selected').data('nome') || '';
 
     // Construa a string com os separadores condicionalmente
-    var stringPorta =
-      (quantidade ? quantidade : '') +
-      (quantidade && (acabamentoDescricao || perfilModelo) ? ' Porta ' : '') +
-      (acabamentoDescricao ? acabamentoDescricao : '') +
-      ((acabamentoDescricao && perfilModelo) ? ' ' : '') +
-      (perfilModelo ? perfilModelo : '') +
-      (perfilModelo && (perfilPuxadorModelo || puxadorModelo || divisorModelo) ? '/' : '') +
-      (perfilPuxadorModelo ? perfilPuxadorModelo : '') +
-      (perfilPuxadorModelo && (puxadorModelo || divisorModelo) ? '/' : '') +
-      (puxadorModelo ? puxadorModelo : '') +
-      (puxadorModelo && divisorModelo ? '/' : '') +
-      (divisorModelo ? divisorModelo : '') +
-      ((largura || altura) ? ' ' : '') +
-      ((largura && altura) ? largura + 'X' + altura + 'mm ' : '') +
-      (vidroModelo ? vidroModelo + ' ' : '');
+    var stringPorta = '';
+
+    if (tipoPorta === 'PortaGiro' || tipoPorta === 'PortaCorrer') {
+        stringPorta =
+            (quantidade ? quantidade + ' ' : '') +
+            ((quantidade && (acabamentoDescricao || perfilModelo)) || (perfilModelo && (acabamentoDescricao || perfilModelo)) ? 'Porta ' : '') +
+            (acabamentoDescricao ? acabamentoDescricao + ' ' : '') +
+            ((acabamentoDescricao && perfilModelo) ? ' ' : '') +
+            (perfilModelo ? perfilModelo + '' : '') +
+            (perfilModelo && (perfilPuxadorModelo || puxadorModelo || divisorModelo) ? '/' : '') +
+            (perfilPuxadorModelo ? perfilPuxadorModelo + '' : '') +
+            (perfilPuxadorModelo && (puxadorModelo || divisorModelo) ? '/' : '') +
+            (puxadorModelo ? puxadorModelo + '' : '') +
+            (puxadorModelo && divisorModelo ? '/' : '') +
+            (divisorModelo ? divisorModelo + ' ' : '') +
+            ((largura || altura) ? ' ' : '') +
+            ((largura && altura) ? largura + 'x' + altura + 'mm ' : '') +
+            (vidroModelo ? vidroModelo + ' ' : '');
+    } else if (tipoPorta === 'Vidros') {
+        stringPorta =
+            (quantidade ? quantidade + ' ' : '') +
+            (quantidade ? 'Vidro' : '') +
+            ((largura || altura) ? ' ' : '') +
+            ((largura && altura) ? largura + 'x' + altura + 'mm ' : '') +
+            (vidroModelo ? ' ' + vidroModelo + ' ' : '');
+    }
 
     // Atualiza a <div> com a string gerada
     $('#nomeporta').text(stringPorta);
-  }
+}
 
   // Chama a função inicialmente
   atualizarStringPorta();
 });
 </script>
+
+<script>
+    var svg = document.getElementById("meuSVG");
+
+    // Valores fixos
+    var comp1 = 149.6;
+    var comp2 = 236.7;
+    var larg = 11;
+    var xp = 3.1;
+    var xd = -40;
+    var yp = 57;
+    var yd = yp + 43.55;
+    var larg_div = 4.3;
+    var larg_perf = 4.7;
+    var larg_pux = 3.17;
+    var larg_tr = 2.75;
+    var tr1 = 39.45
+    var tr2 = tr1 / 2;//19.72
+    var tr3 = 10.41;
+
+    var x1 = xp + larg; //14.1
+    var x2 = comp1 + xp; //152.7
+    var x3 = x2 - larg; //141.7
+    var x4 = xd + larg; //14.1
+    var x5 = xd + comp2; //239.8
+    var x6 = x5 - larg; //228.8
+
+    var y1 = yp + larg; //68
+    var y2 = yp + comp2; //293.7
+    var y3 = y2 - larg; //282.7
+    var y4 = yd + larg; //111.55
+    var y5 = yd + comp1; //250.15
+    var y6 = y5 - larg; //239.15
+    var y7 = x6 - x4;//214.7
+    var y8 = (y7 - larg_div) / 2;//105.2
+    var y9 = (y7 - (larg_div * 2)) / 3//68.7
+    var y10 = (y9 * 2) + larg_div + y1//209.7
+    var y11 = xd + larg_div + (y9 * 2);//102.10
+    var y13 = y2+larg_perf+larg_pux;//301.57
+    var y14 = yp-larg_perf-larg_pux;//49.13
+    var y15 = yd-larg_perf-larg_pux;//92.68
+    var y16 = y5+larg_perf+larg_pux;//258.02
+
+
+    // Pontos originais
+    var pontosOriginais = {
+      "perfil_esquerda": `${xp},${yp} ${xp},${y2} ${x1},${y3} ${x1},${y1}`,
+      "perfil_inferior": `${x1},${y3} ${xp},${y2} ${x2},${y2} ${x3},${y3}`,
+      "perfil_direita": `${x3},${y1} ${x3},${y3} ${x2},${y2} ${x2},${yp}`,
+      "perfil_superior": `${xp},${yp} ${x1},${y1} ${x3},${y1} ${x2},${yp}`,
+      "Divisor-A": `${x1},${(y1+y9)} ${x1},${(y1+y9+larg_div)} ${x3},${(y1+y9+larg_div)} ${x3},${(y1+y9)}`,
+      "Divisor-B": `${x1},${(y1+y8)} ${x1},${(y1+y8+larg_div)} ${x3},${(y1+y8+larg_div)} ${x3},${(y1+y8)}`,
+      "Divisor-C": `${x1},${y10} ${x1},${(y10 + larg_div)} ${x3},${(y10 + larg_div)} ${x3},${y10}`,
+      "Vidro": `${x1},${y1} ${x1},${y3} ${x3},${y3} ${x3},${y1}`,
+      "Vidro1_2": `${x1},${y1} ${x1},${(y1+y8)} ${x3},${(y1+y8)} ${x3},${y1}`,
+      "Vidro2_2": `${x1},${(y1+y8+larg_div)} ${x1},${y3} ${x3},${y3} ${x3},${(y1+y8+larg_div)}`,
+      "Vidro1_3": `${x1},${y1} ${x1},${(y1+y9)} ${x3},${(y1+y9)} ${x3},${y1}`,
+      "Vidro2_3": `${x1},${(y1+y9+larg_div)} ${x1},${y10} ${x3},${y10} ${x3},${(y1+y9+larg_div)}`,
+      "Vidro3_3": `${x1},${(y10 + larg_div)} ${x1},${y3} ${x3},${y3} ${x3},${(y10 + larg_div)}`,
+      "PerfilPux-Esquerda-Cava": `${(xp-larg_perf)},${yp} ${(xp-larg_perf)},${y2} ${xp},${y2} ${xp},${yp}`,
+      "PerfilPux-Base-Cava": `${xp},${y2} ${xp},${(y2+larg_perf)} ${x2},${(y2+larg_perf)} ${x2},${y2}`,
+      "PerfilPux-Direita-Cava": `${x2},${yp} ${x2},${y2} ${(x2+larg_perf)},${y2} ${(x2+larg_perf)},${yp}`,
+      "PerfilPux-Topo-Cava": `${xp},${(yp-larg_perf)} ${xp},${yp} ${x2},${yp} ${x2},${(yp-larg_perf)}`,
+      "PerfilPux-Esquerda-detalhe": `${(xp-larg_perf-larg_pux)},${yp} ${(xp-larg_perf-larg_pux)},${y2} ${(xp-larg_perf)},${y2} ${(xp-larg_perf)},${yp}`,
+      "PerfilPux-Base-detalhe": `${xp},${(y2+larg_perf)} ${xp},${y13} ${x2},${y13} ${x2},${(y2+larg_perf)}`,
+      "PerfilPux-Direita-detalhe": `${(x2+larg_perf)},${yp} ${(x2+larg_perf)},${y2} ${(x2+larg_perf+larg_pux)},${y2} ${(x2+larg_perf+larg_pux)},${yp}`,
+      "PerfilPux-Topo-detalhe": `${xp},${y14} ${xp},${(yp-larg_perf)} ${x2},${(yp-larg_perf)} ${x2},${y14}`,
+      "Puxador-Esquerda-int": `${xp},${yp} ${xp},${y2} ${xp+larg_tr},${y2} ${xp+larg_tr},${yp}`,
+      "Puxador-Esquerda-trecho-1": `${xp},${yp} ${xp},${(yp+tr1)} ${xp+larg_tr},${(yp+tr1)} ${xp+larg_tr},${yp}`,
+      "Puxador-Esquerda-trecho-2": `${xp},${yp+(tr2*5)} ${xp},${yp+(tr2*7)} ${xp+larg_tr},${yp+(tr2*7)} ${xp+larg_tr},${yp+(tr2*5)}`,
+      "Puxador-Esquerda-trecho-3": `${xp},${yp+(tr1*5)} ${xp},${yp+(tr1*6)} ${xp+larg_tr},${yp+(tr1*6)} ${xp+larg_tr},${yp+(tr1*5)}`,
+      "Puxador-Base-int": `${xp},${(y2-larg_tr)} ${xp},${y2} ${x2},${y2} ${x2},${(y2-larg_tr)}`,
+      "Puxador-Base-trecho-1": `${xp},${(y2-larg_tr)} ${xp},${y2} ${xp+tr1},${y2} ${xp+tr1},${(y2-larg_tr)}`,
+      "Puxador-Base-trecho-2": `${xp+tr1+tr3},${(y2-larg_tr)} ${xp+tr1+tr3},${y2} ${xp+(tr1*2)+(tr3*2)},${y2} ${xp+(tr1*2)+(tr3*2)},${(y2-larg_tr)}`,
+      "Puxador-Base-trecho-3": `${x2-tr1},${(y2-larg_tr)} ${x2-tr1},${y2} ${x2},${y2} ${x2},${(y2-larg_tr)}`,
+      "Puxador-Direita-int": `${x2-larg_tr},${yp} ${x2-larg_tr},${y2} ${x2},${y2} ${x2},${yp}`,
+      "Puxador-Direita-trecho-1": `${x2-larg_tr},${yp} ${x2-larg_tr},${(yp+tr1)} ${x2},${(yp+tr1)} ${x2},${yp}`,
+      "Puxador-Direita-trecho-2": `${x2-larg_tr},${yp+(tr2*5)} ${x2-larg_tr},${yp+(tr2*7)} ${x2},${yp+(tr2*7)} ${x2},${yp+(tr2*5)}`,
+      "Puxador-Direita-trecho-3": `${x2-larg_tr},${yp+(tr1*5)} ${x2-larg_tr},${yp+(tr1*6)} ${x2},${yp+(tr1*6)} ${x2},${yp+(tr1*5)}`,
+      "Puxador-Topo-int": `${xp},${yp} ${xp},${yp+larg_tr} ${x2},${yp+larg_tr} ${x2},${yp}`,
+      "Puxador-Topo-trecho-1": `${xp},${yp} ${xp},${yp+larg_tr} ${xp+tr1},${yp+larg_tr} ${xp+tr1},${yp}`,
+      "Puxador-Topo-trecho-2": `${xp+tr1+tr3},${yp} ${xp+tr1+tr3},${yp+larg_tr} ${xp+(tr1*2)+(tr3*2)},${yp+larg_tr} ${xp+(tr1*2)+(tr3*2)},${yp}`,
+      "Puxador-Topo-trecho-3": `${x2-tr1},${yp} ${x2-tr1},${yp+larg_tr} ${x2},${yp+larg_tr} ${x2},${yp}`,
+      "medida-largura": `${(xp-larg_perf-larg_pux)},${(y13+32.63)} ${(xp-larg_perf-larg_pux)},${(y13+47.43)} ${(xp-larg_perf-larg_pux+1.7)},${(y13+47.43)} ${(xp-larg_perf-larg_pux+1.7)},${y13+41.33}
+      ${((x2+larg_perf+larg_pux)-1.7)},${y13+41.33} ${((x2+larg_perf+larg_pux)-1.7)},${(y13+47.43)} ${(x2+larg_perf+larg_pux)},${y13+47.43} ${(x2+larg_perf+larg_pux)},${y13+32.63} ${((x2+larg_perf+larg_pux)-1.7)},${y13+32.63} ${((x2+larg_perf+larg_pux)-1.7)},${y13+38.73} ${(xp-larg_perf-larg_pux+1.7)},${y13+38.73} ${(xp-larg_perf-larg_pux+1.7)},${y13+32.63}`,
+      "medida-altura": `${(x2+larg_perf+larg_pux+32.63)},${y14} ${(x2+larg_perf+larg_pux+32.63)},${(y14+1.7)} ${(x2+larg_perf+larg_pux+38.73)},${(y14+1.7)} ${(x2+larg_perf+larg_pux+38.73)},${(y13-1.7)}
+      ${(x2+larg_perf+larg_pux+32.63)},${y13-1.7} ${(x2+larg_perf+larg_pux+32.63)},${(y13)} ${(x2+larg_perf+larg_pux+47.43)},${y13} ${(x2+larg_perf+larg_pux+47.43)},${y13-1.7} ${(x2+larg_perf+larg_pux+41.33)},${y13-1.7} ${(x2+larg_perf+larg_pux+41.33)},${(y14+1.7)} ${(x2+larg_perf+larg_pux+47.43)},${(y14+1.7)} ${(x2+larg_perf+larg_pux+47.43)},${y14}`
+    };
+
+    // Pontos transformados
+    var pontosTransformados = {
+      "perfil_esquerda": `${xd},${yd} ${xd},${y5} ${x4},${y6} ${x4},${y4}`,
+      "perfil_inferior": `${x4},${y6} ${xd},${y5} ${x5},${y5} ${x6},${y6}`,
+      "perfil_direita": `${x6},${y4} ${x6},${y6} ${x5},${y5} ${x5},${yd}`,
+      "perfil_superior": `${xd},${yd} ${x4},${y4} ${x6},${y4} ${x5},${yd}`,
+      "Divisor-A": `${(x4+y9)},${y4} ${(x4+y9)},${y6} ${(x4+y9+larg_div)},${y6} ${(x4+y9+larg_div)},${y4}`,
+      "Divisor-B": `${(x4 + y8)},${y4} ${(x4 + y8)},${y6} ${(x4 + y8 + larg_div)},${y6} ${(x4 + y8 + larg_div)},${y4}`,
+      "Divisor-C": `${(x6 - y9  - larg_div)},${y4} ${(x6 - y9 - larg_div)},${y6} ${x6 - y9},${y6} ${x6 - y9},${y4}`,
+      "Vidro": `${x4},${y4} ${x4},${y6} ${x6},${y6} ${x6},${y4}`,
+      "Vidro1_2": `${x4},${y4} ${x4},${y6} ${(x4 + y8)},${y6} ${(x4 + y8)},${y4}`,
+      "Vidro2_2": `${(x4 + y8 + larg_div)},${y4} ${(x4 + y8 + larg_div)},${y6} ${x6},${y6} ${x6},${y4}`,
+      "Vidro1_3": `${x4},${y4} ${x4},${y6} ${(x4+y9)},${y6} ${(x4+y9)},${y4}`,
+      "Vidro2_3": `${(x4+y9+larg_div)},${y4} ${(x4+y9+larg_div)},${y6} ${(x6-y9-larg_div)},${y6} ${(x6-y9-larg_div)},${y4}`,
+      "Vidro3_3": `${x6 - y9},${y4} ${x6 - y9},${y6} ${x6},${y6} ${x6},${y4}`,
+      "PerfilPux-Esquerda-Cava": `${(xd-larg_perf)},${yd} ${(xd-larg_perf)},${y5} ${xd},${y5} ${xd},${yd}`,
+      "PerfilPux-Base-Cava": `${xd},${y5} ${xd},${(y5+larg_perf)} ${x5},${(y5+larg_perf)} ${x5},${y5}`,
+      "PerfilPux-Direita-Cava": `${x5},${yd} ${x5},${y5} ${(x5+larg_perf)},${y5} ${(x5+larg_perf)},${yd}`,
+      "PerfilPux-Topo-Cava": `${xd},${(yd-larg_perf)} ${xd},${yd} ${x5},${yd} ${x5},${(yd-larg_perf)}`,
+      "PerfilPux-Esquerda-detalhe": `${(xd-larg_perf-larg_pux)},${yd} ${(xd-larg_perf-larg_pux)},${y5} ${(xd-larg_perf)},${y5} ${(xd-larg_perf)},${yd}`,
+      "PerfilPux-Base-detalhe": `${xd},${(y5+larg_perf)} ${xd},${y16} ${x5},${y16} ${x5},${(y5+larg_perf)}`,
+      "PerfilPux-Direita-detalhe": `${(x5+larg_perf)},${yd} ${(x5+larg_perf)},${y5} ${(x5+larg_perf+larg_pux)},${y5} ${(x5+larg_perf+larg_pux)},${yd}`,
+      "PerfilPux-Topo-detalhe": `${xd},${y15} ${xd},${(yd-larg_perf)} ${x5},${(yd-larg_perf)} ${x5},${y15}`,
+      "Puxador-Esquerda-int": `${xd},${yd} ${xd},${y5} ${xd+larg_tr},${y5} ${xd+larg_tr},${yd}`,
+      "Puxador-Esquerda-trecho-1": `${xd},${yd} ${xd},${(yd+tr1)} ${xd+larg_tr},${(yd+tr1)} ${xd+larg_tr},${yd}`,
+      "Puxador-Esquerda-trecho-2": `${xd},${yd+tr1+tr3} ${xd},${yd+(tr1*2)+(tr3*2)} ${xd+larg_tr},${yd+(tr1*2)+(tr3*2)} ${xd+larg_tr},${yd+tr1+tr3}`,
+      "Puxador-Esquerda-trecho-3": `${xd},${y5-tr1} ${xd},${y5} ${xd+larg_tr},${y5} ${xd+larg_tr},${y5-tr1}`,
+      "Puxador-Base-int": `${xd},${(y5-larg_tr)} ${xd},${y5} ${x5},${y5} ${x5},${(y5-larg_tr)}`,
+      "Puxador-Base-trecho-1": `${xd},${(y5-larg_tr)} ${xd},${y5} ${xd+tr1},${y5} ${xd+tr1},${(y5-larg_tr)}`,
+      "Puxador-Base-trecho-2": `${xd+(tr1*2)+tr2},${(y5-larg_tr)} ${xd+(tr1*2)+tr2},${y5} ${x5-(tr1*2)-tr2},${y5} ${x5-(tr1*2)-tr2},${(y5-larg_tr)}`,
+      "Puxador-Base-trecho-3": `${x5-tr1},${(y5-larg_tr)} ${x5-tr1},${y5} ${x5},${y5} ${x5},${(y5-larg_tr)}`,
+      "Puxador-Direita-int": `${x5-larg_tr},${yd} ${x5-larg_tr},${y5} ${x5},${y5} ${x5},${yd}`,
+      "Puxador-Direita-trecho-1": `${x5-larg_tr},${yd} ${x5-larg_tr},${(yd+tr1)} ${x5},${(yd+tr1)} ${x5},${yd}`,
+      "Puxador-Direita-trecho-2": `${x5-larg_tr},${yd+tr1+tr3} ${x5-larg_tr},${yd+(tr1*2)+(tr3*2)} ${x5},${yd+(tr1*2)+(tr3*2)} ${x5},${yd+tr1+tr3}`,
+      "Puxador-Direita-trecho-3": `${x5-larg_tr},${y5-tr1} ${x5-larg_tr},${y5} ${x5},${y5} ${x5},${y5-tr1}`,
+      "Puxador-Topo-int": `${xd},${yd} ${xd},${(yd+larg_tr)} ${x5},${(yd+larg_tr)} ${x5},${yd}`,
+      "Puxador-Topo-trecho-1": `${xd},${yd} ${xd},${(yd+larg_tr)} ${xd+tr1},${(yd+larg_tr)} ${xd+tr1},${yd}`,
+      "Puxador-Topo-trecho-2": `${xd+(tr1*2)+tr2},${yd} ${xd+(tr1*2)+tr2},${(yd+larg_tr)} ${x5-(tr1*2)-tr2},${(yd+larg_tr)} ${x5-(tr1*2)-tr2},${yd}`,
+      "Puxador-Topo-trecho-3": `${x5-tr1},${yd} ${x5-tr1},${(yd+larg_tr)} ${x5},${(yd+larg_tr)} ${x5},${yd}`,
+      "medida-largura": `${(xd-larg_perf-larg_pux)},${(y16+32.63)} ${(xd-larg_perf-larg_pux)},${(y16+47.43)} ${(xd-larg_perf-larg_pux+1.7)},${(y16+47.43)} ${(xd-larg_perf-larg_pux+1.7)},${y16+41.33}
+      ${((x5+larg_perf+larg_pux)-1.7)},${(y16+41.33)} ${((x5+larg_perf+larg_pux)-1.7)},${(y16+47.43)} ${(x5+larg_perf+larg_pux)},${y16+47.43} ${(x5+larg_perf+larg_pux)},${y16+32.63} ${((x5+larg_perf+larg_pux)-1.7)},${y16+32.63} ${((x5+larg_perf+larg_pux)-1.7)},${y16+38.73} ${(xd-larg_perf-larg_pux+1.7)},${y16+38.73} ${(xd-larg_perf-larg_pux+1.7)},${y16+32.63}`,
+      "medida-altura": `${((x5+larg_perf)+larg_perf+larg_pux+32.63)},${y15} ${((x5+larg_perf)+larg_perf+larg_pux+32.63)},${(y15+1.7)} ${((x5+larg_perf)+larg_perf+larg_pux+38.73)},${(y15+1.7)} ${((x5+larg_perf)+larg_perf+larg_pux+38.73)},${(y16-1.7)}
+      ${((x5+larg_perf)+larg_perf+larg_pux+32.63)},${y16-1.7} ${((x5+larg_perf)+larg_perf+larg_pux+32.63)},${(y16)} ${((x5+larg_perf)+larg_perf+larg_pux+47.43)},${y16} ${((x5+larg_perf)+larg_perf+larg_pux+47.43)},${y16-1.7} ${((x5+larg_perf)+larg_perf+larg_pux+41.33)},${y16-1.7} ${((x5+larg_perf)+larg_perf+larg_pux+41.33)},${(y15+1.7)} ${((x5+larg_perf)+larg_perf+larg_pux+47.43)},${(y15+1.7)} ${((x5+larg_perf)+larg_perf+larg_pux+47.43)},${y15}`
+    };
+
+   // Define as posições originais e transformadas dos textos
+    var posicoesOriginaisTexto = {
+      "Puxador-Esquerda-Tam": `matrix(4.489659e-11 -1 1 4.489659e-11 ${xp-11.1} ${yp+143})`,
+      "Puxador-Base-Tam": `matrix(1 0 0 1 ${xp+50.9} ${yp+258})`,
+      "Puxador-Direita-Tam": `matrix(-1.346898e-10 1 -1 -1.346898e-10 ${xp+160.5} ${yp+93})`,
+      "Puxador-Topo-Tam": `matrix(1 0 0 1 ${xp+48.9} ${yp-11})`,
+      "texto-largura": `matrix(1 0 0 1 ${xp+56.9} ${yp+299})`,
+      "texto-altura": `matrix(-1.346898e-10 1 -1 -1.346898e-10 ${xp+201.9} ${yp+101})`
+    };
+
+    var posicoesTransformadasTexto = {
+      "Puxador-Esquerda-Tam": `matrix(4.489659e-11 -1 1 4.489659e-11 ${xd-11.1} ${yd+99.45})`,
+      "Puxador-Base-Tam": `matrix(1 0 0 1 ${xd+94} ${yd+170.45})`,
+      "Puxador-Direita-Tam": `matrix(-1.346898e-10 1 -1 -1.346898e-10 ${xd+248} ${yd+49.45})`,
+      "Puxador-Topo-Tam": `matrix(1 0 0 1 ${xd+92} ${yd-10.55})`,
+      "texto-largura": `matrix(1 0 0 1 ${xd+100} ${yd+211.45})`,
+      "texto-altura": `matrix(-1.346898e-10 1 -1 -1.346898e-10 ${xd+293} ${yd+57.45})`
+    };
+
+    var posicoesAtuaisTexto = posicoesOriginaisTexto; // Inicia com as posições originais
+
+    var pontosAtuais = pontosOriginais;
+
+
+
+    function alterarPontos() {
+    	var largura = parseFloat($('#id_largura').val());
+    	var altura = parseFloat($('#id_altura').val());
+
+      // Determine se a largura é maior que a altura
+    	var maiorLargura = largura > altura;
+      var pontos = maiorLargura ? pontosTransformados : pontosOriginais;
+
+      for (var id in pontos) {
+        anime({
+          targets: '#' + id,
+          points: pontos[id],
+          easing: 'easeInOutCubic',
+          duration: 1500
+        });
+      }
+
+      // Mostra a barra de medidas caso tenha valores nos campos
+      var medidaDesenho = document.getElementById('MedidaDesenho');
+      if (!isNaN(largura) && !isNaN(altura)) {
+          medidaDesenho.classList.remove('st2');
+          medidaDesenho.classList.add('st6');
+      } else {
+          medidaDesenho.classList.remove('st6');
+          medidaDesenho.classList.add('st2');
+      }
+    }
+
+    function alterarPosicoesTexto() {
+      var largura = parseFloat($('#id_largura').val());
+      var altura = parseFloat($('#id_altura').val());
+      var maiorLargura = largura > altura;
+
+      // Atualiza os valores dos textos de largura e altura
+      document.getElementById('texto-largura').textContent = largura + "mm";
+      document.getElementById('texto-altura').textContent = altura + "mm";
+
+      // Use as posições originais ou transformadas com base na largura e altura
+      var posicoesTexto = maiorLargura ? posicoesTransformadasTexto : posicoesOriginaisTexto;
+
+      // Animações para os textos
+      for (var idTexto in posicoesTexto) {
+        anime({
+          targets: '#' + idTexto,
+          transform: [
+            { value: posicoesTexto[idTexto] }
+          ],
+          easing: 'easeInOutCubic',
+          duration: 1500
+        });
+      }
+    }
+    // Adicione um manipulador de evento de clique a cada polygon dentro de Puxador-Topo-trecho
+    function alterarCorPuxadores(idGrupo) {
+      var grupo = document.getElementById(idGrupo);
+
+      // Encontre o polígono clicado dentro do grupo
+      var target = event.target;
+      if (target.tagName === 'polygon') {
+        var isRed = target.getAttribute('fill') === '#ff0000';
+
+        // Remova a cor vermelha de todos os polígonos dentro do grupo
+        var poligonos = grupo.getElementsByTagName('polygon');
+        for (var i = 0; i < poligonos.length; i++) {
+          poligonos[i].classList.add('st2'); // Adiciona a classe st2 para ocultá-los
+        }
+
+        // Se o polígono clicado já estiver vermelho, volte todos os outros polígonos para preto
+        if (isRed) {
+          // Restaure a cor preta de todos os polígonos dentro do grupo
+          for (var i = 0; i < poligonos.length; i++) {
+            poligonos[i].classList.remove('st2');
+            poligonos[i].setAttribute('fill', '#000000'); // volta a cor preta
+          }
+        } else {
+          // Altere a cor do polígono clicado para vermelho
+          target.setAttribute('fill', '#ff0000');
+          target.classList.remove('st2');
+        }
+      }
+    }
+$(document).ready(function() {
+  $('#id_largura, #id_altura').on('blur', function() {
+    alterarPontos();
+    alterarPosicoesTexto();
+  });
+});
+</script>
+
+<script>
+$(document).ready(function() {
+  // Adiciona um ouvinte de evento para quando houver mudança no campo id_puxador
+  $('#id_puxador').on('change', function() {
+    var idPuxador = $(this).val();
+    if (idPuxador === '') {
+      $('.Puxador-Esquerda, .Puxador-Base, .Puxador-Direita, .Puxador-Topo').removeClass('st6');
+    }
+  });
+});
+</script>
+
+<script>
+function alterarVidro() {
+    var campovidro = $("#id_vidro").val();
+    var desenhovidro = $("#Vidro");
+
+    if (campovidro !== "") {
+        desenhovidro.removeClass("st2");
+    } else {
+        desenhovidro.addClass("st2");
+    }
+
+    var qtdDivisor = parseInt($("#qtd-divisor").val());
+
+    // Verificar para Vidro1_2
+    var idVidro1 = $("#id_vidro1").val();
+    var vidro1_2 = $("#Vidro1_2");
+
+    if (qtdDivisor === 1 && idVidro1 !== "") {
+        vidro1_2.removeClass("st2");
+    } else {
+        vidro1_2.addClass("st2");
+    }
+
+    // Verificar para Vidro2_2
+    var idVidro2 = $("#id_vidro2").val();
+    var vidro2_2 = $("#Vidro2_2");
+
+    if (qtdDivisor === 1 && idVidro2 !== "") {
+        vidro2_2.removeClass("st2");
+    } else {
+        vidro2_2.addClass("st2");
+    }
+
+    // Verificar para Vidro1_3
+    var idVidro1 = $("#id_vidro1").val();
+    var vidro1_3 = $("#Vidro1_3");
+
+    if (qtdDivisor === 2 && idVidro1 !== "") {
+        vidro1_3.removeClass("st2");
+    } else {
+        vidro1_3.addClass("st2");
+    }
+
+    // Verificar para Vidro2_3
+    var idVidro2 = $("#id_vidro2").val();
+    var vidro2_3 = $("#Vidro2_3");
+
+    if (qtdDivisor === 2 && idVidro2 !== "") {
+        vidro2_3.removeClass("st2");
+    } else {
+        vidro2_3.addClass("st2");
+    }
+
+    // Verificar para Vidro3_3
+    var idVidro3 = $("#id_vidro3").val();
+    var vidro3_3 = $("#Vidro3_3");
+
+    if (qtdDivisor === 2 && idVidro3 !== "") {
+        vidro3_3.removeClass("st2");
+    } else {
+        vidro3_3.addClass("st2");
+    }
+}
+
+$(document).ready(function() {
+    // Manipulador de evento para mudanças em #id_vidro
+    $("#id_quantidade, #id_largura, #id_altura, #id_acabamento, #id_abertura, #id_perfil, #id_perfilpuxador, #id_puxador").change(function() {
+        alterarVidro();
+    });
+
+    // Manipulador de evento para mudanças em #id_vidro
+    $("#id_vidro, #id_vidro1, #id_vidro2, #id_vidro3").change(function() {
+        alterarVidro();
+    });
+
+    // Manipulador de evento para mudanças em #id_divisor
+    $("#id_divisor, #qtd-divisor").change(function() {
+        $("#id_vidro, #id_vidro1, #id_vidro2, #id_vidro3").val("");
+        alterarVidro();
+    });
+
+});
+</script>
+
+<script>
+function calcularPrecoPerfil() {
+    var largura = parseFloat($('#id_largura').val()) / 1000;
+    var altura = parseFloat($('#id_altura').val()) / 1000;
+    var tamPuxador = parseFloat($('#tam-puxador').val()) / 1000;
+    var perfilPreco = parseFloat($('#id_perfil option:selected').data('preco'));
+    var perfilPuxadorPreco = parseFloat($('#id_perfilpuxador option:selected').data('preco'));
+    var posicaoPerfilPuxador = $('#posicao-perfilpuxador').val() || '';
+    var puxadorPreco = parseFloat($('#id_puxador option:selected').data('preco'));
+    var divisorPreco = parseFloat($('#id_divisor option:selected').data('preco'));
+    var qtdDivisor = $('#qtd-divisor').val() || '';
+
+
+    var precoPerfilFinal  = 0;
+    var precoPerfilPuxadorFinal  = 0;
+    var precoPuxadorFinal  = 0;
+    var precoDivisorFinal = 0;
+
+    var perfilusado = 0;
+    var perfilpuxadorusado = 0;
+    var puxadorusado = 0;
+    var divisorusado = 0;
+
+    if ($('#id_perfil').val() !== '') {
+        if (posicaoPerfilPuxador === '') {
+            precoPerfilFinal = ((largura * 2) + (altura * 2)) * perfilPreco;
+            perfilusado = ((largura * 2) + (altura * 2));
+        } else if (posicaoPerfilPuxador === 'Base' || posicaoPerfilPuxador === 'Topo') {
+            precoPerfilFinal  = (largura * perfilPreco) + ((altura * 2) * perfilPreco);
+            precoPerfilPuxadorFinal  = largura * perfilPuxadorPreco;
+            perfilusado  = largura + (altura * 2);
+            perfilpuxadorusado  = largura;
+        } else if (posicaoPerfilPuxador === 'Direita' || posicaoPerfilPuxador === 'Esquerda') {
+            precoPerfilFinal  = ((largura * 2) * perfilPreco) + (altura * perfilPreco);
+            precoPerfilPuxadorFinal  = altura * perfilPuxadorPreco;
+            perfilusado  = (largura * 2) + altura;
+            perfilpuxadorusado  = altura;
+        } else if (posicaoPerfilPuxador === 'Esq/Dir') {
+            precoPerfilFinal  = (largura * 2) * perfilPreco;
+            precoPerfilPuxadorFinal  = (altura * 2) * perfilPuxadorPreco;
+            perfilusado  = largura * 2;
+            perfilpuxadorusado  = altura * 2
+        }
+    }
+
+    if ($('#qtd-puxador').val() === '1') {
+        precoPuxadorFinal = tamPuxador * puxadorPreco;
+        puxadorusado = tamPuxador;
+    } else if ($('#qtd-puxador').val() === '2') {
+        precoPuxadorFinal  = (tamPuxador * 2) * puxadorPreco;
+        puxadorusado  = tamPuxador * 2;
+    }
+
+    // lógica para calcular o preço do divisor
+    if (largura > altura && qtdDivisor === '1') {
+        precoDivisorFinal = altura * divisorPreco;
+        divisorusado = altura;
+    } else if (largura > altura && qtdDivisor === '2') {
+        precoDivisorFinal = (altura * 2) * divisorPreco;
+        divisorusado = altura * 2;
+    } else if (altura >= largura && qtdDivisor === '1') {
+        precoDivisorFinal = largura * divisorPreco;
+        divisorusado = largura;
+    } else if (altura >= largura && qtdDivisor === '2') {
+        precoDivisorFinal = (largura * 2) * divisorPreco;
+        divisorusado = largura * 2;
+    }
+
+    // Atualiza a label com id "valorperfil"
+    $('#valorperfil').text(precoPerfilFinal.toFixed(2));
+    $('#valorperfilpuxador').text(precoPerfilPuxadorFinal.toFixed(2));
+    $('#valorpuxador').text(precoPuxadorFinal.toFixed(2));
+    $('#valordivisor').text(precoDivisorFinal.toFixed(2));
+
+    console.log("Preço Perfil: " + precoPerfilFinal);
+    console.log("Preço PerfilPuxador: " + precoPerfilPuxadorFinal);
+    console.log("Preço Puxador: " + precoPuxadorFinal);
+    console.log("Perfil Usado: " + perfilusado );
+    console.log("Perfil Puxador Usado: " + perfilpuxadorusado);
+    console.log("Puxador Usado: " + puxadorusado);
+    console.log("Divisor Usado: " + divisorusado);
+}
+
+// Chama a função quando os campos mudam
+$('#id_largura, #id_altura, #id_perfil, #qtd-perfilpuxador, #id_perfilpuxador, #posicao-perfilpuxador, #id_puxador, #qtd-puxador, #posicao-puxador, #tam-puxador, #id_divisor, #qtd-divisor').on('change', function() {
+    calcularPrecoPerfil();
+});
+</script>
+
+<script>
+var divisor = document.getElementById("Divisor-B"); // seleciona o divisor
+var svg = document.getElementById("svg-container"); // seleciona o contêiner SVG
+
+// variáveis para controlar o estado do movimento
+var isMouseDown = false;
+var startY = 0;
+var minY = yp; // limite mínimo para o eixo y
+var maxY = y2; // limite máximo para o eixo y
+
+// Adiciona manipuladores de eventos de mouse para o divisor
+divisor.addEventListener("mousedown", function(event) {
+    isMouseDown = true;
+    startY = event.clientY; // obtém a posição inicial do mouse no eixo y
+    event.preventDefault(); // previne o comportamento padrão do clique para evitar seleção de texto indesejada
+});
+
+// Adiciona um manipulador de evento de mouse para detectar o movimento do mouse
+document.addEventListener("mousemove", function(event) {
+    if (isMouseDown) {
+        var deltaY = event.clientY - startY; // calcula o deslocamento no eixo y
+        var newY = parseFloat(divisor.getAttribute("y")) + deltaY; // calcula a nova posição do divisor apenas no eixo y
+        // Aplica limites para garantir que o divisor permaneça entre minY e maxY
+        if (newY >= minY && newY <= maxY) {
+            divisor.setAttribute("y", newY); // atualiza a posição do divisor apenas no eixo y
+        }
+        startY = event.clientY; // atualiza a posição inicial do mouse
+    }
+});
+
+// Adiciona um manipulador de evento de mouse para detectar o clique liberado
+document.addEventListener("mouseup", function() {
+    isMouseDown = false;
+});
+
+// Previne o comportamento padrão do clique direito no SVG para evitar o menu de contexto
+svg.addEventListener("contextmenu", function(event) {
+    event.preventDefault();
+});
+</script>
+
+
+
+
 
 {% endblock %}
 

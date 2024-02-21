@@ -159,3 +159,7 @@ input:checked+.radio-tile i,
 input:checked+.radio-tile label {
   color: white;
 }
+
+#nomeporta {
+    font-size: 0.7vw; /* Define o tamanho da fonte como 3% da largura da viewport */
+}
