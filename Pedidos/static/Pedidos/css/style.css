@@ -160,6 +160,54 @@ input:checked+.radio-tile label {
   color: white;
 }
 
-#nomeporta {
-    font-size: 0.7vw; /* Define o tamanho da fonte como 3% da largura da viewport */
+#nomeporta, #valorporta, #qtditens {
+    font-size: 0.9vw; /* Define o tamanho da fonte como 3% da largura da viewport */
+}
+
+#Divisor-A:hover, #Divisor-B:hover, #Divisor-C:hover {
+    cursor: pointer; /* Mudar o cursor ao passar o mouse sobre o divisor */
+}
+
+.border {
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+#listabotoes, #selecionacliente {
+    margin-bottom: 2px; /* Espaço entre os elementos */
+    height: 100px; /* Defina a altura desejada */
+}
+
+#escolhas, #meu {
+    margin-bottom: 2px; /* Espaço entre os elementos */
+}
+
+.container-flex {
+    display: flex;
+    align-items: stretch; /* Estica as colunas para a altura do container */
+}
+
+#meu, #escolhas {
+    min-height: 440px; /* Altura mínima */
+    max-height: 610px; /* Altura máxima */
+}
+
+#tabelaOrcamento, #tabelaInsumos {
+    min-height: 4px; /* Altura mínima */
+}
+
+.coluna1 {
+  flex-grow: 1; /* A primeira coluna vai crescer para preencher o espaço disponível */
+}
+
+.coluna2 {
+  flex-grow: 1; /* A segunda coluna vai crescer para preencher o espaço disponível */
+}
+
+h2 {
+  margin-bottom: 0; /* Remover margem inferior do h2 */
+}
+
+.table-container {
+  max-height: 200px; /* Defina o tamanho máximo desejado */
+  overflow-y: auto; /* Adiciona barra de rolagem vertical quando necessário */
 }

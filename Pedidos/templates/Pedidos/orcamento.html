@@ -14,463 +14,414 @@ Adrofecha - Orçamento
 {% endblock %}
 
 {% block content %}
-<div class="border" style="margin-top: 45px">
+<div class="" style="margin-top: 50px">
     <div class="container">
-      <div class="radio-tile-group" id=listabotoes>
-
+      <div class="border rounded justify-content-start col-6 ps-1 radio-tile-group me-2" id="listabotoes">
         <div class="input-container">
           <input type="radio" name="btnradio" id="btnPortaGiro" value="PortaGiro" checked>
           <div class="radio-tile">
-<!--              <i class="bi bi-door-open"></i>-->
+            <!-- <i class="bi bi-door-open"></i> -->
             <label for="btnPortaGiro">Giro</label>
           </div>
         </div>
-
         <div class="input-container">
           <input type="radio" name="btnradio" id="btnPortaCorrer" value="PortaCorrer">
           <div class="radio-tile">
-<!--            <ion-icon name="bicycle"></ion-icon>-->
+            <!-- <ion-icon name="bicycle"></ion-icon> -->
             <label for="btnPortaCorrer">Correr</label>
           </div>
         </div>
-
         <div class="input-container">
           <input type="radio" name="btnradio" id="btnVidro" value="Vidros">
           <div class="radio-tile">
-<!--            <ion-icon name="airplane"></ion-icon>-->
+            <!-- <ion-icon name="airplane"></ion-icon> -->
             <label for="btnVidro">Vidro</label>
           </div>
         </div>
-
+      </div>
+      <div class="border rounded justify-content-start col-6 ps-1" id="selecionacliente">
+          Cliente
       </div>
     </div>
-    <hr class="mx-2 mghr">
-    <div class="row">
-         <div class="row d-flex justify-content-between">
-            <div class="col-6 border-end">
+    <div class="container container-flex mt-1">
+        <div class="border rounded justify-content-start col-6 ps-1 me-2 coluna1" id="escolhas">
 <!--====================  INPUTS =======================-->
-                <form>
-                    <div class="row mb-1">
-                        <div class="row mx-1">
-                            <div class="mt-1 col d-flex align-items-center justify-content-start">
-                                <label class="me-1" for="{{ form.quantidade.id_for_label }}">
-                                    {{ form.quantidade.label_tag }}
-                                    {% if form.quantidade.field.required %}{% endif %}
-                                </label>
-                                {{ form.quantidade|attr:"class:form-control custom-input-size-quantidade" }}
-                            </div>
-                            <div class="mt-1 col d-flex align-items-center justify-content-center">
-                                <label class="me-1" for="{{ form.largura.id_for_label }}">
-                                    {{ form.largura.label_tag }}
-                                    {% if form.largura.field.required %}{% endif %}
-                                </label>
-                                {{ form.largura|attr:"class:form-control custom-input-size-medida" }}
-                            </div>
-                            <div class="mt-1 col d-flex align-items-center justify-content-end">
-                                <label class="me-1" for="{{ form.altura.id_for_label }}">
-                                    {{ form.altura.label_tag }}
-                                    {% if form.altura.field.required %}{% endif %}
-                                </label>
-                                {{ form.altura|attr:"class:form-control custom-input-size-medida" }}
-                            </div>
+            <form>
+                <div class="row mb-1 mt-1">
+                    <div class="row ms-1">
+                        <div class="mt-1 col d-flex align-items-center justify-content-start">
+                            <label class="me-1" for="{{ form.quantidade.id_for_label }}">
+                                {{ form.quantidade.label_tag }}
+                                {% if form.quantidade.field.required %}{% endif %}
+                            </label>
+                            {{ form.quantidade|attr:"class:form-control custom-input-size-quantidade" }}
                         </div>
-                        <div class="row mx-3 pt-2">
-                            <div class="row" id="divselecao">
-                                <div class="col-6 d-flex justify-content-center align-items-center" id="divacabamento">
-                                    <label class="me-1" for="{{ form.acabamento.id_for_label }}">
-                                        {{ form.acabamento.label_tag }}
-                                        {% if form.acabamento.field.required %}{% endif %}
-                                    </label>
-                                    {{ form.acabamento|attr:"class:form-control custom-input-size-select" }}
-                                </div>
-                                <div class="col-6 d-flex justify-content-center align-items-center" id="divabertura">
-                                    <label class="me-1" for="{{ form.abertura.id_for_label }}">
-                                        {{ form.abertura.label_tag }}
-                                        {% if form.abertura.field.required %}{% endif %}
-                                    </label>
-                                    {{ form.abertura|attr:"class:form-control custom-input-size-select" }}
-                                </div>
+                        <div class="mt-1 col d-flex align-items-center justify-content-center">
+                            <label class="me-1" for="{{ form.largura.id_for_label }}">
+                                {{ form.largura.label_tag }}
+                                {% if form.largura.field.required %}{% endif %}
+                            </label>
+                            {{ form.largura|attr:"class:form-control custom-input-size-medida" }}
+                        </div>
+                        <div class="mt-1 col d-flex align-items-center justify-content-end">
+                            <label class="me-1" for="{{ form.altura.id_for_label }}">
+                                {{ form.altura.label_tag }}
+                                {% if form.altura.field.required %}{% endif %}
+                            </label>
+                            {{ form.altura|attr:"class:form-control custom-input-size-medida" }}
+                        </div>
+                    </div>
+                    <div class="row mx-3 pt-2">
+                        <div class="row" id="divselecao">
+                            <div class="col-6 d-flex justify-content-center align-items-center" id="divacabamento">
+                                <label class="me-1" for="{{ form.acabamento.id_for_label }}">
+                                    {{ form.acabamento.label_tag }}
+                                    {% if form.acabamento.field.required %}{% endif %}
+                                </label>
+                                {{ form.acabamento|attr:"class:form-control custom-input-size-select" }}
+                            </div>
+                            <div class="col-6 d-flex justify-content-center align-items-center" id="divabertura">
+                                <label class="me-1" for="{{ form.abertura.id_for_label }}">
+                                    {{ form.abertura.label_tag }}
+                                    {% if form.abertura.field.required %}{% endif %}
+                                </label>
+                                {{ form.abertura|attr:"class:form-control custom-input-size-select" }}
                             </div>
                         </div>
                     </div>
-                </form>
+                </div>
+            </form>
 <!--====================  END INPUTS =======================-->
-                <hr class="mx-2">
+            <hr class="mx-2">
 <!--                    Menu para giro e correr-->
-                <div id="divportas" class="mt-1">
+            <div id="divportas" class="mt-1">
 <!--                    Linha Perfil-->
-                    <div class="mx-3">
-                        <div class="row justify-content-start" id="divperfil">
-                            <label for="{{ form.perfil.id_for_label }}">
-                                {{ form.perfil.label_tag }}
-                                {% if form.perfil.field.required %}{% endif %}
-                            </label>
-                            <div>
-                                {{ form.perfil|attr:"class:form-control custom-input-size-selectitems selectPerfil" }}
-                            </div>
-                            <label class="mx-3" id="valorperfil"></label>
+                <div class="ms-1">
+                    <div class="row justify-content-start" id="divperfil">
+                        <label for="{{ form.perfil.id_for_label }}">
+                            {{ form.perfil.label_tag }}
+                            {% if form.perfil.field.required %}{% endif %}
+                        </label>
+                        <div>
+                            {{ form.perfil|attr:"class:form-control custom-input-size-selectitems selectPerfil" }}
                         </div>
+                        <label class="mx-3" id="valorperfil"></label>
                     </div>
+                </div>
 <!--                    Linha Perfil Puxador-->
-                    <div class="mx-3">
-                        <div id="divperfilpuxador">
-                            <label for="{{ form.perfilpuxador.id_for_label }}">
-                                {{ form.perfilpuxador.label_tag }}
-                                {% if form.perfilpuxador.field.required %}{% endif %}
-                            </label>
-                            <div class="d-flex">
-                                <div class="me-1">
-                                    {{ form.perfilpuxador|attr:"class:form-control custom-input-size-selectitems selectPerfilPuxador" }}
-                                </div>
-                                <div class="d-flex" >
-                                    <select class="form-control custom-input-qtd flex-grow-1 me-1" id="qtd-perfilpuxador"></select>
-                                    <select class="form-select custom-input-posicao flex-grow-1" id="posicao-perfilpuxador"></select>
-                                    <label class="mx-3" id="valorperfilpuxador"></label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-<!--                    Linha Puxador Sobreposto-->
-                    <div class="mx-3">
-                        <div id="divpuxador">
-                            <label for="{{ form.puxador.id_for_label }}">
-                                {{ form.puxador.label_tag }}
-                                {% if form.puxador.field.required %}{% endif %}
-                            </label>
-                            <div class="d-flex">
-                                <div class="me-1">
-                                    {{ form.puxador|attr:"class:form-control custom-input-size-selectitems selectPuxador" }}
-                                </div>
-                                <div class="d-flex">
-                                    <select class="form-control custom-input-qtd flex-grow-1 me-1" id="qtd-puxador"></select>
-                                    <select class="form-select custom-input-posicao flex-grow-1 me-1" id="posicao-puxador"></select>
-                                    <input class="form-control custom-input-size-medida flex-grow-1" id="tam-puxador">
-                                    <label class="mx-3" id="valorpuxador"></label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-<!--                    Linha Divisor-->
-                    <div class="mx-3">
-                        <div id="divdivisor">
-                            <label for="{{ form.divisor.id_for_label }}">
-                                {{ form.divisor.label_tag }}
-                                {% if form.divisor.field.required %}{% endif %}
-                            </label>
-                            <div class="d-flex">
-                                <div class="me-1">
-                                    {{ form.divisor|attr:"class:form-control custom-input-size-selectitems selectdivisor" }}
-                                </div>
-                                <div class="d-flex">
-                                    <select class="form-control custom-input-qtd flex-grow-1 me-1" id="qtd-divisor"></select>
-                                    <label class="mx-3" id="valordivisor"></label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-<!--                    Linha Vidro-->
-                    <div class="mx-3">
-  <div id="divvidro" class="">
-    <label for="{{ form.vidro.id_for_label }}">
-      {{ form.vidro.label_tag }}
-      {% if form.vidro.field.required %}{% endif %}
-    </label>
-    <div class="me-1">
-      {{ form.vidro|attr:"class:form-control custom-input-size-selectitems selectVidro" }}
-    </div>
-  </div>
-  <!-- Campos de vidro extras -->
-  <div id="divvidro1" class="st2">
-    <label for="id_vidro1">
-      Vidro 1
-    </label>
-    <div class="me-1">
-      {{ form.vidro|attr:"class:form-control custom-input-size-selectitems selectVidro" |attr:"id:id_vidro1" }}
-    </div>
-  </div>
-  <div id="divvidro2" class="st2">
-    <label for="id_vidro2">
-      Vidro 2
-    </label>
-    <div class="me-1">
-      {{ form.vidro|attr:"class:form-control custom-input-size-selectitems selectVidro" |attr:"id:id_vidro2" }}
-    </div>
-  </div>
-
-  <div id="divvidro3" class="st2">
-    <label for="id_vidro3">
-      Vidro 3
-    </label>
-    <div class="me-1">
-      {{ form.vidro|attr:"class:form-control custom-input-size-selectitems selectVidro" |attr:"id:id_vidro3" }}
-    </div>
-  </div>
-</div>
-                </div>
-<!--                    menu para vidro-->
-                <div id="divvidros" class="hidden">
-                    <div class="mx-3">
-                        <div id="divvidro">
-                            <label for="{{ form.vidro.id_for_label }}">
-                                {{ form.vidro.label_tag }}
-                                {% if form.vidro.field.required %}{% endif %}
-                            </label>
+                <div class="ms-1">
+                    <div id="divperfilpuxador">
+                        <label for="{{ form.perfilpuxador.id_for_label }}">
+                            {{ form.perfilpuxador.label_tag }}
+                            {% if form.perfilpuxador.field.required %}{% endif %}
+                        </label>
+                        <div class="d-flex">
                             <div class="me-1">
-                                {{ form.vidro|attr:"class:form-control custom-input-size-selectitems selectVidro" }}
+                                {{ form.perfilpuxador|attr:"class:form-control custom-input-size-selectitems selectPerfilPuxador" }}
+                            </div>
+                            <div class="d-flex" >
+                                <select class="form-control custom-input-qtd flex-grow-1 me-1" id="qtd-perfilpuxador"></select>
+                                <select class="form-select custom-input-posicao flex-grow-1" id="posicao-perfilpuxador"></select>
+                                <label class="mx-3" id="valorperfilpuxador"></label>
                             </div>
                         </div>
                     </div>
                 </div>
-<!--                botoes finalizar-->
-                <div class="mt-1 text-end">
-                    <a class="btn btn-primary me-2 mt-1" id="btnpedidocancelar" href="#" role="button">Cancelar</a>
-                    <a class="btn btn-primary me-2 mt-1" id="btnpedidofinalizar" href="#" role="button" onclick="diminuirOpacidade()">Adicionar</a>
+<!--                    Linha Puxador Sobreposto-->
+                <div class="ms-1">
+                    <div id="divpuxador">
+                        <label for="{{ form.puxador.id_for_label }}">
+                            {{ form.puxador.label_tag }}
+                            {% if form.puxador.field.required %}{% endif %}
+                        </label>
+                        <div class="d-flex">
+                            <div class="me-1">
+                                {{ form.puxador|attr:"class:form-control custom-input-size-selectitems selectPuxador" }}
+                            </div>
+                            <div class="d-flex">
+                                <select class="form-control custom-input-qtd flex-grow-1 me-1" id="qtd-puxador"></select>
+                                <select class="form-select custom-input-posicao flex-grow-1 me-1" id="posicao-puxador"></select>
+                                <input class="form-control custom-input-size-medida flex-grow-1" id="tam-puxador">
+                                <label class="mx-3" id="valorpuxador"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<!--                    Linha Divisor-->
+                <div class="ms-1">
+                    <div id="divdivisor">
+                        <label for="{{ form.divisor.id_for_label }}">
+                            {{ form.divisor.label_tag }}
+                            {% if form.divisor.field.required %}{% endif %}
+                        </label>
+                        <div class="d-flex">
+                            <div class="me-1">
+                                {{ form.divisor|attr:"class:form-control custom-input-size-selectitems selectdivisor" }}
+                            </div>
+                            <div class="d-flex">
+                                <select class="form-control custom-input-qtd flex-grow-1 me-1" id="qtd-divisor"></select>
+                                <label class="mx-3" id="valordivisor"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<!--                    Linha Vidro-->
+                <div class="ms-1">
+                    <div id="divvidro" class="">
+                        <label for="{{ form.vidro.id_for_label }}">
+                            {{ form.vidro.label_tag }}
+                            {% if form.vidro.field.required %}{% endif %}
+                        </label>
+                        <div class="me-1">
+                            {{ form.vidro|attr:"class:form-control custom-input-size-selectitems selectVidro" }}
+                        </div>
+                    </div>
+                    <!-- Campos de vidro extras -->
+                    <div id="divvidro1" class="st2">
+                        <label for="id_vidro1">
+                            Vidro 1
+                        </label>
+                        <div class="me-1">
+                            {{ form.vidro|attr:"class:form-control custom-input-size-selectitems selectVidro" |attr:"id:id_vidro1" }}
+                        </div>
+                    </div>
+                    <div id="divvidro2" class="st2">
+                        <label for="id_vidro2">
+                            Vidro 2
+                        </label>
+                        <div class="me-1">
+                            {{ form.vidro|attr:"class:form-control custom-input-size-selectitems selectVidro" |attr:"id:id_vidro2" }}
+                        </div>
+                    </div>
+                    <div id="divvidro3" class="st2">
+                        <label for="id_vidro3">
+                            Vidro 3
+                        </label>
+                        <div class="me-1">
+                            {{ form.vidro|attr:"class:form-control custom-input-size-selectitems selectVidro" |attr:"id:id_vidro3" }}
+                        </div>
+                    </div>
                 </div>
             </div>
-                <div class="col-6">
-                    <div class="text-center" id="nomeporta"></div>
-                    <div class="svg-content" id="Desenho">
-                        <svg id="svg" class="img-responsive" width="100%" viewBox="0 50 550 350"
-                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <style type="text/css">
-                            .st0{fill:#D7D8D7;}
-                            .st1{display:none;fill:#F4FDFF;}
-                            .st2{display:none;}
-                            .st3{display:inline;fill:#137009;}
-                            .st4{opacity:0.45;}
-                            .st5{fill:url(#Reflexo_1_);}
-                            .st6{display:inline;}
-                            .st7{font-family:'ArialMT';}
-                            .st8{font-size:13px;}
-                            .st9{fill:#AF0E0E;}
-                            .st10{opacity:0.55;}
-                            .st12{opacity:0.51;}
-                            .st13{fill:#4C2F12;}
-                            </style>
-                            <g id="Porta" transform="translate(200, 40)">
-                                <g id="Desenho">
-                                    <g id="Perfis" class="st2" fill="#D7D8D7">
-                                        <polygon id="perfil_esquerda" class=""
-                                                 points="3.1,57 3.1,293.7 14.1,282.7 14.1,68"/>
-                                        <polygon id="perfil_inferior" class=""
-                                                 points="141.7,282.7 14.1,282.7 3.1,293.7 152.7,293.7"/>
-                                        <polygon id="perfil_direita" class=""
-                                                 points="141.7,68 141.7,282.7 152.7,293.7 152.7,57"/>
-                                        <polygon id="perfil_superior" class=""
-                                                 points="152.7,57 3.1,57 14.1,68 141.7,68"/>
+<!--                    menu para vidro-->
+            <div id="divvidros" class="hidden">
+                <div class="ms-1">
+                    <div id="divvidro">
+                        <label for="{{ form.vidro.id_for_label }}">
+                            {{ form.vidro.label_tag }}
+                            {% if form.vidro.field.required %}{% endif %}
+                        </label>
+                        <div class="me-1">
+                            {{ form.vidro|attr:"class:form-control custom-input-size-selectitems selectVidro" }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+<!--                botoes finalizar-->
+            <div class="mt-1 mb-2 text-end">
+                <a class="btn btn-primary me-2 mt-1" id="btnpedidocancelar" href="#" role="button">Cancelar</a>
+                <a class="btn btn-primary me-2 mt-1" id="btnAdicionar" href="#" role="button">Adicionar</a>
+            </div>
+        </div>
+<!--====================  DESENHO =======================-->
+        <div class="border rounded justify-content-start col-6 ps-1 coluna2" id="meu">
+            <div class="d-flex mt-1 justify-content-center align-items-center">
+                <div class="text-center me-2" id="qtditens"></div>
+                <div class="text-center" id="nomeporta"></div>
+                <div class="text-center ms-2" id="valorporta"></div>
+            </div>
+            <div class="svg-content" id="Desenho">
+                <svg id="svg" class="img-responsive" width="100%" viewBox="0 50 550 350"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <style type="text/css">
+                    .st0{fill:#D7D8D7;}
+                    .st1{display:none;fill:#F4FDFF;}
+                    .st2{display:none;}
+                    .st3{display:inline;fill:#137009;}
+                    .st4{opacity:0.45;}
+                    .st5{fill:url(#Reflexo_1_);}
+                    .st6{display:inline;}
+                    .st7{font-family:'ArialMT';}
+                    .st8{font-size:13px;}
+                    .st9{fill:#AF0E0E;}
+                    .st10{opacity:0.55;}
+                    .st12{opacity:0.51;}
+                    .st13{fill:#4C2F12;}
+                    </style>
+                    <g id="Porta" transform="translate(200, 70)">
+                        <g id="Desenho">
+                            <g id="Perfis" class="st2" fill="#D7D8D7">
+                                <polygon id="perfil_esquerda" class=""
+                                         points="3.1,57 3.1,293.7 14.1,282.7 14.1,68"/>
+                                <polygon id="perfil_inferior" class=""
+                                         points="141.7,282.7 14.1,282.7 3.1,293.7 152.7,293.7"/>
+                                <polygon id="perfil_direita" class=""
+                                         points="141.7,68 141.7,282.7 152.7,293.7 152.7,57"/>
+                                <polygon id="perfil_superior" class=""
+                                         points="152.7,57 3.1,57 14.1,68 141.7,68"/>
+                            </g>
+                            <g id="Divisores" class="">
+                                <polygon id="Divisor-A" class="st2" fill="#137009" points="14.1,136.7 14.1,141 141.7,141 141.7,136.7"/>
+                                <polygon id="Divisor-B" class="st2" fill="#137009" points="14.1,173.2 14.1,177.5 141.7,177.5 141.7,173.2"/>
+                                <polygon id="Divisor-C" class="st2" fill="#137009" points="14.1,209.7 14.1,214 141.7,214 141.7,209.7"/>
+                            </g>
+                            <g id="Vidros">
+                                <polygon id="Vidro" class="st2" fill="#DEF7FF" points="14.1,68 14.1,282.7 141.7,282.7 141.7,68"/>
+                            </g>
+                            <g id="Vidros2">
+                                <polygon id="Vidro1_2" class="st2" fill="#DEF7FF" points="14.1,68 14.1,175.35 141.7,175.35 141.7,68"/>
+                                <polygon id="Vidro2_2" class="st2" fill="#DEF7FF" points="14.1,179.65 14.1,282.7 141.7,282.7 141.7,179.65"/>
+                            </g>
+                            <g id="Vidros3">
+                                <polygon id="Vidro1_3" class="st2" fill="#DEF7FF" points="14.1,68 14.1,136.7 141.7,136.7 141.7,68"/>
+                                <polygon id="Vidro2_3" class="st2" fill="#DEF7FF" points="14.1,141.86 14.1,209.7 141.7,209.7 141.7,141.86"/>
+                                <polygon id="Vidro3_3" class="st2" fill="#DEF7FF" points="14.1,214 14.1,282.7 141.7,282.7 141.7,214"/>
+                            </g>
+                            <g id="Puxadores" class="">
+                                <g id="Puxador-Esquerda" class="st2 pux">
+                                    <polygon id="Puxador-Esquerda-int" fill="#ff0000" points="3.1,57 3.1,293.7 5.85,293.7 5.85,57"/>
+                                    <g id="Puxador-Esquerda-trecho" class="st2 pux"
+                                       onclick="alterarCorPuxadores('Puxador-Esquerda-trecho')">
+                                        <polygon id="Puxador-Esquerda-trecho-1" points="3.1,57 3.1,96.45 5.85,96.45 5.85,57"/>
+                                        <polygon id="Puxador-Esquerda-trecho-2" points="3.1,155.62 3.1,195.08 5.85,195.08 5.85,155.62"/>
+                                        <polygon id="Puxador-Esquerda-trecho-3" points="3.1,254.25 3.1,293.7 5.85,293.7 5.85,254.25"/>
                                     </g>
-                                    <g id="Divisores" class="">
-                                        <polygon id="Divisor-A" class="st2" fill="#137009" points="14.1,136.7 14.1,141 141.7,141 141.7,136.7"/>
-                                        <polygon id="Divisor-B" class="st2" fill="#137009" points="14.1,173.2 14.1,177.5 141.7,177.5 141.7,173.2"/>
-                                        <polygon id="Divisor-C" class="st2" fill="#137009" points="14.1,209.7 14.1,214 141.7,214 141.7,209.7"/>
+                                </g>
+                                <g id="Puxador-Base" class="st2 pux">
+                                    <polygon id="Puxador-Base-int" fill="#ff0000"
+                                             points="3.1,290.95 3.1,293.7 152.7,293.7 152.7,290.95"/>
+                                    <g id="Puxador-Base-trecho" class="st2 pux"
+                                       onclick="alterarCorPuxadores('Puxador-Base-trecho')">
+                                        <polygon id="Puxador-Base-trecho-1"
+                                                 points="3.1,290.95 3.1,293.7 42.55,293.7 42.55,290.95"/>
+                                        <polygon id="Puxador-Base-trecho-2"
+                                                 points="52.96,290.95 52.96,293.7 102.82,293.7 102.82,290.95"/>
+                                        <polygon id="Puxador-Base-trecho-3"
+                                                 points="113.25,290.95 113.25,293.7 152.7,293.7 152.7,290.95"/>
                                     </g>
-                                    <g id="Vidros">
-                                        <polygon id="Vidro" class="st2" fill="#DEF7FF" points="14.1,68 14.1,282.7 141.7,282.7 141.7,68"/>
+                                </g>
+                                <g id="Puxador-Direita" class="st2 pux">
+                                    <polygon id="Puxador-Direita-int" fill="#ff0000"
+                                             points="149.95,57 149.95,293.7 152.7,293.7 152.7,57"/>
+                                    <g id="Puxador-Direita-trecho" class="st2 pux"
+                                       onclick="alterarCorPuxadores('Puxador-Direita-trecho')">
+                                        <polygon id="Puxador-Direita-trecho-1"
+                                                 points="149.95,57 149.95,96.45 152.7,96.45 152.7,57"/>
+                                        <polygon id="Puxador-Direita-trecho-2"
+                                                 points="149.95,155.62 149.95,195.08 152.7,195.08 152.7,155.62"/>
+                                        <polygon id="Puxador-Direita-trecho-3"
+                                                 points="149.95,254.25 149.95,293.7 152.7,293.7 152.7,254.25"/>
                                     </g>
-                                    <g id="Vidros2">
-                                        <polygon id="Vidro1_2" class="st2" fill="#DEF7FF" points="14.1,68 14.1,175.35 141.7,175.35 141.7,68"/>
-                                        <polygon id="Vidro2_2" class="st2" fill="#DEF7FF" points="14.1,179.65 14.1,282.7 141.7,282.7 141.7,179.65"/>
-                                    </g>
-                                    <g id="Vidros3">
-                                        <polygon id="Vidro1_3" class="st2" fill="#DEF7FF" points="14.1,68 14.1,136.7 141.7,136.7 141.7,68"/>
-                                        <polygon id="Vidro2_3" class="st2" fill="#DEF7FF" points="14.1,141.86 14.1,209.7 141.7,209.7 141.7,141.86"/>
-                                        <polygon id="Vidro3_3" class="st2" fill="#DEF7FF" points="14.1,214 14.1,282.7 141.7,282.7 141.7,214"/>
-                                    </g>
-                                    <g id="Puxadores" class="">
-                                        <g id="Puxador-Esquerda" class="st2 pux">
-                                            <polygon id="Puxador-Esquerda-int" fill="#ff0000" points="3.1,57 3.1,293.7 5.85,293.7 5.85,57"/>
-                                            <g id="Puxador-Esquerda-trecho" class="st2 pux"
-                                               onclick="alterarCorPuxadores('Puxador-Esquerda-trecho')">
-                                                <polygon id="Puxador-Esquerda-trecho-1" points="3.1,57 3.1,96.45 5.85,96.45 5.85,57"/>
-                                                <polygon id="Puxador-Esquerda-trecho-2" points="3.1,155.62 3.1,195.08 5.85,195.08 5.85,155.62"/>
-                                                <polygon id="Puxador-Esquerda-trecho-3" points="3.1,254.25 3.1,293.7 5.85,293.7 5.85,254.25"/>
-                                            </g>
-                                        </g>
-                                        <g id="Puxador-Base" class="st2 pux">
-                                            <polygon id="Puxador-Base-int" fill="#ff0000"
-                                                     points="3.1,290.95 3.1,293.7 152.7,293.7 152.7,290.95"/>
-                                            <g id="Puxador-Base-trecho" class="st2 pux"
-                                               onclick="alterarCorPuxadores('Puxador-Base-trecho')">
-                                                <polygon id="Puxador-Base-trecho-1"
-                                                         points="3.1,290.95 3.1,293.7 42.55,293.7 42.55,290.95"/>
-                                                <polygon id="Puxador-Base-trecho-2"
-                                                         points="52.96,290.95 52.96,293.7 102.82,293.7 102.82,290.95"/>
-                                                <polygon id="Puxador-Base-trecho-3"
-                                                         points="113.25,290.95 113.25,293.7 152.7,293.7 152.7,290.95"/>
-                                            </g>
-                                        </g>
-                                        <g id="Puxador-Direita" class="st2 pux">
-                                            <polygon id="Puxador-Direita-int" fill="#ff0000"
-                                                     points="149.95,57 149.95,293.7 152.7,293.7 152.7,57"/>
-                                            <g id="Puxador-Direita-trecho" class="st2 pux"
-                                               onclick="alterarCorPuxadores('Puxador-Direita-trecho')">
-                                                <polygon id="Puxador-Direita-trecho-1"
-                                                         points="149.95,57 149.95,96.45 152.7,96.45 152.7,57"/>
-                                                <polygon id="Puxador-Direita-trecho-2"
-                                                         points="149.95,155.62 149.95,195.08 152.7,195.08 152.7,155.62"/>
-                                                <polygon id="Puxador-Direita-trecho-3"
-                                                         points="149.95,254.25 149.95,293.7 152.7,293.7 152.7,254.25"/>
-                                            </g>
-                                        </g>
-                                        <g id="Puxador-Topo" class="st2 pux">
-                                            <polygon id="Puxador-Topo-int" fill="#ff0000"
-                                                     points="3.1,57 3.1,59.75 152.7,59.75 152.7,57"/>
-                                            <g id="Puxador-Topo-trecho" class="st2 pux"
-                                               onclick="alterarCorPuxadores('Puxador-Topo-trecho')">
-                                                <polygon id="Puxador-Topo-trecho-1"
-                                                         points="3.1,57 3.1,59.75 42.55,59.75 42.55,57"/>
-                                                <polygon id="Puxador-Topo-trecho-2"
-                                                         points="52.96,57 52.96,59.75 102.82,59.75 102.82,57"/>
-                                                <polygon id="Puxador-Topo-trecho-3"
-                                                         points="113.25,57 113.25,59.75 152.7,59.75 152.7,57"/>
-                                            </g>
-                                        </g>
-                                    </g>
-                                    <g id="PerfisPuxadores">
-                                        <g id="PerfilPux-Esquerda" class="st2" fill="#151618">
-                                            <polygon id="PerfilPux-Esquerda-Cava" class="st10"
-                                                     points="-1.6,57 -1.6,293.7 3.1,293.7 3.1,57"/>
-                                            <polygon id="PerfilPux-Esquerda-detalhe"
-                                                     points="-4.77,57 -4.77,293.7 -1.6,293.7 -1.6,57"/>
-                                        </g>
-                                        <g id="PerfilPux-Base" class="st2" fill="#151618">
-                                            <polygon id="PerfilPux-Base-Cava" class="st10"
-                                                     points="3.1,293.7 3.1,298.4 152.7,298.4 152.7,293.7"/>
-                                            <polygon id="PerfilPux-Base-detalhe"
-                                                     points="3.1,298.4 3.1,301.57 152.7,301.57 152.7,298.4"/>
-                                        </g>
-                                        <g id="PerfilPux-Direita" class="st2" fill="#151618">
-                                            <polygon id="PerfilPux-Direita-Cava" class="st10"
-                                                     points="152.7,57 152.7,293.7 157.4,293.7 157.4,57"/>
-                                            <polygon id="PerfilPux-Direita-detalhe"
-                                                     points="157.4,57 157.4,293.7 160.57,293.7 160.57,57"/>
-                                        </g>
-                                        <g id="PerfilPux-Topo" class="st2" fill="#151618">
-                                            <polygon id="PerfilPux-Topo-Cava" class="st10"
-                                                     points="3.1,52.3 3.1,57 152.7,57 152.7,52.3"/>
-                                            <polygon id="PerfilPux-Topo-detalhe"
-                                                     points="3.1,49.13 3.1,52.3 152.7,52.3 152.7,49.13"/>
-                                        </g>
-                                    </g>
-                                    <g id="MedidaDesenho" class="st2">
-                                        <g id="Tamanho-A">
-                                            <text id="texto-largura" transform="matrix(1 0 0 1 60.6856 356)"
-                                                  class="st7 st8">
-                                            </text>
-                                            <polygon id="medida-largura" points="-4.77,334.2 -4.77,349 -3.07,349 -3.07,342.9 158.87,342.9 158.87,349 160.57,349 160.57,334.2
-                                                                               158.87,334.2 158.87,340.3 -3.07,340.3 -3.07,334.2"/>
-                                        </g>
-                                        <g id="Tamanho-B">
-                                            <text id="texto-altura"
-                                                  transform="matrix(-1.346898e-10 1 -1 -1.346898e-10 205 158)"
-                                                  class="st7 st8">
-                                            </text>
-                                            <polygon id="medida-altura"
-                                                     points="193.2,49.13 193.2,50.83 199.3,50.83 199.3,299.87 193.2,299.87 193.2,301.57 208,301.57 208,299.87 201.9,299.87 201.9,50.83 208,50.83 208,49.13"/>
-                                        </g>
+                                </g>
+                                <g id="Puxador-Topo" class="st2 pux">
+                                    <polygon id="Puxador-Topo-int" fill="#ff0000"
+                                             points="3.1,57 3.1,59.75 152.7,59.75 152.7,57"/>
+                                    <g id="Puxador-Topo-trecho" class="st2 pux"
+                                       onclick="alterarCorPuxadores('Puxador-Topo-trecho')">
+                                        <polygon id="Puxador-Topo-trecho-1"
+                                                 points="3.1,57 3.1,59.75 42.55,59.75 42.55,57"/>
+                                        <polygon id="Puxador-Topo-trecho-2"
+                                                 points="52.96,57 52.96,59.75 102.82,59.75 102.82,57"/>
+                                        <polygon id="Puxador-Topo-trecho-3"
+                                                 points="113.25,57 113.25,59.75 152.7,59.75 152.7,57"/>
                                     </g>
                                 </g>
                             </g>
-                        </svg>
-                    </div>
-                </div>
+                            <g id="PerfisPuxadores">
+                                <g id="PerfilPux-Esquerda" class="st2" fill="#151618">
+                                    <polygon id="PerfilPux-Esquerda-Cava" class="st10"
+                                             points="-1.6,57 -1.6,293.7 3.1,293.7 3.1,57"/>
+                                    <polygon id="PerfilPux-Esquerda-detalhe"
+                                             points="-4.77,57 -4.77,293.7 -1.6,293.7 -1.6,57"/>
+                                </g>
+                                <g id="PerfilPux-Base" class="st2" fill="#151618">
+                                    <polygon id="PerfilPux-Base-Cava" class="st10"
+                                             points="3.1,293.7 3.1,298.4 152.7,298.4 152.7,293.7"/>
+                                    <polygon id="PerfilPux-Base-detalhe"
+                                             points="3.1,298.4 3.1,301.57 152.7,301.57 152.7,298.4"/>
+                                </g>
+                                <g id="PerfilPux-Direita" class="st2" fill="#151618">
+                                    <polygon id="PerfilPux-Direita-Cava" class="st10"
+                                             points="152.7,57 152.7,293.7 157.4,293.7 157.4,57"/>
+                                    <polygon id="PerfilPux-Direita-detalhe"
+                                             points="157.4,57 157.4,293.7 160.57,293.7 160.57,57"/>
+                                </g>
+                                <g id="PerfilPux-Topo" class="st2" fill="#151618">
+                                    <polygon id="PerfilPux-Topo-Cava" class="st10"
+                                             points="3.1,52.3 3.1,57 152.7,57 152.7,52.3"/>
+                                    <polygon id="PerfilPux-Topo-detalhe"
+                                             points="3.1,49.13 3.1,52.3 152.7,52.3 152.7,49.13"/>
+                                </g>
+                            </g>
+                            <g id="MedidaDesenho" class="st2">
+                                <g id="Tamanho-A">
+                                    <text id="texto-largura" transform="matrix(1 0 0 1 60.6856 356)"
+                                          class="st7 st8">
+                                    </text>
+                                    <polygon id="medida-largura" points="-4.77,334.2 -4.77,349 -3.07,349 -3.07,342.9 158.87,342.9 158.87,349 160.57,349 160.57,334.2
+                                                                       158.87,334.2 158.87,340.3 -3.07,340.3 -3.07,334.2"/>
+                                </g>
+                                <g id="Tamanho-B">
+                                    <text id="texto-altura"
+                                          transform="matrix(-1.346898e-10 1 -1 -1.346898e-10 205 158)"
+                                          class="st7 st8">
+                                    </text>
+                                    <polygon id="medida-altura"
+                                             points="193.2,49.13 193.2,50.83 199.3,50.83 199.3,299.87 193.2,299.87 193.2,301.57 208,301.57 208,299.87 201.9,299.87 201.9,50.83 208,50.83 208,49.13"/>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </svg>
             </div>
-         <div class="row d-flex justify-content-between">
-            <div class=""><!-- Tabelas-->
-               <div class="row mt-1 mb-2">
-                    <div class="col-6 table-responsive">
-                        <header>
-                            <h2 class="bg-warning text-dark text-center fs-6 fw-bold">Insumos</h2>
-                            <table class="table table-bordered table-sm">
-                                <thead class="table-active">
-                                    <tr>
-                                      <th scope="col">Id</th>
-                                      <th scope="col">Código</th>
-                                      <th scope="col">Descrição</th>
-                                      <th scope="col">Quant(m)</th>
-                                      <th scope="col">Valor</th>
-                                      <th scope="col">Subtotal</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="table-group-divider">
-                                    <tr>
-                                      <th scope="row">1</th>
-                                      <td>010098</td>
-                                      <td>3579 Anodizado (3579)</td>
-                                      <td>4</td>
-                                      <td>R$42,50</td>
-                                      <td>R$170,52</td>
-                                    </tr>
-                                    <tr>
-                                      <th scope="row">1</th>
-                                      <td>013799</td>
-                                      <td>4007 Anodizado (4007)</td>
-                                      <td>2</td>
-                                      <td>R$58,07</td>
-                                      <td>R$116,13</td>
-                                    </tr>
-                                    <tr>
-                                      <th scope="row">1</th>
-                                      <td>008787</td>
-                                      <td>Acidato Prata 4MM</td>
-                                      <td>2</td>
-                                      <td>R$245,50</td>
-                                      <td>R$491,00</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </header>
-                    </div>
-                    <div class="col-6 table-responsive">
-                        <header>
-                            <h2 class="bg-warning text-dark text-center fs-6 fw-bold">Itens do Orçamento</h2>
-                                <table class="table table-bordered table-sm ">
-                                    <thead class="table-active">
-                                        <tr>
-                                          <th scope="col">Id</th>
-                                          <th scope="col">Qt</th>
-                                          <th scope="col">Descrição</th>
-                                          <th scope="col">Valor</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="table-group-divider">
-                                        <tr>
-                                          <th scope="row">1</th>
-                                          <td>1</td>
-                                          <td>Porta 3579/204 Anodizado 4mm</td>
-                                          <td>R$100,00</td>
-                                        </tr>
-                                        <tr>
-                                          <th scope="row">2</th>
-                                          <td>2</td>
-                                          <td>Porta 3579 Anodizado 4mm</td>
-                                          <td>R$256,00</td>
-                                        </tr>
-                                        <tr>
-                                          <th scope="row">3</th>
-                                          <td>4</td>
-                                          <td>Porta 3443/105 Escovado 4mm</td>
-                                          <td>R$256,00</td>
-                                        </tr>
-                                        <tr>
-                                          <th scope="row">4</th>
-                                          <td>5</td>
-                                          <td>Porta 3443/105 Escovado 4mm</td>
-                                          <td>R$229,00</td>
-                                        </tr>
-                                        <tr>
-                                          <th scope="row">5</th>
-                                          <td>6</td>
-                                          <td>Porta 3443/105 Escovado 4mm</td>
-                                          <td>R$310,00</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                        </header>
-                    </div>
-                </div>
-            </div>
-         </div>
+        </div>
+    </div>
+<!--====================  TABELAS =======================-->
+    <div class="container container-flex">
+        <div class="table-container border rounded justify-content-start col-6 me-2 mt-2 table-responsive coluna1">
+            <header>
+                <h2 class="bg-warning text-dark text-center fs-6 fw-bold">Insumos</h2>
+                <table class="table table-bordered table-sm" id="tabelaInsumos">
+                    <thead class="table-active">
+                        <tr>
+                          <th scope="col">Id</th>
+                          <th scope="col">Código</th>
+                          <th scope="col">Descrição</th>
+                          <th scope="col">Quant(m)</th>
+                          <th scope="col">Valor</th>
+                          <th scope="col">Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-group-divider">
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>010098</td>
+                          <td>3579 Anodizado (3579)</td>
+                          <td>4</td>
+                          <td>R$42,50</td>
+                          <td>R$170,52</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </header>
+        </div>
+        <div class="table-container border rounded justify-content-start col-6 me-2 mt-2 table-responsive coluna2">
+            <header>
+                <h2 class="bg-warning text-dark text-center fs-6 fw-bold">Itens do Orçamento</h2>
+                <table class="table table-bordered table-sm" id="tabelaOrcamento">
+                        <thead class="table-active">
+                            <tr>
+                              <th scope="col">Id</th>
+                              <th scope="col">Qt</th>
+                              <th scope="col">Descrição</th>
+                              <th scope="col">Valor</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-group-divider">
+                        </tbody>
+                    </table>
+            </header>
+        </div>
     </div>
 </div>
 <nav class="navbar navbar-dark bg-dark fixed-bottom d-flex justify-content-center border">
@@ -707,10 +658,7 @@ $(document).ready(function() {
 
             $.each(response, function(index, item) {
               option = $('<option>').attr('value', item.id).text(item.descricao);
-              option.data('id', item.id);
-              option.data('descricao', item.descricao);
-              option.data('preco', item.preco);
-              option.data('modelo', item.modelo);
+              option.data('item', item); // Armazena o objeto completo como dado associado
               perfilField.append(option);
             });
 
@@ -745,8 +693,8 @@ $(document).ready(function() {
 
             $.each(response, function(index, item) {
               option = $('<option>').attr('value', item.id).text(item.descricao);
+              option.data('item', item); // Armazena o objeto completo como dado associado
               perfilField.append(option);
-
             });
 
             perfilField.show();
@@ -768,6 +716,7 @@ $(document).ready(function() {
   filtrarPerfil();
 
 });
+
 </script>
 
 <script>
@@ -794,13 +743,11 @@ $(document).ready(function() {
           selectPerfilPuxador.append(option);
 
           $.each(response, function(index, item) {
-            option = $('<option>').attr('value', item.id).text(item.descricao);
-            option.data('id', item.id);
-            option.data('descricao', item.descricao);
-            option.data('preco', item.preco);
-            option.data('modelo', item.modelo);
-            selectPerfilPuxador.append(option);
+              option = $('<option>').attr('value', item.id).text(item.descricao);
+              option.data('item', item); // Armazenar o objeto completo como dado associado
+              selectPerfilPuxador.append(option);
           });
+
 
           var numItens = response.length;
 
@@ -850,13 +797,11 @@ $(document).ready(function() {
           selectPuxador.append(option);
 
           $.each(response, function(index, item) {
-            option = $('<option>').attr('value', item.id).text(item.descricao);
-            option.data('id', item.id);
-            option.data('descricao', item.descricao);
-            option.data('preco', item.preco);
-            option.data('modelo', item.modelo);
-            selectPuxador.append(option);
-          });
+            var option = $('<option>').attr('value', item.id).text(item.descricao);
+            option.data('item', item); // Armazenar o objeto completo como dado associado
+            selectPuxador.append(option); // Corrigido de selectPerfilPuxador para selectPuxador
+        });
+
 
           var numItens = response.length;
 
@@ -909,10 +854,7 @@ $(document).ready(function() {
 
           $.each(response, function(index, item) {
             option = $('<option>').attr('value', item.id).text(item.descricao);
-            option.data('id', item.id);
-            option.data('descricao', item.descricao);
-            option.data('preco', item.preco);
-            option.data('modelo', item.modelo);
+            option.data('item', item); // Armazenar o objeto completo como dado associado
             selectDivisor.append(option);
           });
 
@@ -958,14 +900,29 @@ $(document).ready(function () {
     buscarVidros();
   });
 
+  // Manipuladores de eventos para id_vidro1, id_vidro2 e id_vidro3
+  $('#id_vidro1').change(function () {
+    acessarDadosVidro($(this));
+  });
+
+  $('#id_vidro2').change(function () {
+    acessarDadosVidro($(this));
+  });
+
+  $('#id_vidro3').change(function () {
+    acessarDadosVidro($(this));
+  });
+
   function buscarVidros() {
     var perfil = $('#id_perfil').val();
 
     if (perfil) {
-      var vidroPrincipal = $('#id_vidro');
-      var vidrosExtras = ['#id_vidro1', '#id_vidro2', '#id_vidro3'];
+      var vidrosElementos = $('#id_vidro, #id_vidro1, #id_vidro2, #id_vidro3');
 
-      var vidros = vidroPrincipal.val();
+      var vidros = vidrosElementos.map(function() {
+        return $(this).val();
+      }).get().join(',');
+
       $.ajax({
         url: '/buscar_Vidro/',
         type: 'GET',
@@ -975,28 +932,28 @@ $(document).ready(function () {
         success: function (response) {
           var option = $('<option>').attr('value', '').text('-------');
 
-          vidroPrincipal.empty().append(option);
-          $(vidrosExtras.join(',')).empty().append(option.clone());
+          vidrosElementos.empty().append(option);
 
           $.each(response, function (index, item) {
-            option = $('<option>').attr('value', item.id).text(item.descricao);
+            var option = $('<option>').attr('value', item.id).text(item.descricao);
             option.data('id', item.id);
+            option.data('codigo', item.codigo);
+            option.data('nome', item.nome);
             option.data('descricao', item.descricao);
             option.data('nome', item.nome);
             option.data('preco', item.preco);
             option.data('modelo', item.modelo);
 
-            vidroPrincipal.append(option);
-            $(vidrosExtras.join(',')).append(option.clone());
+            vidrosElementos.append(option);
           });
 
           var numItens = response.length;
 
           if (numItens <= 0) {
-            $(vidrosExtras.join(',')).prop('disabled', true);
+            $('#id_vidro1, #id_vidro2, #id_vidro3').prop('disabled', true);
             $('.st2 :input').prop('disabled', true);
           } else {
-            $(vidrosExtras.join(',')).prop('disabled', false);
+            $('#id_vidro1, #id_vidro2, #id_vidro3').prop('disabled', false);
             $('.st2 :input').prop('disabled', false);
           }
         },
@@ -1008,6 +965,11 @@ $(document).ready(function () {
       $('#id_vidro, #id_vidro1, #id_vidro2, #id_vidro3').empty();
       $('.st2 :input').prop('disabled', true);
     }
+  }
+
+  // Função para acessar os dados de cada vidro individualmente
+  function acessarDadosVidro(elemento) {
+    var vidroDescricao = elemento.find('option:selected').data('descricao') || '';
   }
 });
 
@@ -1495,20 +1457,34 @@ function atualizarPosicoesPuxador() {
 $(document).ready(function() {
   function atualizarPosicoesDivisor() {
     var qtdDivisor = $("#qtd-divisor").val();
+    var tipoDivisor = $('#id_divisor option:selected').data('item')?.tipodivisor ?? '';
 
-    if (qtdDivisor === "1") {
+    if (qtdDivisor === "1" ) {
       $("#Divisor-A, #Divisor-B, #Divisor-C").removeClass("st6");
-      $("#divvidro1, #divvidro2, #divvidro3").addClass("st2");
-      $("#divvidro").addClass("st2");
       $("#Divisor-B").addClass("st6");
-      $("#divvidro1, #divvidro2").removeClass("st2");
-      $("#id_vidro1, #id_vidro2").prop("disabled", false);
+      if (tipoDivisor === "Aparente") {
+          $("#divvidro1, #divvidro2, #divvidro3").addClass("st2");
+          $("#divvidro").addClass("st2");
+          $("#divvidro1, #divvidro2").removeClass("st2");
+          $("#id_vidro1, #id_vidro2").prop("disabled", false);
+      } else if (tipoDivisor === "Oculto") {
+          $("#divvidro1, #divvidro2, #divvidro3").addClass("st2");
+          $("#divvidro").addClass("st2");
+          $("#divvidro").removeClass("st2");
+          $("#id_vidro").prop("disabled", false);
+      }
     } else if (qtdDivisor === "2") {
       $("#Divisor-A, #Divisor-B, #Divisor-C").removeClass("st6");
-      $("#divvidro").addClass("st2");
       $("#Divisor-A, #Divisor-C").addClass("st6");
-      $("#divvidro1, #divvidro2, #divvidro3").removeClass("st2");
-      $("#id_vidro1, #id_vidro2, #id_vidro3").prop("disabled", false);
+      if (tipoDivisor === "Aparente") {
+          $("#divvidro").addClass("st2");
+          $("#divvidro1, #divvidro2, #divvidro3").removeClass("st2");
+          $("#id_vidro1, #id_vidro2, #id_vidro3").prop("disabled", false);
+      } else if (tipoDivisor === "Oculto") {
+          $("#divvidro").addClass("st2");
+          $("#divvidro").removeClass("st2");
+          $("#id_vidro").prop("disabled", false);
+      }
     } else {
       $("#Divisor-A, #Divisor-B, #Divisor-C").removeClass("st6");
       $("#divvidro1, #divvidro2, #divvidro3").removeClass("st6");
@@ -1581,41 +1557,47 @@ $(document).ready(function () {
     var largura = $('#id_largura').val() || '';
     var altura = $('#id_altura').val() || '';
     var acabamentoDescricao = $('#id_acabamento option:selected').text() || '';
-    var perfilModelo = $('#id_perfil option:selected').data('modelo') || '';
-    var perfilPuxadorModelo = $('#id_perfilpuxador option:selected').data('modelo') || '';
-    var puxadorModelo = $('#id_puxador option:selected').data('modelo') || '';
-    var divisorModelo = $('#id_divisor option:selected').data('modelo') || '';
-    var vidroModelo = $('#id_vidro option:selected').data('nome') || '';
+    var perfilModelo = $('#id_perfil option:selected').data('item')?.modelo ?? '';
+    var perfilPuxadorModelo = $('#id_perfilpuxador option:selected').data('item')?.modelo ?? '';
+    var puxadorModelo = $('#id_puxador option:selected').data('item')?.modelo ?? '';
+    var divisorModelo = $('#id_divisor option:selected').data('item')?.modelo ?? '';
+    var vidroModelo = $('#id_vidro option:selected').data('item')?.modelo ?? '';
 
     // Construa a string com os separadores condicionalmente
     var stringPorta = '';
+    var stringQtd = '';
 
     if (tipoPorta === 'PortaGiro' || tipoPorta === 'PortaCorrer') {
-        stringPorta =
-            (quantidade ? quantidade + ' ' : '') +
-            ((quantidade && (acabamentoDescricao || perfilModelo)) || (perfilModelo && (acabamentoDescricao || perfilModelo)) ? 'Porta ' : '') +
-            (acabamentoDescricao ? acabamentoDescricao + ' ' : '') +
-            ((acabamentoDescricao && perfilModelo) ? ' ' : '') +
-            (perfilModelo ? perfilModelo + '' : '') +
-            (perfilModelo && (perfilPuxadorModelo || puxadorModelo || divisorModelo) ? '/' : '') +
-            (perfilPuxadorModelo ? perfilPuxadorModelo + '' : '') +
-            (perfilPuxadorModelo && (puxadorModelo || divisorModelo) ? '/' : '') +
-            (puxadorModelo ? puxadorModelo + '' : '') +
-            (puxadorModelo && divisorModelo ? '/' : '') +
-            (divisorModelo ? divisorModelo + ' ' : '') +
-            ((largura || altura) ? ' ' : '') +
-            ((largura && altura) ? largura + 'x' + altura + 'mm ' : '') +
-            (vidroModelo ? vidroModelo + ' ' : '');
+        if ($('#id_largura').val() && $('#id_altura').val() && $('#id_quantidade').val() && $('#id_acabamento').val() && $('#id_perfil').val()) {
+            stringQtd = (quantidade);
+            stringPorta =
+                ((acabamentoDescricao || perfilModelo) ? 'Porta ' : '') +
+                (acabamentoDescricao ? acabamentoDescricao + ' ' : '') +
+                ((acabamentoDescricao && perfilModelo) ? ' ' : '') +
+                (perfilModelo ? perfilModelo + '' : '') +
+                (perfilModelo && (perfilPuxadorModelo || puxadorModelo || divisorModelo) ? '/' : '') +
+                (perfilPuxadorModelo ? perfilPuxadorModelo + '' : '') +
+                (perfilPuxadorModelo && (puxadorModelo || divisorModelo) ? '/' : '') +
+                (puxadorModelo ? puxadorModelo + '' : '') +
+                (puxadorModelo && divisorModelo ? '/' : '') +
+                (divisorModelo ? divisorModelo + ' ' : '') +
+                ((largura || altura) ? ' ' : '') +
+                ((largura && altura) ? largura + 'x' + altura + 'mm ' : '') +
+                (vidroModelo ? vidroModelo + ' ' : '');
+        }
     } else if (tipoPorta === 'Vidros') {
-        stringPorta =
-            (quantidade ? quantidade + ' ' : '') +
-            (quantidade ? 'Vidro' : '') +
-            ((largura || altura) ? ' ' : '') +
-            ((largura && altura) ? largura + 'x' + altura + 'mm ' : '') +
-            (vidroModelo ? ' ' + vidroModelo + ' ' : '');
+        if ($('#id_largura').val() && $('#id_altura').val() && $('#id_quantidade').val()) {
+            stringQtd = (quantidade);
+            stringPorta =
+                ((largura || altura) ? 'Vidro ' : '') +
+                ((largura && altura) ? ' ' : '') +
+                ((largura && altura) ? largura + 'x' + altura + 'mm ' : '') +
+                (vidroModelo ? ' ' + vidroModelo + ' ' : '');
+        }
     }
 
     // Atualiza a <div> com a string gerada
+    $('#qtditens').text(stringQtd);
     $('#nomeporta').text(stringPorta);
 }
 
@@ -1628,12 +1610,12 @@ $(document).ready(function () {
     var svg = document.getElementById("meuSVG");
 
     // Valores fixos
-    var comp1 = 149.6;
-    var comp2 = 236.7;
+    var comp1 = 150;
+    var comp2 = 250;
     var larg = 11;
-    var xp = 3.1;
+    var xp = 0;
     var xd = -40;
-    var yp = 57;
+    var yp = 0;
     var yd = yp + 43.55;
     var larg_div = 4.3;
     var larg_perf = 4.7;
@@ -1968,72 +1950,242 @@ $(document).ready(function() {
 </script>
 
 <script>
+
+var perfilusado = 0;
+var perfilpuxadorusado = 0;
+var puxadorusado = 0;
+var divisorusado = 0;
+var vidrousado = 0;
+var vidrousado1 = 0;
+var vidrousado2 = 0;
+var vidrousado3 = 0;
+
 function calcularPrecoPerfil() {
+    var quantidade = parseFloat($('#id_quantidade').val());
     var largura = parseFloat($('#id_largura').val()) / 1000;
     var altura = parseFloat($('#id_altura').val()) / 1000;
-    var tamPuxador = parseFloat($('#tam-puxador').val()) / 1000;
-    var perfilPreco = parseFloat($('#id_perfil option:selected').data('preco'));
-    var perfilPuxadorPreco = parseFloat($('#id_perfilpuxador option:selected').data('preco'));
+
+    var perfilPreco = parseFloat($('#id_perfil option:selected').data('item')?.preco || 0);
+    var perfiltamanho = parseFloat($('#id_perfil option:selected').data('item')?.largura_perfil || 0);
+
+    var perfilPuxadorPreco = parseFloat($('#id_perfilpuxador option:selected').data('item')?.preco || 0);
     var posicaoPerfilPuxador = $('#posicao-perfilpuxador').val() || '';
-    var puxadorPreco = parseFloat($('#id_puxador option:selected').data('preco'));
-    var divisorPreco = parseFloat($('#id_divisor option:selected').data('preco'));
+
+    var posicaoPuxador = $('#posicao-puxador').val() || '';
+    var puxadorPreco = parseFloat($('#id_puxador option:selected').data('item')?.preco || 0);
+    var qtdPuxador = $('#qtd-puxador').val() || '';
+    var tamPuxador = parseFloat($('#tam-puxador').val()) / 1000;
+
+    var divisorPreco = parseFloat($('#id_divisor option:selected').data('item')?.preco || 0);
     var qtdDivisor = $('#qtd-divisor').val() || '';
 
+    var vidroPreco = parseFloat($('#id_vidro option:selected').data('preco') || 0);
+    var vidro1Preco = parseFloat($('#id_vidro1 option:selected').data('preco') || 0);
+    var vidro2Preco = parseFloat($('#id_vidro2 option:selected').data('preco') || 0);
+    var vidro3Preco = parseFloat($('#id_vidro3 option:selected').data('preco') || 0);
 
-    var precoPerfilFinal  = 0;
+    var precoPerfilFinal = 0;
     var precoPerfilPuxadorFinal  = 0;
     var precoPuxadorFinal  = 0;
     var precoDivisorFinal = 0;
+    var precoVidroFinal = 0;
+    var precoVidroFinal1 = 0;
+    var precoVidroFinal2 = 0;
+    var precoVidroFinal3 = 0;
 
-    var perfilusado = 0;
-    var perfilpuxadorusado = 0;
-    var puxadorusado = 0;
-    var divisorusado = 0;
 
     if ($('#id_perfil').val() !== '') {
-        if (posicaoPerfilPuxador === '') {
+        if ($('#id_perfilpuxador').val() === '' && $('#id_puxador').val() === '') {
             precoPerfilFinal = ((largura * 2) + (altura * 2)) * perfilPreco;
             perfilusado = ((largura * 2) + (altura * 2));
+            if ($('#qtd-divisor').val() === null || $('#qtd-divisor').val() === undefined || $('#qtd-divisor').val() === '') {
+                if ($('#id_vidro').val()) {
+                    precoVidroFinal = (largura * altura) * vidroPreco;
+                    vidrousado = (largura * altura);
+                }
+            } else if ($('#qtd-divisor').val() === '1') {
+                precoDivisorFinal = (largura * divisorPreco);
+                divisorusado = largura;
+                if ($('#id_vidro1').val() && $('#id_vidro2').val()) {
+                    precoVidroFinal1 = (largura * (altura / 2)) * vidro1Preco;
+                    precoVidroFinal2 = (largura * (altura / 2)) * vidro2Preco;
+                    vidrousado1 = (largura * (altura / 2));
+                    vidrousado2 = (largura * (altura / 2));
+                }
+            } else if ($('#qtd-divisor').val() === '2') {
+                precoDivisorFinal = ((largura * divisorPreco) * 2);
+                divisorusado = (largura * 2);
+                if ($('#id_vidro1').val() && $('#id_vidro2').val() && $('#id_vidro3').val()) {
+                    precoVidroFinal1 = (largura * (altura / 3)) * vidro1Preco;
+                    precoVidroFinal2 = (largura * (altura / 3)) * vidro2Preco;
+                    precoVidroFinal3 = (largura * (altura / 3)) * vidro3Preco;
+                    vidrousado1 = (largura * (altura / 3));
+                    vidrousado2 = (largura * (altura / 3));
+                    vidrousado3 = (largura * (altura / 3));
+                }
+            }
         } else if (posicaoPerfilPuxador === 'Base' || posicaoPerfilPuxador === 'Topo') {
             precoPerfilFinal  = (largura * perfilPreco) + ((altura * 2) * perfilPreco);
             precoPerfilPuxadorFinal  = largura * perfilPuxadorPreco;
             perfilusado  = largura + (altura * 2);
             perfilpuxadorusado  = largura;
+            if ($('#qtd-divisor').val() === null || $('#qtd-divisor').val() === undefined || $('#qtd-divisor').val() === '') {
+                if ($('#id_vidro').val()) {
+                    precoVidroFinal = (largura * altura) * vidroPreco;
+                    vidrousado = (largura * altura);
+                }
+            } else if ($('#qtd-divisor').val() === '1') {
+                precoDivisorFinal = (largura * divisorPreco);
+                divisorusado = largura;
+                if ($('#id_vidro1').val() && $('#id_vidro2').val()) {
+                    precoVidroFinal1 = (largura * (altura / 2)) * vidro1Preco;
+                    precoVidroFinal2 = (largura * (altura / 2)) * vidro2Preco;
+                    vidrousado1 = (largura * (altura / 2));
+                    vidrousado2 = (largura * (altura / 2));
+                }
+            } else if ($('#qtd-divisor').val() === '2') {
+                precoDivisorFinal = ((largura * divisorPreco) * 2);
+                divisorusado = (largura * 2);
+                if ($('#id_vidro1').val() && $('#id_vidro2').val() && $('#id_vidro3').val()) {
+                    precoVidroFinal1 = (largura * (altura / 3)) * vidro1Preco;
+                    precoVidroFinal2 = (largura * (altura / 3)) * vidro2Preco;
+                    precoVidroFinal3 = (largura * (altura / 3)) * vidro3Preco;
+                    vidrousado1 = (largura * (altura / 3));
+                    vidrousado2 = (largura * (altura / 3));
+                    vidrousado3 = (largura * (altura / 3));
+                }
+            }
         } else if (posicaoPerfilPuxador === 'Direita' || posicaoPerfilPuxador === 'Esquerda') {
             precoPerfilFinal  = ((largura * 2) * perfilPreco) + (altura * perfilPreco);
             precoPerfilPuxadorFinal  = altura * perfilPuxadorPreco;
             perfilusado  = (largura * 2) + altura;
             perfilpuxadorusado  = altura;
+            if ($('#qtd-divisor').val() === null || $('#qtd-divisor').val() === undefined || $('#qtd-divisor').val() === '') {
+                if ($('#id_vidro').val()) {
+                    precoVidroFinal = (largura * altura) * vidroPreco;
+                    vidrousado = (largura * altura);
+                }
+            } else if ($('#qtd-divisor').val() === '1') {
+                precoDivisorFinal = (largura * divisorPreco);
+                divisorusado = largura;
+                if ($('#id_vidro1').val() && $('#id_vidro2').val()) {
+                    precoVidroFinal1 = (largura * (altura / 2)) * vidro1Preco;
+                    precoVidroFinal2 = (largura * (altura / 2)) * vidro2Preco;
+                    vidrousado1 = (largura * (altura / 2));
+                    vidrousado2 = (largura * (altura / 2));
+                }
+            } else if ($('#qtd-divisor').val() === '2') {
+                precoDivisorFinal = ((largura * divisorPreco) * 2);
+                divisorusado = (largura * 2);
+                if ($('#id_vidro1').val() && $('#id_vidro2').val() && $('#id_vidro3').val()) {
+                    precoVidroFinal1 = (largura * (altura / 3)) * vidro1Preco;
+                    precoVidroFinal2 = (largura * (altura / 3)) * vidro2Preco;
+                    precoVidroFinal3 = (largura * (altura / 3)) * vidro3Preco;
+                    vidrousado1 = (largura * (altura / 3));
+                    vidrousado2 = (largura * (altura / 3));
+                    vidrousado3 = (largura * (altura / 3));
+                }
+            }
         } else if (posicaoPerfilPuxador === 'Esq/Dir') {
             precoPerfilFinal  = (largura * 2) * perfilPreco;
             precoPerfilPuxadorFinal  = (altura * 2) * perfilPuxadorPreco;
             perfilusado  = largura * 2;
             perfilpuxadorusado  = altura * 2
+            if ($('#qtd-divisor').val() === null || $('#qtd-divisor').val() === undefined || $('#qtd-divisor').val() === '') {
+                if ($('#id_vidro').val()) {
+                    precoVidroFinal = (largura * altura) * vidroPreco;
+                    vidrousado = (largura * altura);
+                }
+            } else if ($('#qtd-divisor').val() === '1') {
+                precoDivisorFinal = (largura * divisorPreco);
+                divisorusado = largura;
+                if ($('#id_vidro1').val() && $('#id_vidro2').val()) {
+                    precoVidroFinal1 = (largura * (altura / 2)) * vidro1Preco;
+                    precoVidroFinal2 = (largura * (altura / 2)) * vidro2Preco;
+                    vidrousado1 = (largura * (altura / 2));
+                    vidrousado2 = (largura * (altura / 2));
+                }
+            } else if ($('#qtd-divisor').val() === '2') {
+                precoDivisorFinal = ((largura * divisorPreco) * 2);
+                divisorusado = (largura * 2);
+                if ($('#id_vidro1').val() && $('#id_vidro2').val() && $('#id_vidro3').val()) {
+                    precoVidroFinal1 = (largura * (altura / 3)) * vidro1Preco;
+                    precoVidroFinal2 = (largura * (altura / 3)) * vidro2Preco;
+                    precoVidroFinal3 = (largura * (altura / 3)) * vidro3Preco;
+                    vidrousado1 = (largura * (altura / 3));
+                    vidrousado2 = (largura * (altura / 3));
+                    vidrousado3 = (largura * (altura / 3));
+                }
+            }
+        } else if ($('#qtd-puxador').val() === '1' && ($('#tam-puxador').val())) {
+            precoPerfilFinal  = ((largura * 2) + (altura * 2)) * perfilPreco;
+            precoPuxadorFinal  = tamPuxador * puxadorPreco;
+            perfilusado  = (largura * 2) + (altura * 2);
+            puxadorusado  = tamPuxador;
+            console.log("Antes de acessar divisores")
+            if ($('#qtd-divisor').val() === null || $('#qtd-divisor').val() === undefined || $('#qtd-divisor').val() === '') {
+                if ($('#id_vidro').val()) {
+                    console.log("passou por divisores")
+                    precoVidroFinal = (largura * altura) * vidroPreco;
+                    vidrousado = (largura * altura);
+                }
+            } else if ($('#qtd-divisor').val() === '1') {
+                precoDivisorFinal = (largura * divisorPreco);
+                divisorusado = largura;
+                if ($('#id_vidro1').val() && $('#id_vidro2').val()) {
+                    precoVidroFinal1 = (largura * (altura / 2)) * vidro1Preco;
+                    precoVidroFinal2 = (largura * (altura / 2)) * vidro2Preco;
+                    vidrousado1 = (largura * (altura / 2));
+                    vidrousado2 = (largura * (altura / 2));
+                }
+            } else if ($('#qtd-divisor').val() === '2') {
+                precoDivisorFinal = ((largura * divisorPreco) * 2);
+                divisorusado = (largura * 2);
+                if ($('#id_vidro1').val() && $('#id_vidro2').val() && $('#id_vidro3').val()) {
+                    precoVidroFinal1 = (largura * (altura / 3)) * vidro1Preco;
+                    precoVidroFinal2 = (largura * (altura / 3)) * vidro2Preco;
+                    precoVidroFinal3 = (largura * (altura / 3)) * vidro3Preco;
+                    vidrousado1 = (largura * (altura / 3));
+                    vidrousado2 = (largura * (altura / 3));
+                    vidrousado3 = (largura * (altura / 3));
+                }
+            }
+        } else if ($('#qtd-puxador').val() === '2' && ($('#tam-puxador').val())) {
+            precoPerfilFinal  = ((largura * 2) + (altura * 2)) * perfilPreco;
+            precoPuxadorFinal  = 2 * (tamPuxador * puxadorPreco);
+            perfilusado  = (largura * 2) + (altura * 2);
+            puxadorusado  = 2 * (tamPuxador);
+            console.log("Antes de acessar divisores")
+            if ($('#qtd-divisor').val() === null || $('#qtd-divisor').val() === undefined || $('#qtd-divisor').val() === '') {
+                if ($('#id_vidro').val()) {
+                    console.log("passou por divisores")
+                    precoVidroFinal = (largura * altura) * vidroPreco;
+                    vidrousado = (largura * altura);
+                }
+            } else if ($('#qtd-divisor').val() === '1') {
+                precoDivisorFinal = (largura * divisorPreco);
+                divisorusado = largura;
+                if ($('#id_vidro1').val() && $('#id_vidro2').val()) {
+                    precoVidroFinal1 = (largura * (altura / 2)) * vidro1Preco;
+                    precoVidroFinal2 = (largura * (altura / 2)) * vidro2Preco;
+                    vidrousado1 = (largura * (altura / 2));
+                    vidrousado2 = (largura * (altura / 2));
+                }
+            } else if ($('#qtd-divisor').val() === '2') {
+                precoDivisorFinal = ((largura * divisorPreco) * 2);
+                divisorusado = (largura * 2);
+                if ($('#id_vidro1').val() && $('#id_vidro2').val() && $('#id_vidro3').val()) {
+                    precoVidroFinal1 = (largura * (altura / 3)) * vidro1Preco;
+                    precoVidroFinal2 = (largura * (altura / 3)) * vidro2Preco;
+                    precoVidroFinal3 = (largura * (altura / 3)) * vidro3Preco;
+                    vidrousado1 = (largura * (altura / 3));
+                    vidrousado2 = (largura * (altura / 3));
+                    vidrousado3 = (largura * (altura / 3));
+                }
+            }
         }
     }
 
-    if ($('#qtd-puxador').val() === '1') {
-        precoPuxadorFinal = tamPuxador * puxadorPreco;
-        puxadorusado = tamPuxador;
-    } else if ($('#qtd-puxador').val() === '2') {
-        precoPuxadorFinal  = (tamPuxador * 2) * puxadorPreco;
-        puxadorusado  = tamPuxador * 2;
-    }
-
-    // lógica para calcular o preço do divisor
-    if (largura > altura && qtdDivisor === '1') {
-        precoDivisorFinal = altura * divisorPreco;
-        divisorusado = altura;
-    } else if (largura > altura && qtdDivisor === '2') {
-        precoDivisorFinal = (altura * 2) * divisorPreco;
-        divisorusado = altura * 2;
-    } else if (altura >= largura && qtdDivisor === '1') {
-        precoDivisorFinal = largura * divisorPreco;
-        divisorusado = largura;
-    } else if (altura >= largura && qtdDivisor === '2') {
-        precoDivisorFinal = (largura * 2) * divisorPreco;
-        divisorusado = largura * 2;
-    }
 
     // Atualiza a label com id "valorperfil"
     $('#valorperfil').text(precoPerfilFinal.toFixed(2));
@@ -2041,65 +2193,808 @@ function calcularPrecoPerfil() {
     $('#valorpuxador').text(precoPuxadorFinal.toFixed(2));
     $('#valordivisor').text(precoDivisorFinal.toFixed(2));
 
-    console.log("Preço Perfil: " + precoPerfilFinal);
-    console.log("Preço PerfilPuxador: " + precoPerfilPuxadorFinal);
-    console.log("Preço Puxador: " + precoPuxadorFinal);
-    console.log("Perfil Usado: " + perfilusado );
-    console.log("Perfil Puxador Usado: " + perfilpuxadorusado);
-    console.log("Puxador Usado: " + puxadorusado);
-    console.log("Divisor Usado: " + divisorusado);
+    var somaTotal = ((precoPerfilFinal + precoPerfilPuxadorFinal + precoPuxadorFinal + precoDivisorFinal + precoVidroFinal + precoVidroFinal1 + precoVidroFinal2 + precoVidroFinal3) * quantidade);
+    var somaTotalFormatada = somaTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    $('#valorporta').text(somaTotalFormatada);
+
+
+    console.log("Preço Perfil: " + precoPerfilFinal.toFixed(2));
+    console.log("Preço PerfilPuxador: " + precoPerfilPuxadorFinal.toFixed(2));
+    console.log("Preço Puxador: " + precoPuxadorFinal.toFixed(2));
+    console.log("Preço Divisor: " + precoDivisorFinal.toFixed(2));
+    console.log("Preço Vidro: " + precoVidroFinal.toFixed(2));
+    console.log("Preço Vidro1: " + precoVidroFinal1.toFixed(2));
+    console.log("Preço Vidro2: " + precoVidroFinal2.toFixed(2));
+    console.log("Preço Vidro3: " + precoVidroFinal3.toFixed(2));
+
+    console.log("Perfil Usado: " + perfilusado.toFixed(2));
+    console.log("Perfil Puxador Usado: " + perfilpuxadorusado.toFixed(2));
+    console.log("Puxador Usado: " + puxadorusado.toFixed(2));
+    console.log("Divisor Usado: " + divisorusado.toFixed(2));
+    console.log("Vidro Usado: " + vidrousado.toFixed(2));
+    console.log("Vidro1 Usado: " + vidrousado1.toFixed(2));
+    console.log("Vidro2 Usado: " + vidrousado2.toFixed(2));
+    console.log("Vidro3 Usado: " + vidrousado3.toFixed(2));
 }
 
 // Chama a função quando os campos mudam
-$('#id_largura, #id_altura, #id_perfil, #qtd-perfilpuxador, #id_perfilpuxador, #posicao-perfilpuxador, #id_puxador, #qtd-puxador, #posicao-puxador, #tam-puxador, #id_divisor, #qtd-divisor').on('change', function() {
+$('#id_perfil, #id_perfilpuxador, #qtd-perfilpuxador,#posicao-perfilpuxador, #id_puxador, #qtd-puxador, #posicao-puxador, #tam-puxador, #qtd-divisor, #id_vidro, #id_vidro1, #id_vidro2, #id_vidro3').on('change', function() {
     calcularPrecoPerfil();
+});
+
+// Adiciona chamada de função quando a quantidade de perfil puxador for alterada
+$('#qtd-perfilpuxador, #id_divisor').on('change', function() {
+    setTimeout(function() {
+        calcularPrecoPerfil();
+    }, 100); // Aguarda 100ms para garantir que a alteração do valor seja totalmente processada
+});
+
+$(document).ready(function() {
+  // Adicione um evento de escuta para mudanças nos campos de entrada
+  $('#id_largura, #id_altura').on('input', function() {
+    alterarPontos(); // Chama a função para atualizar os pontos do desenho
+    alterarPosicoesTexto(); // Chama a função para atualizar as posições dos textos
+  });
 });
 </script>
 
 <script>
-var divisor = document.getElementById("Divisor-B"); // seleciona o divisor
-var svg = document.getElementById("svg-container"); // seleciona o contêiner SVG
 
-// variáveis para controlar o estado do movimento
-var isMouseDown = false;
-var startY = 0;
-var minY = yp; // limite mínimo para o eixo y
-var maxY = y2; // limite máximo para o eixo y
+function calcularMaterial() {
+    var largura = parseFloat($('#id_largura').val());
+    var altura = parseFloat($('#id_altura').val());
 
-// Adiciona manipuladores de eventos de mouse para o divisor
-divisor.addEventListener("mousedown", function(event) {
-    isMouseDown = true;
-    startY = event.clientY; // obtém a posição inicial do mouse no eixo y
-    event.preventDefault(); // previne o comportamento padrão do clique para evitar seleção de texto indesejada
-});
+    var perfilDescricao = $('#id_perfil option:selected').data('item')?.descricao ?? '';
+    var perfilLarguraPerfil = parseFloat($('#id_perfil option:selected').data('item')?.largura_perfil || 0);
+    var perfilAbaPerfil = parseFloat($('#id_perfil option:selected').data('item')?.aba_perfil || 0);
+    var perfilDescontoVidro = parseFloat($('#id_perfil option:selected').data('item')?.desconto_vidro || 0);
+    var perfilLarguraPuxador = parseFloat($('#id_perfil option:selected').data('item')?.largura_puxador || 0);
 
-// Adiciona um manipulador de evento de mouse para detectar o movimento do mouse
-document.addEventListener("mousemove", function(event) {
-    if (isMouseDown) {
-        var deltaY = event.clientY - startY; // calcula o deslocamento no eixo y
-        var newY = parseFloat(divisor.getAttribute("y")) + deltaY; // calcula a nova posição do divisor apenas no eixo y
-        // Aplica limites para garantir que o divisor permaneça entre minY e maxY
-        if (newY >= minY && newY <= maxY) {
-            divisor.setAttribute("y", newY); // atualiza a posição do divisor apenas no eixo y
+    var posicaoPerfilPuxador = $('#posicao-perfilpuxador').val() || '';
+    var perfilPuxadorDescricao = $('#id_perfilpuxador option:selected').data('item')?.descricao ?? '';
+    var perfilPuxadorLarguraPerfil = parseFloat($('#id_perfilpuxador option:selected').data('item')?.largura_perfil || 0);
+    var perfilPuxadorAbaPerfil = parseFloat($('#id_perfilpuxador option:selected').data('item')?.aba_perfil || 0);
+    var perfilPuxadorDescontoVidro = parseFloat($('#id_perfilpuxador option:selected').data('item')?.desconto_vidro || 0);
+    var perfilPuxadorLarguraPuxador = parseFloat($('#id_perfilpuxador option:selected').data('item')?.largura_puxador || 0);
+
+    var posicaoPuxador = $('#posicao-puxador').val() || '';
+    var puxadorDescricao = $('#id_puxador option:selected').data('item')?.descricao ?? '';
+    var tamPuxador = parseFloat($('#tam-puxador').val());
+    var descontoPuxador = parseFloat($('#id_puxador option:selected').data('item')?.desconto_puxador || 0);
+
+    var divisorDescricao = $('#id_divisor option:selected').data('descricao') || '';
+    var espDivisor = parseFloat($('#id_divisor option:selected').data('espdivisor') || 0);
+    var qtdDivisor = $('#qtd-divisor').val() || '';
+    var tipoDivisor = $('#id_divisor option:selected').data('tipodivisor');
+
+    var vidroDescricao = $('#id_vidro option:selected').data('descricao') || '';
+<!--    console.dir($('#id_divisor option:selected').data());-->
+    var vidro1Descricao = $('#id_vidro1 option:selected').data('descricao') || '';
+    var vidro2Descricao = $('#id_vidro2 option:selected').data('descricao') || '';
+    var vidro3Descricao = $('#id_vidro3 option:selected').data('descricao') || '';
+
+
+    var perfilCorte = [];
+    var perfilPuxadorCorte = [];
+    var puxadorCorte = [];
+    var divisorCorte = [];
+    var vidroCorte = [];
+    var larguraVidro;
+    var alturaVidro;
+    var divisor;
+    var extrusao;
+    var larguraVidro1;
+    var alturaVidro1;
+    var larguraVidro2;
+    var alturaVidro2;
+    var larguraVidro3;
+    var alturaVidro3;
+
+    if ($('#id_perfilpuxador').val() === '' && $('#id_puxador').val() === '') {
+        if ($('#qtd-divisor').val() === null || $('#qtd-divisor').val() === undefined || $('#qtd-divisor').val() === '') {
+            perfilCorte.push("2x " + perfilDescricao + " " + largura + "mm");
+            perfilCorte.push("2x " + perfilDescricao + " " + altura + "mm");
+            if ($('#id_vidro').val()) {
+                larguraVidro = largura - (perfilDescontoVidro * 2).toFixed(2);
+                alturaVidro = altura - (perfilDescontoVidro * 2).toFixed(2);
+                vidroCorte.push("1x " + vidroDescricao + " " + larguraVidro + "x" + alturaVidro + "mm");
+            }
+        } else if ($('#qtd-divisor').val() === '1') {
+            perfilCorte.push("2x " + perfilDescricao + " " + largura + "mm");
+            perfilCorte.push("2x " + perfilDescricao + " " + altura + "mm");
+            if (tipoDivisor === "Aparente") {
+                divisor = largura - (perfilAbaPerfil * 2).toFixed(2);
+                extrusao = perfilLarguraPerfil - perfilAbaPerfil.toFixed(2);
+                divisorCorte.push("1x " + divisorDescricao + " " + divisor + "mm ("+ extrusao + "mm)");
+                if ($('#id_vidro1').val() && $('#id_vidro2').val()) {
+                    larguraVidro1 = largura - (perfilDescontoVidro * 2).toFixed(2);
+                    alturaVidro1 = ((altura - perfilDescontoVidro - espDivisor) / 2).toFixed(2);
+                    larguraVidro2 = largura - (perfilDescontoVidro * 2).toFixed(2);
+                    alturaVidro2 = ((altura - perfilDescontoVidro - espDivisor) / 2).toFixed(2);
+                    vidroCorte.push("1x " + vidro1Descricao + " " + larguraVidro1 + "x" + alturaVidro1 + "mm");
+                    vidroCorte.push("1x " + vidro2Descricao + " " + larguraVidro2 + "x" + alturaVidro2 + "mm");
+                }
+            } else if (tipoDivisor === "Oculto") {
+                divisor = largura - (perfilLarguraPerfil * 2).toFixed(2);
+                divisorCorte.push("1x " + divisorDescricao + " " + divisor + "mm");
+                if ($('#id_vidro').val()) {
+                    larguraVidro = largura - (perfilDescontoVidro * 2).toFixed(2);
+                    alturaVidro = altura - (perfilDescontoVidro * 2).toFixed(2);
+                    vidroCorte.push("1x " + vidroDescricao + " " + larguraVidro + "x" + alturaVidro + "mm");
+                }
+            }
+        } else if ($('#qtd-divisor').val() === '2') {
+            perfilCorte.push("2x " + perfilDescricao + " " + largura + "mm");
+            perfilCorte.push("2x " + perfilDescricao + " " + altura + "mm");
+            if (tipoDivisor === "Aparente") {
+                divisor = largura - (perfilAbaPerfil * 2).toFixed(2);
+                extrusao = perfilLarguraPerfil - perfilAbaPerfil.toFixed(2);
+                divisorCorte.push("2x " + divisorDescricao + " " + divisor + "mm ("+ extrusao + "mm)");
+                if ($('#id_vidro1').val() && $('#id_vidro2').val() && $('#id_vidro3').val()) {
+                    larguraVidro1 = (largura - (perfilDescontoVidro * 2)).toFixed(2);
+                    alturaVidro1 = ((altura - perfilDescontoVidro - espDivisor) / 3).toFixed(2);
+                    larguraVidro2 = (largura - (perfilDescontoVidro * 2)).toFixed(2);
+                    alturaVidro2 = ((altura - perfilDescontoVidro - espDivisor) / 3).toFixed(2);
+                    larguraVidro3 = (largura - (perfilDescontoVidro * 2)).toFixed(2);
+                    alturaVidro3 = ((altura - perfilDescontoVidro - espDivisor) / 3).toFixed(2);
+                    vidroCorte.push("1x " + vidro1Descricao + " " + larguraVidro1 + "x" + alturaVidro1 + "mm");
+                    vidroCorte.push("1x " + vidro2Descricao + " " + larguraVidro2 + "x" + alturaVidro2 + "mm");
+                    vidroCorte.push("1x " + vidro3Descricao + " " + larguraVidro3 + "x" + alturaVidro3 + "mm");
+                }
+            }
+            if (tipoDivisor === "Oculto") {
+                divisor = largura - (perfilLarguraPerfil * 2).toFixed(2);
+                divisorCorte.push("2x" + divisorDescricao + " " + divisor + "mm");
+                if ($('#id_vidro').val()) {
+                    larguraVidro = largura - (perfilDescontoVidro * 2).toFixed(2);
+                    alturaVidro = altura - (perfilDescontoVidro * 2).toFixed(2);
+                    vidroCorte.push("1x " + vidroDescricao + " " + larguraVidro + "x" + alturaVidro + "mm");
+                }
+            }
         }
-        startY = event.clientY; // atualiza a posição inicial do mouse
+    } else if ($('#posicao-perfilpuxador').val() === "Topo" || $('#posicao-perfilpuxador').val() === "Base") {
+        if ($('#qtd-divisor').val() === null || $('#qtd-divisor').val() === undefined || $('#qtd-divisor').val() === '') {
+            perfilCorte.push("1x " + perfilDescricao + " " + largura + "mm");
+            perfilCorte.push("2x " + perfilDescricao + " " + (altura - perfilPuxadorLarguraPuxador) + "mm");
+            perfilPuxadorCorte.push("1x " + perfilPuxadorDescricao + " " + largura + "mm");
+            if ($('#id_vidro').val()) {
+                larguraVidro = largura - (perfilDescontoVidro * 2).toFixed(2);
+                alturaVidro = (altura - perfilDescontoVidro - perfilPuxadorDescontoVidro).toFixed(2);
+                vidroCorte.push("1x " + vidroDescricao + " " + larguraVidro + "x" + alturaVidro + "mm");
+            }
+        } else if ($('#qtd-divisor').val() === '1') {
+            perfilCorte.push("1x " + perfilDescricao + " " + largura + "mm");
+            perfilCorte.push("2x " + perfilDescricao + " " + (altura - perfilPuxadorLarguraPuxador) + "mm");
+            perfilPuxadorCorte.push("1x " + perfilPuxadorDescricao + " " + largura + "mm");
+            if (tipoDivisor === "Aparente") {
+                divisor = largura - (perfilAbaPerfil * 2);
+                extrusao = perfilLarguraPerfil - perfilAbaPerfil.toFixed(2);
+                divisorCorte.push("1x " + divisorDescricao + " " + divisor + "mm ("+ extrusao + "mm)");
+                if ($('#id_vidro1').val() && $('#id_vidro2').val()) {
+                    larguraVidro1 = largura - (perfilDescontoVidro * 2).toFixed(2);
+                    alturaVidro1 = ((altura - perfilDescontoVidro - perfilPuxadorDescontoVidro - espDivisor) / 2).toFixed(2);
+                    larguraVidro2 = largura - (perfilDescontoVidro * 2).toFixed(2);
+                    alturaVidro2 = ((altura - perfilDescontoVidro - perfilPuxadorDescontoVidro - espDivisor) / 2).toFixed(2);
+                    vidroCorte.push("1x " + vidro1Descricao + " " + larguraVidro1 + "x" + alturaVidro1 + "mm");
+                    vidroCorte.push("1x " + vidro2Descricao + " " + larguraVidro2 + "x" + alturaVidro2 + "mm");
+                }
+            } else if (tipoDivisor === "Oculto") {
+                divisor = largura - (perfilLarguraPerfil * 2);
+                divisorCorte.push("1x " + divisorDescricao + " " + divisor + "mm");
+                if ($('#id_vidro').val()) {
+                        larguraVidro = largura - (perfilDescontoVidro * 2).toFixed(2);
+                        alturaVidro = (altura - perfilDescontoVidro - perfilPuxadorDescontoVidro).toFixed(2);
+                        vidroCorte.push("1x " + vidroDescricao + " " + larguraVidro + "x" + alturaVidro + "mm");
+                }
+            }
+        } else if ($('#qtd-divisor').val() === '2') {
+            perfilCorte.push("1x " + perfilDescricao + " " + largura + "mm");
+            perfilCorte.push("2x " + perfilDescricao + " " + (altura - perfilPuxadorLarguraPuxador) + "mm");
+            perfilPuxadorCorte.push("1x " + perfilPuxadorDescricao + " " + largura + "mm");
+            if (tipoDivisor === "Aparente") {
+                divisor = largura - (perfilAbaPerfil * 2).toFixed(2);
+                extrusao = perfilLarguraPerfil - perfilAbaPerfil.toFixed(2);
+                divisorCorte.push("2x " + divisorDescricao + " " + divisor + "mm ("+ extrusao + "mm)");
+                if ($('#id_vidro1').val() && $('#id_vidro2').val() && $('#id_vidro3').val()) {
+                    larguraVidro1 = largura - (perfilDescontoVidro * 2).toFixed(2);
+                    alturaVidro1 = ((altura - perfilDescontoVidro - perfilPuxadorDescontoVidro - espDivisor) / 3).toFixed(2);
+                    larguraVidro2 = largura - (perfilDescontoVidro * 2).toFixed(2);
+                    alturaVidro2 = ((altura - perfilDescontoVidro - perfilPuxadorDescontoVidro - espDivisor) / 3).toFixed(2);
+                    larguraVidro3 = largura - (perfilDescontoVidro * 2).toFixed(2);
+                    alturaVidro3 = ((altura - perfilDescontoVidro - perfilPuxadorDescontoVidro - espDivisor) / 3).toFixed(2);
+                    vidroCorte.push("1x " + vidro1Descricao + " " + larguraVidro1 + "x" + alturaVidro1 + "mm");
+                    vidroCorte.push("1x " + vidro2Descricao + " " + larguraVidro2 + "x" + alturaVidro2 + "mm");
+                    vidroCorte.push("1x " + vidro3Descricao + " " + larguraVidro3 + "x" + alturaVidro3 + "mm");
+                }
+            } else if (tipoDivisor === "Oculto") {
+                divisor = largura - (perfilLarguraPerfil * 2).toFixed(2);
+                divisorCorte.push("2x " + divisorDescricao + " " + divisor + "mm");
+                if ($('#id_vidro').val()) {
+                        larguraVidro = largura - (perfilDescontoVidro * 2).toFixed(2);
+                        alturaVidro = (altura - perfilDescontoVidro - perfilPuxadorDescontoVidro).toFixed(2);
+                        vidroCorte.push("1x " + vidroDescricao + " " + larguraVidro + "x" + alturaVidro + "mm");
+                }
+            }
+        }
+    } else if ($('#posicao-perfilpuxador').val() === "Direita" || $('#posicao-perfilpuxador').val() === "Esquerda") {
+        if ($('#qtd-divisor').val() === null || $('#qtd-divisor').val() === undefined || $('#qtd-divisor').val() === '') {
+            perfilCorte.push("1x " + perfilDescricao + " " + altura + "mm");
+            perfilCorte.push("2x " + perfilDescricao + " " + (largura - perfilPuxadorLarguraPuxador) + "mm");
+            perfilPuxadorCorte.push("1x " + perfilPuxadorDescricao + " " + altura + "mm");
+            if ($('#id_vidro').val()) {
+                larguraVidro = (largura - perfilDescontoVidro - perfilPuxadorDescontoVidro).toFixed(2);
+                alturaVidro = altura - (perfilDescontoVidro * 2).toFixed(2);
+                vidroCorte.push("1x " + vidroDescricao + " " + larguraVidro + "x" + alturaVidro + "mm");
+            }
+        } else if ($('#qtd-divisor').val() === '1') {
+            perfilCorte.push("1x " + perfilDescricao + " " + altura + "mm");
+            perfilCorte.push("2x " + perfilDescricao + " " + (largura - perfilPuxadorLarguraPuxador) + "mm");
+            perfilPuxadorCorte.push("1x " + perfilPuxadorDescricao + " " + altura + "mm");
+            if (tipoDivisor === "Aparente") {
+                divisor = (largura - perfilPuxadorLarguraPuxador - perfilAbaPerfil - perfilPuxadorAbaPerfil).toFixed(2);
+                extrusao = perfilLarguraPerfil - perfilAbaPerfil.toFixed(2);
+                divisorCorte.push("1x " + divisorDescricao + " " + divisor + "mm ("+ extrusao + "mm)");
+                if ($('#id_vidro1').val() && $('#id_vidro2').val()) {
+                    larguraVidro1 = (largura - perfilDescontoVidro - perfilPuxadorDescontoVidro).toFixed(2);
+                    alturaVidro1 = ((altura - perfilDescontoVidro - perfilPuxadorDescontoVidro - espDivisor) / 2).toFixed(2);
+                    larguraVidro2 = (largura - perfilDescontoVidro - perfilPuxadorDescontoVidro).toFixed(2);
+                    alturaVidro2 = ((altura - perfilDescontoVidro - perfilPuxadorDescontoVidro - espDivisor) / 2).toFixed(2);
+                    vidroCorte.push("1x " + vidro1Descricao + " " + larguraVidro1 + "x" + alturaVidro1 + "mm");
+                    vidroCorte.push("1x " + vidro2Descricao + " " + larguraVidro2 + "x" + alturaVidro2 + "mm");
+                }
+            } else if (tipoDivisor === "Oculto") {
+                divisor = (largura - perfilLarguraPerfil - perfilPuxadorLarguraPerfil - perfilPuxadorLarguraPuxador);
+                divisorCorte.push("1x " + divisorDescricao + " " + divisor + "mm");
+                if ($('#id_vidro').val()) {
+                        larguraVidro = (largura - perfilDescontoVidro - perfilPuxadorDescontoVidro).toFixed(2);
+                        alturaVidro = (altura - (perfilDescontoVidro * 2)).toFixed(2);
+                        vidroCorte.push("1x " + vidroDescricao + " " + larguraVidro + "x" + alturaVidro + "mm");
+                }
+            }
+        } else if ($('#qtd-divisor').val() === '2') {
+            perfilCorte.push("1x " + perfilDescricao + " " + altura + "mm");
+            perfilCorte.push("2x " + perfilDescricao + " " + (largura - perfilPuxadorLarguraPuxador) + "mm");
+            perfilPuxadorCorte.push("1x " + perfilPuxadorDescricao + " " + altura + "mm");
+            if (tipoDivisor === "Aparente") {
+                divisor = (largura - perfilPuxadorLarguraPuxador - perfilAbaPerfil - perfilPuxadorAbaPerfil).toFixed(2);
+                extrusao = perfilLarguraPerfil - perfilAbaPerfil.toFixed(2);
+                divisorCorte.push("2x " + divisorDescricao + " " + divisor + "mm ("+ extrusao + "mm)");
+                if ($('#id_vidro1').val() && $('#id_vidro2').val()) {
+                    larguraVidro1 = (largura - perfilDescontoVidro - perfilPuxadorDescontoVidro).toFixed(2);
+                    alturaVidro1 = ((altura - perfilDescontoVidro - perfilPuxadorDescontoVidro - espDivisor) / 2).toFixed(2);
+                    larguraVidro2 = (largura - perfilDescontoVidro - perfilPuxadorDescontoVidro).toFixed(2);
+                    alturaVidro2 = ((altura - perfilDescontoVidro - perfilPuxadorDescontoVidro - espDivisor) / 2).toFixed(2);
+                    larguraVidro3 = (largura - perfilDescontoVidro - perfilPuxadorDescontoVidro).toFixed(2);
+                    alturaVidro3 = ((altura - perfilDescontoVidro - perfilPuxadorDescontoVidro - espDivisor) / 2).toFixed(2);
+                    vidroCorte.push("1x " + vidro1Descricao + " " + larguraVidro1 + "x" + alturaVidro1 + "mm");
+                    vidroCorte.push("1x " + vidro2Descricao + " " + larguraVidro2 + "x" + alturaVidro2 + "mm");
+                    vidroCorte.push("1x " + vidro3Descricao + " " + larguraVidro3 + "x" + alturaVidro3 + "mm");
+                }
+            } else if (tipoDivisor === "Oculto") {
+                divisor = (largura - perfilLarguraPerfil - perfilPuxadorLarguraPerfil - perfilPuxadorLarguraPuxador);
+                divisorCorte.push("2x " + divisorDescricao + " " + divisor + "mm");
+                if ($('#id_vidro').val()) {
+                        larguraVidro = (largura - perfilDescontoVidro - perfilPuxadorDescontoVidro).toFixed(2);
+                        alturaVidro = (altura - (perfilDescontoVidro * 2)).toFixed(2);
+                        vidroCorte.push("1x " + vidroDescricao + " " + larguraVidro + "x" + alturaVidro + "mm");
+                }
+            }
+        }
+    } else if ($('#posicao-perfilpuxador').val() === "Esq/Dir") {
+        if ($('#qtd-divisor').val() === null || $('#qtd-divisor').val() === undefined || $('#qtd-divisor').val() === '') {
+            perfilCorte.push("2x " + perfilDescricao + " " + (largura - (perfilPuxadorLarguraPuxador * 2)) + "mm");
+            perfilPuxadorCorte.push("2x " + perfilDescricao + " " + altura + "mm");
+            if ($('#id_vidro').val()) {
+                larguraVidro = largura - (perfilPuxadorDescontoVidro * 2).toFixed(2);
+                alturaVidro = altura - (perfilDescontoVidro * 2).toFixed(2);
+                vidroCorte.push("1x " + vidroDescricao + " " + larguraVidro + "x" + alturaVidro + "mm");
+            }
+        } else if ($('#qtd-divisor').val() === '1') {
+            perfilCorte.push("2x " + perfilDescricao + " " + (largura - (perfilPuxadorLarguraPuxador * 2)) + "mm");
+            perfilPuxadorCorte.push("2x " + perfilDescricao + " " + altura + "mm");
+            if (tipoDivisor === "Aparente") {
+                divisor = (largura - (perfilPuxadorLarguraPuxador * 2) - (perfilPuxadorAbaPerfil * 2)).toFixed(2);
+                extrusao = (perfilPuxadorLarguraPerfil - perfilPuxadorAbaPerfil).toFixed(2);
+                divisorCorte.push("1x " + divisorDescricao + " " + divisor + "mm ("+ extrusao + "mm)");
+                if ($('#id_vidro1').val() && $('#id_vidro2').val()) {
+                    larguraVidro1 = (largura - (perfilPuxadorDescontoVidro * 2)).toFixed(2);
+                    alturaVidro1 = ((altura - (perfilDescontoVidro * 2) - espDivisor) / 2).toFixed(2);
+                    larguraVidro2 = (largura - (perfilPuxadorDescontoVidro * 2)).toFixed(2);
+                    alturaVidro2 = ((altura - (perfilDescontoVidro * 2) - espDivisor) / 2).toFixed(2);
+                    vidroCorte.push("1x " + vidro1Descricao + " " + larguraVidro1 + "x" + alturaVidro1 + "mm");
+                    vidroCorte.push("1x " + vidro2Descricao + " " + larguraVidro2 + "x" + alturaVidro2 + "mm");
+                }
+            } else if (tipoDivisor === "Oculto") {
+                divisor = (largura - (perfilPuxadorLarguraPerfil * 2) - (perfilPuxadorLarguraPuxador * 2));
+                divisorCorte.push("1x " + divisorDescricao + " " + divisor + "mm");
+                if ($('#id_vidro').val()) {
+                        larguraVidro = (largura - (perfilPuxadorDescontoVidro * 2)).toFixed(2);
+                        alturaVidro = (altura - (perfilDescontoVidro * 2)).toFixed(2);
+                        vidroCorte.push("1x " + vidroDescricao + " " + larguraVidro + "x" + alturaVidro + "mm");
+                }
+            }
+        } else if ($('#qtd-divisor').val() === '2') {
+            perfilCorte.push("2x " + perfilDescricao + " " + (largura - (perfilPuxadorLarguraPuxador * 2)) + "mm");
+            perfilPuxadorCorte.push("2x " + perfilDescricao + " " + altura + "mm");
+            if (tipoDivisor === "Aparente") {
+                divisor = (largura - (perfilPuxadorLarguraPuxador * 2) - (perfilPuxadorAbaPerfil * 2)).toFixed(2);
+                extrusao = (perfilPuxadorLarguraPerfil - perfilPuxadorAbaPerfil).toFixed(2);
+                divisorCorte.push("2x " + divisorDescricao + " " + divisor + "mm ("+ extrusao + "mm)");
+                if ($('#id_vidro1').val() && $('#id_vidro2').val()) {
+                    larguraVidro1 = (largura - (perfilPuxadorDescontoVidro * 2)).toFixed(2);
+                    alturaVidro1 = ((altura - (perfilDescontoVidro * 2) - espDivisor) / 2).toFixed(2);
+                    larguraVidro2 = (largura - (perfilPuxadorDescontoVidro * 2)).toFixed(2);
+                    alturaVidro2 = ((altura - (perfilDescontoVidro * 2) - espDivisor) / 2).toFixed(2);
+                    vidroCorte.push("1x " + vidro1Descricao + " " + larguraVidro1 + "x" + alturaVidro1 + "mm");
+                    vidroCorte.push("1x " + vidro2Descricao + " " + larguraVidro2 + "x" + alturaVidro2 + "mm");
+                }
+            } else if (tipoDivisor === "Oculto") {
+                divisor = (largura - (perfilPuxadorLarguraPerfil * 2) - (perfilPuxadorLarguraPuxador * 2));
+                divisorCorte.push("2x " + divisorDescricao + " " + divisor + "mm");
+                if ($('#id_vidro').val()) {
+                        larguraVidro = (largura - (perfilPuxadorDescontoVidro * 2)).toFixed(2);
+                        alturaVidro = (altura - (perfilDescontoVidro * 2)).toFixed(2);
+                        vidroCorte.push("1x " + vidroDescricao + " " + larguraVidro + "x" + alturaVidro + "mm");
+                }
+            }
+        }
+    } else if ($('#posicao-puxador').val() === "Topo" || $('#posicao-puxador').val() === "Base") {
+        if (tamPuxador < largura) {
+            if ($('#qtd-divisor').val() === null || $('#qtd-divisor').val() === undefined || $('#qtd-divisor').val() === '') {
+            perfilCorte.push("2x " + perfilDescricao + " " + largura + "mm");
+            perfilCorte.push("2x " + perfilDescricao + " " + altura + "mm");
+            puxadorCorte.push("1x " + puxadorDescricao + " " + tamPuxador + "mm");
+                if ($('#id_vidro').val()) {
+                    larguraVidro = largura - (perfilDescontoVidro * 2).toFixed(2);
+                    alturaVidro = altura - (perfilDescontoVidro * 2).toFixed(2);
+                    vidroCorte.push("1x " + vidroDescricao + " " + larguraVidro + "x" + alturaVidro + "mm");
+                }
+            } else if ($('#qtd-divisor').val() === '1') {
+                perfilCorte.push("2x " + perfilDescricao + " " + largura + "mm");
+                perfilCorte.push("2x " + perfilDescricao + " " + altura + "mm");
+                puxadorCorte.push("1x " + puxadorDescricao + " " + tamPuxador + "mm");
+                if (tipoDivisor === "Aparente") {
+                    divisor = largura - (perfilAbaPerfil * 2).toFixed(2);
+                    extrusao = perfilLarguraPerfil - perfilAbaPerfil.toFixed(2);
+                    divisorCorte.push("1x " + divisorDescricao + " " + divisor + "mm ("+ extrusao + "mm)");
+                    if ($('#id_vidro1').val() && $('#id_vidro2').val()) {
+                        larguraVidro1 = largura - (perfilDescontoVidro * 2).toFixed(2);
+                        alturaVidro1 = ((altura - perfilDescontoVidro - espDivisor) / 2).toFixed(2);
+                        larguraVidro2 = largura - (perfilDescontoVidro * 2).toFixed(2);
+                        alturaVidro2 = ((altura - perfilDescontoVidro - espDivisor) / 2).toFixed(2);
+                        vidroCorte.push("1x " + vidro1Descricao + " " + larguraVidro1 + "x" + alturaVidro1 + "mm");
+                        vidroCorte.push("1x " + vidro2Descricao + " " + larguraVidro2 + "x" + alturaVidro2 + "mm");
+                    }
+                } else if (tipoDivisor === "Oculto") {
+                    divisor = largura - (perfilLarguraPerfil * 2).toFixed(2);
+                    divisorCorte.push("1x " + divisorDescricao + " " + divisor + "mm");
+                    if ($('#id_vidro').val()) {
+                        larguraVidro = largura - (perfilDescontoVidro * 2).toFixed(2);
+                        alturaVidro = altura - (perfilDescontoVidro * 2).toFixed(2);
+                        vidroCorte.push("1x " + vidroDescricao + " " + larguraVidro + "x" + alturaVidro + "mm");
+                    }
+                }
+            } else if ($('#qtd-divisor').val() === '2') {
+                perfilCorte.push("2x " + perfilDescricao + " " + largura + "mm");
+                perfilCorte.push("2x " + perfilDescricao + " " + altura + "mm");
+                puxadorCorte.push("1x " + puxadorDescricao + " " + tamPuxador + "mm");
+                if (tipoDivisor === "Aparente") {
+                    divisor = largura - (perfilAbaPerfil * 2).toFixed(2);
+                    extrusao = perfilLarguraPerfil - perfilAbaPerfil.toFixed(2);
+                    divisorCorte.push("2x " + divisorDescricao + " " + divisor + "mm ("+ extrusao + "mm)");
+                    if ($('#id_vidro1').val() && $('#id_vidro2').val() && $('#id_vidro3').val()) {
+                        larguraVidro1 = (largura - (perfilDescontoVidro * 2)).toFixed(2);
+                        alturaVidro1 = ((altura - perfilDescontoVidro - espDivisor) / 3).toFixed(2);
+                        larguraVidro2 = (largura - (perfilDescontoVidro * 2)).toFixed(2);
+                        alturaVidro2 = ((altura - perfilDescontoVidro - espDivisor) / 3).toFixed(2);
+                        larguraVidro3 = (largura - (perfilDescontoVidro * 2)).toFixed(2);
+                        alturaVidro3 = ((altura - perfilDescontoVidro - espDivisor) / 3).toFixed(2);
+                        vidroCorte.push("1x " + vidro1Descricao + " " + larguraVidro1 + "x" + alturaVidro1 + "mm");
+                        vidroCorte.push("1x " + vidro2Descricao + " " + larguraVidro2 + "x" + alturaVidro2 + "mm");
+                        vidroCorte.push("1x " + vidro3Descricao + " " + larguraVidro3 + "x" + alturaVidro3 + "mm");
+                    }
+                } else if (tipoDivisor === "Oculto") {
+                    divisor = largura - (perfilLarguraPerfil * 2).toFixed(2);
+                    divisorCorte.push("2x" + divisorDescricao + " " + divisor + "mm");
+                    if ($('#id_vidro').val()) {
+                        larguraVidro = largura - (perfilDescontoVidro * 2).toFixed(2);
+                        alturaVidro = altura - (perfilDescontoVidro * 2).toFixed(2);
+                        vidroCorte.push("1x " + vidroDescricao + " " + larguraVidro + "x" + alturaVidro + "mm");
+                    }
+                }
+            }
+        } else if (tamPuxador === largura) {
+            if ($('#qtd-divisor').val() === null || $('#qtd-divisor').val() === undefined || $('#qtd-divisor').val() === '') {
+            perfilCorte.push("2x " + perfilDescricao + " " + largura + "mm");
+            perfilCorte.push("2x " + perfilDescricao + " " + (altura - descontoPuxador) + "mm");
+            puxadorCorte.push("1x " + puxadorDescricao + " " + tamPuxador + "mm");
+                if ($('#id_vidro').val()) {
+                    larguraVidro = largura - (perfilDescontoVidro * 2).toFixed(2);
+                    alturaVidro = (altura - descontoPuxador - (perfilDescontoVidro * 2)).toFixed(2);
+                    vidroCorte.push("1x " + vidroDescricao + " " + larguraVidro + "x" + alturaVidro + "mm");
+                }
+            } else if ($('#qtd-divisor').val() === '1') {
+                perfilCorte.push("2x " + perfilDescricao + " " + largura + "mm");
+                perfilCorte.push("2x " + perfilDescricao + " " + (altura - descontoPuxador) + "mm");
+                puxadorCorte.push("1x " + puxadorDescricao + " " + tamPuxador + "mm");
+                if (tipoDivisor === "Aparente") {
+                    divisor = largura - (perfilAbaPerfil * 2).toFixed(2);
+                    extrusao = perfilLarguraPerfil - perfilAbaPerfil.toFixed(2);
+                    divisorCorte.push("1x " + divisorDescricao + " " + divisor + "mm ("+ extrusao + "mm)");
+                    if ($('#id_vidro1').val() && $('#id_vidro2').val()) {
+                        larguraVidro1 = largura - (perfilDescontoVidro * 2).toFixed(2);
+                        alturaVidro1 = ((altura - perfilDescontoVidro - espDivisor - descontoPuxador) / 2).toFixed(2);
+                        larguraVidro2 = largura - (perfilDescontoVidro * 2).toFixed(2);
+                        alturaVidro2 = ((altura - perfilDescontoVidro - espDivisor - descontoPuxador) / 2).toFixed(2);
+                        vidroCorte.push("1x " + vidro1Descricao + " " + larguraVidro1 + "x" + alturaVidro1 + "mm");
+                        vidroCorte.push("1x " + vidro2Descricao + " " + larguraVidro2 + "x" + alturaVidro2 + "mm");
+                    }
+                } else if (tipoDivisor === "Oculto") {
+                    divisor = largura - (perfilLarguraPerfil * 2).toFixed(2);
+                    divisorCorte.push("1x " + divisorDescricao + " " + divisor + "mm");
+                    if ($('#id_vidro').val()) {
+                        larguraVidro = largura - (perfilDescontoVidro * 2).toFixed(2);
+                        alturaVidro = (altura - (perfilDescontoVidro * 2) - descontoPuxador).toFixed(2);
+                        vidroCorte.push("1x " + vidroDescricao + " " + larguraVidro + "x" + alturaVidro + "mm");
+                    }
+                }
+            } else if ($('#qtd-divisor').val() === '2') {
+                perfilCorte.push("2x " + perfilDescricao + " " + largura + "mm");
+                perfilCorte.push("2x " + perfilDescricao + " " + (altura - descontoPuxador) + "mm");
+                puxadorCorte.push("1x " + puxadorDescricao + " " + tamPuxador + "mm");
+                if (tipoDivisor === "Aparente") {
+                    divisor = largura - (perfilAbaPerfil * 2).toFixed(2);
+                    extrusao = perfilLarguraPerfil - perfilAbaPerfil.toFixed(2);
+                    divisorCorte.push("2x " + divisorDescricao + " " + divisor + "mm ("+ extrusao + "mm)");
+                    if ($('#id_vidro1').val() && $('#id_vidro2').val() && $('#id_vidro3').val()) {
+                        larguraVidro1 = (largura - (perfilDescontoVidro * 2)).toFixed(2);
+                        alturaVidro1 = ((altura - perfilDescontoVidro - espDivisor - descontoPuxador) / 3).toFixed(2);
+                        larguraVidro2 = (largura - (perfilDescontoVidro * 2)).toFixed(2);
+                        alturaVidro2 = ((altura - perfilDescontoVidro - espDivisor - descontoPuxador) / 3).toFixed(2);
+                        larguraVidro3 = (largura - (perfilDescontoVidro * 2)).toFixed(2);
+                        alturaVidro3 = ((altura - perfilDescontoVidro - espDivisor - descontoPuxador) / 3).toFixed(2);
+                        vidroCorte.push("1x " + vidro1Descricao + " " + larguraVidro1 + "x" + alturaVidro1 + "mm");
+                        vidroCorte.push("1x " + vidro2Descricao + " " + larguraVidro2 + "x" + alturaVidro2 + "mm");
+                        vidroCorte.push("1x " + vidro3Descricao + " " + larguraVidro3 + "x" + alturaVidro3 + "mm");
+                    }
+                } else if (tipoDivisor === "Oculto") {
+                    divisor = largura - (perfilLarguraPerfil * 2).toFixed(2);
+                    divisorCorte.push("2x" + divisorDescricao + " " + divisor + "mm");
+                    if ($('#id_vidro').val()) {
+                        larguraVidro = largura - (perfilDescontoVidro * 2).toFixed(2);
+                        alturaVidro = (altura - (perfilDescontoVidro * 2) - descontoPuxador).toFixed(2);
+                        vidroCorte.push("1x " + vidroDescricao + " " + larguraVidro + "x" + alturaVidro + "mm");
+                    }
+                }
+            }
+        }
+    } else if ($('#posicao-puxador').val() === "Esquerda" || $('#posicao-puxador').val() === "Direita") {
+        if (tamPuxador < largura) {
+            if ($('#qtd-divisor').val() === null || $('#qtd-divisor').val() === undefined || $('#qtd-divisor').val() === '') {
+            perfilCorte.push("2x " + perfilDescricao + " " + largura + "mm");
+            perfilCorte.push("2x " + perfilDescricao + " " + altura + "mm");
+            puxadorCorte.push("1x " + puxadorDescricao + " " + tamPuxador + "mm");
+                if ($('#id_vidro').val()) {
+                    larguraVidro = largura - (perfilDescontoVidro * 2).toFixed(2);
+                    alturaVidro = altura - (perfilDescontoVidro * 2).toFixed(2);
+                    vidroCorte.push("1x " + vidroDescricao + " " + larguraVidro + "x" + alturaVidro + "mm");
+                }
+            } else if ($('#qtd-divisor').val() === '1') {
+                perfilCorte.push("2x " + perfilDescricao + " " + largura + "mm");
+                perfilCorte.push("2x " + perfilDescricao + " " + altura + "mm");
+                puxadorCorte.push("1x " + puxadorDescricao + " " + tamPuxador + "mm");
+                if (tipoDivisor === "Aparente") {
+                    divisor = largura - (perfilAbaPerfil * 2).toFixed(2);
+                    extrusao = perfilLarguraPerfil - perfilAbaPerfil.toFixed(2);
+                    divisorCorte.push("1x " + divisorDescricao + " " + divisor + "mm ("+ extrusao + "mm)");
+                    if ($('#id_vidro1').val() && $('#id_vidro2').val()) {
+                        larguraVidro1 = largura - (perfilDescontoVidro * 2).toFixed(2);
+                        alturaVidro1 = ((altura - perfilDescontoVidro - espDivisor) / 2).toFixed(2);
+                        larguraVidro2 = largura - (perfilDescontoVidro * 2).toFixed(2);
+                        alturaVidro2 = ((altura - perfilDescontoVidro - espDivisor) / 2).toFixed(2);
+                        vidroCorte.push("1x " + vidro1Descricao + " " + larguraVidro1 + "x" + alturaVidro1 + "mm");
+                        vidroCorte.push("1x " + vidro2Descricao + " " + larguraVidro2 + "x" + alturaVidro2 + "mm");
+                    }
+                } else if (tipoDivisor === "Oculto") {
+                    divisor = largura - (perfilLarguraPerfil * 2).toFixed(2);
+                    divisorCorte.push("1x " + divisorDescricao + " " + divisor + "mm");
+                    if ($('#id_vidro').val()) {
+                        larguraVidro = largura - (perfilDescontoVidro * 2).toFixed(2);
+                        alturaVidro = altura - (perfilDescontoVidro * 2).toFixed(2);
+                        vidroCorte.push("1x " + vidroDescricao + " " + larguraVidro + "x" + alturaVidro + "mm");
+                    }
+                }
+            } else if ($('#qtd-divisor').val() === '2') {
+                perfilCorte.push("2x " + perfilDescricao + " " + largura + "mm");
+                perfilCorte.push("2x " + perfilDescricao + " " + altura + "mm");
+                puxadorCorte.push("1x " + puxadorDescricao + " " + tamPuxador + "mm");
+                if (tipoDivisor === "Aparente") {
+                    divisor = largura - (perfilAbaPerfil * 2).toFixed(2);
+                    extrusao = perfilLarguraPerfil - perfilAbaPerfil.toFixed(2);
+                    divisorCorte.push("2x " + divisorDescricao + " " + divisor + "mm ("+ extrusao + "mm)");
+                    if ($('#id_vidro1').val() && $('#id_vidro2').val() && $('#id_vidro3').val()) {
+                        larguraVidro1 = (largura - (perfilDescontoVidro * 2)).toFixed(2);
+                        alturaVidro1 = ((altura - perfilDescontoVidro - espDivisor) / 3).toFixed(2);
+                        larguraVidro2 = (largura - (perfilDescontoVidro * 2)).toFixed(2);
+                        alturaVidro2 = ((altura - perfilDescontoVidro - espDivisor) / 3).toFixed(2);
+                        larguraVidro3 = (largura - (perfilDescontoVidro * 2)).toFixed(2);
+                        alturaVidro3 = ((altura - perfilDescontoVidro - espDivisor) / 3).toFixed(2);
+                        vidroCorte.push("1x " + vidro1Descricao + " " + larguraVidro1 + "x" + alturaVidro1 + "mm");
+                        vidroCorte.push("1x " + vidro2Descricao + " " + larguraVidro2 + "x" + alturaVidro2 + "mm");
+                        vidroCorte.push("1x " + vidro3Descricao + " " + larguraVidro3 + "x" + alturaVidro3 + "mm");
+                    }
+                } else if (tipoDivisor === "Oculto") {
+                    divisor = largura - (perfilLarguraPerfil * 2).toFixed(2);
+                    divisorCorte.push("2x" + divisorDescricao + " " + divisor + "mm");
+                    if ($('#id_vidro').val()) {
+                        larguraVidro = largura - (perfilDescontoVidro * 2).toFixed(2);
+                        alturaVidro = altura - (perfilDescontoVidro * 2).toFixed(2);
+                        vidroCorte.push("1x " + vidroDescricao + " " + larguraVidro + "x" + alturaVidro + "mm");
+                    }
+                }
+            }
+        } else if (tamPuxador === largura) {
+            if ($('#qtd-divisor').val() === null || $('#qtd-divisor').val() === undefined || $('#qtd-divisor').val() === '') {
+            perfilCorte.push("2x " + perfilDescricao + " " + (largura - descontoPuxador) + "mm");
+            perfilCorte.push("2x " + perfilDescricao + " " + altura + "mm");
+            puxadorCorte.push("1x " + puxadorDescricao + " " + tamPuxador + "mm");
+                if ($('#id_vidro').val()) {
+                    larguraVidro = (largura - descontoPuxador - (perfilDescontoVidro * 2)).toFixed(2);
+                    alturaVidro = altura - (perfilDescontoVidro * 2).toFixed(2);
+                    vidroCorte.push("1x " + vidroDescricao + " " + larguraVidro + "x" + alturaVidro + "mm");
+                }
+            } else if ($('#qtd-divisor').val() === '1') {
+                perfilCorte.push("2x " + perfilDescricao + " " + (largura - descontoPuxador) + "mm");
+                perfilCorte.push("2x " + perfilDescricao + " " + altura + "mm");
+                puxadorCorte.push("1x " + puxadorDescricao + " " + tamPuxador + "mm");
+                if (tipoDivisor === "Aparente") {
+                    divisor = largura - (perfilAbaPerfil * 2).toFixed(2);
+                    extrusao = perfilLarguraPerfil - perfilAbaPerfil.toFixed(2);
+                    divisorCorte.push("1x " + divisorDescricao + " " + divisor + "mm ("+ extrusao + "mm)");
+                    if ($('#id_vidro1').val() && $('#id_vidro2').val()) {
+                        larguraVidro1 = (largura - descontoPuxador - (perfilDescontoVidro * 2)).toFixed(2);
+                        alturaVidro1 = ((altura - perfilDescontoVidro - espDivisor) / 2).toFixed(2);
+                        larguraVidro2 = (largura - descontoPuxador - (perfilDescontoVidro * 2)).toFixed(2);
+                        alturaVidro2 = ((altura - perfilDescontoVidro - espDivisor) / 2).toFixed(2);
+                        vidroCorte.push("1x " + vidro1Descricao + " " + larguraVidro1 + "x" + alturaVidro1 + "mm");
+                        vidroCorte.push("1x " + vidro2Descricao + " " + larguraVidro2 + "x" + alturaVidro2 + "mm");
+                    }
+                } else if (tipoDivisor === "Oculto") {
+                    divisor = largura - (perfilLarguraPerfil * 2).toFixed(2);
+                    divisorCorte.push("1x " + divisorDescricao + " " + divisor + "mm");
+                    if ($('#id_vidro').val()) {
+                        larguraVidro = (largura - (perfilDescontoVidro * 2) - descontoPuxador).toFixed(2);
+                        alturaVidro = altura - (perfilDescontoVidro * 2).toFixed(2);
+                        vidroCorte.push("1x " + vidroDescricao + " " + larguraVidro + "x" + alturaVidro + "mm");
+                    }
+                }
+            } else if ($('#qtd-divisor').val() === '2') {
+                perfilCorte.push("2x " + perfilDescricao + " " + (largura - descontoPuxador) + "mm");
+                perfilCorte.push("2x " + perfilDescricao + " " + altura + "mm");
+                puxadorCorte.push("1x " + puxadorDescricao + " " + tamPuxador + "mm");
+                if (tipoDivisor === "Aparente") {
+                    divisor = largura - (perfilAbaPerfil * 2).toFixed(2);
+                    extrusao = perfilLarguraPerfil - perfilAbaPerfil.toFixed(2);
+                    divisorCorte.push("2x " + divisorDescricao + " " + divisor + "mm ("+ extrusao + "mm)");
+                    if ($('#id_vidro1').val() && $('#id_vidro2').val() && $('#id_vidro3').val()) {
+                        larguraVidro1 = (largura - (perfilDescontoVidro * 2) - descontoPuxador).toFixed(2);
+                        alturaVidro1 = ((altura - perfilDescontoVidro - espDivisor) / 3).toFixed(2);
+                        larguraVidro2 = (largura - (perfilDescontoVidro * 2) - descontoPuxador).toFixed(2);
+                        alturaVidro2 = ((altura - perfilDescontoVidro - espDivisor) / 3).toFixed(2);
+                        larguraVidro3 = (largura - (perfilDescontoVidro * 2) - descontoPuxador).toFixed(2);
+                        alturaVidro3 = ((altura - perfilDescontoVidro - espDivisor) / 3).toFixed(2);
+                        vidroCorte.push("1x " + vidro1Descricao + " " + larguraVidro1 + "x" + alturaVidro1 + "mm");
+                        vidroCorte.push("1x " + vidro2Descricao + " " + larguraVidro2 + "x" + alturaVidro2 + "mm");
+                        vidroCorte.push("1x " + vidro3Descricao + " " + larguraVidro3 + "x" + alturaVidro3 + "mm");
+                    }
+                } else if (tipoDivisor === "Oculto") {
+                    divisor = largura - (perfilLarguraPerfil * 2).toFixed(2);
+                    divisorCorte.push("2x" + divisorDescricao + " " + divisor + "mm");
+                    if ($('#id_vidro').val()) {
+                        larguraVidro = (largura - (perfilDescontoVidro * 2) - descontoPuxador).toFixed(2);
+                        alturaVidro = (altura - (perfilDescontoVidro * 2)).toFixed(2);
+                        vidroCorte.push("1x " + vidroDescricao + " " + larguraVidro + "x" + alturaVidro + "mm");
+                    }
+                }
+            }
+        }
     }
-});
-
-// Adiciona um manipulador de evento de mouse para detectar o clique liberado
-document.addEventListener("mouseup", function() {
-    isMouseDown = false;
-});
-
-// Previne o comportamento padrão do clique direito no SVG para evitar o menu de contexto
-svg.addEventListener("contextmenu", function(event) {
-    event.preventDefault();
+}
+$(document).ready(function() {
+    $('#id_largura, #id_altura, #id_perfil, #id_perfilpuxador, #qtd-perfilpuxador, #posicao-perfilpuxador, #id_puxador, #qtd-puxador, #posicao-puxador, #tam-puxador, #id_vidro, #id_vidro1, #id_vidro2, #id_vidro3, #id_divisor, #qtd-divisor').change(function() {
+        calcularMaterial();
+    });
 });
 </script>
 
+<script>
+$(document).ready(function() {
+    // Função para adicionar valores à tabela
+    function adicionarItemTabela(descricao, quantidade, valor) {
+        // Verificar se já existem itens na tabela
+        var tabela = $("#tabelaOrcamento");
+        var ultimoId = tabela.find("tbody tr:last").data("id") || 0;
+        var novoId = ultimoId + 1;
 
+        // Criar uma nova linha na tabela com os valores fornecidos
+        var novaLinha = "<tr data-id='" + novoId + "'>" +
+            "<th scope='row'>" + novoId + "</th>" +
+            "<td>" + quantidade + "</td>" +
+            "<td>" + descricao + "</td>" +
+            "<td>" + valor + "</td>" +
+            "</tr>";
 
+        // Adicionar a nova linha à tabela
+        tabela.find("tbody").append(novaLinha);
+    }
 
+    // Manipulador de evento para o botão "Adicionar"
+    $("#btnAdicionar").click(function() {
+        // Verificar qual radiobutton está selecionado
+        var selectedRadioButton = $("input[name='btnradio']:checked").val();
+
+        // Verificar se os campos estão preenchidos de acordo com a seleção do radiobutton
+        if (selectedRadioButton === "PortaGiro") {
+            if ($("#id_quantidade").val() && $("#id_largura").val() && $("#id_altura").val() && $("#id_acabamento").val() && $("#id_abertura").val() && $("#id_perfil").val()) {
+                var descricao = $("#nomeporta").text();
+                var quantidade = $("#id_quantidade").val();
+                var valor = $("#valorporta").text();
+                adicionarItemTabela(descricao, quantidade, valor);
+            } else {
+                alert("Preencha todos os campos obrigatórios.");
+            }
+        } else if (selectedRadioButton === "PortaCorrer") {
+            if ($("#id_quantidade").val() && $("#id_largura").val() && $("#id_altura").val() && $("#id_acabamento").val() && $("#id_perfil").val()) {
+                var descricao = $("#nomeporta").text();
+                var quantidade = $("#id_quantidade").val();
+                var valor = $("#valorporta").text();
+                adicionarItemTabela(descricao, quantidade, valor);
+            } else {
+                alert("Preencha todos os campos obrigatórios.");
+            }
+        } else if (selectedRadioButton === "Vidros") {
+            if ($("#id_quantidade").val() && $("#id_largura").val() && $("#id_altura").val() && $("#id_vidro").val()) {
+                var descricao = $("#nomeporta").text();
+                var quantidade = $("#id_quantidade").val();
+                var valor = $("#valorporta").text();
+                adicionarItemTabela(descricao, quantidade, valor);
+            } else {
+                alert("Preencha todos os campos obrigatórios.");
+            }
+        } else {
+            alert("Selecione um tipo de porta.");
+        }
+    console.log("função executada")
+    console.log(perfilusado)
+    });
+});
+
+</script>
+
+<script>
+$(document).ready(function() {
+    // Função para adicionar valores à tabela Insumos
+    function adicionarItemInsumos(dadosItem) {
+        // Criar uma nova linha na tabela com os valores fornecidos
+        var novaLinha = "<tr>" +
+            "<td>" + dadosItem.id + "</td>" +
+            "<td>" + dadosItem.codigo + "</td>" +
+            "<td>" + dadosItem.nome + "</td>" +
+            "<td>" + dadosItem.quantidadeUtilizada.toFixed(2) + "</td>" +
+            "<td>" + dadosItem.preco.toFixed(2) + "</td>" +
+            "<td>" + (dadosItem.quantidadeUtilizada * dadosItem.preco).toFixed(2) + "</td>" +
+            "</tr>";
+
+        // Adicionar a nova linha à tabela Insumos
+        console.log("nova linha criada")
+        $("#tabelaInsumos tbody").append(novaLinha);
+    }
+
+    // Função para obter os dados do item com base no tipo
+    function obterDadosItem(tipoItem) {
+        var dados = {
+            codigo: "",
+            nome: "",
+            descricao: "",
+            preco: 0,
+            quantidadeUtilizada: 0
+        };
+
+        switch (tipoItem) {
+            case "perfil":
+                if (perfilusado > 0) {
+                    dados.id = $("#id_perfil").val();
+                    dados.codigo = parseFloat($("#id_perfil option:selected").data('item')?.codigo || 0);
+                    dados.nome = $('#id_perfil option:selected').data('item')?.nome ?? '';
+                    dados.preco = parseFloat($("#id_perfil option:selected").data('item')?.preco || 0);
+                    dados.quantidadeUtilizada = perfilusado;
+                }
+                break;
+            case "perfilpuxador":
+                if (perfilpuxadorusado > 0) {
+                    dados.id = $("#id_perfilpuxador").val();
+                    dados.codigo = parseFloat($("#id_perfilpuxador option:selected").data('item')?.codigo || 0);
+                    dados.nome = $('#id_perfilpuxador option:selected').data('item')?.nome ?? '';
+                    dados.preco = parseFloat($("#id_perfilpuxador option:selected").data('item')?.preco || 0);
+                    dados.quantidadeUtilizada = perfilpuxadorusado;
+                }
+                break;
+            case "puxador":
+                if (puxadorusado > 0) {
+                    dados.id = $("#id_puxador").val();
+                    dados.codigo = parseFloat($("#id_puxador option:selected").data('item')?.codigo || 0);
+                    dados.nome = $('#id_puxador option:selected').data('item')?.nome ?? '';
+                    dados.preco = parseFloat($("#id_puxador option:selected").data('item')?.preco || 0);
+                    dados.quantidadeUtilizada = puxadorusado;
+                }
+                break;
+            case "divisor":
+                if (divisorusado > 0) {
+                    dados.id = $("#id_divisor").val();
+                    dados.codigo = parseFloat($("#id_divisor option:selected").data('item')?.codigo || 0);
+                    dados.nome = $('#id_divisor option:selected').data('item')?.nome ?? '';
+                    dados.preco = parseFloat($("#id_divisor option:selected").data('item')?.preco || 0);
+                    dados.quantidadeUtilizada = divisorusado;
+                }
+                break;
+            case "vidro":
+                if (vidrousado > 0) {
+                    dados.id = $("#id_vidro").val();
+                    dados.codigo = parseFloat($("#id_vidro option:selected").data('item')?.codigo || 0);
+                    dados.nome = $('#id_vidro option:selected').data('item')?.nome ?? '';
+                    dados.preco = parseFloat($("#id_vidro option:selected").data('item')?.preco || 0);
+                    dados.quantidadeUtilizada = vidrousado;
+                }
+                break;
+            case "vidro1":
+                if (vidrousado1 > 0) {
+                    dados.id = $("#id_vidro1").val();
+                    dados.codigo = parseFloat($('#id_vidro1 option:selected').data('codigo') || 0);
+                    dados.nome = ($('#id_vidro1 option:selected').data('nome') || 0);
+                    dados.preco = parseFloat($('#id_vidro1 option:selected').data('preco') || 0);
+                    dados.quantidadeUtilizada = vidrousado1;
+                }
+                break;
+            case "vidro2":
+                if (vidrousado2 > 0) {
+                    dados.id = $("#id_vidro2").val();
+                    dados.codigo = parseFloat($('#id_vidro2 option:selected').data('codigo') || 0);
+                    dados.nome = ($('#id_vidro2 option:selected').data('nome') || 0);
+                    dados.preco = parseFloat($('#id_vidro2 option:selected').data('preco') || 0);
+                    dados.quantidadeUtilizada = vidrousado2;
+                }
+                break;
+            case "vidro3":
+                if (vidrousado3 > 0) {
+                    dados.id = $("#id_vidro3").val();
+                    dados.codigo = parseFloat($("#id_vidro3 option:selected").data('item')?.codigo || 0);
+                    dados.nome = $('#id_vidro3 option:selected').data('item')?.nome ?? '';
+                    dados.preco = parseFloat($("#id_vidro3 option:selected").data('item')?.preco || 0);
+                    dados.quantidadeUtilizada = vidrousado3;
+                }
+                break;
+            default:
+                console.error("Tipo de item não reconhecido:", tipoItem);
+                break;
+        }
+
+        return dados;
+    }
+
+    // Manipulador de evento para o botão "Adicionar"
+    $("#btnAdicionar").click(function() {
+        // Loop sobre os tipos de itens para verificar quais devem ser adicionados
+        var tiposItens = ["perfil", "perfilpuxador", "puxador", "divisor", "vidro", "vidro1", "vidro2", "vidro3"];
+        tiposItens.forEach(function(tipoItem) {
+            var dadosItem = obterDadosItem(tipoItem);
+            if (dadosItem.quantidadeUtilizada > 0) {
+                adicionarItemInsumos(dadosItem);
+            }
+        });
+    });
+});
+
+</script>
 
 {% endblock %}
 

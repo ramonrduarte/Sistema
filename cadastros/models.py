@@ -24,6 +24,9 @@ POSICAODIVISORIA = (('Travessa/Inferior', 'Travessa/Inferior'),
                     ('Inferior', 'Inferior'),
                     ('Travessa', 'Travessa'))
 
+TIPODIVISOR = (('Aparente', 'Aparente'),
+                    ('Oculto', 'Oculto'))
+
 
 class Acabamento(models.Model):
     acabamento = models.CharField(max_length=50, unique=True)
@@ -116,6 +119,11 @@ class ItemBase(models.Model):
 
 class PerfilPuxador(ItemBase):
     modelo = models.ForeignKey(ModeloPerfilPuxador, on_delete=models.PROTECT)
+    largura_perfil = models.DecimalField(decimal_places=2, max_digits=5, verbose_name="Largura Perfil")
+    aba_perfil = models.DecimalField(decimal_places=2, max_digits=5, verbose_name="Aba Perfil")
+    desconto_vidro = models.DecimalField(decimal_places=2, max_digits=5, verbose_name="Desconto P/Vidro")
+    largura_puxador = models.DecimalField(decimal_places=2, max_digits=5, verbose_name="Largura Puxador")
+    aba_puxador = models.DecimalField(decimal_places=2, max_digits=5, verbose_name="Aba Puxador")
 
     class Meta:
         verbose_name = 'Perfil Puxador'
@@ -125,6 +133,7 @@ class PerfilPuxador(ItemBase):
 
 class Puxador(ItemBase):
     modelo = models.ForeignKey(ModeloPuxador, on_delete=models.PROTECT)
+    desconto_puxador = models.DecimalField(decimal_places=2, max_digits=5, verbose_name="Desconto Puxador")
 
     class Meta:
         verbose_name = 'Puxador'
@@ -134,6 +143,8 @@ class Puxador(ItemBase):
 
 class Divisor(ItemBase):
     modelo = models.ForeignKey(ModeloDivisor, on_delete=models.PROTECT)
+    tipodivisor = models.CharField(choices=TIPODIVISOR, max_length=50, verbose_name="Tipo Divisor")
+    espdivisor = models.DecimalField(decimal_places=2, max_digits=5, verbose_name="Espessura Divisor")
 
     class Meta:
         verbose_name = 'Perfil Divisor'
@@ -176,6 +187,11 @@ class Perfil(ItemBase):
     divisor = models.ManyToManyField(Divisor, verbose_name="Divisor", blank=True)
     encaixepuxador = models.CharField(max_length=3, choices=ENCAIXE, blank=True, null=True)
     puxador = models.ManyToManyField(Puxador, verbose_name="Puxador", blank=True)
+    largura_perfil = models.DecimalField(decimal_places=2, max_digits=5, verbose_name="Largura Perfil")
+    aba_perfil = models.DecimalField(decimal_places=2, max_digits=5, verbose_name="Aba Perfil")
+    desconto_vidro = models.DecimalField(decimal_places=2, max_digits=5, verbose_name="Desconto P/Vidro")
+    largura_puxador = models.DecimalField(decimal_places=2, max_digits=5, verbose_name="Largura Puxador")
+    aba_puxador = models.DecimalField(decimal_places=2, max_digits=5, verbose_name="Aba Puxador")
 
     class Meta:
         verbose_name = 'Perfil'
