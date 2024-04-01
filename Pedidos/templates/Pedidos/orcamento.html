@@ -393,14 +393,6 @@ Adrofecha - Orçamento
                         </tr>
                     </thead>
                     <tbody class="table-group-divider">
-                        <tr>
-                          <th scope="row">1</th>
-                          <td>010098</td>
-                          <td>3579 Anodizado (3579)</td>
-                          <td>4</td>
-                          <td>R$42,50</td>
-                          <td>R$170,52</td>
-                        </tr>
                     </tbody>
                 </table>
             </header>
@@ -424,10 +416,10 @@ Adrofecha - Orçamento
         </div>
     </div>
 </div>
-<nav class="navbar navbar-dark bg-dark fixed-bottom d-flex justify-content-center border">
+<nav id="bottom-navbar" class="navbar-dark bg-dark fixed-bottom d-flex justify-content-center">
   <div class="d-flex justify-content-end col-8 align-items-center">
-      <a style="color:white">R$100,00</a>
-      <button type="button" class="ms-4 btn btn-primary btn-sm">Finalizar</button>
+      <a>R$100,00</a>
+      <button type="button" class="btn btn-primary btn-sm">Finalizar</button>
   </div>
 </nav>
 
@@ -1961,6 +1953,42 @@ var vidrousado2 = 0;
 var vidrousado3 = 0;
 
 function calcularPrecoPerfil() {
+
+    // Verificar se o campo do perfil puxador está vazio
+    if ($('#id_perfilpuxador').val() === '') {
+        perfilpuxadorusado = 0; // Zerar a variável perfilpuxadorusado
+    }
+
+    // Verificar se o campo do puxador está vazio
+    if ($('#id_puxador').val() === '') {
+        puxadorusado = 0; // Zerar a variável puxadorusado
+    }
+
+    // Verificar se o campo do divisor está vazio
+    if ($('#id_divisor').val() === '') {
+        divisorusado = 0; // Zerar a variável divisorusado
+    }
+
+    // Verificar se o campo do vidro está vazio
+    if ($('#id_vidro').val() === '') {
+        vidrousado = 0; // Zerar a variável vidrousado
+    }
+
+    // Verificar se o campo do vidro1 está vazio
+    if ($('#id_vidro1').val() === '') {
+        vidrousado1 = 0; // Zerar a variável vidrousado1
+    }
+
+    // Verificar se o campo do vidro2 está vazio
+    if ($('#id_vidro2').val() === '') {
+        vidrousado2 = 0; // Zerar a variável vidrousado2
+    }
+
+    // Verificar se o campo do vidro3 está vazio
+    if ($('#id_vidro3').val() === '') {
+        vidrousado3 = 0; // Zerar a variável vidrousado3
+    }
+
     var quantidade = parseFloat($('#id_quantidade').val());
     var largura = parseFloat($('#id_largura').val()) / 1000;
     var altura = parseFloat($('#id_altura').val()) / 1000;
@@ -2809,14 +2837,18 @@ $(document).ready(function() {
 
 <script>
 $(document).ready(function() {
-    // Função para adicionar valores à tabela
-    function adicionarItemTabela(descricao, quantidade, valor) {
-        // Verificar se já existem itens na tabela
-        var tabela = $("#tabelaOrcamento");
-        var ultimoId = tabela.find("tbody tr:last").data("id") || 0;
-        var novoId = ultimoId + 1;
 
-        // Criar uma nova linha na tabela com os valores fornecidos
+    var ultimoIdOrcamento = 0;
+
+    function adicionarItemTabela(descricao, quantidade, valor) {
+        if (!descricao || !quantidade || !valor) {
+            alert("Preencha todos os campos obrigatórios para a tabela Orçamento.");
+            return;
+        }
+
+        var tabela = $("#tabelaOrcamento");
+        var novoId = ultimoIdOrcamento + 1;
+
         var novaLinha = "<tr data-id='" + novoId + "'>" +
             "<th scope='row'>" + novoId + "</th>" +
             "<td>" + quantidade + "</td>" +
@@ -2824,60 +2856,21 @@ $(document).ready(function() {
             "<td>" + valor + "</td>" +
             "</tr>";
 
-        // Adicionar a nova linha à tabela
         tabela.find("tbody").append(novaLinha);
+
+        ultimoIdOrcamento = novoId;
+
+        return novoId;
     }
 
-    // Manipulador de evento para o botão "Adicionar"
-    $("#btnAdicionar").click(function() {
-        // Verificar qual radiobutton está selecionado
-        var selectedRadioButton = $("input[name='btnradio']:checked").val();
-
-        // Verificar se os campos estão preenchidos de acordo com a seleção do radiobutton
-        if (selectedRadioButton === "PortaGiro") {
-            if ($("#id_quantidade").val() && $("#id_largura").val() && $("#id_altura").val() && $("#id_acabamento").val() && $("#id_abertura").val() && $("#id_perfil").val()) {
-                var descricao = $("#nomeporta").text();
-                var quantidade = $("#id_quantidade").val();
-                var valor = $("#valorporta").text();
-                adicionarItemTabela(descricao, quantidade, valor);
-            } else {
-                alert("Preencha todos os campos obrigatórios.");
-            }
-        } else if (selectedRadioButton === "PortaCorrer") {
-            if ($("#id_quantidade").val() && $("#id_largura").val() && $("#id_altura").val() && $("#id_acabamento").val() && $("#id_perfil").val()) {
-                var descricao = $("#nomeporta").text();
-                var quantidade = $("#id_quantidade").val();
-                var valor = $("#valorporta").text();
-                adicionarItemTabela(descricao, quantidade, valor);
-            } else {
-                alert("Preencha todos os campos obrigatórios.");
-            }
-        } else if (selectedRadioButton === "Vidros") {
-            if ($("#id_quantidade").val() && $("#id_largura").val() && $("#id_altura").val() && $("#id_vidro").val()) {
-                var descricao = $("#nomeporta").text();
-                var quantidade = $("#id_quantidade").val();
-                var valor = $("#valorporta").text();
-                adicionarItemTabela(descricao, quantidade, valor);
-            } else {
-                alert("Preencha todos os campos obrigatórios.");
-            }
-        } else {
-            alert("Selecione um tipo de porta.");
+    function adicionarItemInsumos(idOrcamento, dadosItem) {
+        if (idOrcamento === -1 || !dadosItem.nome || !dadosItem.quantidadeUtilizada || !dadosItem.preco) {
+            alert("Os dados do item são inválidos para a tabela Insumos.");
+            return -1;
         }
-    console.log("função executada")
-    console.log(perfilusado)
-    });
-});
 
-</script>
-
-<script>
-$(document).ready(function() {
-    // Função para adicionar valores à tabela Insumos
-    function adicionarItemInsumos(dadosItem) {
-        // Criar uma nova linha na tabela com os valores fornecidos
-        var novaLinha = "<tr>" +
-            "<td>" + dadosItem.id + "</td>" +
+        var novaLinha = "<tr data-id-orcamento='" + idOrcamento + "'>" +
+            "<td>" + idOrcamento + "</td>" +
             "<td>" + dadosItem.codigo + "</td>" +
             "<td>" + dadosItem.nome + "</td>" +
             "<td>" + dadosItem.quantidadeUtilizada.toFixed(2) + "</td>" +
@@ -2885,12 +2878,9 @@ $(document).ready(function() {
             "<td>" + (dadosItem.quantidadeUtilizada * dadosItem.preco).toFixed(2) + "</td>" +
             "</tr>";
 
-        // Adicionar a nova linha à tabela Insumos
-        console.log("nova linha criada")
         $("#tabelaInsumos tbody").append(novaLinha);
     }
 
-    // Função para obter os dados do item com base no tipo
     function obterDadosItem(tipoItem) {
         var dados = {
             codigo: "",
@@ -2904,7 +2894,7 @@ $(document).ready(function() {
             case "perfil":
                 if (perfilusado > 0) {
                     dados.id = $("#id_perfil").val();
-                    dados.codigo = parseFloat($("#id_perfil option:selected").data('item')?.codigo || 0);
+                    dados.codigo = String($('#id_perfil option:selected').data('item')?.codigo).padStart(6, '0') || '000000';
                     dados.nome = $('#id_perfil option:selected').data('item')?.nome ?? '';
                     dados.preco = parseFloat($("#id_perfil option:selected").data('item')?.preco || 0);
                     dados.quantidadeUtilizada = perfilusado;
@@ -2913,7 +2903,7 @@ $(document).ready(function() {
             case "perfilpuxador":
                 if (perfilpuxadorusado > 0) {
                     dados.id = $("#id_perfilpuxador").val();
-                    dados.codigo = parseFloat($("#id_perfilpuxador option:selected").data('item')?.codigo || 0);
+                    dados.codigo = String($('#id_perfilpuxador option:selected').data('item')?.codigo).padStart(6, '0') || '000000';
                     dados.nome = $('#id_perfilpuxador option:selected').data('item')?.nome ?? '';
                     dados.preco = parseFloat($("#id_perfilpuxador option:selected").data('item')?.preco || 0);
                     dados.quantidadeUtilizada = perfilpuxadorusado;
@@ -2922,7 +2912,7 @@ $(document).ready(function() {
             case "puxador":
                 if (puxadorusado > 0) {
                     dados.id = $("#id_puxador").val();
-                    dados.codigo = parseFloat($("#id_puxador option:selected").data('item')?.codigo || 0);
+                    dados.codigo = String($('#id_puxador option:selected').data('item')?.codigo).padStart(6, '0') || '000000';
                     dados.nome = $('#id_puxador option:selected').data('item')?.nome ?? '';
                     dados.preco = parseFloat($("#id_puxador option:selected").data('item')?.preco || 0);
                     dados.quantidadeUtilizada = puxadorusado;
@@ -2931,7 +2921,7 @@ $(document).ready(function() {
             case "divisor":
                 if (divisorusado > 0) {
                     dados.id = $("#id_divisor").val();
-                    dados.codigo = parseFloat($("#id_divisor option:selected").data('item')?.codigo || 0);
+                    dados.codigo = String($('#id_divisor option:selected').data('item')?.codigo).padStart(6, '0') || '000000';
                     dados.nome = $('#id_divisor option:selected').data('item')?.nome ?? '';
                     dados.preco = parseFloat($("#id_divisor option:selected").data('item')?.preco || 0);
                     dados.quantidadeUtilizada = divisorusado;
@@ -2940,16 +2930,16 @@ $(document).ready(function() {
             case "vidro":
                 if (vidrousado > 0) {
                     dados.id = $("#id_vidro").val();
-                    dados.codigo = parseFloat($("#id_vidro option:selected").data('item')?.codigo || 0);
-                    dados.nome = $('#id_vidro option:selected').data('item')?.nome ?? '';
-                    dados.preco = parseFloat($("#id_vidro option:selected").data('item')?.preco || 0);
+                    dados.codigo = String($('#id_vidro option:selected').data('codigo')).padStart(6, '0') || '000000';
+                    dados.nome = ($('#id_vidro option:selected').data('nome') || 0);
+                    dados.preco = parseFloat($('#id_vidro option:selected').data('preco') || 0);
                     dados.quantidadeUtilizada = vidrousado;
                 }
                 break;
             case "vidro1":
                 if (vidrousado1 > 0) {
                     dados.id = $("#id_vidro1").val();
-                    dados.codigo = parseFloat($('#id_vidro1 option:selected').data('codigo') || 0);
+                    dados.codigo = String($('#id_vidro1 option:selected').data('codigo')).padStart(6, '0') || '000000';
                     dados.nome = ($('#id_vidro1 option:selected').data('nome') || 0);
                     dados.preco = parseFloat($('#id_vidro1 option:selected').data('preco') || 0);
                     dados.quantidadeUtilizada = vidrousado1;
@@ -2958,7 +2948,7 @@ $(document).ready(function() {
             case "vidro2":
                 if (vidrousado2 > 0) {
                     dados.id = $("#id_vidro2").val();
-                    dados.codigo = parseFloat($('#id_vidro2 option:selected').data('codigo') || 0);
+                    dados.codigo = String($('#id_vidro2 option:selected').data('codigo')).padStart(6, '0') || '000000';
                     dados.nome = ($('#id_vidro2 option:selected').data('nome') || 0);
                     dados.preco = parseFloat($('#id_vidro2 option:selected').data('preco') || 0);
                     dados.quantidadeUtilizada = vidrousado2;
@@ -2967,9 +2957,9 @@ $(document).ready(function() {
             case "vidro3":
                 if (vidrousado3 > 0) {
                     dados.id = $("#id_vidro3").val();
-                    dados.codigo = parseFloat($("#id_vidro3 option:selected").data('item')?.codigo || 0);
-                    dados.nome = $('#id_vidro3 option:selected').data('item')?.nome ?? '';
-                    dados.preco = parseFloat($("#id_vidro3 option:selected").data('item')?.preco || 0);
+                    dados.codigo = String($('#id_vidro3 option:selected').data('codigo')).padStart(6, '0') || '000000';
+                    dados.nome = ($('#id_vidro3 option:selected').data('nome') || 0);
+                    dados.preco = parseFloat($('#id_vidro3 option:selected').data('preco') || 0);
                     dados.quantidadeUtilizada = vidrousado3;
                 }
                 break;
@@ -2983,17 +2973,154 @@ $(document).ready(function() {
 
     // Manipulador de evento para o botão "Adicionar"
     $("#btnAdicionar").click(function() {
-        // Loop sobre os tipos de itens para verificar quais devem ser adicionados
+        // Verificar qual radiobutton está selecionado
+        var selectedRadioButton = $("input[name='btnradio']:checked").val();
+
+        // Verificar se os campos estão preenchidos de acordo com a seleção do radiobutton
+        if (selectedRadioButton === "PortaGiro") {
+            if ($("#id_quantidade").val() && $("#id_largura").val() && $("#id_altura").val() && $("#id_acabamento").val() && $("#id_abertura").val() && $("#id_perfil").val()) {
+                var descricao = $("#nomeporta").text();
+                var quantidade = $("#id_quantidade").val();
+                var valor = $("#valorporta").text();
+
+                // Validações adicionais
+                if ($("#id_perfilpuxador").val()) {
+                    if (!$("#qtd-perfilpuxador").val() || !$("#posicao-perfilpuxador").val()) {
+                        alert("Preencha a quantidade e a posição do perfil puxador.");
+                        return;
+                    }
+                }
+
+                if ($("#id_puxador").val()) {
+                    if (!$("#qtd-puxador").val() || !$("#posicao-puxador").val() || !$("#tam-puxador").val()) {
+                        alert("Preencha a quantidade, a posição e o tamanho do puxador.");
+                        return;
+                    }
+                }
+
+                if ($("#qtd-divisor").val() == 1 && $("#id_vidro1").val()) {
+                    if (!$("#id_vidro2").val()) {
+                        alert("Preencha o segundo vidro.");
+                        return;
+                    }
+                }
+
+                if ($("#qtd-divisor").val() == 2 && $("#id_vidro1").val()) {
+                    if (!$("#id_vidro2").val() || !$("#id_vidro3").val()) {
+                        alert("Preencha o segundo e o terceiro vidro.");
+                        return;
+                    }
+                }
+
+                adicionarItemTabela(descricao, quantidade, valor);
+            } else {
+                alert("Preencha todos os campos obrigatórios.");
+            }
+        } else if (selectedRadioButton === "PortaCorrer") {
+            if ($("#id_quantidade").val() && $("#id_largura").val() && $("#id_altura").val() && $("#id_acabamento").val() && $("#id_perfil").val()) {
+                var descricao = $("#nomeporta").text();
+                var quantidade = $("#id_quantidade").val();
+                var valor = $("#valorporta").text();
+
+                // Validações adicionais
+                if ($("#id_perfilpuxador").val()) {
+                    if (!$("#qtd-perfilpuxador").val() || !$("#posicao-perfilpuxador").val()) {
+                        alert("Preencha a quantidade e a posição do perfil puxador.");
+                        return;
+                    }
+                }
+
+                if ($("#id_puxador").val()) {
+                    if (!$("#qtd-puxador").val() || !$("#posicao-puxador").val() || !$("#tam-puxador").val()) {
+                        alert("Preencha a quantidade, a posição e o tamanho do puxador.");
+                        return;
+                    }
+                }
+
+                if ($("#qtd-divisor").val() == 1 && $("#id_vidro1").val()) {
+                    if (!$("#id_vidro2").val()) {
+                        alert("Preencha o segundo vidro.");
+                        return;
+                    }
+                }
+
+                if ($("#qtd-divisor").val() == 2 && $("#id_vidro1").val()) {
+                    if (!$("#id_vidro2").val() || !$("#id_vidro3").val()) {
+                        alert("Preencha o segundo e o terceiro vidro.");
+                        return;
+                    }
+                }
+
+                adicionarItemTabela(descricao, quantidade, valor);
+
+            } else {
+                alert("Preencha todos os campos obrigatórios.");
+            }
+        } else if (selectedRadioButton === "Vidros") {
+            if ($("#id_quantidade").val() && $("#id_largura").val() && $("#id_altura").val() && $("#id_vidro").val()) {
+                var descricao = $("#nomeporta").text();
+                var quantidade = $("#id_quantidade").val();
+                var valor = $("#valorporta").text();
+
+                // Validações adicionais
+                if ($("#id_perfilpuxador").val()) {
+                    if (!$("#qtd-perfilpuxador").val() || !$("#posicao-perfilpuxador").val()) {
+                        alert("Preencha a quantidade e a posição do perfil puxador.");
+                        return;
+                    }
+                }
+
+                if ($("#id_puxador").val()) {
+                    if (!$("#qtd-puxador").val() || !$("#posicao-puxador").val() || !$("#tam-puxador").val()) {
+                        alert("Preencha a quantidade, a posição e o tamanho do puxador.");
+                        return;
+                    }
+                }
+
+                if ($("#qtd-divisor").val() == 1 && $("#id_vidro1").val()) {
+                    if (!$("#id_vidro2").val()) {
+                        alert("Preencha o segundo vidro.");
+                        return;
+                    }
+                }
+
+                if ($("#qtd-divisor").val() == 2 && $("#id_vidro1").val()) {
+                    if (!$("#id_vidro2").val() || !$("#id_vidro3").val()) {
+                        alert("Preencha o segundo e o terceiro vidro.");
+                        return;
+                    }
+                }
+
+                adicionarItemTabela(descricao, quantidade, valor);
+
+                // Adicionar os itens na tabela de insumos
+                var tiposItens = ["perfil", "perfilpuxador", "puxador", "divisor", "vidro", "vidro1", "vidro2", "vidro3"];
+                tiposItens.forEach(function(tipoItem) {
+                    var dadosItem = obterDadosItem(tipoItem);
+                    if (dadosItem.quantidadeUtilizada > 0) {
+                        adicionarItemInsumos(idOrcamento, dadosItem);
+                    }
+                });
+            } else {
+                alert("Preencha todos os campos obrigatórios.");
+            }
+        } else {
+            alert("Selecione um tipo de porta.");
+            return; // Retornar imediatamente se nenhum tipo de porta for selecionado
+        }
+         // Capturar o ID do item adicionado na tabela de orçamento
+        idOrcamento = $("#tabelaOrcamento tbody tr:last").data("id");
+
+        // Adicionar os itens na tabela de insumos usando o ID do orçamento
         var tiposItens = ["perfil", "perfilpuxador", "puxador", "divisor", "vidro", "vidro1", "vidro2", "vidro3"];
         tiposItens.forEach(function(tipoItem) {
             var dadosItem = obterDadosItem(tipoItem);
             if (dadosItem.quantidadeUtilizada > 0) {
-                adicionarItemInsumos(dadosItem);
+                adicionarItemInsumos(idOrcamento, dadosItem);
             }
         });
     });
 });
-
 </script>
 
 {% endblock %}

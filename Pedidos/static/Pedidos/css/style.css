@@ -1,35 +1,41 @@
 .custom-input-size-quantidade {
     width: 45px;
     height: 30px;
+    font-size: 14px; /* Tamanho da fonte desejado */
 }
 
 .custom-input-size-medida {
     width: 65px;
     height: 30px;
+    font-size: 14px; /* Tamanho da fonte desejado */
 }
 
 .custom-input-size-select {
-    width: 155px;
+    width: 125px;
     height: 30px;
     padding: 1px 10px;
+    font-size: 14px; /* Tamanho da fonte desejado */
 }
 
 .custom-input-size-selectitems {
-    width: 325px;
+    width: 315px;
     height: 30px;
-    padding: 1px 10px;
+    padding: 1px 3px;
+    font-size: 14px; /* Tamanho da fonte desejado */
 }
 
 .custom-input-qtd {
-    width: 40px;
+    width: 30px;
     height: 30px;
-    padding: 1px 10px;
+    padding: 0px 8px;
+    font-size: 14px; /* Tamanho da fonte desejado */
 }
 
 .custom-input-posicao {
-    width: 110px;
+    width: 95px;
     height: 30px;
-    padding: 1px 10px;
+    padding: 1px 0px 0px 3px;
+    font-size: 14px; /* Tamanho da fonte desejado */
 }
 
 .hidden {
@@ -39,6 +45,7 @@
 .custom-input-size {
     width: 200px;
     height: 30px;
+    font-size: 14px; /* Tamanho da fonte desejado */
 }
 
 .custom-input-divisorias {
@@ -208,6 +215,34 @@ h2 {
 }
 
 .table-container {
-  max-height: 200px; /* Defina o tamanho máximo desejado */
+  max-height: 160px; /* Defina o tamanho máximo desejado */
   overflow-y: auto; /* Adiciona barra de rolagem vertical quando necessário */
+}
+
+.table-container table {
+    width: 100%; /* Garante que a tabela ocupe toda a largura do contêiner */
+}
+
+.table-container thead,
+.table-container h2 {
+    position: sticky; /* Fixa o cabeçalho na parte superior quando o contêiner é rolado */
+    top: 0; /* Alinha o cabeçalho na parte superior */
+    z-index: 1; /* Garante que o cabeçalho esteja acima do conteúdo da tabela */
+    background-color: #f8f9fa; /* Cor de fundo para distinguir o cabeçalho */
+}
+
+#bottom-navbar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 45px; /* Defina a altura desejada aqui */
+ }
+
+#bottom-navbar .button-container {
+    padding: 0; /* Remover o preenchimento padrão */
+}
+
+#bottom-navbar a {
+    color: white; /* Defina a cor do texto conforme necessário */
+    margin-right: 10px; /* Adicione um espaço entre o texto e o botão */
 }
