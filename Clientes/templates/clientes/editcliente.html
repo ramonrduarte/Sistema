@@ -7,7 +7,7 @@
 {% block modal-title %}<i class="fas fa-edit"></i>&nbsp;&nbsp; Editar Cliente {% endblock modal-title %}
 
 <!-- Form action -->
-{% block action %} action="editar/clientes/<int:pk>/" {% endblock action %}
+{% block action %} action="{% url 'editar-clientes' pk=cliente.pk %}" {% endblock action %}
 
 <!-- Button Action (content) -->
 {% block btn-action %}<button type="submit" class="btn btn-secondary mb-3 btn-action"><i class="fas fa-server"></i>&nbsp;&nbsp; Save Changes </button>{% endblock btn-action %}

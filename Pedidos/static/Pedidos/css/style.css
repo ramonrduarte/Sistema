@@ -202,13 +202,14 @@ input:checked+.radio-tile label {
     min-height: 4px; /* Altura mínima */
 }
 
-.coluna1 {
+#escolhas, #meu, .coluna1, .coluna2 {
   flex-grow: 1; /* A primeira coluna vai crescer para preencher o espaço disponível */
 }
 
-.coluna2 {
-  flex-grow: 1; /* A segunda coluna vai crescer para preencher o espaço disponível */
+.coluna1, .coluna2 {
+    margin-bottom: 60px;
 }
+
 
 h2 {
   margin-bottom: 0; /* Remover margem inferior do h2 */
@@ -246,3 +247,152 @@ h2 {
     color: white; /* Defina a cor do texto conforme necessário */
     margin-right: 10px; /* Adicione um espaço entre o texto e o botão */
 }
+
+#tabelaInsumos, #tabelaOrcamento th {
+    font-size: 14px; /* Altere o valor conforme desejado */
+}
+
+/* Definindo o tamanho da fonte para o conteúdo */
+#tabelaInsumos, #tabelaOrcamento td {
+    font-size: 14px; /* Altere o valor conforme desejado */
+}
+
+#qtditens, #nomeporta, #valorporta {
+    font-size: 14px;
+}
+
+#clienteInput {
+    height: 25px;
+    font-size: 14px;
+    max-width: 100px;
+}
+
+#btnBuscarCliente {
+    height: 25px;
+    padding: 0 8px;
+}
+#btnBuscarCliente i {
+    font-size: 12px;
+}
+
+#nomeCliente {
+    height: 25px;
+    font-size: 14px;
+}
+
+#tabelaOrcamento th:nth-child(1),
+#tabelaOrcamento td:nth-child(1) {
+    width: 4%;
+}
+
+#tabelaOrcamento th:nth-child(2),
+#tabelaOrcamento td:nth-child(2) {
+    width: 5%;
+}
+
+#tabelaOrcamento th:nth-child(3),
+#tabelaOrcamento td:nth-child(3) {
+    width: 75%;
+}
+
+#tabelaOrcamento th:nth-child(4),
+#tabelaOrcamento td:nth-child(4) {
+    width: 15%;
+}
+
+---------------------
+
+#tabelaInsumos th:nth-child(1),
+#tabelaInsumos td:nth-child(1) {
+    width: 5%;
+}
+
+#tabelaInsumos th:nth-child(2),
+#tabelaInsumos td:nth-child(2) {
+    width: 10%;
+}
+
+#tabelaInsumos th:nth-child(3),
+#tabelaInsumos td:nth-child(3) {
+    width: 55%;
+}
+
+#tabelaInsumos th:nth-child(4),
+#tabelaInsumos td:nth-child(4) {
+    width: 10%;
+}
+
+#tabelaInsumos th:nth-child(5),
+#tabelaInsumos td:nth-child(5) {
+    width: 10%;
+}
+
+#tabelaInsumos th:nth-child(6),
+#tabelaInsumos td:nth-child(6) {
+    width: 10%;
+}
+
+#selecionacliente h2 {
+    margin-top: 0;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+}
+
+#inputsclientes {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#selecionacliente #nomeCliente {
+    width: calc(100% - 10px); /* Largura total menos 20px de margem */
+    margin: 0 5px; /* Margem de 10px em cada lado */
+}
+
+#cifraoporta{
+    font-size: 14px;
+}
+
+#labeldototal {
+    color: white;
+    margin-right: 2px;
+}
+
+#valorfinalpedido {
+    color: white;
+    margin-right: 5px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column; /* Muda para layout de coluna */
+  }
+
+  #topnavbar {
+    flex-direction: row; /* Muda para layout de coluna */
+  }
+
+  #listabotoes,
+  #selecionacliente,
+  #escolhas,
+  #meu,
+  .coluna1,
+  .coluna2 {
+    width: 100%; /* Largura total */
+  }
+
+  #selecionacliente {
+    order: -1;
+    margin-top: 5px;
+  }
+
+  .coluna1 {
+  margin-bottom: 60px;
+  }
+
+  .coluna2 {
+  order: -1;
+  margin-bottom: 5px;
+  }
+}
+
+

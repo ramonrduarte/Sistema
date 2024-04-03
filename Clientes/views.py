@@ -3,6 +3,7 @@ from .models import Cliente
 from django.views.generic.list import ListView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.http import JsonResponse
 
 
 class ClientesCreate(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
@@ -32,3 +33,11 @@ class ClientesList(LoginRequiredMixin, PermissionRequiredMixin, ListView):
     model = Cliente
     template_name = 'clientes/novocliente.html'
     permission_required = 'Clientes.view_cliente'
+
+def buscar_cliente(request):
+    codigo = request.GET.get('codigo')
+    try:
+        cliente = Cliente.objects.get(codigo=codigo)
+        return JsonResponse({'nome': cliente.nome})
+    except Cliente.DoesNotExist:
+        return JsonResponse({'nome': None})
