@@ -15,8 +15,8 @@ Adrofecha - Orçamento
 
 {% block content %}
 <div class="" style="margin-top: 50px">
-    <div class="container">
-      <div class="border rounded justify-content-start col-6 ps-1 radio-tile-group me-2" id="listabotoes">
+    <div class="container container-flex">
+      <div class="border rounded justify-content-start ps-1 radio-tile-group me-2" id="listabotoes">
         <div class="input-container">
           <input type="radio" name="btnradio" id="btnPortaGiro" value="PortaGiro" checked>
           <div class="radio-tile">
@@ -39,7 +39,7 @@ Adrofecha - Orçamento
           </div>
         </div>
       </div>
-      <div class="border rounded justify-content-start col-6" id="selecionacliente">
+      <div class="border rounded justify-content-start" id="selecionacliente">
         <h2 class="bg-warning text-dark text-center fs-6 fw-bold">Cliente</h2>
         <div id="inputsclientes" class="input-group ms-1">
             <input type="text" class="form-control" id="clienteInput" placeholder="Código" maxlength="6">
@@ -239,17 +239,19 @@ Adrofecha - Orçamento
             </div>
 <!--                botoes finalizar-->
             <div class="mt-1 mb-2 text-end">
-                <a class="btn btn-primary me-2 mt-1" id="btnpedidocancelar" href="#" role="button">Cancelar</a>
-                <a class="btn btn-primary me-2 mt-1" id="btnAdicionar" href="#" role="button">Adicionar</a>
+                <button type="reset" id="btnReset" class="btn btn-outline-dark ms-2 mt-1" style="width: 50px;" title="Reset">
+                            <i class="fas fa-sync-alt"></i>
+                </button>
+                <button class="btn btn-primary me-2 mt-1" id="btnAdicionar">Adicionar</button>
             </div>
         </div>
 <!--====================  DESENHO =======================-->
         <div class="border rounded justify-content-start col-6 ps-1" id="meu">
-            <div class="d-flex mt-2 justify-content-center align-items-center">
-                <div class="text-center me-2" id="qtditens"></div>
-                <div class="text-center" id="nomeporta"></div>
+            <div id="descricaoporta" class="d-flex mt-2 justify-content-center align-items-center">
+                <label class="text-center me-2" id="qtditens"></label>
+                <label class="text-center" id="nomeporta"></label>
                 <label class="ms-2 st2" id="cifraoporta">R$</label>
-                <div class="text-center ms-1" id="valorporta"></div>
+                <label class="text-center ms-1" id="valorporta"></label>
             </div>
             <div class="svg-content" id="Desenho">
                 <svg id="svg" class="img-responsive" width="100%" viewBox="0 50 550 350"
@@ -428,6 +430,7 @@ Adrofecha - Orçamento
                               <th scope="col">Qt</th>
                               <th scope="col">Descrição</th>
                               <th scope="col">Valor</th>
+                              <th scope="col"></th>
                             </tr>
                         </thead>
                         <tbody class="table-group-divider">
@@ -437,11 +440,13 @@ Adrofecha - Orçamento
         </div>
     </div>
 </div>
-<nav id="bottom-navbar" class="navbar-dark bg-dark fixed-bottom d-flex justify-content-center">
-  <div class="d-flex justify-content-end col-8 align-items-center">
-      <label id="labeldototal">R$</label>
-      <span id="valorfinalpedido"></span>
-      <button type="button" class="btn btn-primary btn-sm">Finalizar</button>
+<nav id="bottom-navbar" class="navbar-dark bg-dark">
+  <div class="container d-flex">
+      <div class="d-flex justify-content-end align-items-center flex-grow-1 me-2">
+          <label class="st2" id="labeldototal">R$</label>
+          <span id="valorfinalpedido"></span>
+          <button type="button" class="btn btn-primary btn-sm ml-3">Finalizar</button>
+      </div>
   </div>
 </nav>
 
@@ -637,99 +642,97 @@ $(document).ready(function() {
 <!--=============== BUSCAR ======================-->
 
 <script>
-$(document).ready(function() {
-  $('#id_acabamento, #id_quantidade, #id_largura, #id_altura, #id_abertura').change(filtrarPerfil);
 
-  function filtrarPerfil() {
-    var acabamento = parseInt($('#id_acabamento').val(), 10);
-    var quantidade = $('#id_quantidade').val();
-    var largura = $('#id_largura').val();
-    var altura = $('#id_altura').val();
-    var abertura = $('#id_abertura').val();
-    var perfilField = $('#id_perfil');
-    var perfilDiv = $('#divperfil');
-    var campoPortas = $('#divportas');
-    var portaGiroRadioButton = $('#btnPortaGiro');
-    var portaCorrerRadioButton = $('#btnPortaCorrer');
+function filtrarPerfil() {
+var acabamento = parseInt($('#id_acabamento').val(), 10);
+var quantidade = $('#id_quantidade').val();
+var largura = $('#id_largura').val();
+var altura = $('#id_altura').val();
+var abertura = $('#id_abertura').val();
+var perfilField = $('#id_perfil');
+var perfilDiv = $('#divperfil');
+var campoPortas = $('#divportas');
+var portaGiroRadioButton = $('#btnPortaGiro');
+var portaCorrerRadioButton = $('#btnPortaCorrer');
 
-    // Verificar se o radiobutton selecionado é PortaGiro
-    if (portaGiroRadioButton.is(':checked')) {
-      if (quantidade && largura && altura && acabamento && abertura) {
-        perfilField.prop('disabled', false);
-        perfilDiv.find(':input').prop('disabled', false);
+// Verificar se o radiobutton selecionado é PortaGiro
+if (portaGiroRadioButton.is(':checked')) {
+  if (quantidade && largura && altura && acabamento && abertura) {
+    perfilField.prop('disabled', false);
+    perfilDiv.find(':input').prop('disabled', false);
 
-        $.ajax({
-          url: '/buscar_perfil/',
-          type: 'GET',
-          data: {
-            acabamento: acabamento
-          },
-          success: function(response) {
-            perfilField.empty();
-
-            var option = $('<option>').attr('value', '').text('-------');
-            perfilField.append(option);
-
-            $.each(response, function(index, item) {
-              option = $('<option>').attr('value', item.id).text(item.descricao);
-              option.data('item', item); // Armazena o objeto completo como dado associado
-              perfilField.append(option);
-            });
-
-            perfilField.show();
-
-          },
-          error: function(xhr) {
-            console.log(xhr.statusText);
-          }
-        });
-      } else {
-        campoPortas.prop('disabled', true);
-        campoPortas.find(':input').prop('disabled', true);
+    $.ajax({
+      url: '/buscar_perfil/',
+      type: 'GET',
+      data: {
+        acabamento: acabamento
+      },
+      success: function(response) {
         perfilField.empty();
-      }
-    } else if (portaCorrerRadioButton.is(':checked')) {
-      if (quantidade && largura && altura && acabamento) {
-        perfilField.prop('disabled', false);
-        perfilDiv.find(':input').prop('disabled', false);
 
-        $.ajax({
-          url: '/buscar_perfil/',
-          type: 'GET',
-          data: {
-            acabamento: acabamento
-          },
-          success: function(response) {
-            perfilField.empty();
+        var option = $('<option>').attr('value', '').text('-------');
+        perfilField.append(option);
 
-            var option = $('<option>').attr('value', '').text('-------');
-            perfilField.append(option);
-
-            $.each(response, function(index, item) {
-              option = $('<option>').attr('value', item.id).text(item.descricao);
-              option.data('item', item); // Armazena o objeto completo como dado associado
-              perfilField.append(option);
-            });
-
-            perfilField.show();
-          },
-          error: function(xhr) {
-            console.log(xhr.statusText);
-          }
+        $.each(response, function(index, item) {
+          option = $('<option>').attr('value', item.id).text(item.descricao);
+          option.data('item', item); // Armazena o objeto completo como dado associado
+          perfilField.append(option);
         });
+
+        perfilField.show();
+
+      },
+      error: function(xhr) {
+        console.log(xhr.statusText);
       }
-    } else {
-      // Manter o campo perfil bloqueado para outros radiobuttons selecionados
-      perfilField.prop('disabled', true);
-      perfilDiv.find(':input').prop('disabled', true);
-      perfilField.empty();
-    }
+    });
+  } else {
+    campoPortas.prop('disabled', true);
+    campoPortas.find(':input').prop('disabled', true);
+    perfilField.empty();
   }
+} else if (portaCorrerRadioButton.is(':checked')) {
+  if (quantidade && largura && altura && acabamento) {
+    perfilField.prop('disabled', false);
+    perfilDiv.find(':input').prop('disabled', false);
 
-  // Chamar a função filtrarPerfil inicialmente
-  filtrarPerfil();
+    $.ajax({
+      url: '/buscar_perfil/',
+      type: 'GET',
+      data: {
+        acabamento: acabamento
+      },
+      success: function(response) {
+        perfilField.empty();
 
-});
+        var option = $('<option>').attr('value', '').text('-------');
+        perfilField.append(option);
+
+        $.each(response, function(index, item) {
+          option = $('<option>').attr('value', item.id).text(item.descricao);
+          option.data('item', item); // Armazena o objeto completo como dado associado
+          perfilField.append(option);
+        });
+
+        perfilField.show();
+      },
+      error: function(xhr) {
+        console.log(xhr.statusText);
+      }
+    });
+  }
+} else {
+  // Manter o campo perfil bloqueado para outros radiobuttons selecionados
+  perfilField.prop('disabled', true);
+  perfilDiv.find(':input').prop('disabled', true);
+  perfilField.empty();
+}
+}
+
+// Chamar a função filtrarPerfil inicialmente
+filtrarPerfil();
+
+$('#id_acabamento, #id_quantidade, #id_largura, #id_altura, #id_abertura').change(filtrarPerfil);
 
 </script>
 
@@ -1209,7 +1212,7 @@ $(document).ready(function() {
   }
 
   // Obter acabamentos
-<!--  $('#btnPortaGiro, #btnPortaCorrer').change(obterAcabamentos);-->
+  $('#btnPortaGiro, #btnPortaCorrer').change(obterAcabamentos);
   obterAcabamentos();
 
   function obterAcabamentos() {
@@ -1965,15 +1968,6 @@ $(document).ready(function() {
 
 <script>
 
-var perfilusado = 0;
-var perfilpuxadorusado = 0;
-var puxadorusado = 0;
-var divisorusado = 0;
-var vidrousado = 0;
-var vidrousado1 = 0;
-var vidrousado2 = 0;
-var vidrousado3 = 0;
-
 function calcularPrecoPerfil() {
 
     // Verificar se o campo do perfil puxador está vazio
@@ -2267,7 +2261,7 @@ function calcularPrecoPerfil() {
 }
 
 // Chama a função quando os campos mudam
-$('#id_perfil, #id_perfilpuxador, #qtd-perfilpuxador,#posicao-perfilpuxador, #id_puxador, #qtd-puxador, #posicao-puxador, #tam-puxador, #qtd-divisor, #id_vidro, #id_vidro1, #id_vidro2, #id_vidro3').on('change', function() {
+$('#id_largura, #id_altura, #id_perfil, #id_perfilpuxador, #qtd-perfilpuxador, #posicao-perfilpuxador, #id_puxador, #qtd-puxador, #posicao-puxador, #tam-puxador, #id_divisor, #qtd-divisor, #id_vidro, #id_vidro1, #id_vidro2, #id_vidro3').change(function() {
     calcularPrecoPerfil();
 });
 
@@ -2874,7 +2868,8 @@ $(document).ready(function() {
             "<th scope='row'>" + novoId + "</th>" +
             "<td>" + quantidade + "</td>" +
             "<td>" + descricao + "</td>" +
-            "<td class='valor'>" + valor + "</td>" +
+            "<td class='valor text-end'>" + valor + "</td>" +
+            "<td><button class='btn btn-danger btn-sm btn-excluir d-flex align-items-center' data-id='" + novoId + "' title='Excluir' style='height: 20px;'>X</button></td>" +
             "</tr>";
 
         tabela.find("tbody").append(novaLinha);
@@ -2894,9 +2889,9 @@ $(document).ready(function() {
             "<td>" + idOrcamento + "</td>" +
             "<td>" + dadosItem.codigo + "</td>" +
             "<td>" + dadosItem.nome + "</td>" +
-            "<td>" + dadosItem.quantidadeUtilizada.toFixed(2) + "</td>" +
-            "<td>" + dadosItem.preco.toFixed(2) + "</td>" +
-            "<td>" + (dadosItem.quantidadeUtilizada * dadosItem.preco).toFixed(2) + "</td>" +
+            "<td class='text-end'>" + dadosItem.quantidadeUtilizada.toFixed(2) + "</td>" +
+            "<td class='text-end'>" + dadosItem.preco.toFixed(2) + "</td>" +
+            "<td class='text-end'>" + (dadosItem.quantidadeUtilizada * dadosItem.preco).toFixed(2) + "</td>" +
             "</tr>";
 
         $("#tabelaInsumos tbody").append(novaLinha);
@@ -3141,6 +3136,7 @@ $(document).ready(function() {
                 adicionarItemInsumos(idOrcamento, dadosItem);
             }
         });
+        inicializarElementos();
     });
 });
 </script>
@@ -3155,28 +3151,28 @@ $(document).ready(function() {
 </script>
 
 <script>
-    $(document).ready(function() {
-        $('#clienteInput').on('blur keydown', function(event) {
-            // Verifica se a tecla pressionada é Enter (código 13)
-            if (event.type === 'keydown' && event.keyCode !== 13) {
-                return; // Se não for Enter, não faz nada
-            }
-            var codigoCliente = $('#clienteInput').val();
-            $.ajax({
-                url: '{% url "buscar-cliente" %}',
-                data: {'codigo': codigoCliente},
-                dataType: 'json',
-                success: function(data) {
-                    if (data.nome) {
-                        $('#nomeCliente').val(data.nome);
-                    } else {
-                        $('#nomeCliente').val('');
-                        alert('Código de cliente não encontrado.');
-                    }
+$(document).ready(function() {
+    $('#clienteInput').on('blur keydown', function(event) {
+        // Verifica se a tecla pressionada é Enter (código 13)
+        if (event.type === 'keydown' && event.keyCode !== 13) {
+            return; // Se não for Enter, não faz nada
+        }
+        var codigoCliente = $('#clienteInput').val();
+        $.ajax({
+            url: '{% url "buscar-cliente" %}',
+            data: {'codigo': codigoCliente},
+            dataType: 'json',
+            success: function(data) {
+                if (data.nome) {
+                    $('#nomeCliente').val(data.nome);
+                } else {
+                    $('#nomeCliente').val('');
+                    alert('Código de cliente não encontrado.');
                 }
-            });
+            }
         });
     });
+});
 </script>
 
 <script>
@@ -3211,33 +3207,126 @@ $(document).ready(function() {
 </script>
 
 <script>
-    // Função para calcular a soma dos valores da coluna "Valor" da tabela e imprimir no console
-    function calcularTotalEImprimir() {
-        let total = 0;
-        // Seleciona todas as células com a classe "valor"
-        document.querySelectorAll('.valor').forEach(function(td) {
-            // Obtém o valor da célula e adiciona ao total
-            total += parseFloat(td.textContent);
-        });
-
-        $('#valorfinalpedido').text(total.toFixed(2));
-
-    }
-
-    // Verifica se a tabela está carregada antes de iniciar o MutationObserver
-    document.addEventListener('DOMContentLoaded', function() {
-        // Observa mudanças na tabela e chama a função calcularTotalEImprimir() sempre que houver uma alteração
-        const observer = new MutationObserver(function() {
-            calcularTotalEImprimir();
-        });
-
-        // Define as configurações de observação (observe mudanças no conteúdo da tabela)
-        const config = { childList: true, subtree: true };
-        // Inicia a observação na tabela
-        observer.observe(document.getElementById('tabelaOrcamento'), config);
+// Função para calcular a soma dos valores da coluna "Valor" da tabela e imprimir no console
+function calcularTotalEImprimir() {
+    let total = 0;
+    // Seleciona todas as células com a classe "valor"
+    document.querySelectorAll('.valor').forEach(function(td) {
+        // Obtém o valor da célula e adiciona ao total
+        total += parseFloat(td.textContent);
     });
+
+    $('#valorfinalpedido').text(total.toFixed(2));
+
+}
+
+// Verifica se a tabela está carregada antes de iniciar o MutationObserver
+document.addEventListener('DOMContentLoaded', function() {
+    // Observa mudanças na tabela e chama a função calcularTotalEImprimir() sempre que houver uma alteração
+    const observer = new MutationObserver(function() {
+        calcularTotalEImprimir();
+    });
+
+    // Define as configurações de observação (observe mudanças no conteúdo da tabela)
+    const config = { childList: true, subtree: true };
+    // Inicia a observação na tabela
+    observer.observe(document.getElementById('tabelaOrcamento'), config);
+});
 </script>
 
+<script>
+function cifraoprecototal() {
+    var valortotal = $("#valorfinalpedido").text().trim();
+    var cifraototal = $("#labeldototal");
+
+    if (valortotal !== "") {
+        cifraototal.removeClass("st2");
+    } else {
+        cifraototal.addClass("st2");
+    }
+}
+
+var observer = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+        cifraoprecototal();
+    });
+});
+
+var targetNode = document.getElementById('valorfinalpedido');
+observer.observe(targetNode, { childList: true, subtree: true });
+
+$(document).ready(function() {
+    cifraoprecototal();
+});
+</script>
+
+<script>
+$(document).ready(function() {
+    // Adiciona o evento de clique para o botão de reset
+    $('#btnReset').click(function() {
+        inicializarElementos();
+    });
+});
+
+</script>
+
+<script>
+// Função para selecionar a primeira opção disponível em um elemento select
+function selecionarPrimeiraOpcaoDisponivel(selector) {
+    var primeiroOpcao = $(selector + ' option:not(:disabled)').first();
+    if (primeiroOpcao.length > 0) {
+        $(selector).val(primeiroOpcao.val());
+    }
+}
+
+// Função para desabilitar os elementos
+function desabilitarElementos(selector) {
+    $(selector).attr('disabled', 'disabled');
+}
+
+// Função para limpar os campos
+function limparCampos(selector) {
+    $(selector).val('');
+}
+
+// Função para limpar os label
+function limparLabels(selector) {
+    $(selector).text('');
+}
+
+// Função para inicializar os elementos
+function inicializarElementos() {
+    selecionarPrimeiraOpcaoDisponivel('#id_perfil');
+    selecionarPrimeiraOpcaoDisponivel('#id_perfilpuxador');
+    selecionarPrimeiraOpcaoDisponivel('#id_puxador');
+    selecionarPrimeiraOpcaoDisponivel('#id_divisor');
+    selecionarPrimeiraOpcaoDisponivel('#id_vidro');
+    selecionarPrimeiraOpcaoDisponivel('#id_vidro1');
+    selecionarPrimeiraOpcaoDisponivel('#id_vidro2');
+    selecionarPrimeiraOpcaoDisponivel('#id_vidro3');
+
+    desabilitarElementos('#id_perfilpuxador, #qtd-perfilpuxador, #posicao-perfilpuxador, #id_puxador, #qtd-puxador, #posicao-puxador, #tam-puxador, #id_divisor, #qtd-divisor, #id_vidro, #id_vidro1, #id_vidro2, #id_vidro3');
+
+    // Limpar os campos desejados
+    limparCampos('#qtd-perfilpuxador, #posicao-perfilpuxador, #qtd-puxador, #posicao-puxador, #tam-puxador, #qtd-divisor, #qtditens');
+
+    // Limpar os labels
+    limparLabels('#qtditens, #nomeporta, #valorporta');
+}
+</script>
+
+<script>
+// Função para excluir item
+$(document).on('click', '.btn-excluir', function() {
+    var id = $(this).data('id');
+
+    // Remove a linha da tabela de orçamento
+    $(this).closest('tr').remove();
+
+    // Remove as linhas correspondentes na tabela de insumos
+    $('#tabelaInsumos').find("tr[data-id-orcamento='" + id + "']").remove();
+});
+</script>
 
 {% endblock %}
 
