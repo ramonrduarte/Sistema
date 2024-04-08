@@ -45,7 +45,7 @@ Cadastro de Perfis
             </thead>
             <tbody class="table-group-divider ">
                 {% for perfil in object_list %}
-                <tr>
+                <tr {% if not perfil.ativo %}class="inactive"{% endif %}>
                     <td>{{ perfil.codigo }}</td>
                     <td>{{ perfil.descricao }}</td>
                     <td>R$ {{ perfil.preco }}</td>
@@ -113,5 +113,13 @@ Cadastro de Perfis
     </div>
   </div>
 </div>
+
+<style>
+/* Estilize a linha da tabela quando estiver inativa */
+tr.inactive td {
+    background-color: #f7f7f7; /* Altere a cor de fundo da linha para cinza claro */
+    color: #ccc; /* Define a cor do texto como cinza */
+}
+</style>
 
 {% endblock %}

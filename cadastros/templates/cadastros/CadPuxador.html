@@ -16,7 +16,7 @@
         {% csrf_token %}
         <div class="form-check form-switch d-flex justify-content-end mb-2">
           <label class="form-check-label" for="flexSwitchCheckChecked"></label>
-          <input class="form-check-input ms-2" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+          <input class="form-check-input ms-2" type="checkbox" role="switch" id="flexSwitchCheckChecked" name="ativo" {% if form.instance.ativo %}checked{% endif %}>
         </div>
         <div class="row">
             <div class="col-2">{{ form.codigo|as_crispy_field }}</div>

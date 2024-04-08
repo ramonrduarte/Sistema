@@ -109,6 +109,7 @@ class ItemBase(models.Model):
     preco = models.DecimalField(decimal_places=2, max_digits=5, verbose_name="Preço")
     acabamento = models.ForeignKey('Acabamento', on_delete=models.PROTECT)
     tipo = models.ForeignKey('Tipo', on_delete=models.PROTECT)
+    ativo = models.BooleanField(default=True)
 
     class Meta:
         abstract = True
@@ -169,6 +170,7 @@ class Vidro(models.Model):
     preco = models.DecimalField(decimal_places=2, max_digits=5, verbose_name="Preço")
     tipo = models.ForeignKey(Tipo, on_delete=models.PROTECT)
     modelo = models.ForeignKey(ModeloVidro, on_delete=models.PROTECT)
+    ativo = models.BooleanField(default=True)
 
     class Meta:
         verbose_name = 'Vidro'

@@ -33,7 +33,7 @@ Cadastro de Vidros
             </thead>
             <tbody class="table-group-divider ">
                 {% for vidro in object_list %}
-                <tr>
+                <tr {% if not vidro.ativo %}class="inactive"{% endif %}>
                     <td>{{ vidro.codigo }}</td>
                     <td>{{ vidro.descricao }}</td>
                     <td>R$ {{ vidro.preco }}</td>
@@ -56,4 +56,12 @@ Cadastro de Vidros
     </div>
   </div>
 </div>
+
+<style>
+/* Estilize a linha da tabela quando estiver inativa */
+tr.inactive td {
+    background-color: #f7f7f7; /* Altere a cor de fundo da linha para cinza claro */
+    color: #ccc; /* Define a cor do texto como cinza */
+}
+</style>
 {% endblock %}

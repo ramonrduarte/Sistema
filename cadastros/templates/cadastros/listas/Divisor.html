@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 
+{% load static %}
 {% block titulo %}
 Cadastro de Divisores
 {% endblock %}
@@ -34,7 +35,7 @@ Cadastro de Divisores
             </thead>
             <tbody class="table-group-divider ">
                 {% for divisor in object_list %}
-                <tr>
+                <tr {% if not divisor.ativo %}class="inactive"{% endif %}>
                     <td>{{ divisor.codigo }}</td>
                     <td>{{ divisor.descricao }}</td>
                     <td>R$ {{ divisor.preco }}</td>
@@ -58,4 +59,12 @@ Cadastro de Divisores
     </div>
   </div>
 </div>
+
+<style>
+/* Estilize a linha da tabela quando estiver inativa */
+tr.inactive td {
+    background-color: #f7f7f7; /* Altere a cor de fundo da linha para cinza claro */
+    color: #ccc; /* Define a cor do texto como cinza */
+}
+</style>
 {% endblock %}

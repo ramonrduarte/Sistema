@@ -85,14 +85,14 @@ class PerfilCreate(LoginRequiredMixin,PermissionRequiredMixin, CreateView):
 
 class PerfilPuxadorCreate(LoginRequiredMixin,PermissionRequiredMixin, CreateView):
     model = PerfilPuxador
-    fields = ['codigo', 'descricao', 'preco', 'acabamento', 'tipo', 'modelo']
+    fields = ['codigo', 'descricao', 'preco', 'acabamento', 'tipo', 'modelo', 'ativo']
     template_name = 'cadastros/CadPerfilPuxador.html'
     success_url = reverse_lazy('listar-perfilpuxador')
     permission_required = 'cadastros.add.perfilpuxador'
 
 class PuxadorCreate(LoginRequiredMixin,PermissionRequiredMixin, CreateView):
     model = Puxador
-    fields = ['codigo', 'descricao', 'preco', 'acabamento', 'tipo', 'modelo','desconto_puxador']
+    fields = ['codigo', 'descricao', 'preco', 'acabamento', 'tipo', 'modelo','desconto_puxador', 'ativo']
     template_name = 'cadastros/CadPuxador.html'
     success_url = reverse_lazy('listar-puxador')
     permission_required = 'cadastros.add.puxador'
@@ -100,7 +100,7 @@ class PuxadorCreate(LoginRequiredMixin,PermissionRequiredMixin, CreateView):
 
 class DivisorCreate(LoginRequiredMixin,PermissionRequiredMixin, CreateView):
     model = Divisor
-    fields = ['codigo', 'descricao', 'preco', 'acabamento', 'tipo', 'modelo', 'tipodivisor', 'espdivisor']
+    fields = ['codigo', 'descricao', 'preco', 'acabamento', 'tipo', 'modelo', 'tipodivisor', 'espdivisor', 'ativo']
     template_name = 'cadastros/CadDivisor.html'
     success_url = reverse_lazy('listar-divisor')
     permission_required = 'cadastros.add.divisor'
@@ -114,7 +114,7 @@ class DivisoriaAmbienteCreate(LoginRequiredMixin,PermissionRequiredMixin, Create
 
 class VidroCreate(LoginRequiredMixin,PermissionRequiredMixin, CreateView):
     model = Vidro
-    fields = ['codigo', 'descricao', 'preco', 'tipo', 'modelo']
+    fields = ['codigo', 'descricao', 'preco', 'tipo', 'modelo', 'ativo']
     template_name = 'cadastros/CadVidro.html'
     success_url = reverse_lazy('listar-vidro')
     permission_required = 'cadastros.add.vidro'
@@ -200,6 +200,7 @@ class PerfilUpdate(LoginRequiredMixin,PermissionRequiredMixin, UpdateView):
         context['divisor'] = Divisor.objects.filter(acabamento=perfil.acabamento)
         context['puxador'] = Puxador.objects.filter(acabamento=perfil.acabamento)
         return context
+
 class PerfilPuxadorUpdate(LoginRequiredMixin,PermissionRequiredMixin, UpdateView):
     model = PerfilPuxador
     fields = '__all__'
@@ -209,14 +210,14 @@ class PerfilPuxadorUpdate(LoginRequiredMixin,PermissionRequiredMixin, UpdateView
 
 class PuxadorUpdate(LoginRequiredMixin,PermissionRequiredMixin, UpdateView):
     model = Puxador
-    fields = ['codigo', 'descricao', 'preco', 'acabamento', 'tipo', 'modelo','desconto_puxador']
+    fields = ['codigo', 'descricao', 'preco', 'acabamento', 'tipo', 'modelo', 'desconto_puxador', 'ativo']
     template_name = 'cadastros/CadPuxador.html'
     success_url = reverse_lazy('listar-puxador')
     permission_required = 'cadastros.change.puxador'
 
 class DivisorUpdate(LoginRequiredMixin,PermissionRequiredMixin, UpdateView):
     model = Divisor
-    fields = ['codigo', 'descricao', 'preco', 'acabamento', 'tipo', 'modelo', 'tipodivisor', 'espdivisor']
+    fields = ['codigo', 'descricao', 'preco', 'acabamento', 'tipo', 'modelo', 'tipodivisor', 'espdivisor', 'ativo']
     template_name = 'cadastros/CadDivisor.html'
     success_url = reverse_lazy('listar-divisor')
     permission_required = 'cadastros.change.divisor'
@@ -230,7 +231,7 @@ class DivisoriaAmbienteUpdate(LoginRequiredMixin,PermissionRequiredMixin, Update
 
 class VidroUpdate(LoginRequiredMixin,PermissionRequiredMixin, UpdateView):
     model = Vidro
-    fields = ['codigo', 'descricao', 'preco', 'tipo', 'modelo']
+    fields = ['codigo', 'descricao', 'preco', 'tipo', 'modelo', 'ativo']
     template_name = 'cadastros/CadVidro.html'
     success_url = reverse_lazy('listar-vidro')
     permission_required = 'cadastros.change.vidro'
