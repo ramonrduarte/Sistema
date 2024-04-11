@@ -1,0 +1,170 @@
+<!-- Modal -->
+<div class="modal fade" {% block modal-id %} id="addModalPerfil" {% endblock modal-id %} tabindex="-1" role="dialog"
+     aria-labelledby="addModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-extra-large" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addModalLabel">{% block modal-title %}<i class="fas fa-plus"></i>&nbsp;&nbsp;
+                    Cadastrar Perfil {% endblock modal-title %}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <!-- Form -->
+            <form {% block action %} action="/cadastrar/perfil" {% endblock action %} method="POST" autocomplete="off">
+                {% csrf_token %}
+                <div class="modal-body">
+                    <!--===== Block ID (denied here) ====-->
+                    {% block value-id %}{% endblock value-id %}
+                    <div class="form-check form-switch d-flex justify-content-end mb-2 mx-2">
+                        <label class="form-check-label" for="flexSwitchCheckChecked"></label>
+                        <input class="form-check-input ms-2" type="checkbox" role="switch" id="flexSwitchCheckChecked" name="ativo" {% if perfil.ativo %}checked{% endif %}>
+                    </div>
+                    <div class="row mx-2">
+                        <div class="col-2">
+                            <Label class="">Codigo</Label>
+                            <input type="text" class="form-control" name="codigo" id="{{ perfil.codigo }}" maxlength="6" placeholder="Codigo" required {% block value-codigo %}{% endblock value-codigo %}>
+                        </div>
+                        <div class="col-8">
+                            <Label class="">Descricao</Label>
+                            <input type="text" class="form-control" required {% block value-descricao %}{% endblock value-descricao %}>
+                        </div>
+                        <div class="col-2">
+                            <Label class="">Preco</Label>
+                            <input type="text" class="form-control" required {% block value-preco %}{% endblock value-preco %}>
+                        </div>
+                    </div>
+                    <div class="row mx-2">
+                        <div class="col" id="idacabamentoperfil" name="acabamento" value="{{acabamento.id}}">
+                            <label for="acabamento">Acabamento</label>
+                            <select class="form-select" id="acabamento" name="acabamento" required>
+                                <option value="">-------</option>
+                                {% for acabamento in acabamentos %}
+                                <option value="{{ acabamento.id }}">{{ acabamento.acabamento }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label for="tipo">Tipo</label>
+                            <select class="form-select" id="tipo" name="tipo" required>
+                                <option value="">-------</option>
+                                {% for tipo in tipos %}
+                                <option value="{{ tipo.id }}">{{ tipo.tipo }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label for="tipo">Modelo</label>
+                            <select class="form-select" id="modeloperfil" name="modeloperfil" required >
+                                <option value="">-------</option>
+                                {% for modeloperfil in modelo %}
+                                <option value="{{ modeloperfil.id }}">{{ modeloperfil.modelo }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+<!--                        <div class="col">-->
+<!--                            <Label class="">Modelo</Label>-->
+<!--                            <input type="text" class="form-control" id="{{ perfil.modelo }}" required {% block value-modelo %}{% endblock value-modelo %}>-->
+<!--                        </div>-->
+                        <div class="col">
+                            <div class="form-check form-switch">
+                                <label class="form-check-label d-block mb-1" for="vidropolido">Vidro Polido</label>
+                                <input class="form-check-input ms-2" type="checkbox" role="switch" id="vidropolido" name="vidropolido" style="width: 40px; height: 20px;" {% if perfil.vidropolido %}checked{% endif %}>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-secondary text-white border border-dark d-flex align-items-center justify-content-center medidas-bar mt-3">
+                        <span><strong>MEDIDAS</strong></span>
+                    </div>
+                    <div class="row justify-content-between mx-2 mt-1">
+                        <div class="col-2">
+                            <Label class="">Largura Perfil</Label>
+                            <input type="text" class="form-control" id="{{ perfil.largura_perfil }}" required {% block value-largura_perfil %}{% endblock value-largura_perfil %}>
+                        </div>
+                        <div class="col-2">
+                            <Label class="">Aba Perfil</Label>
+                            <input type="text" class="form-control" id="{{ perfil.aba_perfil }}" required {% block value-aba_perfil %}{% endblock value-aba_perfil %}>
+                        </div>
+                        <div class="col-2">
+                            <Label class="">Desconto Vidro</Label>
+                            <input type="text" class="form-control" id="{{ perfil.desconto_vidro }}" required {% block value-desconto_vidro %}{% endblock value-desconto_vidro %}>
+                        </div>
+                        <div class="col-2">
+                            <Label class="">Largura Puxador</Label>
+                            <input type="text" class="form-control" id="{{ perfil.largura_puxador }}" required {% block value-largura_puxador %}{% endblock value-largura_puxador %}>
+                        </div>
+                        <div class="col-2">
+                            <Label class="">Aba Puxador</Label>
+                            <input type="text" class="form-control" id="{{ perfil.aba_puxador }}" required {% block value-aba_puxador %}{% endblock value-aba_puxador %}>
+                        </div>
+                    </div>
+                    <div class="bg-secondary text-white border border-dark d-flex align-items-center justify-content-center mt-3">
+                        <span><strong>ENCAIXES</strong></span>
+                    </div>
+                    <div class="row mx-2 d-flex justify-content-between">
+                        <div class="col border rounded mt-2 pb-2">
+                            <div class="pt-1" type="radio" name="encaixe" id="idpermiteperfilpuxador">{{ perfil.encaixe }}</div>
+                            <div id="perfilPuxadorCheckboxes" style="display: none;">
+                                {% for perfilpuxador in perfilpuxadores %}
+                                <input type="checkbox" name="perfilpuxador" id="perfilpuxador_{{ perfilpuxador.id }}" value="{{ perfilpuxador.id }}" class="form-check-input">
+                                <label for="perfilpuxador_{{ perfilpuxador.id }}" class="form-check-label">{{ perfilpuxador.descricao }}</label><br>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="col border rounded mt-2 mx-2 pb-2">
+                            <div class="pt-1" type="radio" name="encaixedivisor" id="idpermitedivisor">{{ perfil.encaixedivisor }}</div>
+                            <div id="iddivisor" name="divisor" data-initial-divisor="{{ divisor_ids }}">
+                                {% for divisor in divisor %}
+                                <div name="divdivisor" {% if form.instance.encaixedivisor %}style="display: block;" {% else %}style="display: none;" {% endif %}>
+                                    <input type="checkbox" name="divisor" id="divisor_{{ divisor.id }}" value="{{ divisor.id }}" class="form-check-input" {% if divisor.id in divisor_ids %}checked{% endif %}>
+                                    <label for="divisor_{{ divisor.id }}" class="form-check-label ps-1">({{ divisor.codigo }}) {{ divisor.descricao }}</label>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="col border rounded mt-2 pb-2">
+                            <div class="pt-1" type="radio" name="encaixepuxador" id="idpermitepuxador">{{ perfil.encaixepuxador }}</div>
+                            <div class="" id="idpuxador" name="puxador" data-initial-puxador="{{ puxador_ids }}">
+                                {% for puxador in puxador %}
+                                <div name="puxadorsobreposto" {% if form.instance.encaixepuxador %}style="display: block;" {% else %}style="display: none;" {% endif %}>
+                                    <input type="checkbox" name="puxador" id="puxador_{{ puxador.id }}" value="{{ puxador.id }}" class="form-check-input" {% if puxador.id in puxador_ids %}checked{% endif %}>
+                                    <label for="puxador_{{ puxador.id }}" class="form-check-label ps-1">({{ puxador.codigo }}) {{ puxador.descricao }}</label>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-end my-2 mx-2">
+                        <a href="{% url 'listar-perfil' %}" class="btn btn-outline-dark me-1" style="width:100px;">Cancelar</a>
+                        <button type="submit" class="btn btn-outline-primary" style="width: 100px;">
+                            {% if perfil.id %}
+                            Salvar
+                            {% else %}
+                            Cadastrar
+                            {% endif %}
+                        </button>
+                    </div>
+
+                    <!-- ==== Block btn save-hidden (denied here) ===== -->
+                    {% block btn-saveHidden %}{% endblock btn-saveHidden%}
+
+                    {% block save-changes %}{% endblock save-changes%}
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Defina as dimensões do modal extra grande */
+.modal-extra-large {
+    max-width: 70%;
+    margin: 1.75rem auto;
+}
+
+/* Adicione um estilo de overflow para lidar com o conteúdo que ultrapassa as dimensões do modal */
+.modal-extra-large .modal-content {
+    overflow-y: auto;
+}
+</style>

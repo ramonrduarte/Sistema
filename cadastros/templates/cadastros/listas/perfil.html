@@ -59,15 +59,6 @@ Cadastro de Perfis
                             <p>Não</p>
                         {% endif %}
                     </td>
-<!--                    <td>-->
-<!--                        {% if perfil.perfilpuxador.all %}-->
-<!--                            {% for perfilpuxador in perfil.perfilpuxador.all %}-->
-<!--                                {{ perfilpuxador.codigo }};-->
-<!--                            {% endfor %}-->
-<!--                        {% else %}-->
-<!--                            -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
-<!--                        {% endif %}-->
-<!--                    </td>-->
                     <td>
                         {% if perfil.encaixedivisor == "1" %}
                             <p>Sim</p>
@@ -75,15 +66,6 @@ Cadastro de Perfis
                             <p>Não</p>
                         {% endif %}
                     </td>
-<!--                    <td>-->
-<!--                        {% if perfil.divisor.all %}-->
-<!--                            {% for divisor in perfil.divisor.all %}-->
-<!--                                {{ divisor.codigo }};-->
-<!--                            {% endfor %}-->
-<!--                        {% else %}-->
-<!--                            -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
-<!--                        {% endif %}-->
-<!--                    </td>-->
                     <td>
                         {% if perfil.encaixepuxador == "1" %}
                             <p>Sim</p>
@@ -91,11 +73,6 @@ Cadastro de Perfis
                             <p>Não</p>
                         {% endif %}
                     </td>
-<!--                    <td>-->
-<!--                        {% for puxador in perfil.puxador.all %}-->
-<!--                            {{ puxador.codigo }};-->
-<!--                        {% endfor %}-->
-<!--                    </td>-->
                     <td>
                         <a href="{% url 'editar-perfil' perfil.pk %}" class="btn btn-warning btn-sm" title="Editar">E</a>
                         <a href="{% url 'excluir-perfil' perfil.pk %}" class="btn btn-danger btn-sm" title="Excluir">X</a>

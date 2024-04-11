@@ -194,6 +194,7 @@ class Perfil(ItemBase):
     desconto_vidro = models.DecimalField(decimal_places=2, max_digits=5, verbose_name="Desconto P/Vidro")
     largura_puxador = models.DecimalField(decimal_places=2, max_digits=5, verbose_name="Largura Puxador")
     aba_puxador = models.DecimalField(decimal_places=2, max_digits=5, verbose_name="Aba Puxador")
+    vidropolido = models.BooleanField(default=True)
 
     class Meta:
         verbose_name = 'Perfil'

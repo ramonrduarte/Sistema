@@ -3,7 +3,7 @@ from .models import Acabamento, ModeloPerfil, ModeloPerfilPuxador, ModeloPuxador
 from django.views.generic.list import ListView
 from django.urls import reverse_lazy, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .forms import PerfilForm
 from django.http import JsonResponse, HttpResponse
 from django.views.decorators.http import require_GET
@@ -69,12 +69,17 @@ class TipoCreate(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     success_url = reverse_lazy('listar-tipo')
     permission_required = 'cadastros.add.tipo'
 
-class PerfilCreate(LoginRequiredMixin,PermissionRequiredMixin, CreateView):
+class PerfilCreate(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     model = Perfil
     form_class = PerfilForm
     template_name = 'cadastros/CadPerfil.html'
     success_url = reverse_lazy('listar-perfil')
     permission_required = 'cadastros.add.perfil'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['acabamentos'] = Acabamento.objects.all()  # Passando os acabamentos para o contexto
+        return context
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
@@ -82,17 +87,24 @@ class PerfilCreate(LoginRequiredMixin,PermissionRequiredMixin, CreateView):
         kwargs['initial'] = {'encaixe': '2', 'encaixedivisor': '2', 'encaixepuxador': '2'}
         return kwargs
 
+    def form_valid(self, form):
+        perfil = form.save(commit=False)
+        # Aqui você pode imprimir o objeto perfil no console
+        print(perfil)
+        return super().form_valid(form)
+
+
 
 class PerfilPuxadorCreate(LoginRequiredMixin,PermissionRequiredMixin, CreateView):
     model = PerfilPuxador
-    fields = ['codigo', 'descricao', 'preco', 'acabamento', 'tipo', 'modelo', 'ativo']
+    fields = '__all__'
     template_name = 'cadastros/CadPerfilPuxador.html'
     success_url = reverse_lazy('listar-perfilpuxador')
     permission_required = 'cadastros.add.perfilpuxador'
 
 class PuxadorCreate(LoginRequiredMixin,PermissionRequiredMixin, CreateView):
     model = Puxador
-    fields = ['codigo', 'descricao', 'preco', 'acabamento', 'tipo', 'modelo','desconto_puxador', 'ativo']
+    fields = ['codigo', 'descricao', 'preco', 'acabamento', 'tipo', 'modelo', 'desconto_puxador', 'ativo']
     template_name = 'cadastros/CadPuxador.html'
     success_url = reverse_lazy('listar-puxador')
     permission_required = 'cadastros.add.puxador'
@@ -177,7 +189,7 @@ class TipoUpdate(LoginRequiredMixin,PermissionRequiredMixin, UpdateView):
     success_url = reverse_lazy('listar-tipo')
     permission_required = 'cadastros.change.tipo'
 
-class PerfilUpdate(LoginRequiredMixin,PermissionRequiredMixin, UpdateView):
+class PerfilUpdate(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = Perfil
     form_class = PerfilForm
     template_name = 'cadastros/CadPerfil.html'
@@ -199,7 +211,9 @@ class PerfilUpdate(LoginRequiredMixin,PermissionRequiredMixin, UpdateView):
         context['perfilpuxador'] = PerfilPuxador.objects.filter(acabamento=perfil.acabamento)
         context['divisor'] = Divisor.objects.filter(acabamento=perfil.acabamento)
         context['puxador'] = Puxador.objects.filter(acabamento=perfil.acabamento)
+        context['acabamentos'] = Acabamento.objects.all()  # Passando os acabamentos para o contexto
         return context
+
 
 class PerfilPuxadorUpdate(LoginRequiredMixin,PermissionRequiredMixin, UpdateView):
     model = PerfilPuxador
@@ -337,8 +351,28 @@ class TipoList(LoginRequiredMixin, PermissionRequiredMixin, ListView):
 
 class PerfilList(LoginRequiredMixin, PermissionRequiredMixin, ListView):
     model = Perfil
-    template_name = 'cadastros/listas/perfil.html'
+    template_name = 'cadastros/ListarPerfil.html'
     permission_required = 'cadastros.view_perfil'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['acabamentos'] = Acabamento.objects.all()  # Passando os acabamentos para o contexto
+        context['tipos'] = Tipo.objects.all()  # Passando os tipos para o contexto
+        context['modelo'] = ModeloPerfil.objects.all()  # Passando os modelos para o contexto
+
+        # Se for uma operação de atualização, inclua também os dados do objeto atual
+        if 'object' in kwargs:
+            perfil = kwargs['object']
+            context['perfilpuxador_ids'] = perfil.perfilpuxador.values_list('id', flat=True)
+            context['divisor_ids'] = perfil.divisor.values_list('id', flat=True)
+            context['puxador_ids'] = perfil.puxador.values_list('id', flat=True)
+            context['perfilpuxador'] = PerfilPuxador.objects.filter(acabamento=perfil.acabamento)
+            context['divisor'] = Divisor.objects.filter(acabamento=perfil.acabamento)
+            context['puxador'] = Puxador.objects.filter(acabamento=perfil.acabamento)
+
+        return context
+
+
 
 class PerfilPuxadorList(LoginRequiredMixin,PermissionRequiredMixin, ListView):
     model = PerfilPuxador

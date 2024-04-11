@@ -38,6 +38,8 @@ class PerfilForm(forms.ModelForm):
         required=False,
     )
 
+    vidropolido = forms.BooleanField(label='Vidro Polido', required=False)
+
     class Meta:
         model = Perfil
         fields = '__all__'
