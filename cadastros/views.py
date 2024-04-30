@@ -79,6 +79,8 @@ class PerfilCreate(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['acabamentos'] = Acabamento.objects.all()  # Passando os acabamentos para o contexto
+        context['tipos'] = Tipo.objects.all()  # Passando os tipos para o contexto
+        context['modelo'] = ModeloPerfil.objects.all()  # Passando os modelos para o contexto
         return context
 
     def get_form_kwargs(self):
@@ -89,7 +91,7 @@ class PerfilCreate(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
 
     def form_valid(self, form):
         perfil = form.save(commit=False)
-        # Aqui você pode imprimir o objeto perfil no console
+        perfil.save()
         print(perfil)
         return super().form_valid(form)
 
@@ -211,7 +213,7 @@ class PerfilUpdate(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
         context['perfilpuxador'] = PerfilPuxador.objects.filter(acabamento=perfil.acabamento)
         context['divisor'] = Divisor.objects.filter(acabamento=perfil.acabamento)
         context['puxador'] = Puxador.objects.filter(acabamento=perfil.acabamento)
-        context['acabamentos'] = Acabamento.objects.all()  # Passando os acabamentos para o contexto
+        context['acabamentos'] = Acabamento.objects.all()
         return context
 
 
@@ -360,18 +362,24 @@ class PerfilList(LoginRequiredMixin, PermissionRequiredMixin, ListView):
         context['tipos'] = Tipo.objects.all()  # Passando os tipos para o contexto
         context['modelo'] = ModeloPerfil.objects.all()  # Passando os modelos para o contexto
 
-        # Se for uma operação de atualização, inclua também os dados do objeto atual
-        if 'object' in kwargs:
-            perfil = kwargs['object']
-            context['perfilpuxador_ids'] = perfil.perfilpuxador.values_list('id', flat=True)
-            context['divisor_ids'] = perfil.divisor.values_list('id', flat=True)
-            context['puxador_ids'] = perfil.puxador.values_list('id', flat=True)
+        # Obtém o perfil selecionado, se houver
+        perfil_id = self.request.GET.get('perfil_id')
+        perfil = None
+        if perfil_id:
+            perfil = get_object_or_404(Perfil, pk=perfil_id)
+            context['perfil'] = perfil
+
+            # Filtra os encaixes pelo acabamento do perfil
             context['perfilpuxador'] = PerfilPuxador.objects.filter(acabamento=perfil.acabamento)
             context['divisor'] = Divisor.objects.filter(acabamento=perfil.acabamento)
             context['puxador'] = Puxador.objects.filter(acabamento=perfil.acabamento)
 
-        return context
+            # Obtém os IDs dos encaixes selecionados
+            context['perfilpuxador_ids'] = perfil.perfilpuxador.values_list('id', flat=True)
+            context['divisor_ids'] = perfil.divisor.values_list('id', flat=True)
+            context['puxador_ids'] = perfil.puxador.values_list('id', flat=True)
 
+        return context
 
 
 class PerfilPuxadorList(LoginRequiredMixin,PermissionRequiredMixin, ListView):

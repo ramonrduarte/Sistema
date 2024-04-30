@@ -1,5 +1,5 @@
 <!-- Confirm Delete Modal -->
-<div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+<div class="modal fade" id="confirmDeleteModal{{ perfil.pk }}" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -8,10 +8,11 @@
             </div>
             <div class="ms-3 mt-2 mb-3">
                 Tem certeza de que deseja excluir este item?
+                {% url 'excluir-perfil' perfil.pk %}
             </div>
             <div class="d-flex justify-content-end mx-2 mb-2">
                 <button type="button" class="btn btn-outline-dark" data-bs-dismiss="modal">Não</button>
-                <a href="#" id="confirmDeleteBtn" class="ms-1 btn btn-danger">Sim, excluir</a>
+                <a href="{% url 'excluir-perfil' perfil.pk %}" id="confirmDeleteBtn" class="ms-1 btn btn-danger">Sim, excluir</a>
             </div>
         </div>
     </div>

@@ -74,13 +74,16 @@ Cadastro Perfil
                 </a>
             </td>
             <td>
-                <a href="#" class="btn btn-secondary delete-btn" data-bs-toggle="modal"
-                   data-bs-target="#confirmDeleteModal" data-product-id="{{ perfil.pk }}" title="Deletar perfil">
+                <a class="btn btn-secondary delete-btn" data-bs-toggle="modal"
+                   data-bs-target="#confirmDeleteModal{{ perfil.pk }}" data-product-id="{{ perfil.pk }}" title="Deletar perfil">
                     <i class="fas fa-trash-alt"></i>
                 </a>
             </td>
             <!-- Include (Required here to get the OK) -->
             {% include 'cadastros/editperfil.html' %}
+
+            <!-- Include (Required here to get the OK) -->
+            {% include 'cadastros/confirmDeleteModal.html' %}
         </tr>
         {% empty %}
             <tr>
@@ -114,19 +117,301 @@ Cadastro Perfil
 <!-- Include (Required here to get the OK) -->
         {% include 'cadastros/saveModal.html' %}
 
-<!-- Include (Required here to get the OK) -->
-        {% include 'cadastros/confirmDeleteModal.html' %}
-
-<style>
-/* Estilize a linha da tabela quando estiver inativa */
-tr.inactive td {
-    background-color: #f7f7f7; /* Altere a cor de fundo da linha para cinza claro */
-    color: #ccc; /* Define a cor do texto como cinza */
-}
-</style>
 
 
+
+<script>
+$(document).ready(function() {
+    var acabamento;
+
+    $(document).on('change', '#id_acabamento', function() {
+        limparCamposEncaixe();
+        $('#id_permite_perfil_puxador').prop('checked', false);
+        $('#id_permite_divisor').prop('checked', false);
+        $('#id_permite_puxador').prop('checked', false);
+        document.getElementById('flexSwitchCheckChecked').checked = false;
+        document.getElementById('flexSwitchCheckChecked').removeAttribute('checked');
+        console.log("ATIVO DESMARCADO")
+
+        acabamento = $(this).val();
+    });
+
+    // Evento de mudança no botão de switch de perfil puxador
+    $(document).on('click', '#id_permite_perfil_puxador', function() {
+        if ($(this).is(':checked')) {
+            $(this).val("1").prop('checked', true);
+            if (acabamento) {
+                filtrarPerfilPuxador();
+            }
+        } else {
+            $(this).val("2").prop('checked', false);
+            $('#addModalPerfil').find('#idperfilpuxador').html('');
+        }
+    });
+
+    // Evento de mudança no botão de switch de divisor
+    $(document).on('click', '#id_permite_divisor', function() {
+        if ($(this).is(':checked')) {
+            $(this).val("1").prop('checked', true);
+            if (acabamento) {
+                filtrarDivisor();
+            }
+        } else {
+            $(this).val("2").prop('checked', false);
+            $('#addModalPerfil').find('#testeencaixediv2').html('');
+        }
+    });
+
+    // Evento de mudança no botão de switch de puxador
+    $(document).on('click', '#id_permite_puxador', function() {
+        if ($(this).is(':checked')) {
+            $(this).val("1").prop('checked', true);
+            if (acabamento) {
+                filtrarPuxador();
+            }
+        } else {
+            $(this).val("2").prop('checked', false);
+            $('#addModalPerfil').find('#testeencaixediv3').html('');
+        }
+    });
+
+    function filtrarPerfilPuxador() {
+        $.ajax({
+            url: '{% url 'filtrar_perfil' %}',
+            type: 'GET',
+            data: {
+                acabamento: acabamento
+            },
+            success: function(response) {
+                var resultadosPerfilPuxador = $('#idperfilpuxador');
+                resultadosPerfilPuxador.empty(); // Limpa o conteúdo atual
+
+                // Itera sobre os resultados e adiciona checkboxes para cada perfil de puxador
+                $.each(response, function(index, item) {
+                    var checkboxId = 'checkbox_perfilpuxador_' + item.id;
+                    var checkboxLabel = $('<label>').attr('for', checkboxId).addClass('form-check-label').text(item.descricao);
+                    var checkboxInput = $('<input>').attr('type', 'checkbox').attr('name', 'perfilpuxador').attr('id', checkboxId).attr('value', item.id).addClass('form-check-input');
+                    var checkboxDiv = $('<div>').addClass('form-check').append(checkboxInput, checkboxLabel);
+
+                    resultadosPerfilPuxador.append(checkboxDiv);
+                });
+
+                // Inserir os valores no modal
+                inserirValoresNoModal(resultadosPerfilPuxador.html());
+            },
+            error: function(xhr) {
+                console.log("Erro na requisição AJAX:", xhr.statusText);
+            }
+        });
+    }
+
+    function filtrarDivisor() {
+        $.ajax({
+            url: '{% url 'filtrar_divisor' %}',
+            type: 'GET',
+            data: {
+                acabamento: acabamento
+            },
+            success: function(response) {
+                var resultadosDivisor = $('#testeencaixediv2');
+                resultadosDivisor.empty();
+
+                $.each(response, function(index, item) {
+                    var checkboxId = 'divisor_' + item.id;
+                    var checkboxLabel = $('<label>').attr('for', checkboxId).addClass('form-check-label').text(item.descricao);
+                    var checkboxInput = $('<input>').attr('type', 'checkbox').attr('name', 'divisor').attr('id', checkboxId).attr('value', item.id).addClass('form-check-input');
+                    var checkboxDiv = $('<div>').addClass('form-check').append(checkboxInput, checkboxLabel);
+
+                    resultadosDivisor.append(checkboxDiv);
+                });
+
+                // Inserir os valores no modal
+                inserirDivisoresNoModal(resultadosDivisor.html());
+            },
+            error: function(xhr) {
+                console.log("Erro na requisição AJAX:", xhr.statusText);
+            }
+        });
+    }
+
+    function filtrarPuxador() {
+        $.ajax({
+            url: '{% url 'filtrar_puxador' %}',
+            type: 'GET',
+            data: {
+                acabamento: acabamento
+            },
+            success: function(response) {
+                var resultadosPuxador = $('#testeencaixediv3');
+                resultadosPuxador.empty();
+
+                $.each(response, function(index, item) {
+                    var checkboxId = 'puxador_' + item.id;
+                    var checkboxLabel = $('<label>').attr('for', checkboxId).addClass('form-check-label').text(item.descricao);
+                    var checkboxInput = $('<input>').attr('type', 'checkbox').attr('name', 'puxador').attr('id', checkboxId).attr('value', item.id).addClass('form-check-input');
+                    var checkboxDiv = $('<div>').addClass('form-check').append(checkboxInput, checkboxLabel);
+
+                    resultadosPuxador.append(checkboxDiv);
+                });
+
+                // Inserir os valores no modal
+                inserirPuxadoresNoModal(resultadosPuxador.html());
+            },
+            error: function(xhr) {
+                console.log("Erro na requisição AJAX:", xhr.statusText);
+            }
+        });
+    }
+
+    // Função para limpar os campos quando o checkbox de encaixe é desmarcado
+    function limparCamposEncaixe() {
+        $('#addModalPerfil').find('#idperfilpuxador').html('');
+        $('#addModalPerfil').find('#testeencaixediv2').html('');
+        $('#addModalPerfil').find('#testeencaixediv3').html('');
+    }
+
+    // Função para inserir os valores no modal
+    function inserirValoresNoModal(html) {
+        $('#addModalPerfil').find('#idperfilpuxador').html(html);
+    }
+
+    function inserirDivisoresNoModal(html) {
+        $('#addModalPerfil').find('#testeencaixediv2').html(html);
+    }
+
+    function inserirPuxadoresNoModal(html) {
+        $('#addModalPerfil').find('#testeencaixediv3').html(html);
+    }
+});
+
+</script>
+
+<script>
+$(document).ready(function() {
+    function filtrarResultados() {
+        var acabamento = $('#id_acabamento').val();
+        var encaixePerfilPuxadorSim = $('input[name="encaixe"]:checked').val() === '1';
+        var encaixeDivisorSim = $('input[name="encaixedivisor"]:checked').val() === '1';
+        var encaixePuxadorSim = $('input[name="encaixepuxador"]:checked').val() === '1';
+
+        var resultadosPerfilPuxador = $('#idperfilpuxador');
+        var resultadosDivisor = $('#iddivisor');
+        var resultadosPuxador = $('#idpuxador');
+
+        resultadosPerfilPuxador.empty();
+        resultadosDivisor.empty();
+        resultadosPuxador.empty();
+
+        var perfilPuxadorIds = resultadosPerfilPuxador.data('initial-puxador');
+        var divisorIds = resultadosDivisor.data('initial-divisor');
+        var puxadorIds = resultadosPuxador.data('initial-puxador');
+
+        if (encaixePerfilPuxadorSim) {
+            $.ajax({
+                url: '{% url 'filtrar_perfil' %}',
+                type: 'GET',
+                data: {
+                    acabamento: acabamento
+                },
+                success: function(response) {
+                    $.each(response, function(index, item) {
+                        var checkboxId = 'checkbox_perfil_puxador_' + item.id;
+                        var checkboxLabel = $('<label>').attr('for', checkboxId).addClass('form-check-label').text(item.descricao);
+                        var checkboxInput = $('<input>').attr('type', 'checkbox').attr('name', 'perfil_puxador').attr('id', checkboxId).attr('value', item.id).addClass('form-check-input');
+
+                        var checkboxDiv = $('<div>').addClass('form-check').append(checkboxInput, checkboxLabel);
+                        var option = $('<div>').append(checkboxDiv);
+
+                        if (perfilPuxadorIds && perfilPuxadorIds.includes(item.id.toString())) {
+                            checkboxInput.prop('checked', true);
+                        }
+
+                        resultadosPerfilPuxador.append(option);
+                    });
+                },
+                error: function(xhr) {
+                    console.log(xhr.statusText);
+                }
+            });
+
+        } else {
+            resultadosPerfilPuxador.hide();
+        }
+
+        if (encaixeDivisorSim) {
+            $.ajax({
+                url: '{% url 'filtrar_divisor' %}',
+                type: 'GET',
+                data: {
+                    acabamento: acabamento
+                },
+                success: function(response) {
+                    $.each(response, function(index, item) {
+                        var checkboxId = 'checkbox_divisor_' + item.id;
+                        var checkboxLabel = $('<label>').attr('for', checkboxId).addClass('form-check-label').text(item.descricao);
+                        var checkboxInput = $('<input>').attr('type', 'checkbox').attr('name', 'divisor').attr('id', checkboxId).attr('value', item.id).addClass('form-check-input');
+
+                        var checkboxDiv = $('<div>').addClass('form-check').append(checkboxInput, checkboxLabel);
+                        var option = $('<div>').append(checkboxDiv);
+
+                        if (divisorIds && divisorIds.includes(item.id.toString())) {
+                            checkboxInput.prop('checked', true);
+                        }
+
+                        resultadosDivisor.append(option);
+                    });
+                },
+                error: function(xhr) {
+                    console.log(xhr.statusText);
+                }
+            });
+
+        } else {
+            resultadosDivisor.hide();
+        }
+
+        if (encaixePuxadorSim) {
+            $.ajax({
+                url: '{% url 'filtrar_puxador' %}',
+                type: 'GET',
+                data: {
+                    acabamento: acabamento
+                },
+                success: function(response) {
+                    $.each(response, function(index, item) {
+                        var checkboxId = 'checkbox_puxador_' + item.id;
+                        var checkboxLabel = $('<label>').attr('for', checkboxId).addClass('form-check-label').text(item.descricao);
+                        var checkboxInput = $('<input>').attr('type', 'checkbox').attr('name', 'puxador').attr('id', checkboxId).attr('value', item.id).addClass('form-check-input');
+
+                        var checkboxDiv = $('<div>').addClass('form-check').append(checkboxInput, checkboxLabel);
+                        var option = $('<div>').append(checkboxDiv);
+
+                        if (puxadorIds && puxadorIds.includes(item.id.toString())) {
+                            checkboxInput.prop('checked', true);
+                        }
+
+                        resultadosPuxador.append(option);
+                    });
+                },
+                error: function(xhr) {
+                    console.log(xhr.statusText);
+                }
+            });
+
+        } else {
+            resultadosPuxador.hide();
+        }
+    }
+
+    $('#id_acabamento, input[name="encaixe"], input[name="encaixedivisor"], input[name="encaixepuxador"]').on('change', function() {
+        filtrarResultados();
+    });
+
+    // Chamar a função filtrarResultados inicialmente
+    filtrarResultados();
+});
+
+</script>
 
 
 {% endblock content %}
-

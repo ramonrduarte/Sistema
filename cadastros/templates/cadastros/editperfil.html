@@ -4,7 +4,7 @@
 {% block modal-id %} id="editModalPerfil{{ perfil.pk }}" {% endblock modal-id %}
 
 <!-- Modal title -->
-{% block modal-title %}<i class="fas fa-edit"></i>&nbsp;&nbsp; Editar Perfil {% endblock modal-title %}
+{% block modal-title %}<i class="fas fa-edit"></i>&nbsp;&nbsp; Editar Perfil {{ perfil.codigo }} {% endblock modal-title %}
 
 <!-- Form action -->
 {% block action %} action="{% url 'editar-perfil' pk=perfil.pk %}" {% endblock action %}
@@ -22,9 +22,11 @@
 <!-- PREÇO -->
 {% block value-preco %} value="{{ perfil.preco }}" {% endblock value-preco %}
 <!-- ACABAMENTO -->
-{% block value-acabamento %} value="{{ perfil.acabamento }}" {% endblock value-acabamento %}
+{% block value-acabamento %} value="{{ perfil.acabamento_id }}" {% endblock value-acabamento %}
 <!-- TIPO -->
-{% block value-tipo %} value="{{ perfil.tipo }}" {% endblock value-tipo %}
+{% block value-tipo %} value="{{ perfil.tipo_id }}" {% endblock value-tipo %}
+<!-- MODELO -->
+{% block value-modelo %} value="{{ perfil.modeloperfil_id }}" {% endblock value-modelo %}
 <!-- LARGURA PERFIL -->
 {% block value-largura_perfil %} value="{{ perfil.largura_perfil }}" {% endblock value-largura_perfil %}
 <!-- ABA PERFIL -->
@@ -35,8 +37,6 @@
 {% block value-largura_puxador %} value="{{ perfil.largura_puxador }}" {% endblock value-largura_puxador %}
 <!-- ABA PUXADOR -->
 {% block value-aba_puxador %} value="{{ perfil.aba_puxador }}" {% endblock value-aba_puxador %}
-<!-- MODELO -->
-{% block value-modelo %} value="{{ perfil.modelo }}" {% endblock value-modelo %}
 <!-- ENCAIXE PERFIL -->
 {% block value-encaixe %} value="{{ perfil.encaixe }}" {% endblock value-encaixe %}
 <!-- ENCAIXE DIVISOR -->
@@ -53,11 +53,11 @@
     <input id="preco2" value="{{ perfil.preco }}">
     <input id="acabamento2" value="{{ perfil.acabamento }}">
     <input id="tipo2" value="{{ perfil.tipo }}">
+    <input id="modelo2" value="{{ perfil.modelo }}">
     <input id="largura_perfil2" value="{{ perfil.largura_perfil }}">
     <input id="aba_perfil2" value="{{ perfil.aba_perfil }}">
     <input id="desconto_vidro2" value="{{ perfil.desconto_vidro }}">
     <input id="largura_puxador2" value="{{ perfil.largura_puxador }}">
-    <input id="modelo2" value="{{ perfil.modelo }}">
     <input id="encaixe2" value="{{ perfil.encaixe }}">
     <input id="encaixedivisor2" value="{{ perfil.encaixedivisor }}">
     <input id="encaixepuxador2" value="{{ perfil.encaixepuxador }}">
@@ -71,3 +71,4 @@
 
 <!-- ID back here (and denied in add.html) -->
 {% block btn-back %} id="btn-back" {% endblock btn-back %}
+
